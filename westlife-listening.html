@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flying Without Wings · Westlife 音乐传记</title>
+<meta name="description" content="按发行顺序听 Westlife：从五人时代的 Flying Without Wings、My Love，到四人时代的 You Raise Me Up、The Rose，再到 Hello My Love 与 Starlight。翻唱、创作与重组，各有来处。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .intro{color:#cbbda8;max-width:44em}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">Westlife <b>Flying Without Wings</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/19/c5/0219c580-295f-5f65-fa83-0ee1f0a0d54b/mzi.iykdfloi.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/28/0d/ae/280dae2c-12ce-d908-4f4f-779a351b1694/dj.yracbysk.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c7/8a/f6/c78af6d0-3436-dfce-1000-b85e6c7834d7/886443166707.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/91/6e/f2/mzi.binlgblk.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/6b/38/ab/6b38abc7-23a1-a5b1-9fc7-b96740df42e7/888880790033.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/41/b5/4a/41b54af0-6301-c288-eff6-488262bf8fac/886970198226.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/2a/ba/aa/mzi.fbxusvtd.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7f/0c/21/7f0c21d0-0149-604d-b81e-4346d0efb37f/884977430769.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/13/70/ff/1370ffba-b348-d62c-4574-77042be980b4/5037300819327.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ed/92/7f/ed927fc7-267c-e017-8ea9-86e27715af30/00602577226199.rgb.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6c/2d/f9/6c2df993-cdd9-e1f4-e1f5-94415be7bc3b/190296446634.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/19/c5/0219c580-295f-5f65-fa83-0ee1f0a0d54b/mzi.iykdfloi.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/28/0d/ae/280dae2c-12ce-d908-4f4f-779a351b1694/dj.yracbysk.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c7/8a/f6/c78af6d0-3436-dfce-1000-b85e6c7834d7/886443166707.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1998 — 至今</p>
+    <h1>Flying Without Wings</h1>
+    <p class="sub">Westlife 音乐传记</p>
+    <p class="deck">Westlife 最动人的地方，不只是一排整齐的和声，而是他们总能把宏大的副歌唱回普通人的牵挂：爱人、故乡、陪伴，以及重新开始。五个人在世纪之交连续登顶，四个人在离队、告别与七年空白之后再度开口。这里沿发行顺序听 26 首歌，也把原创、翻唱与 Shane Filan 的个人录音各自放回真实来处。</p>
+    <div class="meta-row">
+      <span>1998 年由 Westside 起步</span>
+      <span>2004 年后以四人继续</span>
+      <span>14 支英国冠军单曲</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a>
+      <a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false">
+        <span class="listen-label">开始聆听</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p>
+    <h2 class="rv">从七连冠少年，到懂得重逢的大人</h2>
+    <p class="sec-lead rv">他们的故事有一条清楚的分界：1998 年以五人出发，2004 年 Brian McFadden 离队，此后由 Shane、Mark、Kian 与 Nicky 走完告别，也由这四个人在 2018 年重组。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1998</div><div class="l">五个人出发</div><div class="s">Westside 因重名改作 Westlife</div></div>
+      <div class="stat rv"><div class="n">7</div><div class="l">连续英国冠军</div><div class="s">从出道曲起，前七支单曲全部登顶</div></div>
+      <div class="stat rv"><div class="n">2004</div><div class="l">五人变四人</div><div class="s">3 月 9 日，Brian McFadden 离队</div></div>
+      <div class="stat rv"><div class="n">14</div><div class="l">英国冠军单曲</div><div class="s">最后一首是 2006 年的 The Rose</div></div>
+      <div class="stat rv"><div class="n">7</div><div class="l">告别后的年份</div><div class="s">2012 收官，2018 宣布四人重组</div></div>
+      <div class="stat rv"><div class="n">26</div><div class="l">沿发行顺序聆听</div><div class="s">25 首团体录音，另收 Shane 的一首个人录音</div></div>
+    </div>
+    <div class="toc rv">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#glance">速览</a></li>
+        <li><a href="#timeline">时间线</a></li>
+        <li><a href="#tracks">唱片与主打</a></li>
+        <li><a href="#route">如果只重听一个晚上</a></li>
+        <li><a href="#refs">资料与边界</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p>
+    <h2 class="rv"><span class="yr">1998 — 至今</span>和声没有消失，只是人生换了章节</h2>
+    <p class="sec-lead rv">这不是一条只有冠军数字的路：它从斯莱戈的朋友、选秀式组团和唱片工业开始，经过五人变四人、险些提前结束、主动告别，最后回到四个成年人共同认可的新起点。</p>
+    <div class="timeline">
+      <div class="tl peak rv"><div class="when">1998</div><h3>从斯莱戈到 Westlife</h3><p>Shane Filan、Mark Feehily 与 Kian Egan 从斯莱戈组合 IOYOU 留下，Nicky Byrne 和 Brian McFadden 经甄选加入。五人最初叫 Westside，因重名改作 Westlife；在首支单曲问世前，他们已在《The Late Late Show》唱过 Flying Without Wings。</p></div>
+      <div class="tl rv"><div class="when">1999 — 2000</div><h3>前七支单曲，七次登顶</h3><p>Swear It Again 打开大门；瑞典写作与制作团队带来 If I Let You Go、Fool Again 和 My Love，Steve Mac 与 Wayne Hector 则写出更具福音气质的 Flying Without Wings。Westlife 的声音由两条欧洲流行制作线共同塑成。</p></div>
+      <div class="tl rv"><div class="when">1999 · 12</div><h3>用两首旧歌守住圣诞</h3><p>ABBA 的 I Have a Dream 与由 Jacques Brel 作品辗转而来的 Seasons in the Sun 组成双 A 面，连续四周占据英国榜首。它们不是成员经历的自传，却显示出这支组合把旧旋律重新交给新一代听众的能力。</p></div>
+      <div class="tl rv"><div class="when">2000 — 2001</div><h3>从英国榜走向更远的海岸</h3><p>《Coast to Coast》把斯德哥尔摩制作的 My Love、Soledad 与 I Lay My Love on You 带到全球；后两首虽不是英国主打，却在亚洲留下很长的回声。为 Comic Relief 录制的 Billy Joel 翻唱 Uptown Girl，则成为他们英国销量最高的单曲之一。</p></div>
+      <div class="tl rv"><div class="when">2001 — 2002</div><h3>开始把自己的名字写进歌曲</h3><p>《World of Our Own》仍有成熟职业作者搭建的主打，但 Bop Bop Baby 由 Shane 与 Brian 参与创作。对一支常被视作演唱者而非作者的组合，这张专辑留下了他们尝试进入写歌房间的证据。</p></div>
+      <div class="tl rv"><div class="when">2002</div><h3>第一本阶段总结</h3><p>精选集以新歌 Unbreakable 开场。三年密集发行后，这首歌把他们惯用的渐强结构推到最明亮处：低声陈述、合声铺开、升调抵达副歌，也把“Westlife 式情歌”固定成一种公众记忆。</p></div>
+      <div class="tl peak rv"><div class="when">2003 — 2004</div><h3>五人时代的最后一页</h3><p>Simon Cowell 认为《Turnaround》缺少一首能同时抵达不同年龄听众的大歌，推动他们录下 Mandy；它原是 Scott English 的 Brandy，后来由 Barry Manilow 政名唱红。Obvious 随后成为 Brian 离队前最后一支五人单曲。</p></div>
+      <div class="tl peak rv"><div class="when">2004 · 03 · 09</div><h3>五个人变成四个人</h3><p>Brian McFadden 在都柏林记者会上宣布离队，公开理由是希望把时间留给家人。余下四人没有另找成员；他们在巡演临近时继续排练，也从此重新分担原本属于五个人的声部与公众角色。</p></div>
+      <div class="tl rv"><div class="when">2005 — 2007</div><h3>一首翻唱，让四人重新站稳</h3><p>四人一度认真考虑结束。Louis Walsh 带来 Secret Garden 首录的 You Raise Me Up，他们起初只听见一首“教堂歌曲”，Steve Mac 却把它重塑为流行唱片；英国冠军与续约随之而来。The Rose、Home 等翻唱延续了这条成熟抒情路线。</p></div>
+      <div class="tl rv"><div class="when">2009 — 2012</div><h3>换一种声音，然后好好告别</h3><p>Simon Cowell 在洛杉矶把 Daughtry 的 What About Now 播给他们，乐队也承认它比惯常曲风更硬。两年后，四人以“友好决定”和寻找新生活为由宣布分开；2012 年 6 月 23 日，他们在都柏林 Croke Park 完成告别演出。</p></div>
+      <div class="tl rv"><div class="when">2006 — 2017</div><h3>一条被放下的 demo，在亚洲长大</h3><p>Savan Kotecha 请 Shane 独自在 Abbey Road 试唱 Beautiful in White，A&amp;R 当时认为不适合 Westlife。demo 在 2010 年流出后，反而在亚洲婚礼歌单里慢慢走红；Shane 到 2017 年才为个人专辑正式重录。</p></div>
+      <div class="tl peak rv"><div class="when">2018 — 2019</div><h3>不是怀旧巡演，而是重新成为乐队</h3><p>四个人都愿意回来时，重组才真正发生。他们希望留下新歌，而不只重复旧日曲目。恰好儿时听 Westlife 学吉他的 Ed Sheeran 与老搭档 Steve Mac 已写出“Westlife 风格”的作品，Hello My Love 于是成为七年后的新开场。</p></div>
+      <div class="tl now rv"><div class="when">2021 — 至今</div><h3>把写作也接回自己手里</h3><p>疫情期间，成员分隔各地，以远程写作完成《Wild Dreams》。Shane 与 Mark 共同署名 Starlight——这是首支由成员参与创作的专辑先行单曲。成熟后的 Westlife 仍唱宏大的副歌，但这一次，他们也更主动地决定副歌从哪里来。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">26 首歌，一条发行顺序</h2>
+    <p class="sec-lead rv">点「开始聆听」或曲目上的播放钮才会出声。开始后从第一首起，每首试听约 30 秒，淡出后衔接下一首。以下版本依发行顺序排列；Beautiful in White 明确列作 Shane Filan 的个人录音，其余翻唱也逐首标出原作与最早录音。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-swear" data-bvid="BV1264y1h7CU" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/47/c7/11/47c71170-8fc9-467f-0c04-0f207afcdbe6/mzaf_2816299510610863138.plus.aac.p.m4a" aria-label="播放视频 Swear It Again">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/19/c5/0219c580-295f-5f65-fa83-0ee1f0a0d54b/mzi.iykdfloi.jpg/600x600bb.jpg" alt="Swear It Again 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>Swear It Again</h3></div>
+          <p class="s-meta">英国单曲 1999.4.19 · 首专 1999.11.1 · Radio Edit · 试听来自精选《Westlife: Greatest Hits》</p>
+          <p class="s-note">Steve Mac 与 Wayne Hector 为 Westlife 写下的第一批歌之一。Simon Cowell 曾让父亲 Eric 从首专候选曲中挑主打，Eric 选中了它；单曲发行当周，Eric 去世。于是这句坚定的誓言，也意外带着一层唱片之外的告别。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Swear It Again"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Swear It Again Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Swear It Again Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-iflet" data-bvid="BV1Zb4y117Bm" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/60/67/08/606708b9-7295-2de7-9065-d7c8a6623641/mzaf_14248865772517585038.plus.aac.p.m4a" aria-label="播放视频 If I Let You Go">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/28/0d/ae/280dae2c-12ce-d908-4f4f-779a351b1694/dj.yracbysk.jpg/600x600bb.jpg" alt="If I Let You Go 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>If I Let You Go</h3></div>
+          <p class="s-meta">英国单曲 1999.8.9 · 首专《Westlife》1999.11.1 · Radio Edit · 封面是流媒体配图 · 五人</p>
+          <p class="s-note">David Kreuger、Jörgen Elofsson 与 Per Magnusson 在斯德哥尔摩写作并制作。五个人把“该不该说出口”的犹疑唱得很轻，副歌却迅速打开；它成为连续七支英国冠军中的第二首，也确立了瑞典制作团队在早期 Westlife 声音里的位置。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 If I Let You Go"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="If I Let You Go Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="If I Let You Go Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-flying" data-bvid="BV11V41127N2" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/83/e9/43/83e94333-161d-07e4-18f2-c5cbb25de496/mzaf_8559262545517322728.plus.aac.p.m4a" aria-label="播放视频 Flying Without Wings">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/19/c5/0219c580-295f-5f65-fa83-0ee1f0a0d54b/mzi.iykdfloi.jpg/600x600bb.jpg" alt="Flying Without Wings 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>Flying Without Wings</h3></div>
+          <p class="s-meta">1999.10.18 · 英文原名 · 华语常称无翼而飞 · 试听来自精选，录音室版</p>
+          <p class="s-note">Wayne Hector 在洛杉矶一次嘻哈录音的休息间隙想到旋律，怕忘记便把片段留在母亲答录机里；回英国后，他与 Steve Mac 很快完成歌曲，谈的是妻子以及让人生完整的小事。原拟给 Stephen Gately，最终由 Simon Cowell 留给 Westlife。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Flying Without Wings"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Flying Without Wings Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Flying Without Wings Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-fool" data-bvid="BV1NY9PBREmr" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/87/ad/6787adbd-e1ab-3a3f-a6d6-6fd7a28571a4/mzaf_5091933465939910468.plus.aac.p.m4a" aria-label="播放官方 MV Fool Again">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/28/0d/ae/280dae2c-12ce-d908-4f4f-779a351b1694/dj.yracbysk.jpg/600x600bb.jpg" alt="Fool Again 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>Fool Again</h3></div>
+          <p class="s-meta">专辑 1999.11.1 · 单曲在 2000 年 · 封面是流媒体配图</p>
+          <p class="s-note">与 If I Let You Go 同出 Kreuger、Elofsson、Magnusson 的斯德哥尔摩写作线。歌里只呈现“最后才知道自己被蒙在鼓里”的懊恼，不等于任何成员的私人经历；克制的主歌与层层叠起的和声，才是这首失恋歌真正的戏剧。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Fool Again"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Fool Again Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Fool Again Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-seasons" data-bvid="BV1Hq4y1K7vP" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/77/c2/9977c2b9-f151-4342-9da4-d5e819d37634/mzaf_7865377376307570361.plus.aac.p.m4a" aria-label="播放视频 Seasons in the Sun">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/28/0d/ae/280dae2c-12ce-d908-4f4f-779a351b1694/dj.yracbysk.jpg/600x600bb.jpg" alt="Seasons in the Sun 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>Seasons in the Sun</h3></div>
+          <p class="s-meta">1999.12 · 双 A 面 · 华语常称阳光季节 · 翻唱 · 封面是流媒体配图</p>
+          <p class="s-note">这是翻唱，不是成员的生死告白。源头是 Jacques Brel 1961 年的 Le Moribond，Rod McKuen 改写英语词，Terry Jacks 又把它唱成 1974 年的全球热门。Westlife 与 I Have a Dream 组成双 A 面，拿下 1999 年英国圣诞冠军。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Seasons in the Sun"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Seasons in the Sun Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Seasons in the Sun Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-dream" data-bvid="BV1rGBwBiEhn" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/af/87/18/af87181e-48dd-7ba2-e55e-4bd94503aa2d/mzaf_12958287371704666989.plus.aac.p.m4a" aria-label="播放官方 MV I Have a Dream">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="I Have a Dream 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>I Have a Dream</h3></div>
+          <p class="s-meta">1999.12.6 · 与 Seasons in the Sun 双 A 面 · Remix · 翻唱 ABBA · 《Coast to Coast》加长版 · 五人</p>
+          <p class="s-note">翻唱 ABBA 1979 年的作品，Benny Andersson 与 Björn Ulvaeus 创作。它与 Seasons in the Sun 组成双 A 面；ABBA 当年的版本在英国圣诞榜屈居第二，Westlife 二十年后却凭这组翻唱登顶，并连续四周守住榜首。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 I Have a Dream"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="I Have a Dream Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="I Have a Dream Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-mylove" data-bvid="BV1624y1M7rG" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fa/13/a7/fa13a7d9-a522-c423-c952-11d559d6a05c/mzaf_11786125249421038939.plus.aac.p.m4a" aria-label="播放视频 My Love">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="My Love 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>My Love</h3></div>
+          <p class="s-meta">单曲日标 2000.10.31 · 专辑 2000.11.6 · Radio Edit · 《Coast to Coast》加长版</p>
+          <p class="s-note">Jörgen Elofsson、Per Magnusson、David Kreuger 与 Pelle Nylén 在 Cheiron Studios 完成这首歌。宏大的归乡感来自职业写作与弦乐编排，不是某位成员在机场写成；MV 才把“回家”具体拍成从香农机场走向利默里克与莫赫悬崖。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 My Love"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="My Love Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="My Love Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-soledad" data-bvid="BV15J411W7nq" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1f/c0/29/1fc02921-3584-2545-6d2f-d6b6b908b0b8/mzaf_8259464895947537427.plus.aac.p.m4a" aria-label="播放官方 MV Soledad">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="Soledad 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>Soledad</h3></div>
+          <p class="s-meta">2000.11.6 · 《Coast to Coast》专辑曲 · 加长版 · 不是英国单曲 · 五人</p>
+          <p class="s-note">Soledad 在西班牙语里意为“孤独”。它没有作为英国单曲发行，歌词也没有可靠证据对应成员的真实丧失；更稳妥的听法，是留意主歌的空旷、齐唱副歌的包围感，以及一首专辑曲如何在亚洲听众中获得远超单曲身份的生命。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Soledad"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Soledad Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Soledad Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-ilay" data-bvid="BV1tB4y1A7Gk" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a8/e1/d5/a8e1d5c1-aae3-ea0a-5ade-700022a98499/mzaf_9611321995453213292.plus.aac.p.m4a" aria-label="播放视频 I Lay My Love on You">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="I Lay My Love on You 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>I Lay My Love on You</h3></div>
+          <p class="s-meta">专辑 2000.11.6 · 英国和爱尔兰以外的单曲 2001.1.29 · Remix · 加长版 · 五人</p>
+          <p class="s-note">这支单曲把发行重心放在英国与爱尔兰之外，尤其面向亚洲与澳洲。没有可靠的成员私人故事可据；它的魅力更在轻快鼓点、清楚的主唱交接与整齐和声，让早期 Westlife 不只剩慢板情歌一种速度。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 I Lay My Love on You"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="I Lay My Love on You Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="I Lay My Love on You Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-uptown" data-bvid="BV1LQJ7zgEFQ" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d5/fd/33/d5fd3336-4aa3-5604-7e05-9ef8da64f0fc/mzaf_13987411297051662932.plus.aac.p.m4a" aria-label="播放官方 MV Uptown Girl">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1d/48/7d/1d487da2-ed7a-3e31-74d6-49cf93b40aeb/mzi.kpnsbult.jpg/600x600bb.jpg" alt="Uptown Girl 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>Uptown Girl</h3></div>
+          <p class="s-meta">2001.3.5 · 翻唱 Billy Joel · 华语常称城中女孩 · Radio Edit · 加长版</p>
+          <p class="s-note">翻唱 Billy Joel 1983 年的同名歌曲，录给 2001 年 Comic Relief。原作的复古 doo-wop 骨架被保留，Westlife 以更明亮的合唱重唱；它后来成为他们英国榜表现与销量最突出的单曲之一，但故事属于公益发行与流行经典再演绎。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Uptown Girl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Uptown Girl Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Uptown Girl Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-looking" data-bvid="BV1smhFzuERq" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1f/8b/ae/1f8bae46-f661-ae7a-4213-da0cf5f6d583/mzaf_18175246282969041776.plus.aac.p.m4a" aria-label="播放官方 MV When You&#x27;re Looking Like That">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="When You&#x27;re Looking Like That 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>When You&#x27;re Looking Like That</h3></div>
+          <p class="s-meta">Single Remix · iTunes 标 2001.9.19 · 专辑《World of Our Own》2001.11.12 · 英国未发 · 五人</p>
+          <p class="s-note">Max Martin、Rami Yacoub 与 Andreas Carlsson 创作的快歌，单曲没有在英国发行，却成为演唱会常客。这里没有把歌词写成成员情史：真正可听的是紧促节拍如何逼着五人的声线向前跑，给一贯端正的和声添上一点锋利。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 When You&#x27;re Looking Like That"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="When You&#x27;re Looking Like That Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="When You&#x27;re Looking Like That Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-queen" data-bvid="BV1FJ411x74u" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/89/34/78/89347841-1e9f-5d9f-adad-aff2c90801b7/mzaf_13823488609958878857.plus.aac.p.m4a" aria-label="播放官方 MV Queen of My Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="Queen of My Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>Queen of My Heart</h3></div>
+          <p class="s-meta">2001.11.5 · 《World of Our Own》加长版 · Radio Edit</p>
+          <p class="s-note">Wayne Hector、Steve Mac、Steve Robson 与 John McLaughlin 共同创作。它沿用 Westlife 最擅长的路径：先让 Shane 的叙述靠近耳边，再以合唱和升调扩大承诺；不是谁的求婚实录，而是一首精密写作出的告别前盟誓。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Queen of My Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Queen of My Heart Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Queen of My Heart Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-world" data-bvid="BV1xZkABbESq" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e3/fa/5a/e3fa5ab1-4eca-1225-4929-f4f7c0765107/mzaf_14457012952105545.plus.aac.p.m4a" aria-label="播放官方 MV World of Our Own">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="World of Our Own 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">13</span><h3>World of Our Own</h3></div>
+          <p class="s-meta">2001.11.12 · 同名专辑加长版 · 专辑曲</p>
+          <p class="s-note">Steve Mac 与 Wayne Hector 把速度提起来，少用庄严弦乐，多给吉他、鼓与切分节奏空间。歌曲仍写亲密关系，却不像早期慢歌那样停在原地；它让五个人听起来更像正在共同向前的组合，也成为英国冠军。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 World of Our Own"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="World of Our Own Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="World of Our Own Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-bop" data-bvid="BV1TzYpeHE4u" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2e/7e/60/2e7e6031-ca9d-d84c-c72b-36c57f621c89/mzaf_3681148174434766914.plus.aac.p.m4a" aria-label="播放官方 MV Bop Bop Baby">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/cc/20/d8cc20ec-7ae3-5008-2b79-5448108c74ce/886446674254.jpg/600x600bb.jpg" alt="Bop Bop Baby 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">14</span><h3>Bop Bop Baby</h3></div>
+          <p class="s-meta">专辑 2001.11.12 · 单曲在次年 · 加长版</p>
+          <p class="s-note">这首歌由 Shane Filan、Brian McFadden 与 Graham Murphy、Chris O’Brien 共同署名，是成员进入创作名单的鲜明一笔。轻快表面下仍有挽回关系的焦虑；重要的不是把它当私生活，而是听见他们开始从“唱别人写的歌”向写作靠近。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Bop Bop Baby"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Bop Bop Baby Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Bop Bop Baby Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-unbreakable" data-bvid="BV1Pm4y1E7vm" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9f/22/cb/9f22cbd1-94f5-43b3-eeac-093566d75cba/mzaf_5373548282297218563.plus.aac.p.m4a" aria-label="播放视频 Unbreakable">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c7/8a/f6/c78af6d0-3436-dfce-1000-b85e6c7834d7/886443166707.jpg/600x600bb.jpg" alt="Unbreakable 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">15</span><h3>Unbreakable</h3></div>
+          <p class="s-meta">单曲 2002.11.4 · 精选《Unbreakable – The Greatest Hits Volume 1》2002.11.11 · Single Remix · 封面是后来的精选豪华版 · 五人</p>
+          <p class="s-note">Jörgen Elofsson 与 John Reid 写给第一张精选集的新歌。它几乎是一份 Westlife 配方的自我总结：独唱先许下承诺，和声在副歌汇拢，最后用升调把情绪推高。不是纪录片式的爱情故事，却准确记录了他们第一个高峰期的声音。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Unbreakable"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Unbreakable Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Unbreakable Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-mandy" data-bvid="BV13q4y157da" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cc/3f/b0/cc3fb032-d6a9-85d1-e875-da75b24439ed/mzaf_1989825334175825941.plus.aac.p.m4a" aria-label="播放视频 Mandy">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/91/6e/f2/mzi.binlgblk.jpg/600x600bb.jpg" alt="Mandy 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">16</span><h3>Mandy</h3></div>
+          <p class="s-meta">单曲 2003.11.10 · 专辑 2003.11.24 · 华语常称曼蒂 · 翻唱 · 五人</p>
+          <p class="s-note">这是翻唱。Scott English 与 Richard Kerr 写作，English 先以 Brandy 在 1971 年发行；Barry Manilow 为免与另一首 Brandy 混淆而改名 Mandy，并在 1974 年唱红。Simon Cowell 坚持《Turnaround》需要这首跨年龄的大歌，结果它成为五人时期最后一支英国冠军。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Mandy"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Mandy Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Mandy Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-obvious" data-bvid="BV1FJ411x7PQ" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/87/e5/44/87e544ec-0d92-0439-bf39-a4d6b2185d8b/mzaf_903544020939908543.plus.aac.p.m4a" aria-label="播放官方 MV Obvious">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/91/6e/f2/mzi.binlgblk.jpg/600x600bb.jpg" alt="Obvious 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">17</span><h3>Obvious</h3></div>
+          <p class="s-meta">专辑 2003.11.24 · 单曲 2004.2.23 · 专辑版 · 五人时期最后一支单曲</p>
+          <p class="s-note">Savan Kotecha 与 Andreas Carlsson 等职业作者写下这首迟迟不敢表白的歌。它在 Brian 宣布离队前两周发行，因而成为五人最后一支单曲；歌词并非离队预告，但回望时，五道声线在结尾汇合的声音自然多了一层时代终点感。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Obvious"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Obvious Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Obvious Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-raise" data-bvid="BV1dP411N746" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b0/83/52/b08352e9-0611-7034-7464-fec3638ca1cd/mzaf_2219444386325628806.plus.aac.p.m4a" aria-label="播放视频 You Raise Me Up">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/6b/38/ab/6b38abc7-23a1-a5b1-9fc7-b96740df42e7/888880790033.jpg/600x600bb.jpg" alt="You Raise Me Up 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">18</span><h3>You Raise Me Up</h3></div>
+          <p class="s-meta">单曲 2005.10.24 · 《Face to Face》2005.10.31 · 华语常称你鼓舞了我 · 翻唱 · 四人</p>
+          <p class="s-note">这是翻唱。Rolf Løvland 先写成器乐曲 Silent Story，Brendan Graham 填词，Secret Garden 与 Brian Kennedy 于 2002 年首录。四人起初把它听作“教堂歌曲”，Steve Mac 改造成流行大歌；Nicky 后来说，这支英国冠军让本想结束的乐队获得续约与新阶段。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 You Raise Me Up"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="You Raise Me Up Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="You Raise Me Up Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-rose" data-bvid="BV1KJ411x7Eb" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/de/1f/2d/de1f2d80-5a4d-198f-7796-9e335a947058/mzaf_13864352756590089409.plus.aac.p.m4a" aria-label="播放官方 MV The Rose">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/41/b5/4a/41b54af0-6301-c288-eff6-488262bf8fac/886970198226.jpg/600x600bb.jpg" alt="The Rose 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">19</span><h3>The Rose</h3></div>
+          <p class="s-meta">单曲 2006.11.6 · 《The Love Album》 · 翻唱 Bette Midler · 四人</p>
+          <p class="s-note">这是翻唱。Amanda McBroom 驾车时听见一句把爱比作刀刃的歌词，因不认同而追问“爱究竟是什么”，回家约十分钟写成；Bette Midler 为 1979 年电影《The Rose》录下著名版本。Westlife 的合唱版由 Quiz &amp; Larossi 制作，成为他们第 14 支英国冠军。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 The Rose"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="The Rose Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Rose Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-eclipse" data-bvid="BV1Kx411671R" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9c/ee/08/9cee0856-78ba-aa2c-a346-92737b371fa8/mzaf_10794841132098121443.plus.aac.p.m4a" aria-label="播放视频 Total Eclipse of the Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/41/b5/4a/41b54af0-6301-c288-eff6-488262bf8fac/886970198226.jpg/600x600bb.jpg" alt="Total Eclipse of the Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">20</span><h3>Total Eclipse of the Heart</h3></div>
+          <p class="s-meta">《The Love Album》 · iTunes 曲目标 2006.11.13 · 翻唱 Bonnie Tyler · 专辑曲 · 四人</p>
+          <p class="s-note">这是翻唱。Jim Steinman 为 Bonnie Tyler 创作并制作的 1983 年原版，以近乎歌剧化的强度推进。Westlife 没有把它变成成员故事，而是收进《The Love Album》：四人以更光洁的和声接住原作的大跨度旋律，保留戏剧性，收起一部分摇滚棱角。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Total Eclipse of the Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Total Eclipse of the Heart Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Total Eclipse of the Heart Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-home" data-bvid="BV1nb4y1h7nz" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/36/19/4b/36194bd2-7535-1257-5b17-e99b14872e6c/mzaf_2567419704399052325.plus.aac.p.m4a" aria-label="播放视频 Home">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/2a/ba/aa/mzi.fbxusvtd.jpg/600x600bb.jpg" alt="Home 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">21</span><h3>Home</h3></div>
+          <p class="s-meta">专辑 2007.11.5 · 流媒体标 2007.10.29 · 翻唱 Michael Bublé · 四人</p>
+          <p class="s-note">这是翻唱 Michael Bublé 2005 年的歌，原作由 Bublé、Alan Chang 与 Amy Foster-Gillies 写成。Westlife 选的是《Back Home》里的版本，不是他们早先另一首同名原创；归家是歌曲叙事，不宜倒推为任何成员的具体婚姻或离别。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Home"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Home Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Home Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-us" data-bvid="BV1CL411773J" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/00/aa/ec/00aaec01-8aa9-4295-1e4c-db84e798c598/mzaf_7956282990454627337.plus.aac.p.m4a" aria-label="播放视频 Us Against the World">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/2a/ba/aa/mzi.fbxusvtd.jpg/600x600bb.jpg" alt="Us Against the World 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">22</span><h3>Us Against the World</h3></div>
+          <p class="s-meta">2007.11.5 · 《Back Home》 · 原创 · 四人</p>
+          <p class="s-note">这不是翻唱。歌把“四人与世界相对”的姿态写得开阔，但没有可靠采访证明它专指 Brian 离队；可以确定的是，四人时代的和声已更平均，Mark 的高音与 Shane 的主线之外，Nicky、Kian 也承担起更清楚的段落与现场存在。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Us Against the World"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Us Against the World Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Us Against the World Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-now" data-bvid="BV1PN411e7sb" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a5/d1/de/a5d1de88-5c16-1dd6-d054-b3678ee9e1b1/mzaf_2933195406958965891.plus.aac.p.m4a" aria-label="播放视频 What About Now">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7f/0c/21/7f0c21d0-0149-604d-b81e-4346d0efb37f/884977430769.jpg/600x600bb.jpg" alt="What About Now 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">23</span><h3>What About Now</h3></div>
+          <p class="s-meta">流媒体 2009.10.23 · 专辑《Where We Are》2009.11.30 · 翻唱 Daughtry · 四人</p>
+          <p class="s-note">这是翻唱 Daughtry 2006 年的歌曲。Simon Cowell 在洛杉矶把原版播给四人，认为这是专辑应走的方向；他们起初觉得声音太硬，最后由 Steve Robson 制作成《Where We Are》唯一翻唱。它不是成员的感情追问，而是一次主动借摇滚力度更新声场。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 What About Now"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="What About Now Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="What About Now Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-white" data-bvid="BV11W411E7S4" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a2/79/da/a279dab8-fbad-b922-ebf9-bcf991f15429/mzaf_3924117387545244853.plus.aac.p.m4a" aria-label="播放视频 Beautiful in White">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/13/70/ff/1370ffba-b348-d62c-4574-77042be980b4/5037300819327.jpg/600x600bb.jpg" alt="Beautiful in White 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">24</span><h3>Beautiful in White</h3></div>
+          <p class="s-meta">Shane Filan · 《Love Always》 · iTunes 曲目 2017.8.25 · 不是 Westlife 单曲</p>
+          <p class="s-note">这是 Shane Filan 的个人录音，不是 Westlife 单曲。Savan Kotecha 与 Arnthor Birgisson 写作；Shane 约在 2006 年独自于 Abbey Road 录 demo，A&amp;R 没有采用。demo 流出后在亚洲成为婚礼常客，他才于 2017 年为《Love Always》正式重录。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Beautiful in White"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Beautiful in White Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Beautiful in White Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-hello" data-bvid="BV1Nt411W7kW" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f0/31/89/f03189c3-8786-9d19-c27f-623baadd5e0a/mzaf_17971579974404178624.plus.aac.p.m4a" aria-label="播放视频 Hello My Love">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ed/92/7f/ed927fc7-267c-e017-8ea9-86e27715af30/00602577226199.rgb.jpg/600x600bb.jpg" alt="Hello My Love 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">25</span><h3>Hello My Love</h3></div>
+          <p class="s-meta">单曲 2019 年初 · 流媒体标 2019.4.12 · 《Spectrum》2019.11.15 · 四人</p>
+          <p class="s-note">Ed Sheeran 对 Steve Mac 说想写一首“Westlife 风格”的歌时，四人尚未正式找上门；这位从小听他们、曾用 Flying Without Wings 学吉他的歌迷，恰好给重组提供了新作品。Hello My Love 因此不是复制青春，而是老搭档与新一代作者之间的一次交接。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Hello My Love"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Hello My Love Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Hello My Love Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-star" data-bvid="BV1kV411c7FY" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fd/0f/5d/fd0f5dfd-66e5-5392-8a92-504b8ad4f201/mzaf_2446938981434171759.plus.aac.p.m4a" aria-label="播放视频 Starlight">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6c/2d/f9/6c2df993-cdd9-e1f4-e1f5-94415be7bc3b/190296446634.jpg/600x600bb.jpg" alt="Starlight 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">26</span><h3>Starlight</h3></div>
+          <p class="s-meta">单曲 2021.10.14 · 《Wild Dreams》2021.11.26 · 豪华版 · 四人</p>
+          <p class="s-note">疫情让四人无法照旧进棚，反而促成更多远程写作。Shane 与 Mark 参与创作 Starlight，并希望在漫长低潮之后做一首明亮、向上的歌；这是首支由成员署名的 Westlife 专辑先行单曲，高耸转调也把 Mark 标志性的高音推到新位置。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Starlight"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Starlight Westlife" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Starlight Westlife" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="route" class="tight">
+  <div class="wrap">
+    <div class="route rv">
+      <p class="eyebrow">04 / 选听清单</p>
+      <h2><span class="yr">从出道到回归</span>如果只听一个晚上</h2>
+      <p class="intro">十一首，从第一次许诺、第一次告别，听到四个人重新写下自己的歌。中段的翻唱保留原作姓名；Beautiful in White 则作为 Shane 的个人支线出现。</p>
+      <ol id="routeList">
+        <li><button type="button" data-target="song-swear"><span>Swear It Again</span></button></li>
+        <li><button type="button" data-target="song-flying"><span>Flying Without Wings</span></button></li>
+        <li><button type="button" data-target="song-seasons"><span>Seasons in the Sun</span></button></li>
+        <li><button type="button" data-target="song-soledad"><span>Soledad</span></button></li>
+        <li><button type="button" data-target="song-mylove"><span>My Love</span></button></li>
+        <li><button type="button" data-target="song-ilay"><span>I Lay My Love on You</span></button></li>
+        <li><button type="button" data-target="song-raise"><span>You Raise Me Up</span></button></li>
+        <li><button type="button" data-target="song-rose"><span>The Rose</span></button></li>
+        <li><button type="button" data-target="song-white"><span>Beautiful in White</span></button></li>
+        <li><button type="button" data-target="song-hello"><span>Hello My Love</span></button></li>
+        <li><button type="button" data-target="song-star"><span>Starlight</span></button></li>
+      </ol>
+      <p class="hint">一晚的路线：先听早期原创如何定型，再听他们怎样接过经典，最后抵达告别之后的新作品。</p>
+    </div>
+  </div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">05 / 资料与边界</p>
+    <h2 class="rv">故事有出处，听感也有边界</h2>
+    <div class="refs">
+      <div class="rv">
+        <h3>创作、选歌与人生节点</h3>
+        <ul>
+          <li><a href="https://www.irishexaminer.com/lifestyle/artsandculture/arid-40937918.html">《Irish Examiner》回顾</a>与 <a href="https://www.officialcharts.com/chart-news/official-chart-flashback-westlife-flying-without-wings__27573/">Official Charts</a>保存了 Wayne Hector 对 Flying Without Wings 的创作回忆，以及歌曲原先拟给 Stephen Gately 的来龙去脉。</li>
+          <li><a href="https://www.jorgenelofsson.com/happy-anniversary-my-love-westlife-song/">Jörgen Elofsson 官方站</a>确认 My Love 的四位作者、Cheiron 录音地点与英国冠军；MV 中的机场与返乡路线属于影像叙事，不当作写歌经过。</li>
+          <li><a href="https://www.brendangraham.ie/you-raise-me-up-1">Brendan Graham 官方页</a>与 Secret Garden 唱片说明确认 You Raise Me Up 从 Silent Story 到 2002 年原录的路径；Nicky Byrne 后来的访谈说明 Westlife 版本如何延长组合生涯。</li>
+          <li><a href="https://web.archive.org/web/20130421092348/http:/www.amcbroom.com/rose.html">Amanda McBroom 自述</a>说明 The Rose 的十分钟创作；Bette Midler 是使它广为人知的首个正式录音者，Westlife 明确列为翻唱。</li>
+          <li><a href="https://www.independent.ie/entertainment/music/music-news/there-were-only-two-people-who-could-get-westlife-back-out-of-bed-in-2018-ed-sheeran-was-one-nicky-byrne/37450216.html">《Irish Independent》</a>、<a href="https://inews.co.uk/culture/music/westlife-new-album-spectrum-ed-sheeran-brexit-363976">The i Paper</a>与 <a href="https://www.rte.ie/entertainment/2019/1011/1082630-westlife/">RTÉ</a>记录了 Ed Sheeran、Steve Mac 与重组专辑的关系。</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>翻唱链条与版本口径</h3>
+        <ul>
+          <li>Seasons in the Sun：Jacques Brel 的 Le Moribond（1961）→ Rod McKuen 英译 → The Kingston Trio（1964）→ Terry Jacks 热门版（1973/74）→ Westlife（1999）。</li>
+          <li>Mandy：Scott English 以 Brandy 首录（1971）；Barry Manilow 政名后唱红（1974）；Westlife 于 2003 年翻唱。You Raise Me Up 的首录是 Secret Garden feat. Brian Kennedy（2002），不是 Westlife 原作。</li>
+          <li>The Rose 由 Amanda McBroom 创作、Bette Midler 为电影录制著名版本；Total Eclipse of the Heart 原唱 Bonnie Tyler；Home 原唱 Michael Bublé；What About Now 原唱 Daughtry。</li>
+          <li>单曲日期采用英国发行资料；Apple Music 日期、Radio Edit、Remix、加长版或豪华版仅说明本页试听载体。The Rose 专辑日与 Hello My Love 数字店日期存在来源差异，曲目卡保留分歧。</li>
+          <li>Beautiful in White 的试听是 Shane Filan 2017 年正式个人录音，不把流出的 2006 年 demo 算作 Westlife 发行。所有无专门采访的段落只讨论歌词、和声与制作，不据此推断成员私生活。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine rv">生涯节点优先采用当事人、词曲作者、官方声明与同期媒体；榜单采用 Official Charts。较晚的回忆只用来补充当事人视角。试听与封面来自 Apple Music；版本差异不改变原唱、作者与团体成员口径。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>Flying Without Wings · Westlife 音乐传记</b>
+      <p class="fmeta">从五人时代到四人重组，按发行顺序听见创作者、翻唱来处与和声变化。试听与封面来自 Apple Music · 仅供学习交流。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" type="button" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

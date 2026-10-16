@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>心中的日月 · 王力宏音乐传记</title>
+<meta name="description" content="按唱片顺序听王力宏：23 首歌，从十九岁的《情敌贝多芬》到 2025 年《I'm Alive》，听见一个异乡少年如何在华语流行音乐里寻找自己的声音。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.mix,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">王力宏 <b>心中的日月</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#chinked">中式</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/c9/9e/c7/c99ec767-37a8-5f75-1aec-1eef6e00787a/dj.quypcchm.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music20/v4/d2/ee/55/d2ee555d-a51e-d76e-f552-21877453cf88/1400X1400.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/f2/cf/40/f2cf4057-8321-16a4-3e15-b298186876f6/70083_cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/4a/77/be4a7730-c144-a39e-c7b6-9d26ea0ebff3/1400X1400.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/0a/7f/63/0a7f6320-42b0-1b6f-85b0-9dd370308757/70092_cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/4e/87/b7/4e87b787-9566-1d01-aa6b-83d2b4d5c7dd/001.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/d1/bb/d6d1bb74-e2d3-743e-f514-5668390c4d67/gaibianziji_fengmian.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/29/e6/98/mzi.pdknwlnm.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/05/46/3f/05463f0a-605f-4de7-56d0-0fa97f0d673e/6941636713077.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/4c/2c/30/mzi.lqigxlit.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/f4/ac/68f4ac58-2694-672f-ff54-1ea0bc082a23/4710243773857_cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/44/b7/d9/mzi.cmpxhjrx.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3e/94/01/3e94013b-17f0-09e9-69ce-4ab94e1507da/18_Material_arts.png/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/48/fd/2f/48fd2fe5-31b2-d979-53a4-9aebf5175bdb/mzi.biqraozb.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/87/41/6f/87416ffc-5e2a-72fa-ee11-77e20c4b2570/dj.snsrxfvs.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bf/1f/c2/bf1fc215-9240-cb99-ef57-ad2dd855610a/dj.tlgtqqag.png/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/45/58/2c/45582c36-4def-de2a-ef61-d6431a4c95b1/dj.evmdpgmc.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1976 — 2026</p>
+    <h1>心中的日月</h1>
+    <p class="sub">王 力 宏 音 乐 传 记</p>
+    <p class="deck">十九岁在台北发片时，王力宏还在美国念大学。后来，他把古典训练、R&amp;B 的律动和一路寻找文化来处的心情，都带进华语歌：从青春期的锋芒，到《公转自转》的转身，再到《心中的日月》里东西方声音的相遇。三十年过去，真正留下来的不只是技巧，而是一个人反复追问自己从哪里来、还能往哪里去。下面这 23 首，按发行顺序慢慢听。</p>
+    <div class="meta-row">
+      <span>1976.5.17 生于美国罗彻斯特</span>
+      <span>1998.8 《公转自转》</span>
+      <span>两度获金曲奖国语男演唱人</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a>
+      <a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false">
+        <span class="listen-label">开始聆听</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p>
+    <h2 class="rv">从《情敌贝多芬》听到《I'm Alive》</h2>
+    <p class="sec-lead rv">六个数字，标出三十年音乐旅程中几次真正改变方向的时刻。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1976</div><div class="l">5 月 17 日生于美国罗彻斯特</div><div class="s">后来毕业于威廉姆斯学院；伯克利经历见资料说明</div></div>
+      <div class="stat rv"><div class="n">1999</div><div class="l">第 10 届金曲奖两项</div><div class="s">23 岁获国语男演唱人与唱片制作人</div></div>
+      <div class="stat rv"><div class="n">2004</div><div class="l">《心中的日月》</div><div class="s">以 chinked-out 命名东西方融合的音乐实验</div></div>
+      <div class="stat rv"><div class="n">23</div><div class="l">本页记下的歌</div><div class="s">从《情敌贝多芬》听到《I'm Alive》</div></div>
+      <div class="stat rv"><div class="n">2012</div><div class="l">鸟巢个人演唱会</div><div class="s">《MUSIC-MAN II 火力全开》巡演的重要一站</div></div>
+      <div class="stat rv"><div class="n">92</div><div class="l">《最好的地方》公布场次</div><div class="s">巡演表含截至 2026 年 12 月的未来排期</div></div>
+    </div>
+    <div class="toc rv">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#glance">速览：六个数字</a></li>
+        <li><a href="#timeline">时间线：从罗彻斯特到《最好的地方》</a></li>
+        <li><a href="#tracks">唱片与主打：23 首</a></li>
+        <li><a href="#chinked">中式：chinked-out 那条线</a></li>
+        <li><a href="#route">如果只重听一个晚上</a></li>
+        <li><a href="#refs">资料与边界</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p>
+    <h2 class="rv"><span class="yr">1976 — 2026</span>从罗彻斯特到《最好的地方》</h2>
+    <p class="sec-lead rv">红色标出三次创作上的转向；金色停在今天。这里不求把履历塞满，只留下那些让音乐改变了面貌的年份。</p>
+    <div class="timeline">
+      <div class="tl rv"><div class="when">1976 · 05 · 17</div><h3>生于美国罗彻斯特</h3><p>纽约州北部的成长环境给了他西方古典与流行音乐的训练，家里听见的京剧，以及表叔李建复唱过的《龙的传人》，又牵着另一条文化线。多年后，他会不断回到这两种来处之间写歌。</p></div>
+      <div class="tl rv"><div class="when">1994</div><h3>木船民谣歌唱大赛</h3><p>他参加第 12 届木船民谣歌唱大赛。第二年，这个在美国长大、仍在念大学的年轻人，于台湾发行第一张华语专辑。</p></div>
+      <div class="tl rv"><div class="when">1995 · 12</div><h3>《情敌贝多芬》</h3><p>十九岁发片，随后两年在福茂连续推出作品。这个阶段的他仍在唱片公司的类型设计中摸索，但乐器训练与创作野心已经从偶像外形背后慢慢浮现。发行资料有 12 月 9 日与 17 日两种日期。</p></div>
+      <div class="tl rv"><div class="when">1996 — 1997</div><h3>两年三张，然后入围金曲奖</h3><p>《如果你听见我的歌》与《好想你》都在 1996 年，《白纸》在 1997 年 7 月 18 日。1997 年他主持电视节目《大乐兵》，并以《好想你》入围第 8 届金曲奖世界华人作品最佳男演唱人奖。</p></div>
+      <div class="tl peak rv"><div class="when">1998 · 08 · 21</div><h3>《公转自转》：从偶像走向制作人</h3><p>加盟新力后的第一张专辑，他参与选歌、创作、编曲与制作。台湾索尼回顾这张唱片时写到，他常在三间录音室同时推进工作。次年的两座金曲奖，确认的不是一次侥幸，而是他终于取得了定义自己声音的权利。</p></div>
+      <div class="tl rv"><div class="when">1999 · 06 · 22</div><h3>《不可能错过你》</h3><p>金曲奖后的下一张唱片没有停在胜利姿态里。《流泪手心》以更内收的旋律，获得第 11 届金曲奖最佳作曲人入围，也让他的创作被听见得更具体。</p></div>
+      <div class="tl rv"><div class="when">2000 · 06 · 05</div><h3>《永远的第一天》与《龙的传人》</h3><p>从这张唱片开始，他把更多作曲与编曲握在自己手里。改编表叔李建复原唱的《龙的传人》，也让一首家族记忆里的校园民歌，成为他此后反复回望身份与故乡的母题。</p></div>
+      <div class="tl rv"><div class="when">2001 — 2002</div><h3>《唯一》、首张精选与红磡</h3><p>《唯一》把他送进更广阔的听众记忆。次年，他推出首张精选《王力宏的音乐进化论》，第一次登上央视春晚，也站进香港红磡体育馆；录音室里长成的声音，开始接受大型现场的检验。</p></div>
+      <div class="tl rv"><div class="when">2003</div><h3>《不可思议》与《手牵手》</h3><p>10 月 15 日发行《不可思议》。SARS 期间他与陶喆写下《手牵手》，87 位歌手合唱。这张让他次年拿到第 15 届金曲奖最佳专辑制作人奖，同年他也以《W-H-Y》入围最佳编曲奖。</p></div>
+      <div class="tl peak rv"><div class="when">2004</div><h3>《心中的日月》与 chinked-out</h3><p>他用三个星期走访西藏、新疆、内蒙古与云南，采集民族音乐，再让笛、古筝、中国鼓与 R&amp;B、Hip Hop 相遇。「心中的日月」在唱片文案里指向香格里拉；对他而言，那也是一个在声音里寻找文化归属的入口。</p></div>
+      <div class="tl peak rv"><div class="when">2005 · 12 · 30</div><h3>《盖世英雄》</h3><p>chinked-out 从山川采风转向京剧与昆曲。《花田错》的新歌首映会办进故宫，并邀请专业京剧演员；中新网当时报道，MV 为搭建京剧场景投入约 150 万新台币。概念由此进入更大、更戏剧化的舞台。</p></div>
+      <div class="tl rv"><div class="when">2006 — 2007</div><h3>第二座男演唱人奖，然后是《色，戒》</h3><p>《盖世英雄》为他带来第二座金曲奖国语男演唱人。拍完李安的《色，戒》后，他说自己终于更接近外婆经历战乱、远离故乡的感受；那份迟来的理解，沉进《落叶归根》，也让「回去」不再只是地理方向。</p></div>
+      <div class="tl rv"><div class="when">2008</div><h3>《心·跳》：喧闹散场后的凌晨</h3><p>《MUSIC-MAN》台北演出结束后，凌晨三点的电梯里忽然涌来旋律。他离出国只剩几个小时，仍转身进录音室，把天亮前的复杂心情写成《心跳》。巨大的舞台之后，歌反而来自最安静的一刻。</p></div>
+      <div class="tl rv"><div class="when">2010</div><h3>《十八般武艺》与自导自演</h3><p>2 月 13 日他第二次上央视春晚，与孙楠、容祖儿、余翠芝合唱《相亲相爱》。8 月 12 日发行《十八般武艺》，8 月 13 日自编自导自演的电影《恋爱通告》上映。</p></div>
+      <div class="tl rv"><div class="when">2011 — 2012</div><h3>自立门户，然后在鸟巢</h3><p>与索尼约满后，他自立门户，并以《火力全开》回望旧作、加入《依然爱你》等新歌。《MUSIC-MAN II》巡演从上海启程，2012 年 4 月走进北京国家体育场。唱片时代积累的作品，此时已经足以支撑一场属于自己的体育场叙事。</p></div>
+      <div class="tl rv"><div class="when">2013 — 2015</div><h3>牛津演讲与《你的爱。》</h3><p>2013 年，他在牛津大学以「认识华流」为题演讲；两年后由环球发行《你的爱。》。他仍坚持把专辑当作完整叙事，以十三个章节写爱的失去、修复与承担——在单曲消费渐成主流时，这份坚持已有一点逆流而行的意味。</p></div>
+      <div class="tl rv"><div class="when">2017 · 12 · 19</div><h3>《A.I. 爱》</h3><p>「A.I.」既是人工智能，也是「爱」的拼音。王力宏在发布会上把问题说得很直接：当人越来越像机器、机器越来越像人，道德与感情要放在哪里？这是他把时代议题写进流行歌的一次尝试。</p></div>
+      <div class="tl rv"><div class="when">2018 — 2019</div><h3>《龙的传人 2060》巡演</h3><p>巡演从北京启程；同年年底，他与李建复、李友珊合唱《龙的传人：肆拾年》。一首歌被三代声音共同唱起，原先关于族群的宏大命题，也多了一层家族内部传递的温度。</p></div>
+      <div class="tl rv"><div class="when">2021</div><h3>《天地龙鳞》，然后暂停</h3><p>《天地龙鳞》是纪录片《紫禁城》终集主题歌，由方文山作词、王力宏作曲并制作，他多次修改编曲，希望接续《龙的传人》的精神表达。年底，他宣布暂时退出工作；私人争议不在这份听歌传记展开。</p></div>
+      <div class="tl rv"><div class="when">2023 — 2024</div><h3>回到舞台</h3><p>拉斯维加斯的《只有一个王力宏》成为复出演出的起点，随后走到马来西亚。2024 年 9 月，他在澳门「湾区升明月」唱起《我们的歌》；旧作没有替过去下结论，却让歌手与听众重新站在同一段旋律里。</p></div>
+      <div class="tl rv"><div class="when">2025 — 2026</div><h3>《I'm Alive》与《最好的地方》</h3><p>元旦发行的《I'm Alive》没有绕开低谷：它从受伤、迷失唱起，最后抵达「仍然活着」的感恩。三月，《最好的地方》巡演从南昌启程；已公布的 92 场排期延伸到 2026 年底，其中尚未举行的场次只算计划，不算完成。</p></div>
+      <div class="tl now rv"><div class="when">2026 · 10</div><h3>歌还在往前走</h3><p>这份传记写到 2026 年 10 月 12 日。巡演仍在路上，新的作品也还没有成为定论；因此结尾保留为现在进行时。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">23 首歌，一条发行顺序</h2>
+    <p class="sec-lead rv">点「开始聆听」后，音乐从第一首开始，每段约三十秒，淡出之后，下一段人生淡入。二十三张唱片切片里，有少年意气，也有一个创作者不断寻找自己位置的回声。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-beethoven" data-bvid="BV1jdcKzAEux" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c4/df/a6/c4dfa6aa-9f49-4b84-984c-2eedda41041a/mzaf_11612784982536685740.plus.aac.p.m4a" aria-label="播放视频 情敌贝多芬">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/c9/9e/c7/c99ec767-37a8-5f75-1aec-1eef6e00787a/dj.quypcchm.jpg/600x600bb.jpg" alt="情敌贝多芬 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>情敌贝多芬</h3></div>
+          <p class="s-meta">1995.12.09 作品资料 · Apple Music 1995.12.17 · 《情敌贝多芬》</p>
+          <p class="s-note">十九岁，第一张华语专辑，歌名里还带着少年人把古典偶像请进流行世界的机灵。此时的他仍更像被唱片工业端到台前的新人；真正属于自己的制作语言，还要再等三年。发行资料有 12 月 9 日与 17 日两种日期，卡片沿用试听条目的 17 日。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 情敌贝多芬"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="情敌贝多芬 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="情敌贝多芬 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-loveyou" data-bvid="BV1pm421N78V" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6f/12/82/6f1282bd-f468-6433-38a8-cc7854e41823/mzaf_13360305849369189283.plus.aac.p.m4a" aria-label="播放视频 爱你等于爱自己">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/29/e6/98/mzi.pdknwlnm.jpg/600x600bb.jpg" alt="爱你等于爱自己 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>爱你等于爱自己</h3></div>
+          <p class="s-meta">1998.08.21 发行资料 · Apple Music 1998.08.14 · 《公转自转》</p>
+          <p class="s-note">林夕填词，Gicho 与 Söderqvist 作曲，刘志远编曲，Jim Lee 制作；这是王力宏把一首西洋旋律唱成华语情歌的作品，并非他的原创作曲。明亮的节拍与年轻嗓音，让「爱人也爱自己」不像宣言，更像一个人开始学会站稳。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 爱你等于爱自己"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="爱你等于爱自己 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="爱你等于爱自己 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-rotation" data-bvid="BV1MTH969Eus" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/54/3f/88/543f8876-df42-78d6-173d-262c16bd90c8/mzaf_13228735503911652196.plus.aac.p.m4a" aria-label="播放视频 公转自转">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/29/e6/98/mzi.pdknwlnm.jpg/600x600bb.jpg" alt="公转自转 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>公转自转</h3></div>
+          <p class="s-meta">1998.08.21 发行资料 · Apple Music 1998.08.14 · 《公转自转》</p>
+          <p class="s-note">姚谦从澳洲新力曲库找到 Waermo 的旋律，最初想写成「游泳」，后来才换成公转与自转的天文意象。歌本身不是王力宏作曲，却成了他从青春偶像转向全能音乐人的门牌；这张专辑也为二十三岁的他带来金曲奖国语男演唱人与唱片制作人两项肯定。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 公转自转"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="公转自转 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="公转自转 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-tears" data-bvid="BV12E411n7BJ" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b2/ab/3d/b2ab3df8-28b0-a8fd-243e-fc3147767ce7/mzaf_7090369086793265739.plus.aac.p.m4a" aria-label="播放视频 流泪手心">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/4c/2c/30/mzi.lqigxlit.jpg/600x600bb.jpg" alt="流泪手心 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>流泪手心</h3></div>
+          <p class="s-meta">1999.06.22 · 发行资料与 Apple Music 同日 · 《不可能错过你》</p>
+          <p class="s-note">这首歌为王力宏带来第 11 届金曲奖最佳作曲人入围。旋律没有把悲伤推向外放的高潮，而让它停在掌心那样小、那样近的地方；这里是听感解读，不把歌中离别当作他的私人经历。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 流泪手心"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="流泪手心 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="流泪手心 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-firstday" data-bvid="BV1UBpg6iEuf" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6f/dd/54/6fdd54d6-6830-9a22-2990-8170a60f02c8/mzaf_15832885942905531421.plus.aac.p.m4a" aria-label="播放视频 永远的第一天">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/44/b7/d9/mzi.cmpxhjrx.jpg/600x600bb.jpg" alt="永远的第一天 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>永远的第一天</h3></div>
+          <p class="s-meta">2000.06.05 发行资料 · Apple Music 2000.06.02 · 《永远的第一天》</p>
+          <p class="s-note">到了这张专辑，他已把整张唱片的作曲与编曲更完整地握在手中。歌里的「第一天」因而也可以听作创作者的自我命名：不是抹去过去，而是在终于能主导声音之后，重新计算时间。资料日期分为 5 月 23 日、6 月 2 日与 6 月 5 日。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 永远的第一天"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="永远的第一天 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="永远的第一天 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-dragon" data-bvid="BV1W6p76EE4u" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/82/a2/46/82a246b7-1834-a602-93c2-2ab4f87a3ffe/mzaf_11353302290622539234.plus.aac.p.m4a" aria-label="播放视频 龙的传人">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/44/b7/d9/mzi.cmpxhjrx.jpg/600x600bb.jpg" alt="龙的传人 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>龙的传人</h3></div>
+          <p class="s-meta">2000.06.02 店内 · 《永远的第一天》 · 改编曲</p>
+          <p class="s-note">原唱李建复是他的表叔。二十世纪末在美国长大的青年，重新唱起家族里早已熟悉的校园民歌，使「传人」二字多了一层真实的血缘回声。2018 年，他又与李建复、李友珊合唱《龙的传人：肆拾年》；试听为 2000 年的王力宏改编版。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 龙的传人"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="龙的传人 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="龙的传人 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-onlyone" data-bvid="BV14q4y1g7j8" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/06/31/29/063129dc-02e2-d5a8-1f51-ae204566dfb4/mzaf_1864726411408621070.plus.aac.p.m4a" aria-label="播放视频 唯一">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/48/fd/2f/48fd2fe5-31b2-d979-53a4-9aebf5175bdb/mzi.biqraozb.jpg/600x600bb.jpg" alt="唯一 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>唯一</h3></div>
+          <p class="s-meta">2001.09.27 发行资料 · Apple Music 2001.09.17 · 《唯一》</p>
+          <p class="s-note">后来的资料常说，这段旋律来自他在希腊圣托里尼清晨散步时的一次灵感，并由他亲自弹奏钢琴、小提琴；只是原始访问已经难以核对，这段来处只宜当作有限线索。可以确定的是，它此后成了衡量“宏式情歌”的一把尺。发行资料有 9 月 17 日与 27 日两种日期。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 唯一"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="唯一 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="唯一 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-nothere" data-bvid="BV1Ux411b7zA" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/eb/b3/aa/ebb3aa48-0fce-25aa-e8f5-2ca4af07f1d9/mzaf_5841147479483970382.plus.aac.p.m4a" aria-label="播放视频 你不在">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bf/1f/c2/bf1fc215-9240-cb99-ef57-ad2dd855610a/dj.tlgtqqag.png/600x600bb.jpg" alt="你不在 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>你不在</h3></div>
+          <p class="s-meta">2003.10.15 · 发行资料与 Apple Music 同日 · 《不可思议》</p>
+          <p class="s-note">《不可思议》后来获得第 15 届金曲奖最佳专辑制作人。相较那张唱片里更张扬的节奏实验，《你不在》把空间让给一段缓慢扩大的缺席感；这是从歌词、唱法与编曲出发的作品解读，不对应任何已核实的私人故事。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 你不在"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="你不在 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="你不在 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-sunmoon" data-bvid="BV1rJ411t7X5" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d5/48/04/d548040c-0737-93f5-fe8a-c7cb737053c7/mzaf_9648909706004333173.plus.aac.p.m4a" aria-label="播放视频 心中的日月">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/4a/77/be4a7730-c144-a39e-c7b6-9d26ea0ebff3/1400X1400.jpg/600x600bb.jpg" alt="心中的日月 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>心中的日月</h3></div>
+          <p class="s-meta">2004.12.31 · 发行资料与 Apple Music 同日 · 《心中的日月》</p>
+          <p class="s-note">台湾索尼记下这首歌的来处：王力宏在云南香格里拉旅行采风，把「心中的日月」理解为人间仙境，再让笛、古筝与 R&amp;B 节奏自然并行。它最动人的地方不在「混搭」本身，而在一个异乡长大的音乐人，终于不必在东方与西方之间二选一。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 心中的日月"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="心中的日月 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="心中的日月 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-bamboo" data-bvid="BV1qJ411t7vk" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3f/d6/d0/3fd6d0b0-4f68-0bea-e0df-a6c69ee79f1b/mzaf_15233507428482801966.plus.aac.p.m4a" aria-label="播放视频 竹林深处">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/4a/77/be4a7730-c144-a39e-c7b6-9d26ea0ebff3/1400X1400.jpg/600x600bb.jpg" alt="竹林深处 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>竹林深处</h3></div>
+          <p class="s-meta">2004.12.31 · 发行资料与 Apple Music 同日 · 《心中的日月》</p>
+          <p class="s-note">索尼的专辑说明明确列出西藏女声吟唱、中国鼓、笛声与 Hip Hop 击掌节奏。王力宏没有把这些声音摆成橱窗里的异国标本，而是让它们彼此接话；竹林的幽深因此不是歌词标题强加的想象，而是编曲真实搭出来的空间。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 竹林深处"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="竹林深处 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="竹林深处 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-forever" data-bvid="BV19f4y1z7Ca" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8a/fd/e1/8afde13f-6e3e-6730-4be5-518d58590832/mzaf_17776518146464019127.plus.aac.p.m4a" aria-label="播放视频 Forever Love">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/4a/77/be4a7730-c144-a39e-c7b6-9d26ea0ebff3/1400X1400.jpg/600x600bb.jpg" alt="Forever Love 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>Forever Love</h3></div>
+          <p class="s-meta">2004.12.31 · 发行资料与 Apple Music 同日 · 《心中的日月》</p>
+          <p class="s-note">唱片文案把它称为《唯一》之后的情歌代表作，并说明这首歌来自一段埋藏十年的感情，是对昔日恋人的祝福。大篇幅弦乐托住的不是炫技，而是成年人终于懂得：所谓永远，有时不是占有，而是愿对已经远去的人保留温柔。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Forever Love"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Forever Love 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Forever Love 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-huatiang" data-bvid="BV1Mk4y1F7Ws" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1d/2b/d3/1d2bd340-2e7f-7eac-28d6-ef3badf5ea7f/mzaf_16313711200530441356.plus.aac.p.m4a" aria-label="播放视频 花田错">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/600x600bb.jpg" alt="花田错 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>花田错</h3></div>
+          <p class="s-meta">2005.12.30 · 发行资料与 Apple Music 同日 · 《盖世英雄》 · 第二主打</p>
+          <p class="s-note">歌名借自京剧《花田错》，却没有把旧戏照搬进流行歌。2005 年中新网报道，MV 为京剧场景投入约 150 万新台币，新歌首映会也请来专业京剧演员。昂贵布景只是表面，真正留下来的是唱腔、节奏与古典意象被重新组织后的暧昧与流动。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 花田错"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="花田错 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="花田错 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-kiss" data-bvid="BV1iW411x7rb" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4c/e3/15/4ce31546-dc83-f840-1b86-c77fe6dbf431/mzaf_8761737113017515008.plus.aac.p.m4a" aria-label="播放视频 Kiss Goodbye">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/600x600bb.jpg" alt="Kiss Goodbye 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">13</span><h3>Kiss Goodbye</h3></div>
+          <p class="s-meta">2005.12.30 · 发行资料与 Apple Music 同日 · 《盖世英雄》 · 第三主打</p>
+          <p class="s-note">这首歌入选第 6 届全球华语歌曲排行榜年度二十大金曲。钢琴与弦乐把告别写得克制，英文歌名却留下一个近乎电影特写的瞬间；以下只谈作品：它唱的是离别发生时，身体已经转身，感情仍慢半拍留在原地。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Kiss Goodbye"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Kiss Goodbye 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Kiss Goodbye 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-city" data-bvid="BV13BUqYpE4r" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d2/76/2a/d2762a44-5372-2765-e4e4-2b4d62b8ed3d/mzaf_14732069843267269757.plus.aac.p.m4a" aria-label="播放视频 大城小爱">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/600x600bb.jpg" alt="大城小爱 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">14</span><h3>大城小爱</h3></div>
+          <p class="s-meta">2005.12.30 · 发行资料与 Apple Music 同日 · 《盖世英雄》 · 第四主打</p>
+          <p class="s-note">这是《盖世英雄》的第四主打。它把宏大的专辑题眼忽然缩小：城市很大，亲密关系只需要一间屋、一句耳语。轻巧旋律与口语化表达，使它像忙碌生活里被保留下来的一盏灯；这是作品层面的听感，不是对真实恋情的指认。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 大城小爱"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="大城小爱 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="大城小爱 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-leaves" data-bvid="BV1BJ411t7Kj" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/5b/dd/69/5bdd69af-856d-04ee-fdaf-6903f4b1765d/mzaf_1738023553735527523.plus.aac.p.m4a" aria-label="播放视频 落叶归根">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/d1/bb/d6d1bb74-e2d3-743e-f514-5668390c4d67/gaibianziji_fengmian.jpg/600x600bb.jpg" alt="落叶归根 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">15</span><h3>落叶归根</h3></div>
+          <p class="s-meta">2007.07.13 发行资料 · Apple Music 2007.07.01 · 《改变自己》</p>
+          <p class="s-note">王力宏在访问中说，拍《色，戒》使他更理解外婆年少时因战争离乡、此后再未见家人的心情；杀青后，他借邝裕民的视角写下这首歌，为那些情绪寻找出口。「归根」因此既是异乡游子的文化寻根，也是终于听懂上一代沉默的时刻。发行资料有 7 月 1 日与 13 日两种日期。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 落叶归根"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="落叶归根 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="落叶归根 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-oursong" data-bvid="BV1qJ411t7ef" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b0/f9/51/b0f951ea-101b-abfb-af21-efd42777d5c3/mzaf_2393759682491376083.plus.aac.p.m4a" aria-label="播放视频 我们的歌">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/d1/bb/d6d1bb74-e2d3-743e-f514-5668390c4d67/gaibianziji_fengmian.jpg/600x600bb.jpg" alt="我们的歌 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">16</span><h3>我们的歌</h3></div>
+          <p class="s-meta">2007.07.01 店内 · 《改变自己》</p>
+          <p class="s-note">《改变自己》谈环保与个人行动，这首歌却把视线转回音乐如何陪人生活。2024 年 9 月 22 日，他在澳门「湾区升明月」再唱《我们的歌》；旧作隔着十七年回到大舞台，歌名里的「我们」也从一段关系，慢慢长成歌手与听众共享的时间。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 我们的歌"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="我们的歌 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="我们的歌 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-heartbeat" data-bvid="BV1JL411b7ic" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/94/4a/7a/944a7a40-237c-e9c1-9ce4-f0cfbd664f57/mzaf_17717395693319724924.plus.aac.p.m4a" aria-label="播放视频 心跳">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/f4/ac/68f4ac58-2694-672f-ff54-1ea0bc082a23/4710243773857_cover.jpg/600x600bb.jpg" alt="心跳 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">17</span><h3>心跳</h3></div>
+          <p class="s-meta">2008.12.26 · 《心·跳》</p>
+          <p class="s-note">《MUSIC-MAN》台北演出散场后，凌晨三点的电梯里旋律突然出现。离出国不到五小时，王力宏仍进录音室，用吉他把词曲写到天亮。舞台上的万人呼喊与散场后的失落同时留在这首歌里，让「心跳」不只是爱情，也是一位表演者在喧嚣退去后听见自己。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 心跳"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="心跳 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="心跳 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-unknown" data-bvid="BV1Jg411V73c" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f7/1e/e0/f71ee069-2e18-8d31-8d44-5223cdd9287e/mzaf_7611968034053736579.plus.aac.p.m4a" aria-label="播放视频 你不知道的事">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3e/94/01/3e94013b-17f0-09e9-69ce-4ab94e1507da/18_Material_arts.png/600x600bb.jpg" alt="你不知道的事 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">18</span><h3>你不知道的事</h3></div>
+          <p class="s-meta">2010.08.12 · 发行资料与 Apple Music 同日 · 《十八般武艺》</p>
+          <p class="s-note">这是王力宏自导自演电影《恋爱通告》的主题曲。脱离电影，它仍成立：钢琴与逐层推高的弦乐，把「没有说出口」写成一种保护与错过。这里仅依据作品和影视关系解读，不把歌词里的隐瞒附会成创作者的私生活。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 你不知道的事"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="你不知道的事 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="你不知道的事 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-still" data-bvid="BV1ky4y1h7rH" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/56/fd/f4/56fdf48b-e0f8-0c35-d6c6-ae2c53d28db1/mzaf_383463082012969098.plus.aac.p.m4a" aria-label="播放视频 依然爱你">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c3/5d/3b/c35d3b17-40cd-f24c-d72b-1f2a6099c6e9/Open_Fire_cover.jpg/600x600bb.jpg" alt="依然爱你 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">19</span><h3>依然爱你</h3></div>
+          <p class="s-meta">2011.09.30 店内 · 《火力全开》新歌加精选</p>
+          <p class="s-note">这是《火力全开》新歌加精选中的新作。宣传资料转述王力宏的构想：故事落幕后，爱仍会在看不见的日常里延续，他也把歌送给家人、朋友与歌迷。钢琴和吉他的朴素，恰好让这句「依然」不靠戏剧性取胜。发行资料有 9 月 27 日与 30 日两种日期。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 依然爱你"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="依然爱你 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="依然爱你 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-yourlove" data-bvid="BV1Z7411s7wk" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/15/05/11/150511ea-1371-7146-ffa6-c20fcf0e975b/mzaf_11192560089972512438.plus.aac.p.m4a" aria-label="播放视频 你的爱">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/87/41/6f/87416ffc-5e2a-72fa-ee11-77e20c4b2570/dj.snsrxfvs.jpg/600x600bb.jpg" alt="你的爱 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">20</span><h3>你的爱</h3></div>
+          <p class="s-meta">2015.01.23 · 发行资料与 Apple Music 同日 · 《你的爱。》</p>
+          <p class="s-note">《你的爱。》把爱拆成十三个章节，从失去写到重新承担；王力宏在同期访问里说，他仍相信专辑应当是有核心概念的完整作品。到了这一首，歌名最简单，位置却像全篇的落点：经历心碎、忘我与追问之后，爱不再只是一阵感觉，也包含承受时间的能力。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 你的爱"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="你的爱 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="你的爱 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-ai" data-bvid="BV19K411n7Ds" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/30/61/7b/30617b51-446a-ffff-4130-52427ff71145/mzaf_9303640113675774492.plus.aac.p.m4a" aria-label="播放视频 A.I. 爱">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/45/58/2c/45582c36-4def-de2a-ef61-d6431a4c95b1/dj.evmdpgmc.jpg/600x600bb.jpg" alt="A.I. 爱 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">21</span><h3>A.I. 爱</h3></div>
+          <p class="s-meta">2017.12.19 发行资料 · Apple Music 2017.12.12 · 《A.I. 爱》</p>
+          <p class="s-note">王力宏解释，「A.I.」既是 Artificial Intelligence，也是「爱」的拼音；他想问的是，当人越来越依赖数据，机器越来越像人，道德、情感与人的价值要放在哪里。流行歌未必能回答这样的命题，但它留下了 2017 年面对技术浪潮时真实的兴奋与不安。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 A.I. 爱"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="A.I. 爱 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="A.I. 爱 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-scale" data-bvid="BV1ZS4y1Q7Sf" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/0e/0b/8d0e0b71-fcdf-56c3-b593-101d4ca73ad3/mzaf_1730941223546233464.plus.aac.p.m4a" aria-label="播放视频 天地龙鳞">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/05/46/3f/05463f0a-605f-4de7-56d0-0fa97f0d673e/6941636713077.jpg/600x600bb.jpg" alt="天地龙鳞 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">22</span><h3>天地龙鳞</h3></div>
+          <p class="s-meta">2021.11.27 · 官方项目资料与 Apple Music 同日 · 单曲</p>
+          <p class="s-note">这是纪录片《紫禁城》第十二集主题歌，方文山作词、王力宏作曲并演唱。项目说明称，他多次修改编曲，希望在《龙的传人》之后，再写一次中国人的精神传承。二十一年前，他从家族记忆接过那首歌；到这里，「龙」已从身份称谓铺展为六百年建筑与历史的回声。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 天地龙鳞"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="天地龙鳞 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="天地龙鳞 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-alive" data-bvid="BV1ad6EYUEvU" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/27/c7/00/27c700c1-2c66-0f91-63db-bb0bed3380ec/mzaf_2147760523428306171.plus.aac.p.m4a" aria-label="播放视频 I'm Alive">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/97/3d/92/973d92bc-5ce6-f52a-a766-e78c4099cbbf/dj.hnxeolvx.jpg/600x600bb.jpg" alt="I'm Alive 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">23</span><h3>I'm Alive</h3></div>
+          <p class="s-meta">2025.01.01 店内 · 单曲</p>
+          <p class="s-note">2025 年元旦发行，王力宏与相隔二十年再合作的词人崔惟楷，把跌落、迷失和活下来的感恩写进歌里。他在访问中明确把作品连到近年的低谷，并说自己对生活有了更深的珍惜。于是「我还活着」不是轻巧的复出标语，而是穿过废墟之后，先确认呼吸仍在。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 I'm Alive"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="I'm Alive 王力宏" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="I'm Alive 王力宏" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="chinked" class="tight">
+  <div class="wrap">
+    <div class="wuxia rv">
+      <p class="eyebrow">04 / 另一条线索</p>
+      <h2>chinked-out：终于不必二选一</h2>
+      <p>2004 到 2005 年，王力宏用 chinked-out 为自己的融合实验命名。这个词带着主动夺回身份解释权的锋利，也留下过命名是否妥当的争议；但落到音乐里，方向很清楚：中国五声音阶、京剧与昆曲、少数民族吟唱，不再只是装饰，而与 R&amp;B、Hip Hop 一起承担旋律和节奏。一个在美国长大的华人音乐人，终于把「来自哪里」写成了声音，而不是选择题。</p>
+      <div class="wrow">
+        <div class="wcard"><span>2004</span><b>《心中的日月》</b><span>笛、古筝与 R&amp;B 并行，融合不是点缀，而是作品的骨架</span></div>
+        <div class="wcard"><span>2004</span><b>「香格里拉」</b><span>唱片文案把「心中的日月」连到香格里拉与音乐仙境的追寻</span></div>
+        <div class="wcard"><span>2005</span><b>《盖世英雄》</b><span>把前一年的探索推向京剧、昆曲与更强烈的嘻哈节拍</span></div>
+        <div class="wcard"><span>2005</span><b>《花田错》《在梅边》</b><span>歌名与京剧、昆曲的旧剧目同名；首映会办在故宫</span></div>
+        <div class="wcard"><span>2000 / 2018</span><b>《龙的传人》</b><span>原唱李建复是他的表叔；他 2000 年改编，2018 年合唱《肆拾年》</span></div>
+      </div>
+      <p class="hint" style="font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px">从《龙的传人》到《天地龙鳞》，这条线并未停在两张概念专辑里；它后来成为王力宏反复回到的文化母题。</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="route" class="tight">
+  <div class="wrap">
+    <div class="route rv">
+      <p class="eyebrow">05 / 选听清单</p>
+      <h2><span class="yr">按唱片走过的顺序</span>如果只重听一个晚上</h2>
+      <p>前四首听一个年轻人如何从被定义走向自我制作；《永远的第一天》到《你不在》，听他把创作权握得更稳。中段的 chinked-out 是最有野心的转身，《落叶归根》与《心跳》则让宏大概念重新落回人的来处和孤独。最后以《天地龙鳞》照见旧母题，再用《I'm Alive》停在重新出发的呼吸上。</p>
+      <ol id="routeList">
+        <li><button type="button" data-target="song-beethoven">情敌贝多芬</button></li>
+        <li><button type="button" data-target="song-loveyou">爱你等于爱自己</button></li>
+        <li><button type="button" data-target="song-rotation">公转自转</button></li>
+        <li><button type="button" data-target="song-tears">流泪手心</button></li>
+        <li><button type="button" data-target="song-firstday">永远的第一天</button></li>
+        <li><button type="button" data-target="song-dragon">龙的传人</button></li>
+        <li><button type="button" data-target="song-onlyone">唯一</button></li>
+        <li><button type="button" data-target="song-nothere">你不在</button></li>
+        <li><button type="button" data-target="song-sunmoon">心中的日月</button></li>
+        <li><button type="button" data-target="song-bamboo">竹林深处</button></li>
+        <li><button type="button" data-target="song-huatiang">花田错</button></li>
+        <li><button type="button" data-target="song-city">大城小爱</button></li>
+        <li><button type="button" data-target="song-leaves">落叶归根</button></li>
+        <li><button type="button" data-target="song-heartbeat">心跳</button></li>
+        <li><button type="button" data-target="song-unknown">你不知道的事</button></li>
+        <li><button type="button" data-target="song-still">依然爱你</button></li>
+        <li><button type="button" data-target="song-scale">天地龙鳞</button></li>
+        <li><button type="button" data-target="song-alive">I'm Alive</button></li>
+      </ol>
+      <p class="hint">从青春情歌到文化寻根，再到舞台归来，二十三首歌把王力宏的野心与迟疑放在同一条时间线上。</p>
+    </div>
+  </div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">06 / 资料与边界</p>
+    <h2 class="rv">来源、分歧，以及叙述的边界</h2>
+    <div class="refs">
+      <div class="rv">
+        <h3>主要依据</h3>
+        <ul>
+          <li><b>唱片公司与本人资料</b>：台湾索尼《公转自转》与《心中的日月》专辑页，用于制作过程、chinked-out 概念、香格里拉采风及具体编曲；王力宏官网用于《I'm Alive》的发行日期；Apple Music 专辑页用于曲目、试听与发行信息。</li>
+          <li><b>创作者与同期访问</b>：The News Lens 对姚谦的访问，用于《公转自转》从「游泳」改为天文意象的过程；Hit FM 访问用于《落叶归根》与《色，戒》、外婆战乱经历的关系；《心跳》的凌晨创作经过采用 2008 年同期唱片宣传资料。</li>
+          <li><b>主流媒体与作品项目</b>：中新网 2005 年 12 月 14 日报道用于《花田错》MV 与故宫首映会，2007 年 7 月 13 日报道用于《落叶归根》；新京报用于《A.I. 爱》发布会上的本人解释；腾讯音乐《紫禁城》项目说明用于《天地龙鳞》；镜周刊 2025 年访问用于《I'm Alive》的本人表述。</li>
+          <li><b>奖项与生涯节点</b>：第 10 届、第 11 届、第 15 届与第 17 届金曲奖结果及入围，以金曲奖历届资料、台湾索尼回顾资料交叉核对；发行清单、演唱会场次等缺少一手页面的部分，才以公开作品列表作为辅助。</li>
+          <li><b>试听与封面</b>：均取自 Apple Music 的台湾地区公开条目。试听只用于辨认相应录音版本；同一首歌有重录时，优先保留对应发行年代的录音。</li>
+          <li><b>六个数字的口径</b>：出生日期为 1976-05-17；1999 指第 10 届金曲奖颁奖年；2004 指《心中的日月》发行年；23 是本页曲目卡数量；2012 指鸟巢个人演唱会年份；92 是截至 2026-10-12 的公开巡演表所列总场次，包含尚未举行的排期。</li>
+          <li><b>学历边界</b>：可确认他毕业于威廉姆斯学院，并曾在伯克利音乐学院进修；伯克利后来授予荣誉博士。荣誉学位不等同于修读所得学位，因此不写成硕士或博士学历。</li>
+          <li><b>封面与影像</b>：封面来自流媒体条目，部分可能是再版或数字版，并不保证等同首版实体封套；B 站影像用于观看入口，标作「官方 MV」的才按官方身份表述，其余只写「视频」。</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>对不上的地方，怎么处理</h3>
+        <ul>
+          <li><b>首张专辑</b>：作品列表为 1995-12-09，Apple Music 为 1995-12-17；卡片保留两种日期。</li>
+          <li><b>《公转自转》</b>：发行资料为 1998-08-21，Apple Music 为 1998-08-14；公开唱片目录通常将它列为第五张录音室专辑。</li>
+          <li><b>《永远的第一天》</b>：作品列表为 2000-06-05，Apple Music 曲目日分成 2000-05-23 与 2000-06-02 两批；本页按专辑发行顺序置于 2000 年 6 月。</li>
+          <li><b>《唯一》</b>：发行资料为 2001-09-27，Apple Music 为 2001-09-17。</li>
+          <li><b>《改变自己》</b>：发行资料为 2007-07-13，Apple Music 为 2007-07-01。</li>
+          <li><b>《心·跳》</b>：发行资料与 Apple Music 的 2008-12-26 条目同日；Apple Music 另有一条 2008-12-01 的同名 collection，本页采用 12 月 26 日专辑条目。</li>
+          <li><b>《A.I. 爱》</b>：发行资料为 2017-12-19，Apple Music 曲目日期为 2017-12-12。</li>
+          <li><b>《十二生肖》</b>：作品列表为 2012-12-07，Apple Music 为 2012-12-27；它不占曲目卡，只作为生涯节点出现。</li>
+          <li><b>《依然爱你》</b>：《火力全开》新歌加精选的发行资料为 2011-09-27，Apple Music 单曲为 2011-09-30。</li>
+          <li><b>《爱你等于爱自己》</b>：专辑曲目页写林夕填词、Gicho 与 Söderqvist 作曲、刘志远编曲、Jim Lee 制作，曲是西洋作品。本页写「曲来自西洋创作、词是新填的」，不写成本人原创。</li>
+          <li><b>2021 年后的私人争议</b>：本页只交代暂停与重返舞台，因为它们影响公开音乐活动；不复述婚姻争议，也不根据任何一方的公开陈述裁定私人事实。</li>
+          <li><b>2025 — 2026</b>：《I'm Alive》的发行由本人官网和 Apple Music 确认，创作心境采用 2025 年本人访问；《最好的地方》场次来自公开巡演表，未来排期不写成已经完成。</li>
+          <li><b>《漂向北方》</b>：那是黄明志的单曲（2016-12-30 店内条目），他是被邀请的合唱者，不是他自己的原唱作品，所以不占唱片卡片。同样处理的还有《缘分一道桥》（与谭维维合唱，收在《A.I. 爱》里）。</li>
+          <li><b>封面</b>：部分返回的是流媒体再版或数字版封面，不一定是首版封套扫描。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine rv">资料核对至 2026 年 10 月 12 日。事实写到来源能够抵达的地方，听感只留在作品内部；《流泪手心》《你不在》《大城小爱》《Kiss Goodbye》《你不知道的事》等没有可靠私人原型，不把歌中人物等同于歌手本人。《唯一》《依然爱你》的故事主要见于后来的资料汇编，正文已保留这层不确定性。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>心中的日月 · 王力宏音乐传记</b>
+      <p class="fmeta">按发行顺序写下的一段听歌人生：从罗彻斯特到台北，从《情敌贝多芬》到《I'm Alive》。<br>内容整理于 2026 年 10 月 · 试听与封面来自 Apple Music · 仅供学习交流。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

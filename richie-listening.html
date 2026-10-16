@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>天地任逍遥 · 任贤齐音乐传记</title>
+<meta content="按唱片顺序听任贤齐：1990 年《再问一次》出道，1996 年《心太软》成名，演过杨过与令狐冲。24 首，从《再问一次》到《人生啊》，附店内日期和词条对不上的地方。" name="description"/>
+<meta content="#1c1613" name="theme-color"/>
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.mix,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div aria-hidden="true" class="progress" id="progress"></div>
+<nav aria-label="章节导航" class="nav" id="nav">
+<div class="nav-in">
+<div class="brand">任贤齐 <b>天地任逍遥</b> <span>· 音乐传记</span></div>
+<div class="nav-links" id="navLinks">
+<a href="#glance">速览</a>
+<a href="#timeline">时间线</a>
+<a href="#tracks">唱片</a>
+<a href="#wuxia">武侠</a>
+<a href="#route">歌单</a>
+<a href="#refs">资料</a>
+</div>
+</div>
+</nav>
+<header class="hero" id="top">
+<div aria-hidden="true" class="mosaic">
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/d1/64/d3/d164d302-4e4b-b0cc-c9fc-1757c579af46/4710149613332_cover.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/54/14/be/5414be70-7f90-b11b-b824-74e7e7286949/dj.lfxxekpg.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/3a/29/443a29a4-1c60-7033-96ed-18feb21857ea/RD-1522.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/a2/24/37/a2243716-3691-bddb-df49-15bb28ab6f20/dj.ilnekzrg.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/99/3b/84/993b842b-743c-a2f8-0bbe-2610eb214975/4710149720375_cover.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/1a/90/0b/1a900bc3-6ab9-53d5-4802-1e70ebb1117a/TS101_Cover_3000x3000.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2e/71/68/2e716892-175c-c21c-9aab-4143d0315c3c/4710149712004_cover.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/df/4b/85/df4b8593-f17a-e13c-4313-887e6ca0e94c/dj.kvmttgnm.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/c0/0e/ad/c00eadf0-f722-ed07-5e14-95429d998357/dj.vkjhjzgh.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/99/f8/90/99f8901a-3193-4f4b-d2c2-7cc8572e1716/825646234448.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6a/43/b1/6a43b106-b241-e4b7-072d-62f135c9fc62/4710149679611_cover.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/52/78/56/5278566b-bd3f-aafc-5d6c-fff84e51d2a3/825646272532.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/2b/db/78/2bdb7860-c40f-9d3c-6da0-c5d74ad2aa46/825646273249.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ad/8e/f2/ad8ef231-48aa-ce95-65d4-1d5f776d3e90/1..jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bc/d1/9f/bcd19fa0-24d3-d05f-ba78-3d009f396202/4711499333505.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/d1/64/d3/d164d302-4e4b-b0cc-c9fc-1757c579af46/4710149613332_cover.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg"/>
+</div>
+<div class="hero-in">
+<p class="kicker">A Listening Biography · 1990 — 2025</p>
+<h1>天地任逍遥</h1>
+<p class="sub">任贤齐音乐传记</p>
+<p class="deck">大四那年他抱着吉他进了唱片公司，出了三张没怎么红的专辑，又在滚石坐了五年冷板凳。后来小虫一句“你总是心太软”让他红遍街头，再后来他演了杨过、演了令狐冲，把《伤心太平洋》《天涯》唱成一代人的江湖。三十五年过去，他还骑着摩托车，唱着《我出去一下》。</p>
+<div class="meta-row">
+<span>1990 ·《再问一次》出道</span>
+<span>1996 ·《心太软》</span>
+<span>1998 / 2000 · 杨过与令狐冲</span>
+<span>2023 ·《在路上》</span>
+</div>
+<div class="cta">
+<a class="btn btn-g" href="#tracks">代表歌曲</a>
+<a class="btn btn-g" href="#timeline">音乐之路</a>
+<button aria-pressed="false" class="btn btn-p" id="listenToggle" type="button">
+<span class="listen-label">开始聆听</span>
+<svg aria-hidden="true" fill="currentColor" height="15" viewbox="0 0 24 24" width="15"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+</div>
+<div aria-hidden="true" class="scroll-cue">SCROLL<i></i></div>
+<div aria-hidden="true" class="perf"></div>
+</header>
+<main id="main">
+<section id="glance">
+<div class="wrap">
+<p class="eyebrow rv">01 / 速览</p>
+<h2 class="rv">一个等了六年才被听见的人</h2>
+<p class="sec-lead rv">任贤齐的好运来得晚，来了就一口气红了好几年。他嗓子算不上漂亮，胜在老实，唱心软、唱受伤、唱江湖，听的人都信他。</p>
+<div class="stats">
+<div class="stat rv"><div class="n">1990</div><div class="l">第一张个人专辑</div><div class="s">新格唱片《再问一次》，那年他还在念大学</div></div>
+<div class="stat rv"><div class="n">5</div><div class="l">五年没有新专辑</div><div class="s">1991 年后进了滚石，直到 1996 年才出《依靠》</div></div>
+<div class="stat rv"><div class="n">1996</div><div class="l">《心太软》</div><div class="s">小虫在洛杉矶做完的成名作</div></div>
+<div class="stat rv"><div class="n">2</div><div class="l">两部金庸剧的男主角兼主唱</div><div class="s">1998 年的杨过，2000 年的令狐冲</div></div>
+<div class="stat rv"><div class="n">1</div><div class="l">一次金像奖入围</div><div class="s">《浪花一朵朵》入围第 20 届最佳原创电影歌曲</div></div>
+<div class="stat rv"><div class="n">12</div><div class="l">隔了十二年的新专辑</div><div class="s">从 2011 年《不信邪》到 2023 年《在路上》</div></div>
+</div>
+<div class="toc rv">
+<h3>目录</h3>
+<ol>
+<li><a href="#glance">速览：六个路标</a></li>
+<li><a href="#timeline">时间线：从眷村到在路上</a></li>
+<li><a href="#tracks">唱片：二十四首歌</a></li>
+<li><a href="#wuxia">武侠：杨过与令狐冲</a></li>
+<li><a href="#route">歌单：一晚十二首</a></li>
+<li><a href="#refs">资料：来源与对不上的地方</a></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="tight" id="timeline">
+<div class="wrap">
+<p class="eyebrow rv">02 / 时间线</p>
+<h2 class="rv"><span class="yr">1966 — 2025</span>从校园跑场到一路在路上</h2>
+<p class="sec-lead rv">他的路分成几段：三张没怎么红的唱片，五年冷板凳，六七年大红，然后是拍戏、赛车、偶尔唱歌，最后又回到录音室。</p>
+<div class="timeline"><div class="tl rv"><div class="when">1966 · 06 · 23</div><h3>彰化眷村的长子</h3><p>任贤齐生在台湾彰化，在眷村长大，高中毕业才搬去台北。高中开始学吉他，后来的歌大多是在吉他上写出来的。</p></div><div class="tl rv"><div class="when">1987 — 1989</div><h3>校园里跑场的体育系学生</h3><p>进中国文化大学体育系，组 ATP 乐团当吉他手兼主唱，在乐器行打工，跑了上百场校园演唱，还帮别的团弄音响灯光，毕业前已经做到舞台监督。</p></div><div class="tl peak rv"><div class="when">1990</div><h3>新格唱片与《再问一次》</h3><p>大四那年被新格唱片发掘，先录了合辑《奔向彩虹》，年底发行首张个人专辑《再问一次》。</p></div><div class="tl rv"><div class="when">1991</div><h3>两张唱片，然后是空白</h3><p>再出《冷漠与温柔》《飞向自己的天空》，两张的先后各家说法不一。这一年也拍了电影《官兵捉强盗》。不久新格并入滚石，他跟着进了滚石。</p></div><div class="tl rv"><div class="when">1991 — 1996</div><h3>五年没有新专辑</h3><p>在滚石的头几年没有机会出个人唱片，据说每年都在“解约歌手”名单上。他主持节目、拍戏、演舞台剧，在小虫手下端茶送水。</p></div><div class="tl peak rv"><div class="when">1996 · 06</div><h3>《依靠》</h3><p>小虫为他量身做了《依靠》，逼他找到自己的唱法。专辑在台湾一个月卖出六白金。</p></div><div class="tl peak rv"><div class="when">1996 · 12 · 24</div><h3>《心太软》</h3><p>小虫在洛杉矶做完整张唱片，同名主打红遍两岸三地和东南亚，拿下香港电台十大劲爆国语金曲铜奖等奖项。销量说法差距很大，本页不取单一数字。</p></div><div class="tl rv"><div class="when">1997 · 12</div><h3>《很受伤》</h3><p>通告和商演多到没时间进录音室，年底才和小虫赶出这张专辑。</p></div><div class="tl peak rv"><div class="when">1998</div><h3>杨过与《爱像太平洋》</h3><p>演台视《神雕侠侣》的杨过，唱片头《任逍遥》、片尾《伤心太平洋》。8 月发行《爱像太平洋》，常被称作台湾最后一张卖破百万的实体专辑。</p></div><div class="tl rv"><div class="when">1999</div><h3>春晚与红馆</h3><p>在央视春晚唱《对面的女孩看过来》；同年在香港红馆开第一场个人演唱会，滚石出了现场专辑。</p></div><div class="tl peak rv"><div class="when">2000</div><h3>令狐冲与《春天花会开》</h3><p>演中视《笑傲江湖》的令狐冲，唱片头《死不了》、片尾《天涯》，也翻唱了黄霑的《沧海一声笑》。自己写的《春天花会开》拿下华语榜中榜最受欢迎歌曲；夏天和阿牛、光良唱《浪花一朵朵》。</p></div><div class="tl rv"><div class="when">2001</div><h3>《飞鸟》与金像奖入围</h3><p>《浪花一朵朵》入围第 20 届香港电影金像奖最佳原创电影歌曲。9 月发行《飞鸟》，同名歌拿下第八届全球华语榜中榜最受欢迎歌曲。</p></div><div class="tl rv"><div class="when">2004 — 2005</div><h3>《两极》，离开滚石</h3><p>年底发行《两极》，收了和舒淇的对唱。2005 年离开待了近十五年的滚石，加盟百代。</p></div><div class="tl rv"><div class="when">2006</div><h3>《老地方》</h3><p>百代的第一张专辑，在北京、上海、香港、台北录，主打交给大陆创作人。凭这张拿到新城国语力的亚洲创作歌手奖与殿堂歌手奖。</p></div><div class="tl rv"><div class="when">2007 — 2010</div><h3>电影歌和东亚时期</h3><p>2007 年《如果没有你》收了自己写的《还有我》；2008 年加盟东亚唱片，2009 年发行《齐待》；2010 年和小虫重聚，做了《心肝宝贝》。</p></div><div class="tl peak rv"><div class="when">2011 · 12</div><h3>《神魔·不信邪》</h3><p>转到寰亚，整张请五月天制作。这是他之后十二年里最后一张录音室专辑。</p></div><div class="tl rv"><div class="when">2012 — 2022</div><h3>唱片停了，路没停</h3><p>开“飙”巡回演唱会，骑摩托跑环塔拉力赛，2017 年参加达喀尔拉力赛；拍电影、当导演、上综艺。2022 年参加《披荆斩棘》第二季。</p></div><div class="tl peak rv"><div class="when">2023 · 09 · 01</div><h3>《在路上》</h3><p>相信音乐发行，隔了十二年的录音室专辑，怪兽、张震岳、郝云、麋先生都来帮忙。</p></div><div class="tl now rv"><div class="when">2025</div><h3>《人生啊》</h3><p>为电视剧《围猎》唱主题曲，国语里夹着闽南语；同年也为金庸电影再唱了《铁血丹心》。还在唱，也还在路上。</p></div></div>
+</div>
+</section>
+<section id="tracks">
+<div class="wrap">
+<p class="eyebrow rv">03 / 唱片与主打</p>
+<h2 class="rv">二十四首歌，一个老实人的三十五年</h2>
+<p class="sec-lead rv">按发行先后排，从 1990 年的第一张专辑听到 2025 年的剧集主题曲。每首约三十秒，一首接一首。</p>
+<div class="tracks"><article class="song rv" data-bvid="BV1Vv76zYEwQ" data-vlabel="视频" id="song-again">
+<div aria-label="播放视频 再問一次" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7d/1b/86/7d1b8648-7a9a-f062-0f0c-9e38e2f10a0b/mzaf_2516117215901292917.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="再問一次 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/1a/90/0b/1a900bc3-6ab9-53d5-4802-1e70ebb1117a/TS101_Cover_3000x3000.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">01</span><h3>再問一次</h3></div>
+<p class="s-meta">1990 · 首张专辑《再問一次》· 新格唱片</p>
+<p class="s-note">那年他在中国文化大学念体育系四年级，抱着吉他跑遍台湾的大专院校，在吉他老师的介绍下进了新格唱片。同名专辑在 1990 年底发行，据百科说卖了六万多张，对新人来说不算差，却也没能让人记住名字。嗓子比后来亮，咬字有点紧，听得出一个年轻人很想把每个字都唱对，那股后来人人认得的“小齐腔”还要再等六年。</p>
+<div class="player">
+<button aria-label="播放 再問一次" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="再問一次 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="再問一次 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1T64y1Z7hu" data-vlabel="视频" id="song-lean">
+<div aria-label="播放视频 依靠" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e5/21/e1/e521e1be-e8c7-bbcf-f73c-27d11e0f7c85/mzaf_7771828085288912326.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="依靠 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/54/14/be/5414be70-7f90-b11b-b824-74e7e7286949/dj.lfxxekpg.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">02</span><h3>依靠</h3></div>
+<p class="s-meta">1996 ·《依靠》· 滚石唱片 · 词曲 小虫</p>
+<p class="s-note">新格并进滚石之后，他差一点上了解约名单，是小虫把他留下来，留下来也没空理他，一晃三年。小虫后来说，《依靠》最能代表他们俩的关系。录音时小虫不准他学赵传、学张学友，把他丢在录音室对着一位外国录音师唱了三天，直到找出自己的唱法。专辑在台湾一个月卖出六白金，那个憨直、有点鼻音的任贤齐就从这首歌开始。</p>
+<div class="player">
+<button aria-label="播放 依靠" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="依靠 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="依靠 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1Mi82zgEBJ" data-vlabel="官方 MV" id="song-soft">
+<div aria-label="播放视频 心太軟" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6a/df/60/6adf6023-05f1-ca40-c4cd-8157875b3ac8/mzaf_12904911035351989278.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="心太軟 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/d1/64/d3/d164d302-4e4b-b0cc-c9fc-1757c579af46/4710149613332_cover.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">03</span><h3>心太軟</h3></div>
+<p class="s-meta">1996 · 12 · 24 ·《心太軟》· 词曲 小虫</p>
+<p class="s-note">小虫在受访时讲过这首歌的来处：在拉斯维加斯赢了一大笔，回房后惦记那个发牌的女孩会不会因此丢了工作，下楼想输一点还给她，结果把赢的全输了还倒贴，凌晨开车回加州，在车上写下“你总是心太软”。一句自嘲，落到任贤齐嘴里成了替所有痴心人说的话。音乐全在洛杉矶做，他后来回忆，第一次到北京三里屯，从街头走到街尾都在放这首歌。</p>
+<div class="player">
+<button aria-label="播放 心太軟" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="心太軟 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="心太軟 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1Ny4y1m7ow" data-vlabel="视频" id="song-hurt">
+<div aria-label="播放视频 很受傷" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cf/b4/15/cfb415ca-154b-705c-8e04-03e02fde0e16/mzaf_1734038725165406109.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="很受傷 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/a2/24/37/a2243716-3691-bddb-df49-15bb28ab6f20/dj.ilnekzrg.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">04</span><h3>很受傷</h3></div>
+<p class="s-meta">1997 · 12 · 09 ·《很受傷》· 词曲 小虫</p>
+<p class="s-note">《心太软》红到他连坐下来做唱片的时间都没有，这张专辑是在 1997 年的最后一个月跟小虫赶出来的。小虫写的是一个爱上不回家的人的女人，钟兴民编曲。歌里伤得很重，收尾却是一句“大不了痛哭一场，日子要过路还长”，任贤齐的情歌往往这样，哭完了还得把人扶起来。</p>
+<div class="player">
+<button aria-label="播放 很受傷" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="很受傷 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="很受傷 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1PG4y1s7HY" data-vlabel="视频" id="song-free">
+<div aria-label="播放视频 任逍遙" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/99/a6/ee/99a6eebc-57f5-8e72-7494-5b6685178887/mzaf_2731731887673625822.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="任逍遙 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">05</span><h3>任逍遙</h3></div>
+<p class="s-meta">1998 ·《愛像太平洋》· 台视《神雕侠侣》片头曲 · 词曲 小虫</p>
+<p class="s-note">台视筹拍《神雕侠侣》时，导演起初只想找他唱主题曲，见了面临时改主意，让他把杨过也一并演了。小虫于是给这位杨过量身写了片头曲。“让我悲也好，让我悔也好”，一连串的“也好”，把一个少年的倔和认命都唱进去了，他的武侠歌就从这里起头。</p>
+<div class="player">
+<button aria-label="播放 任逍遙" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="任逍遙 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="任逍遙 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1Ph411J7Dw" data-vlabel="视频" id="song-pacific">
+<div aria-label="播放视频 傷心太平洋" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/98/7b/4a/987b4a26-9a92-c5c4-a26c-86b058955456/mzaf_3716727883583092384.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="傷心太平洋 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">06</span><h3>傷心太平洋</h3></div>
+<p class="s-meta">1998 · 08 · 28 ·《愛像太平洋》·《神雕侠侣》片尾曲</p>
+<p class="s-note">曲子来自中岛美雪写给小林幸子的《幸せ》，陈没填词时脑子里想的就是任贤齐。原曲是演歌的哀愁，这里改成木吉他起头的抒情摇滚，一个人在海上漂。这首歌让他从“歌比人红”的尴尬里走出来，当年拿到 Hit FM 年度百首单曲第 41 名。陈没后来又为他写了《天涯》《匆匆》，三首连起来，像一个男人从年少走到中年。</p>
+<div class="player">
+<button aria-label="播放 傷心太平洋" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="傷心太平洋 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="傷心太平洋 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1mE411a7Mo" data-vlabel="视频" id="song-girl">
+<div aria-label="播放视频 對面的女孩看過來" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ac/61/87/ac6187bc-c592-3d31-7831-6a6fa8b4ab76/mzaf_9271654075655860453.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="對面的女孩看過來 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">07</span><h3>對面的女孩看過來</h3></div>
+<p class="s-meta">1998 ·《愛像太平洋》· 原唱 阿牛</p>
+<p class="s-note">这是马来西亚歌手阿牛写的歌，词曲都是他，最早收在他 1997 年的专辑《城市蓝天》里。据说阿牛住学校宿舍时，对面是一所英文学校，他靠弹吉他吸引女生注意。任贤齐一听就喜欢那股民谣的清爽，滚石同年 10 月还为他出了一张同名 EP。1999 年他在央视春晚唱这首歌，从此大江南北的男孩子都会喊“看过来”。</p>
+<div class="player">
+<button aria-label="播放 對面的女孩看過來" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="對面的女孩看過來 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="對面的女孩看過來 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1m7411U7jj" data-vlabel="视频" id="song-fish">
+<div aria-label="播放视频 我是一隻魚" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/7e/dd/ea7eddb6-8f27-bc55-ec9d-5de2e512fb82/mzaf_12414277576452094420.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="我是一隻魚 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/d9/1b/be/d91bbea8-ab49-68ab-6229-5b8447850e90/RD1470.4_Cover1440.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">08</span><h3>我是一隻魚</h3></div>
+<p class="s-meta">1998 ·《愛像太平洋》· 词 刘思铭 · 曲 刘志宏</p>
+<p class="s-note">收到歌的时候，任贤齐也纳闷：鱼为什么论“只”，不论“条”、不论“尾”？词曲作者跟他解释，“一只”带一点撒娇。他在录音室把三种说法都唱了一遍，自己也服了，“我是一只鱼”最顺口。歌里那条离了水的鱼说的是想念，旋律却轻快，任贤齐唱伤心也常带着笑。</p>
+<div class="player">
+<button aria-label="播放 我是一隻魚" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="我是一隻魚 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="我是一隻魚 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1nT4y1K791" data-vlabel="视频" id="song-spring">
+<div aria-label="播放视频 春天花會開" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d5/98/80/d5988013-fdc4-13a1-110e-8b245d373bcf/mzaf_1997466961006100577.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="春天花會開 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/3a/29/443a29a4-1c60-7033-96ed-18feb21857ea/RD-1522.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">09</span><h3>春天花會開</h3></div>
+<p class="s-meta">2000 · 01 · 27 ·《為愛走天涯》· 词曲 任贤齐</p>
+<p class="s-note">1998 年在北京拍《神雕侠侣》，片场边上有一棵桃树，他借来一把破吉他，拍戏空档就对着树哼。在南方长大的人头一回看清四季：从冬天拍到春天，枯枝冒芽，白雪化成一片绿。这是他自己写的第一首主打，拿到第七届全球华语榜中榜最受欢迎歌曲。唱法松松的，带点自嘲，听起来像他终于不用替别人的故事使劲了。</p>
+<div class="player">
+<button aria-label="播放 春天花會開" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="春天花會開 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="春天花會開 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1w5rvY1Egc" data-vlabel="视频" id="song-snow">
+<div aria-label="播放视频 小雪" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1c/e5/e8/1ce5e852-8f6d-4dbc-286e-f79751219d6b/mzaf_565736689205271754.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="小雪 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/3a/29/443a29a4-1c60-7033-96ed-18feb21857ea/RD-1522.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">10</span><h3>小雪</h3></div>
+<p class="s-meta">2000 · 01 ·《為愛走天涯》· 词曲 陈昇</p>
+<p class="s-note">陈昇写给他的歌，先出单曲，也是中华网那年的广告歌。陈昇擅长把男人的软弱写得很体面，“晴天突然下起小雪”，一句话就是一场来不及准备的心事。任贤齐把它唱得很收，不哭不喊，就站在雪里等人回头。</p>
+<div class="player">
+<button aria-label="播放 小雪" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="小雪 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="小雪 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1hq4y1S7LL" data-vlabel="视频" id="song-undying">
+<div aria-label="播放视频 死不了" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/79/8a/9c/798a9c5c-3c2c-b7ad-d096-4ea0e8bf4150/mzaf_9890193580879077371.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="死不了 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/3a/29/443a29a4-1c60-7033-96ed-18feb21857ea/RD-1522.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">11</span><h3>死不了</h3></div>
+<p class="s-meta">2000 ·《為愛走天涯》· 中视《笑傲江湖》片头曲</p>
+<p class="s-note">两年后他又演了令狐冲。片头曲交给刘思铭、刘志宏这对搭档，电吉他一响就是江湖。“真心的人死不了”这句写的是令狐冲，也像是写给一路被看衰的他自己，唱得满是不服气。</p>
+<div class="player">
+<button aria-label="播放 死不了" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="死不了 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="死不了 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1vE411a7L8" data-vlabel="视频" id="song-horizon">
+<div aria-label="播放视频 天涯" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9e/f7/7e/9ef77eed-b97d-634e-d20e-863311a2bfd2/mzaf_9925446964154700732.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="天涯 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/3a/29/443a29a4-1c60-7033-96ed-18feb21857ea/RD-1522.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">12</span><h3>天涯</h3></div>
+<p class="s-meta">2000 ·《為愛走天涯》·《笑傲江湖》片尾曲 · 词 陈没 · 曲 中岛美雪</p>
+<p class="s-note">又是陈没的词、中岛美雪的旋律，跟《伤心太平洋》一样的组合。片头唱豪气，片尾就唱代价：“赢得了天下，输了她”。他唱这一句不用力，听起来更像认了账。这首和《伤心太平洋》后来成了他演唱会上几乎每场都唱的歌。</p>
+<div class="player">
+<button aria-label="播放 天涯" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="天涯 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="天涯 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1FW411i71z" data-vlabel="视频" id="song-waves">
+<div aria-label="播放视频 浪花一朵朵" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4a/2c/05/4a2c05eb-9aa2-b5be-a87e-baf95d39c267/mzaf_10819132899640914252.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="浪花一朵朵 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2e/71/68/2e716892-175c-c21c-9aab-4143d0315c3c/4710149712004_cover.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">13</span><h3>浪花一朵朵</h3></div>
+<p class="s-meta">2000 · 08 · 合辑《流浪汉》· 电影《夏日么么茶》主题曲 · 与阿牛、光良</p>
+<p class="s-note">他和阿牛一起写，跟光良三个人一起唱。他说歌词最早写的是北京，后来飞去马来西亚热浪岛拍《夏日么么茶》，到了海边才改成海龟、沙滩和浪花。这首歌入围了第 20 届香港电影金像奖最佳原创电影歌曲，那年获奖的是《卧虎藏龙》的《月光爱人》。“我不管你懂不懂我在唱什么”，大概是他所有歌里最没心事的一句。</p>
+<div class="player">
+<button aria-label="播放 浪花一朵朵" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="浪花一朵朵 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="浪花一朵朵 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1vE411a7LT" data-vlabel="视频" id="song-brothers">
+<div aria-label="播放视频 兄弟" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b3/6e/0a/b36e0a54-002e-839d-e54b-a98fce8648be/mzaf_12436341179085603076.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="兄弟 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6a/43/b1/6a43b106-b241-e4b7-072d-62f135c9fc62/4710149679611_cover.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">14</span><h3>兄弟</h3></div>
+<p class="s-meta">2000 · 12 ·《天使兄弟小白臉》</p>
+<p class="s-note">这张专辑换了电子摇滚的路子，《兄弟》仍是老实的直球。歌里没有谁欠谁，只有一路走来的交情。2001 年那场“任贤齐 &amp; Friends”派对，他拉着光良、品冠、阿牛、黄品源一起唱这首，几个同一家唱片公司出来的人，唱得像在喝酒。</p>
+<div class="player">
+<button aria-label="播放 兄弟" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="兄弟 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="兄弟 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1md4y1Z74h" data-vlabel="视频" id="song-birds">
+<div aria-label="播放视频 飛鳥" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/cd/9e/fa/cd9efa08-118d-5597-9665-180ca2bdf702/mzaf_1948213466394598901.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="飛鳥 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/99/3b/84/993b842b-743c-a2f8-0bbe-2610eb214975/4710149720375_cover.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">15</span><h3>飛鳥</h3></div>
+<p class="s-meta">2001 · 09 · 14 ·《飛鳥》· 曲 胡海泉</p>
+<p class="s-note">羽·泉专门为他写的歌。配唱时他脑子里一直是《新楚留香》里的画面；调子偏高，制作人陈焕昌陪他在录音室试出一种平时不用的唱腔。这首歌拿了第八届全球华语榜中榜最受欢迎歌曲，他也凭它拿到全国最佳人气男歌手。听起来有古龙式的孤独，也有一点北方摇滚的硬，是他那几年少见的冷色调。</p>
+<div class="player">
+<button aria-label="播放 飛鳥" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="飛鳥 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="飛鳥 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV18q4y1u7jk" data-vlabel="视频" id="song-haste">
+<div aria-label="播放视频 匆匆" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/70/67/5a706773-75de-2f65-198f-9453447c0fe9/mzaf_14693347651199271640.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="匆匆 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/99/3b/84/993b842b-743c-a2f8-0bbe-2610eb214975/4710149720375_cover.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">16</span><h3>匆匆</h3></div>
+<p class="s-meta">2001 ·《飛鳥》· 陈没、刘志宏、刘思铭的“男人三部曲”终章</p>
+<p class="s-note">从《伤心太平洋》到《天涯》，再到这首《匆匆》，陈没和刘志宏、刘思铭替他写完了一个男人的三个阶段。前两首都在江湖里漂，这首已经回头看了。听起来没有谁对不起谁，只是时间走得太快，年轻时以为来得及的事，多半来不及了。</p>
+<div class="player">
+<button aria-label="播放 匆匆" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="匆匆 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="匆匆 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1Ph4y1i7o5" data-vlabel="视频" id="song-thatyear">
+<div aria-label="播放视频 那一年，這一天" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/73/99/7b739952-7c11-69b4-d172-db3695bcb4ee/mzaf_11809035437761053484.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="那一年，這一天 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/df/4b/85/df4b8593-f17a-e13c-4313-887e6ca0e94c/dj.kvmttgnm.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">17</span><h3>那一年，這一天</h3></div>
+<p class="s-meta">2004 · 12 · 31 ·《兩極》· 与舒淇</p>
+<p class="s-note">和舒淇在韩国录的对唱。两个声音都不算技巧型，贵在像说话。歌里一个记得年份，一个记得日子，一段旧情就这样对上了号。</p>
+<div class="player">
+<button aria-label="播放 那一年，這一天" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="那一年，這一天 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="那一年，這一天 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV15s411f7dX" data-vlabel="视频" id="song-oldplace">
+<div aria-label="播放视频 老地方" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1a/63/3c/1a633c84-8edf-2998-ff0e-2db8a7de879d/mzaf_12260689607666143241.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="老地方 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/c0/0e/ad/c00eadf0-f722-ed07-5e14-95429d998357/dj.vkjhjzgh.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">18</span><h3>老地方</h3></div>
+<p class="s-meta">2006 · 02 · 27 ·《老地方》· 百代 · 词曲 徐誉滕</p>
+<p class="s-note">离开滚石，加盟百代后的第一张专辑，主打交给了大陆创作人徐誉滕。他说每个人心里都有一个只有自己知道的老地方；MV 请来刘若英，在上海一家制鞋厂拍，他还系上围裙学了回鞋匠。弦乐加古典吉他，编曲很素，那个唱《心太软》的人回来了，声音里多了岁数。这首歌拿到 2006 年新城国语力歌曲奖。</p>
+<div class="player">
+<button aria-label="播放 老地方" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="老地方 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="老地方 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV195411W76s" data-vlabel="视频" id="song-stillme">
+<div aria-label="播放视频 還有我" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/c0/ca/9dc0ca3d-c00d-c0ea-5a0a-2ce392a27af1/mzaf_18030581889747335849.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="還有我 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/99/f8/90/99f8901a-3193-4f4b-d2c2-7cc8572e1716/825646234448.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">19</span><h3>還有我</h3></div>
+<p class="s-meta">2007 · 04 ·《如果沒有你》· 电影《合约情人》插曲 · 词曲 任贤齐</p>
+<p class="s-note">他和范冰冰主演《合约情人》，这首插曲是他自己写的。“就算全世界离开你，还有一个我来陪”，话说得很满，任贤齐唱来却不油，他本来就适合讲这种老实人的承诺。</p>
+<div class="player">
+<button aria-label="播放 還有我" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="還有我 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="還有我 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV11V411y7Q7" data-vlabel="视频" id="song-darling">
+<div aria-label="播放视频 心肝寶貝" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/96/bc/3c/96bc3c45-8cd1-fe55-2624-40ec1fc0ff4c/mzaf_8995707337271910652.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="心肝寶貝 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/2b/db/78/2bdb7860-c40f-9d3c-6da0-c5d74ad2aa46/825646273249.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">20</span><h3>心肝寶貝</h3></div>
+<p class="s-meta">2010 · 电影《龙凤店》主题曲 · 与徐熙媛 · 词曲 小虫</p>
+<p class="s-note">小虫看完《龙凤店》的故事，当场写下这首歌，助理先唱了个小样，任贤齐听了就定下来，还提议和徐熙媛对唱。小虫特地按她的声线调了调。师徒俩隔了十几年再合作，《心太软》里那个苦情男人，到这里成了下江南的正德皇帝，唱得轻快多了。</p>
+<div class="player">
+<button aria-label="播放 心肝寶貝" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="心肝寶貝 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="心肝寶貝 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1Hx411t78u" data-vlabel="视频" id="song-defy">
+<div aria-label="播放视频 不信邪" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/50/99/7e/50997e11-baa3-ef0e-ecef-2d501b3d01a9/mzaf_16618603364531174984.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="不信邪 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/52/78/56/5278566b-bd3f-aafc-5d6c-fff84e51d2a3/825646272532.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">21</span><h3>不信邪</h3></div>
+<p class="s-meta">2011 · 12 ·《神魔·不信邪》· 寰亚 · 曲 怪兽</p>
+<p class="s-note">转到寰亚的第一张，整张请五月天操刀，主打由怪兽作曲，同时是电视剧《真的汉子》片头曲和一款网游的主题曲。同一年他骑摩托跑了新疆的环塔拉力赛，专辑里的《光芒》就是赛事主题曲，一个把车骑进沙漠的人唱“不信邪”，用不着再解释。这是他之后十二年里最后一张录音室专辑。</p>
+<div class="player">
+<button aria-label="播放 不信邪" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="不信邪 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="不信邪 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1GH4y1X74p" data-vlabel="官方 MV" id="song-out">
+<div aria-label="播放视频 我出去一下" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ee/37/cb/ee37cbfd-e261-c860-2fd7-71f87e10046d/mzaf_7899518834721947925.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="我出去一下 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ad/8e/f2/ad8ef231-48aa-ce95-65d4-1d5f776d3e90/1..jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">22</span><h3>我出去一下</h3></div>
+<p class="s-meta">2023 · 09 · 01 ·《在路上》· 相信音乐 · 词 周耀辉 · 曲 怪兽</p>
+<p class="s-note">隔了十二年，他交出《在路上》。前一年他上了《披荆斩棘》第二季，又在节目里骑摩托跑长途。怪兽谱曲、周耀辉作词，“永远觉得天大地大，偶尔让我出去走一下”，五十多岁的人这样唱，一点不违和。专辑最后附了他到五月天演唱会做嘉宾时的现场版。</p>
+<div class="player">
+<button aria-label="播放 我出去一下" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="我出去一下 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="我出去一下 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV15p4y1N7R6" data-vlabel="官方 MV" id="song-longtime">
+<div aria-label="播放视频 好久不見" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a3/ce/0c/a3ce0c87-b16b-ac8e-7ace-217b55699f24/mzaf_5428593993223965880.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="好久不見 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ad/8e/f2/ad8ef231-48aa-ce95-65d4-1d5f776d3e90/1..jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">23</span><h3>好久不見</h3></div>
+<p class="s-meta">2023 ·《在路上》· 词曲 任贤齐 · 编曲 郝云</p>
+<p class="s-note">一首写给老朋友的酒歌。编曲交给在《披荆斩棘》认识的郝云，还加进了马头琴。“回首再见，当初的莽撞少年，敬你一杯，算是给自己的奖杯”，他在专辑文案里说，这首献给等他回来的歌迷，也献给身边的伙伴。</p>
+<div class="player">
+<button aria-label="播放 好久不見" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="好久不見 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="好久不見 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article><article class="song rv" data-bvid="BV1hUpRzmEJj" data-vlabel="视频" id="song-life">
+<div aria-label="播放视频 人生啊" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/af/4a/ae/af4aae1f-f6d2-46c7-7b30-9c81db78a772/mzaf_10772563131670353175.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="人生啊 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bc/d1/9f/bcd19fa0-24d3-d05f-ba78-3d009f396202/4711499333505.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">24</span><h3>人生啊</h3></div>
+<p class="s-meta">2025 · 09 · 20 · 电视剧《围猎》主题曲 · 词曲 赖伟锋</p>
+<p class="s-note">赖伟锋一手包办词曲编制，国语里夹着闽南语。“悲欢离合的歹命仔”这一句，唱出了台湾民间歌谣的苦味。他是彰化眷村长大的孩子，大学时在校园里就用闽南语念过 rap，这么多年以后，乡音又回到他的歌里。</p>
+<div class="player">
+<button aria-label="播放 人生啊" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="人生啊 任贤齐" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="人生啊 任贤齐" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article></div>
+</div>
+</section>
+<section class="tight" id="wuxia">
+<div class="wrap">
+<div class="wuxia rv">
+<p class="eyebrow">04 / 第二条线索</p>
+<h2><span class="yr" style="color:var(--gold-soft)">1998 — 2001</span>杨过、令狐冲和一个漂泊的男人</h2>
+<p>1998 年台视找他唱《神雕侠侣》的主题曲，见面后干脆让他演杨过；两年后中视的《笑傲江湖》又让他演令狐冲。两部戏的片头片尾都由他自己唱，《伤心太平洋》和《天涯》用的都是中岛美雪的旋律，填词的都是陈没。后来陈没、刘志宏、刘思铭又写了《匆匆》，三首连起来，就是一个男人从闯荡到回望。</p>
+<div class="wrow">
+<div class="wcard"><span>1998 · 台视</span><b>神雕侠侣</b><span>片头《任逍遥》（小虫词曲）· 片尾《伤心太平洋》</span></div>
+<div class="wcard"><span>2000 · 中视</span><b>笑傲江湖</b><span>片头《死不了》· 片尾《天涯》</span></div>
+<div class="wcard"><span>2000 · 翻唱</span><b>沧海一声笑</b><span>黄霑词曲，原唱许冠杰；收在《为爱走天涯》，也在剧中当插曲</span></div>
+<div class="wcard"><span>2001</span><b>飞鸟</b><span>羽·泉作曲；他配唱时想着《新楚留香》的画面</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tight" id="route">
+<div class="wrap">
+<div class="route rv">
+<p class="eyebrow">05 / 一晚选听</p>
+<h2><span class="yr">十二首歌，一段江湖</span>从心太软，到出去走一下</h2>
+<p>先听小虫怎么把他教会唱歌，再听他在海上、在天涯漂。中段留给春天、浪花和飞鸟，最后三首是回来的人：老地方、出门走走，和一声“人生啊”。</p>
+<ol id="routeList"><li><button data-target="song-lean" type="button">依靠</button></li><li><button data-target="song-soft" type="button">心太軟</button></li><li><button data-target="song-pacific" type="button">傷心太平洋</button></li><li><button data-target="song-girl" type="button">對面的女孩看過來</button></li><li><button data-target="song-fish" type="button">我是一隻魚</button></li><li><button data-target="song-spring" type="button">春天花會開</button></li><li><button data-target="song-horizon" type="button">天涯</button></li><li><button data-target="song-waves" type="button">浪花一朵朵</button></li><li><button data-target="song-birds" type="button">飛鳥</button></li><li><button data-target="song-oldplace" type="button">老地方</button></li><li><button data-target="song-out" type="button">我出去一下</button></li><li><button data-target="song-life" type="button">人生啊</button></li></ol>
+<p class="hint">从头听下来，那副嗓子一直没怎么变，变的是他唱的人，从痴情的、受伤的，慢慢到了喝酒叙旧的年纪。</p>
+</div>
+</div>
+</section>
+<section class="tight" id="refs">
+<div class="wrap">
+<p class="eyebrow rv">06 / 资料来源</p>
+<h2 class="rv">歌从哪里来，日子怎么对</h2>
+<div class="refs"><div class="rv"><h3>唱片与发行</h3><ul>
+<li><a href="https://music.apple.com/tw/artist/%E4%BB%BB%E8%B3%A2%E9%BD%8A/368372834" rel="noreferrer" target="_blank">Apple Music 台湾区：任贤齐艺人页</a>：核对店内日期、曲目、封面和试听。试听都是当年的录音室原版；《依靠》《很受伤》《两极》三张封面的图片地址带 <code>Features</code>，不一定是首版封套。《浪花一朵朵》店内收在 2001 年《任贤齐 &amp; Friends》里，用的是 2000 年三人合唱的原录音。</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%86%8D%E5%95%8F%E4%B8%80%E6%AC%A1" rel="noreferrer" target="_blank">维基百科：再问一次</a>、<a href="https://zh.wikipedia.org/zh-cn/%E7%82%BA%E6%84%9B%E8%B5%B0%E5%A4%A9%E6%B6%AF" rel="noreferrer" target="_blank">为爱走天涯</a>、<a href="https://zh.wikipedia.org/zh-sg/%E9%A3%9B%E9%B3%A5_(%E4%BB%BB%E8%B3%A2%E9%BD%8A%E5%B0%88%E8%BC%AF)" rel="noreferrer" target="_blank">飞鸟</a>：首张专辑日期，《死不了》《天涯》在《笑傲江湖》里的位置，各曲词曲。</li>
+<li><a href="https://www.hkfaa.com/winnerlist20.html" rel="noreferrer" target="_blank">香港电影金像奖：第 20 届名单</a>：《浪花一朵朵》入围最佳原创电影歌曲，获奖的是《月光爱人》。</li>
+<li><a href="https://music.apple.com/cn/album/%E5%9F%8E%E5%B8%82%E8%93%9D%E5%A4%A9/1634570136" rel="noreferrer" target="_blank">Apple Music：阿牛《城市蓝天》</a>：《对面的女孩看过来》原唱版本所在专辑。</li>
+<li><a href="https://www.hitoradio.com/newweb/3736album" rel="noreferrer" target="_blank">Hit Fm：《老地方》专辑文案</a>、<a href="https://www.hitoradio.com/newweb/12940album" rel="noreferrer" target="_blank">《不信邪》专辑文案</a>：MV 演出、五月天制作与各曲用途。</li>
+<li><a href="https://music.apple.com/cn/album/%E5%9C%A8%E8%B7%AF%E4%B8%8A/1701754215" rel="noreferrer" target="_blank">Apple Music：《在路上》编辑推荐与访谈</a>、<a href="https://news.qq.com/rain/a/20230907A02XLP00" rel="noreferrer" target="_blank">腾讯新闻：《在路上》发片</a>：十二年后的新专辑、制作阵容和《好久不见》的来由。</li>
+</ul></div><div class="rv"><h3>创作故事与采访</h3><ul>
+<li><a href="https://yule.sohu.com/20130328/n370684734.shtml" rel="noreferrer" target="_blank">南方都市报专访小虫（搜狐娱乐转载，2013）</a>：《心太软》在拉斯维加斯输钱后写成。</li>
+<li><a href="http://phtv.ifeng.com/program/lyyy/detail_2010_08/30/2358727_3.shtml" rel="noreferrer" target="_blank">凤凰卫视访谈任贤齐（2010）</a>：小虫让他在录音室唱三天找自己的唱法，三里屯满街《心太软》。</li>
+<li><a href="https://ent.ifeng.com/interview/200801/0115_14_366515_7.shtml" rel="noreferrer" target="_blank">凤凰网访谈小虫（2008）</a>：按歌手个性写歌，任贤齐的温和适合《心太软》。</li>
+<li><a href="http://www.chinanews.com.cn/shipin/2006-01-18/6.html" rel="noreferrer" target="_blank">中新社（2006）</a>：《老地方》MV 由刘若英出演、在上海制鞋厂拍摄。</li>
+<li><a href="https://ent.china.com/movie/newszh/11005281/20250406/48175320.html" rel="noreferrer" target="_blank">中华网（2025）</a>：《春天花会开》写于北京，《浪花一朵朵》的歌词从北京改成海岛。</li>
+<li>百度百科的任贤齐、《依靠》《伤心太平洋》《我是一只鱼》《春天花会开》《浪花一朵朵》等词条只作线索：小虫留人、“一只鱼”的量词、陈没为他写词、桃花树下写歌等细节，都按词条引用的访问写入，没有找到原始出处的就不写。</li>
+</ul></div></div>
+<p class="fine rv">日期对不上的地方，曲目卡写原始发行年份，下面列出差异。《再问一次》维基记为 1990 年 12 月 1 日，店内标 1990 年 1 月 1 日。《冷漠与温柔》《飞向自己的天空》哪张在前，各家说法相反，时间线只写 1991 年。《依靠》专辑有 6 月 1 日和 6 月 14 日两说，店内为 6 月 14 日。《小雪》单曲百科记 2000 年 1 月 15 日，店内为 1 月 19 日。《浪花一朵朵》所在合辑《流浪汉》百科记 2000 年 8 月 9 日，店内曲目标 8 月 2 日。阿牛《城市蓝天》有 1997 年 7 月 1 日和 11 月 12 日（店内）两说。《老地方》专辑发行于 2006 年 2 月 27 日，店内标 2005 年。《如果没有你》百科记 2007 年 4 月 26 日，店内曲目标 4 月 24 日。《神魔·不信邪》2011 年 12 月发行，台湾区店内上架日期是 2014 年。专辑张数各处数法不同（《不信邪》被称作第 18 张，《在路上》被称作第 17 张），本页不写张数。《心太软》的销量从两百多万到两千六百万都有人引用，口径差得太远，速览不取单一数字；《爱像太平洋》“台湾最后一张破百万”只是常见说法，未找到唱片协会的原始统计。歌曲背景优先用本人和创作者的访问；没有找到可靠访问的曲目，只写歌词和唱法上听得到的东西。</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div>
+<b>天地任逍遥 · 任贤齐音乐传记</b>
+<p class="fmeta">二十四首歌，从 1990 年的校园吉他手，听到 2025 年还在路上的任贤齐。</p>
+</div>
+<a class="totop" href="#top">回到顶部 ↑</a>
+</div>
+</footer>
+<button aria-label="回到顶部" class="fab" id="fab"><svg viewbox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"></path></svg></button>
+<div class="mix" id="mix">
+<button aria-label="上一首" class="mix-btn" disabled="" id="mixPrev" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"></path></svg>
+</button>
+<button aria-label="播放" aria-pressed="false" class="mix-btn is-main" id="mixToggle" type="button">
+<svg aria-hidden="true" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<button aria-label="下一首" class="mix-btn" id="mixNext" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"></path></svg>
+</button>
+<span class="mix-now">准备试听</span>
+<label class="mix-vol">
+<input aria-label="音量" id="mixVol" max="100" min="0" type="range" value="28"/>
+</label>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

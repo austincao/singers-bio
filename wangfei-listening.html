@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>菲比寻常 · 王菲音乐传记</title>
+<meta content="从王靖雯到王菲，从《容易受伤的女人》到《如愿》：沿着三十八首歌，听一个人怎样在流行、实验、爱情与沉默之间始终保有自己。" name="description"/>
+<meta content="#1c1613" name="theme-color"/>
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div aria-hidden="true" class="progress" id="progress"></div>
+<nav aria-label="章节导航" class="nav" id="nav">
+<div class="nav-in">
+<div class="brand">王菲 · 音乐传记</div>
+<div class="nav-links" id="navLinks">
+<a href="#glance">速览</a>
+<a href="#timeline">时间线</a>
+<a href="#tracks">唱片</a>
+<a href="#route">歌单</a>
+<a href="#refs">资料</a>
+</div>
+</div>
+</nav>
+<header class="hero" id="top">
+<div aria-hidden="true" class="mosaic">
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/e4/7d/2c/e47d2cc6-9511-eda4-d683-ca4f27347c1b/19UM1IM01961.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d7/8a/a7/d78aa7b9-85d9-531e-36e8-b6a1a1a31001/19UM1IM01973.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/20/02/6b200240-39cf-5d56-dc27-a65012a563f2/19UM1IM01978.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8c/ac/bb/8cacbb3e-7102-5965-96e7-fe55d2188c8f/00602498212141.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f6/31/d6/f631d6d6-1fd0-272a-3feb-de30b4e69ace/00602517665095.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/5b/48/7b/5b487be5-9c6d-8d0f-fdd3-2f7604534d61/00602527130606.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/be/3b/cb/be3bcbbf-da9f-331c-6493-8e842530b6a0/19UM1IM01976.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/de/00/8f/de008f8d-5116-a636-2a8c-eb84c7fa28d2/00602517665088.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/aa/6d/6d/aa6d6db2-dd68-12a7-5711-c414a0d2fbe2/00602498212134.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9e/55/95/9e559535-038b-67b5-6404-258c24d075cf/19UMGIM62800.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/b5/03/3c/b5033c4e-b34a-7616-623a-3b8c62eab8dc/00044003842427.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6f/75/54/6f75544f-1d55-b5d1-40e2-1c2fde6e0925/1997.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f0/31/6c/f0316c45-9a26-0e04-a32e-c3c2ff33f741/Eyes_on_Me.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ac/4c/c4/ac4cc4fd-be41-f478-9b4e-32199fd5878c/Untitled.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/eb/1a/6c/eb1a6ce1-646b-b2a6-bc2e-be629e981b74/Untitled.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/24/a6/ea/24a6eacb-87f6-da80-6ca5-555eb5b3f808/2001.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/11/72/ee/1172ee39-e832-c10f-5aad-dea3d82889e3/Untitled.png/600x600bb.jpg"/>
+</div>
+<div class="hero-in">
+<p class="kicker">A Listening Biography · 1989 — 2025</p>
+<h1>菲比寻常</h1>
+<p class="sub">她把最热闹的时代，唱出了一身安静</p>
+<p class="deck">王菲的声音有一种少见的距离感：近的时候像耳边的一口气，远的时候又像天光落在很高的地方。她从北京到香港，从王靖雯唱回本名，从擅长情歌的新人走到敢用《浮躁》重新规定自己。她唱爱情，却很少替爱情下结论；她离开舞台，也不急着解释。许多年后我们才明白，她真正留下来的，不只是空灵的音色，而是一个歌手如何在巨大的名声里，仍旧保住自己的审美、自由和沉默。</p>
+<div class="meta-row"><span>1989 年 · 香港出道</span><span>从王靖雯到王菲</span><span>三十八首代表作</span><span>最后更新至 2025 年</span></div>
+<div class="cta">
+<a class="btn btn-g" href="#tracks">代表歌曲</a>
+<a class="btn btn-g" href="#timeline">音乐之路</a>
+<button aria-pressed="false" class="btn btn-p" id="listenToggle" type="button">
+<span class="listen-label">开始聆听</span>
+<svg aria-hidden="true" fill="currentColor" height="15" viewbox="0 0 24 24" width="15"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+</div>
+<div aria-hidden="true" class="scroll-cue">SCROLL<i></i></div>
+<div aria-hidden="true" class="perf"></div>
+</header>
+<main id="main">
+<section id="glance">
+<div class="wrap">
+<p class="eyebrow rv">01 / 速览</p>
+<h2 class="rv">名字变过，唱歌这件事始终只听自己的</h2>
+<p class="sec-lead rv">她当然唱过许多人人会唱的情歌，也做过华语流行里最不肯讨好的唱片。王菲难以复制，正在于商业与个性在她身上并没有互相取消：越红的时候，她越敢把真正喜欢的声音带给听众。</p>
+<div class="stats">
+<div class="stat rv"><div class="n">1989</div><div class="l">以王靖雯出道</div><div class="s">第一张粤语专辑，从陌生城市开始</div></div>
+<div class="stat rv"><div class="n">1992</div><div class="l">《容易受伤的女人》</div><div class="s">让她真正走进大众记忆</div></div>
+<div class="stat rv"><div class="n">1994</div><div class="l">名字与声音一起打开</div><div class="s">《迷》《胡思乱想》《天空》接连抵达</div></div>
+<div class="stat rv"><div class="n">1996</div><div class="l">《浮躁》</div><div class="s">把个人趣味变成一张完整作品</div></div>
+<div class="stat rv"><div class="n">2004</div><div class="l">金曲歌后</div><div class="s">凭《将爱》获最佳国语女演唱人</div></div>
+<div class="stat rv"><div class="n">38</div><div class="l">三十八首歌</div><div class="s">从旧句子，唱到后来仍然如愿</div></div>
+</div>
+<div class="toc rv">
+<h3>目录</h3>
+<ol>
+<li><a href="#glance">速览</a></li>
+<li><a href="#timeline">三十六年的时间线</a></li>
+<li><a href="#tracks">三十八首代表作</a></li>
+<li><a href="#route">一晚十二首</a></li>
+<li><a href="#refs">资料与唱片注</a></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="tight" id="timeline">
+<div class="wrap">
+<p class="eyebrow rv">02 / 时间线</p>
+<h2 class="rv"><span class="yr">1969 — 2025</span>一个人怎样在名声里，仍然成为自己</h2>
+<p class="sec-lead rv">王菲的道路并非从“不成熟”走向“成熟”那么简单。她先学会怎样成为一个明星，随后一次次把别人熟悉的自己推翻；当所有人等她回来时，她又慢慢学会只在真正想唱的时候开口。</p>
+<div class="timeline">
+<div class="tl rv"><div class="when">1969 · 8 · 8</div><h3>北京的孩子</h3><p>她出生在北京，母亲从事声乐。少年时代听邓丽君，也录过以翻唱为主的磁带。后来那种清亮的咬字、气声里的分寸，以及对旧歌的敬意，都能从这段早年的聆听里找到来处。</p></div>
+<div class="tl rv"><div class="when">1987</div><h3>从北京到香港</h3><p>高中毕业后随家人到香港生活，并向戴思聪学习声乐。粤语、唱片工业和陌生城市一起到来。她必须先学习一种成熟的职业规则，才有机会在规则里慢慢唱出自己。</p></div>
+<div class="tl rv peak"><div class="when">1989</div><h3>《王靖雯》</h3><p>首张粤语专辑发行时，她使用艺名王靖雯，英文名 Shirley。《仍是旧句子》里的声音还带着新人谨慎的端正，却已经有一种不会过分讨好的冷静。真正的王菲还没完全出现，轮廓已经在了。</p></div>
+<div class="tl rv"><div class="when">1990 — 1991</div><h3>暂时离开，也是重新选择</h3><p>早期唱片反响起伏，她暂停工作并赴纽约生活、学习。离开香港流行工业的那段时间，让她接触到更宽的音乐趣味。回来以后，她不再只想做一个把指定情歌唱好的新人。</p></div>
+<div class="tl rv peak"><div class="when">1992</div><h3>《Coming Home》</h3><p>英文名改为 Faye，中文仍署王靖雯。《容易受伤的女人》把她推向更大的听众：旋律来自中岛美雪创作的《ルージュ》，她却唱出一种看似疏离、其实很容易心软的都市女性。</p></div>
+<div class="tl rv"><div class="when">1993</div><h3>开始把喜好带进唱片</h3><p>《执迷不悔》和《十万个为什么？》接连发行。《冷战》改编自 Tori Amos，《若你真爱我》触及 R&amp;B。她仍在流行体系里，却开始主动选择歌、改变唱法，也开始让大众跟随她的耳朵。</p></div>
+<div class="tl rv peak"><div class="when">1994</div><h3>这一年，名字终于追上声音</h3><p>《迷》《胡思乱想》《天空》《讨好自己》在一年内先后抵达，《我愿意》《梦中人》《天空》《棋子》来自完全不同的方向。她也在《重庆森林》里演了一个大胆追爱、独自跳舞的女孩。王靖雯逐渐退场，王菲成为那个不必解释的名字。</p></div>
+<div class="tl rv"><div class="when">1995</div><h3>向邓丽君致意，也继续往前走</h3><p>《菲靡靡之音》不是简单怀旧。她用自己的呼吸重新唱邓丽君，让两代女声隔着时间相遇；同年的《Di-Dar》又走向更冷、更都会的节奏。她既承认影响，也从不困在影响里。</p></div>
+<div class="tl rv peak"><div class="when">1996</div><h3>《浮躁》</h3><p>她与张亚东、窦唯及 Cocteau Twins 等音乐人合作，大量参与词曲创作。十首歌不急着提供朗朗上口的答案，而是让情绪、吟唱与声响自由流动。一个身处商业顶峰的歌手，交出了一张几乎只服从内心的唱片。</p></div>
+<div class="tl rv"><div class="when">1997</div><h3>《王菲》：自由回到流行歌里</h3><p>转入百代后的同名专辑重新拥抱完整的流行旋律。《人间》由中岛美雪专为她写曲，《你快乐所以我快乐》让林夕的词与张亚东的旋律成为时代记忆。实验没有消失，只是被她藏进更自然的表达。</p></div>
+<div class="tl rv peak"><div class="when">1998</div><h3>《唱游》</h3><p>《红豆》把漫长等待唱得温柔，《脸》则用近乎无伴奏的开场展示声音本身。唱游二字很像她当时的状态：技巧、市场与个人趣味已经可以彼此游动，不必再证明哪一面才是真正的王菲。</p></div>
+<div class="tl rv"><div class="when">1999</div><h3>从游戏世界唱到《只爱陌生人》</h3><p>《Eyes on Me》成为《最终幻想 VIII》主题曲，让她的声音抵达更远的听众；《只爱陌生人》则继续讨论城市里亲密与疏离。《开到荼蘼》盛放得近乎决绝，热闹的尽头已经隐约听见告别。</p></div>
+<div class="tl rv"><div class="when">2000</div><h3>《寓言》</h3><p>唱片前半由王菲、林夕与张亚东共同建立近乎概念专辑的空间，后半回到精致情歌。《笑忘书》劝人把执着放下，语气却不居高临下。她越来越懂得，通透不是没有痛，而是终于能和痛一起生活。</p></div>
+<div class="tl rv"><div class="when">2001</div><h3>另一张《王菲》</h3><p>《流年》把偶然相遇写成命运留下的纹路，《单行道》则带着伍佰作品的粗粝感。她的声音依然轻，却不再只属于“空灵”两个字；经历与时间让轻盈有了重量。</p></div>
+<div class="tl rv peak"><div class="when">2003</div><h3>《将爱》</h3><p>她与张亚东共同制作，并再次亲自参与创作。《将爱》像一句没有说完的命令：明知爱情会带来错误与失去，仍要把它进行到底。《旋木》写旋转木马的华丽与困住，《美错》则把遗憾唱成命运开的花。</p></div>
+<div class="tl rv"><div class="when">2003 — 2005</div><h3>“菲比寻常”巡演</h3><p>巡演从香港红磡开始，随后走过亚洲多座城市。舞台上的她已经不需要用密集讲话维持热度，只靠歌曲与造型便能形成完整世界。巡演结束后，她逐渐把生活从公众视线中收回来。</p></div>
+<div class="tl rv peak"><div class="when">2004</div><h3>金曲奖肯定《将爱》</h3><p>她凭《将爱》获得第十五届金曲奖最佳国语女演唱人。这个奖来得很像王菲：它肯定的不只是唱功，也是一位歌手在极高知名度下仍愿意主导作品、承担审美选择。</p></div>
+<div class="tl rv"><div class="when">2005 — 2009</div><h3>不出唱片的日子</h3><p>她把更多时间留给家庭与公益，也不再按照唱片工业的节奏安排生活。对一个长期被观看的人来说，退出同样是一种选择。没有新专辑的几年并非故事空白，而是她终于能够决定何时出现。</p></div>
+<div class="tl rv"><div class="when">2010</div><h3>《传奇》：重新开口</h3><p>央视春晚上，她翻唱李健的《传奇》。多年未以歌手身份站在如此大的舞台，声音没有刻意制造“王者归来”，只是平静地把久别唱成重逢。听众等了很久，她却仍像只唱一首自己喜欢的歌。</p></div>
+<div class="tl rv"><div class="when">2011</div><h3>《因为爱情》</h3><p>与陈奕迅合唱小柯写的作品。歌里没有年轻爱情的惊天动地，只说时间怎样改变人，又怎样留下某些不肯改变的部分。两个经历丰富的声音轻轻对唱，让怀旧不至于滥情。</p></div>
+<div class="tl rv"><div class="when">2014 — 2016</div><h3>电影歌与“幻乐一场”</h3><p>《匆匆那年》替青春的错过收尾。2016 年，她在上海举行一场“幻乐一场”演唱会，并以网络直播分享。她没有回到固定发片与巡演的轨道，而是用一次性的方式，保留出现与离开的主动权。</p></div>
+<div class="tl rv"><div class="when">2021</div><h3>《如愿》</h3><p>唐恬写词、钱雷作曲，为电影《我和我的父辈》而作。歌把个人愿望放进几代人的守护与牺牲中。王菲没有把宏大主题唱得用力，她越轻，越像后来的人对前辈说：你们想看的世界，我们正在努力抵达。</p></div>
+<div class="tl rv now"><div class="when">2025</div><h3>《世界赠予我的》</h3><p>她在央视春晚演唱袁晶作词、曹正杰作曲的新歌。唱到这个年纪，歌里的得到与失去已经不必分得太清。世界赠予人的既有温柔，也有伤口；能够仍以温柔回望，本身就是一种答案。</p></div>
+</div>
+</div>
+</section>
+<section id="tracks">
+<div class="wrap">
+<p class="eyebrow rv">03 / 唱片</p>
+<h2 class="rv">三十八首歌，听她怎样靠近，又怎样转身</h2>
+<p class="sec-lead rv">有些歌属于万人合唱，有些歌只适合一个人戴着耳机听。把它们依次排开，会发现王菲并非一直“空灵”：她会脆弱、任性、热烈、厌倦，也会在最简单的旋律里唱出时间的重量。</p>
+<div class="tracks">
+<article class="song rv" data-bvid="BV1u14y1n794" data-vlabel="视频" id="song-old">
+<div aria-label="播放视频 仍是旧句子" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/96/a1/86/96a1864b-af7f-094b-8897-6d25aabac3e1/mzaf_16013964941693867003.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="仍是旧句子封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/e4/7d/2c/e47d2cc6-9511-eda4-d683-ca4f27347c1b/19UM1IM01961.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">01</span><h3>仍是旧句子</h3></div>
+<p class="s-meta">1989.11.02 ·《王靖雯》· 出道时期</p>
+<p class="s-note">名字是王靖雯，声音还穿着唱片公司的合身衣服。她唱旧情与旧句子，技巧端正，情绪克制；后来那些自由的转音尚未完全展开，冷静的底色却已经出现。听一个巨星最初的声音，动人的常常不是成熟，而是未来正悄悄露出轮廓。</p>
+<div class="player">
+<button aria-label="播放 仍是旧句子" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="仍是旧句子 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="仍是旧句子 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ot4y177sk" data-vlabel="视频" id="song-fragile">
+<div aria-label="播放视频 容易受伤的女人" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f9/07/23/f907232d-89cd-8bd3-1077-1d6f86efe5a1/mzaf_7819701257666283684.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="容易受伤的女人封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d7/8a/a7/d78aa7b9-85d9-531e-36e8-b6a1a1a31001/19UM1IM01973.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">02</span><h3>容易受伤的女人</h3></div>
+<p class="s-meta">1992.08.13 ·《Coming Home》· 中岛美雪作曲</p>
+<p class="s-note">旋律源自千秋直美演唱的《ルージュ》，潘源良把它写成都市女人的自白。王菲没有把受伤唱得声嘶力竭，越是平静，越显得感情没有出口。那一年许多人第一次记住她，也记住一种新的脆弱：可以心碎，却不必求人看见。</p>
+<div class="player">
+<button aria-label="播放 容易受伤的女人" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="容易受伤的女人 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="容易受伤的女人 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Qi4y1i7zk" data-vlabel="视频" id="song-obsess">
+<div aria-label="播放视频 执迷不悔" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bf/0d/f8/bf0df836-ca21-c5ee-2cde-42aba1696ea1/mzaf_6557318066269342800.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="执迷不悔封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/5b/48/7b/5b487be5-9c6d-8d0f-fdd3-2f7604534d61/00602527130606.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">03</span><h3>执迷不悔</h3></div>
+<p class="s-meta">1993.02.05 ·《执迷不悔》</p>
+<p class="s-note">歌名后来几乎成了王菲的性格注脚。所谓执迷，并非不知道代价；所谓不悔，是知道之后仍愿意自己承担。她唱得并不激烈，反而像已经做完决定。真正的坚定往往如此，不需要向任何人提高音量。</p>
+<div class="player">
+<button aria-label="播放 执迷不悔" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="执迷不悔 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="执迷不悔 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1yp411o7uc" data-vlabel="视频" id="song-cold">
+<div aria-label="播放视频 冷战" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fc/02/39/fc0239d2-bbd9-717d-630e-0c58000df455/mzaf_4719041271465585590.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="冷战封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/be/3b/cb/be3bcbbf-da9f-331c-6493-8e842530b6a0/19UM1IM01976.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">04</span><h3>冷战</h3></div>
+<p class="s-meta">1993.09.07 ·《十万个为什么？》· 改编自 Tori Amos</p>
+<p class="s-note">原曲《Silent All These Years》写沉默里的女性声音，林夕把粤语词写成一场感情冷战。她的气声与停顿让没说出口的话更响。爱情里最远的距离，有时不是离开，而是两个人仍在同一房间，却各自守着沉默。</p>
+<div class="player">
+<button aria-label="播放 冷战" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="冷战 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="冷战 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1hN411X7CH" data-vlabel="视频" id="song-willing">
+<div aria-label="播放视频 我愿意" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c4/30/43/c43043ba-459d-1d36-927b-c7ffa28e3612/mzaf_13913888831489922198.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="我愿意封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/de/00/8f/de008f8d-5116-a636-2a8c-eb84c7fa28d2/00602517665088.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">05</span><h3>我愿意</h3></div>
+<p class="s-meta">1994.04 ·《迷》· 姚谦作词、黄国伦作曲</p>
+<p class="s-note">“我愿意”是最简单的三个字，也可能是爱情里最重的承诺。王菲把低处唱得像私语，高处又忽然打开；没有复杂道理，只有一个人愿意为了另一个人放下防备。许多年后，它仍是华语情歌里最干净的一次交付。</p>
+<div class="player">
+<button aria-label="播放 我愿意" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="我愿意 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="我愿意 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV13V411J7z5" data-vlabel="视频" id="song-dreamer">
+<div aria-label="播放视频 梦中人" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/57/ab/be/57abbe79-2101-8e92-0a9b-856734dc4bb5/mzaf_1337981408986029975.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="梦中人封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/20/02/6b200240-39cf-5d56-dc27-a65012a563f2/19UM1IM01978.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">06</span><h3>梦中人</h3></div>
+<p class="s-meta">1994.06.29 ·《胡思乱想》·《重庆森林》主题曲</p>
+<p class="s-note">The Cranberries 的《Dreams》被她唱成香港街头一阵不受控制的风。电影里的阿菲偷偷进入喜欢之人的房间，歌里的声音也在现实和幻想之间跳跃。爱情尚未被说破，一切都有可能；年轻最好听的部分，正是这种不怕做梦。</p>
+<div class="player">
+<button aria-label="播放 梦中人" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="梦中人 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="梦中人 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1sZ4y1w7nK" data-vlabel="视频" id="song-sky">
+<div aria-label="播放视频 天空" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fc/3e/35/fc3e359d-ba48-62fa-ffa3-171e47fc1e87/mzaf_10651697485564856190.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="天空封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8c/ac/bb/8cacbb3e-7102-5965-96e7-fe55d2188c8f/00602498212141.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">07</span><h3>天空</h3></div>
+<p class="s-meta">1994.11.10 ·《天空》</p>
+<p class="s-note">天空看似辽阔，歌里的人却被思念困住。编曲留出大片空白，让呼吸、尾音和沉默都成为音乐。王菲最迷人的地方在这里已经完整：她不把情绪塞满，而是替听者留一块空处，让每个人把自己的那个人放进去。</p>
+<div class="player">
+<button aria-label="播放 天空" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="天空 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="天空 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV14Y411X75E" data-vlabel="视频" id="song-chess">
+<div aria-label="播放视频 棋子" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9b/98/cd/9b98cded-cd64-8965-02d5-7110eb375a82/mzaf_4287070833833000163.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="棋子封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8c/ac/bb/8cacbb3e-7102-5965-96e7-fe55d2188c8f/00602498212141.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">08</span><h3>棋子</h3></div>
+<p class="s-meta">1994.11.10 ·《天空》</p>
+<p class="s-note">棋子只能沿别人划好的路线前进，爱情里的人也可能把命运交给对方。她唱得清醒，甚至带一点旁观，正因如此，那份无能为力更疼。一个人发现自己只是棋子时，最难的不是输，而是终于承认这盘棋从未由自己决定。</p>
+<div class="player">
+<button aria-label="播放 棋子" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="棋子 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="棋子 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1MU4y1h76r" data-vlabel="视频" id="song-reserved">
+<div aria-label="播放视频 矜持" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f0/7c/ec/f07cec68-b5c4-690c-b399-9a83aaeae5e9/mzaf_10098762597851644198.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="矜持封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8c/ac/bb/8cacbb3e-7102-5965-96e7-fe55d2188c8f/00602498212141.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">09</span><h3>矜持</h3></div>
+<p class="s-meta">1994.11.10 ·《天空》</p>
+<p class="s-note">“矜持”不是不爱，而是爱得太深，反而不知道如何走近。郭子的旋律和许常德的词给了她极大的留白，她只用轻轻的声音便唱出身体与心意之间的迟疑。克制不是冷淡，它常常是感情最满时的自我保护。</p>
+<div class="player">
+<button aria-label="播放 矜持" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="矜持 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="矜持 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1qK4y1n78D" data-vlabel="视频" id="song-please">
+<div aria-label="播放视频 讨好自己" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ab/70/45/ab704580-e2c5-9fde-9c12-f764003a6a4b/mzaf_17517366454047209047.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="讨好自己封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/aa/6d/6d/aa6d6db2-dd68-12a7-5711-c414a0d2fbe2/00602498212134.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">10</span><h3>讨好自己</h3></div>
+<p class="s-meta">1994.12 ·《讨好自己》</p>
+<p class="s-note">她开始把“让别人满意”换成“对自己诚实”。这不是一句任性的口号，而是一位年轻女歌手逐渐掌握作品与人生方向的声明。讨好自己，也许会让一些人失望；可一个人若总活在别人的期待里，最后连快乐都认不出来。</p>
+<div class="player">
+<button aria-label="播放 讨好自己" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="讨好自己 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="讨好自己 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1JZ4y1w7jF" data-vlabel="视频" id="song-edge">
+<div aria-label="播放视频 爱与痛的边缘" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/10/68/a9/1068a97f-ca27-7af4-6b0d-c8818418763f/mzaf_12910389764355845576.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="爱与痛的边缘封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/aa/6d/6d/aa6d6db2-dd68-12a7-5711-c414a0d2fbe2/00602498212134.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">11</span><h3>爱与痛的边缘</h3></div>
+<p class="s-meta">1994.12 ·《讨好自己》</p>
+<p class="s-note">爱与痛并不总有清楚边界，越靠近幸福，有时越害怕失去。她在副歌里把情绪推高，却没有把伤口演成戏。成年人后来才懂，感情最难的地方不是选择爱或不爱，而是明知两者相连，仍愿意走近。</p>
+<div class="player">
+<button aria-label="播放 爱与痛的边缘" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="爱与痛的边缘 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="爱与痛的边缘 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV14f4y1w7Rs" data-vlabel="视频" id="song-moon">
+<div aria-label="播放视频 但愿人长久" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/de/c7/c5/dec7c590-3c9f-8fe1-0e29-ed87c4eaef3d/mzaf_14659365200794202403.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="但愿人长久封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9e/55/95/9e559535-038b-67b5-6404-258c24d075cf/19UMGIM62800.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">12</span><h3>但愿人长久</h3></div>
+<p class="s-meta">1995 ·《菲靡靡之音》· 向邓丽君致意</p>
+<p class="s-note">苏轼的词、梁弘志的曲，经邓丽君成为经典，王菲又用自己的气息重新靠近。她没有模仿前辈的甜美，而是唱出更清远的月色。怀念一个影响过自己的人，最好的方式并非复制，而是带着她给你的东西继续往前走。</p>
+<div class="player">
+<button aria-label="播放 但愿人长久" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="但愿人长久 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="但愿人长久 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Zr4y1A7wV" data-vlabel="视频" id="song-vague">
+<div aria-label="播放视频 暧昧" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/c0/f1/75c0f1e0-ffc2-4b22-9105-86b1b5d54e00/mzaf_11608186533007258543.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="暧昧封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/b5/03/3c/b5033c4e-b34a-7616-623a-3b8c62eab8dc/00044003842427.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">13</span><h3>暧昧</h3></div>
+<p class="s-meta">1995.12.01 ·《Di-Dar》</p>
+<p class="s-note">林夕写尽暧昧最磨人的部分：关系没有开始，也就无从结束。王菲唱得像什么都没发生，细听却处处是试探。许多爱情没有正式名字，却照样耗尽人的心；越不能确认，越容易把一个眼神想成全部。</p>
+<div class="player">
+<button aria-label="播放 暧昧" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="暧昧 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="暧昧 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1UF411L7bn" data-vlabel="视频" id="song-split">
+<div aria-label="播放视频 分裂" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/64/e7/5f/64e75f02-31f9-d187-3d68-db32412d4ddd/mzaf_17763071955536811435.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="分裂封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f6/31/d6/f631d6d6-1fd0-272a-3feb-de30b4e69ace/00602517665095.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">14</span><h3>分裂</h3></div>
+<p class="s-meta">1996.06 ·《浮躁》· Cocteau Twins 为专辑创作</p>
+<p class="s-note">这不是把外国旧歌换成中文，而是一次真正的共同创作。声音像被切成几层，在迷雾里互相追赶；“分裂”既是关系的撕扯，也是自我内部的冲突。王菲不再急着讲完整故事，她让音色本身成为故事。</p>
+<div class="player">
+<button aria-label="播放 分裂" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="分裂 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="分裂 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV15N411Q7Lq" data-vlabel="官方 MV" id="song-human">
+<div aria-label="播放视频 人间" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/82/5a/6c/825a6ca0-23c1-0114-cfcd-b89a4f6997da/mzaf_10518824312310718306.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="人间封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6f/75/54/6f75544f-1d55-b5d1-40e2-1c2fde6e0925/1997.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">15</span><h3>人间</h3></div>
+<p class="s-meta">1997.09.26 ·《王菲》· 中岛美雪为她作曲</p>
+<p class="s-note">林夕写人间并不完美：有聚散、有风雨，也有值得相信的寻常日子。中岛美雪为她写下旋律，后来才另填日文版。王菲把祝福唱得很轻，不许诺永远，只盼看清世事以后，仍有人愿意陪你看细水长流。</p>
+<div class="player">
+<button aria-label="播放 人间" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="人间 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="人间 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV17K4y1J73Y" data-vlabel="官方 MV" id="song-happy">
+<div aria-label="播放视频 你快乐所以我快乐" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/72/69/35/726935ca-fdd3-bfab-57dd-a27ed0dd6372/mzaf_9907812185111692790.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="你快乐所以我快乐封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6f/75/54/6f75544f-1d55-b5d1-40e2-1c2fde6e0925/1997.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">16</span><h3>你快乐所以我快乐</h3></div>
+<p class="s-meta">1997.09.26 ·《王菲》· 林夕作词、张亚东作曲</p>
+<p class="s-note">一句“你快乐所以我快乐”，听起来像最无私的爱，背后也藏着把自己交出去的危险。她唱得明亮，林夕却留下一点疑问：若快乐完全取决于另一个人，我们还剩下多少自己？好情歌从不替人回答，只把矛盾照亮。</p>
+<div class="player">
+<button aria-label="播放 你快乐所以我快乐" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="你快乐所以我快乐 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="你快乐所以我快乐 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Wh411k7D9" data-vlabel="视频" id="song-bored">
+<div aria-label="播放视频 闷" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7c/f7/00/7cf700e9-3953-4c54-bbe8-8ed679813473/mzaf_13262870487055656611.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="闷封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6f/75/54/6f75544f-1d55-b5d1-40e2-1c2fde6e0925/1997.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">17</span><h3>闷</h3></div>
+<p class="s-meta">1997.09.26 ·《王菲》</p>
+<p class="s-note">她把“闷”唱成一场对无聊生活的反抗。节奏轻快，态度却很明确：如果世界只允许女人端庄、安稳、按部就班，那就偏要跳出规矩。王菲的自由并非高声宣告，常常只是很自然地拒绝无趣。</p>
+<div class="player">
+<button aria-label="播放 闷" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="闷 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="闷 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1eh411Q79i" data-vlabel="官方 MV" id="song-rather">
+<div aria-label="播放视频 我也不想这样" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ae/4d/32/ae4d32b0-37a3-6a3d-2563-af01c9476a6e/mzaf_4675270680489092027.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="我也不想这样封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6f/75/54/6f75544f-1d55-b5d1-40e2-1c2fde6e0925/1997.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">18</span><h3>我也不想这样</h3></div>
+<p class="s-meta">1997.09.26 ·《王菲》</p>
+<p class="s-note">“我也不想这样”是关系走坏以后最无力的一句话。没有谁一开始就想互相伤害，可爱意、误会与骄傲缠在一起，最后连道歉都显得太迟。她把责任与委屈同时唱出来，因此没有把任何一方写成坏人。</p>
+<div class="player">
+<button aria-label="播放 我也不想这样" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="我也不想这样 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="我也不想这样 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1qvZHYrEZu" data-vlabel="视频" id="song-bean">
+<div aria-label="播放视频 红豆" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4d/cb/26/4dcb2622-1524-f937-05de-6baad0412d15/mzaf_8182413927380279026.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="红豆封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">19</span><h3>红豆</h3></div>
+<p class="s-meta">1998.10.02 ·《唱游》· 林夕作词、柳重言作曲</p>
+<p class="s-note">红豆在中文里寄托相思，歌里却不急着团圆。林夕写等待，也写感情终究会腐朽；王菲唱得温柔，让残酷的话有了体温。所谓长久，并非真的永不改变，而是在变化到来以前，愿意认真珍惜。</p>
+<div class="player">
+<button aria-label="播放 红豆" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="红豆 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="红豆 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Mv4y1K7Z4" data-vlabel="视频" id="song-oath">
+<div aria-label="播放视频 情诫" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b2/17/5a/b2175a6c-2946-9eb8-aae6-310daaceba5e/mzaf_15049910978868793590.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="情诫封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">20</span><h3>情诫</h3></div>
+<p class="s-meta">1998.10.02 ·《唱游》</p>
+<p class="s-note">情与诫放在一起，本来就是爱情的两面：一面想不顾一切，一面提醒自己别再受伤。电子节拍让歌显得冷，声音却不断往前。王菲很会唱这种矛盾，像一个人嘴上说到此为止，脚步仍向旧人走去。</p>
+<div class="player">
+<button aria-label="播放 情诫" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="情诫 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="情诫 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ky4y187Lj" data-vlabel="官方 MV" id="song-face">
+<div aria-label="播放视频 脸" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9b/fb/ac/9bfbacaa-33a6-8eef-08a3-b2bc60f7af84/mzaf_17981650721521475372.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="脸封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">21</span><h3>脸</h3></div>
+<p class="s-meta">1998.10.02 ·《唱游》</p>
+<p class="s-note">开头近半分钟几乎只剩人声，音准、呼吸与和声都无处躲藏。她用“脸”讨论外表、自我与欲望，也借一首歌展示声音可以像乐器一样被层层折叠。那不是炫技，而是一个歌手完全信任自己身体的时刻。</p>
+<div class="player">
+<button aria-label="播放 脸" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="脸 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="脸 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1re411x7mb" data-vlabel="视频" id="song-halfway">
+<div aria-label="播放视频 半途而废" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/98/10/85/981085e8-ecb4-9388-43b9-c4178cdb5c20/mzaf_14745838893362612789.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="半途而废封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">22</span><h3>半途而废</h3></div>
+<p class="s-meta">1998.10.02 ·《唱游》</p>
+<p class="s-note">半途而废常被当作懦弱，歌里却有一种终于肯停下的清醒。有些关系不是坚持得更久就会更好，承认走不下去，也需要勇气。她的声音轻快，像把一段沉重的爱从肩上卸下来。</p>
+<div class="player">
+<button aria-label="播放 半途而废" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="半途而废 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="半途而废 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Bh411D7Lw" data-vlabel="视频" id="song-eyes">
+<div aria-label="播放视频 Eyes on Me" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/35/d0/9d/35d09d33-8633-e522-cac8-6054e180ea0b/mzaf_9235917916776099005.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Eyes on Me封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f0/31/6c/f0316c45-9a26-0e04-a32e-c3c2ff33f741/Eyes_on_Me.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">23</span><h3>Eyes on Me</h3></div>
+<p class="s-meta">1999.02.24 ·《最终幻想 VIII》主题曲</p>
+<p class="s-note">植松伸夫写下旋律，染谷和美填词，王菲用英语唱进游戏世界。一首关于舞台歌手与士兵相遇的情歌，随着游戏抵达全球听众。无论语言怎样改变，她声音里那种遥远又亲近的质感，仍然一听便知。</p>
+<div class="player">
+<button aria-label="播放 Eyes on Me" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Eyes on Me 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Eyes on Me 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV14p411f7pY" data-vlabel="视频" id="song-bloom">
+<div aria-label="播放视频 开到荼蘼" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/bd/9b/7ebd9b22-ed4a-60e9-9c45-d0461050f11c/mzaf_18003330837245003345.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="开到荼蘼封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ac/4c/c4/ac4cc4fd-be41-f478-9b4e-32199fd5878c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">24</span><h3>开到荼蘼</h3></div>
+<p class="s-meta">1999.09.10 ·《只爱陌生人》</p>
+<p class="s-note">荼蘼开在春天尽头，盛放本身便带着结束。林夕把繁华、欲望和幻灭写得锋利，她则从低声一路唱到近乎燃烧。一个人若已经看见结局，是否还值得开到最盛？这首歌的回答是：正因为会谢，才更要开。</p>
+<div class="player">
+<button aria-label="播放 开到荼蘼" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="开到荼蘼 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="开到荼蘼 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1tg411u7PN" data-vlabel="视频" id="song-only">
+<div aria-label="播放视频 只爱陌生人" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fe/11/09/fe1109c6-a30f-7e09-c95c-d95ae8e20f81/mzaf_14020377516984628510.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="只爱陌生人封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ac/4c/c4/ac4cc4fd-be41-f478-9b4e-32199fd5878c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">25</span><h3>只爱陌生人</h3></div>
+<p class="s-meta">1999.09.10 ·《只爱陌生人》</p>
+<p class="s-note">熟人带来责任，陌生人反而让人自由。她唱的不是冷漠，而是都市生活里偶尔想从身份、关系和期待中逃走的念头。王菲把一句任性唱得毫不费力，因为自由对她而言从来不是姿态，而是本能。</p>
+<div class="player">
+<button aria-label="播放 只爱陌生人" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="只爱陌生人 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="只爱陌生人 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1z94y1S77P" data-vlabel="视频" id="song-hypno">
+<div aria-label="播放视频 催眠" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/36/21/b9/3621b9b0-bc7a-28f1-0706-559358f5a695/mzaf_14038348791147241817.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="催眠封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ac/4c/c4/ac4cc4fd-be41-f478-9b4e-32199fd5878c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">26</span><h3>催眠</h3></div>
+<p class="s-meta">1999.09.10 ·《只爱陌生人》</p>
+<p class="s-note">林夕把一段关系写成反复回到同一点的钟摆，郭亮的旋律则像缓慢落下的暗示。她一遍遍数时间，仿佛明知应该醒来，仍舍不得离开梦境。很多执念并非看不清，只是我们尚未准备好睁眼。</p>
+<div class="player">
+<button aria-label="播放 催眠" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="催眠 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="催眠 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1nGdCB8E6s" data-vlabel="视频" id="song-butterfly">
+<div aria-label="播放视频 蝴蝶" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5b/8c/37/5b8c37c2-629e-89f0-6442-bde6a08e44b8/mzaf_16604940445116592499.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="蝴蝶封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ac/4c/c4/ac4cc4fd-be41-f478-9b4e-32199fd5878c/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">27</span><h3>蝴蝶</h3></div>
+<p class="s-meta">1999.09.10 ·《只爱陌生人》</p>
+<p class="s-note">蝴蝶象征变化，也象征美丽生命的短暂。歌里的人无法永远停在一朵花上，离开并不一定因为薄情，可能只是成长已经开始。王菲唱得几乎没有重量，却让告别像翅膀掠过皮肤，轻而清楚。</p>
+<div class="player">
+<button aria-label="播放 蝴蝶" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="蝴蝶 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="蝴蝶 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Gx411P7mo" data-vlabel="视频" id="song-laugh">
+<div aria-label="播放视频 笑忘书" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a1/4e/63/a14e630a-b5b7-4785-575c-69d8a8f4c0f7/mzaf_8020347983330149990.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="笑忘书封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/eb/1a/6c/eb1a6ce1-646b-b2a6-bc2e-be629e981b74/Untitled.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">28</span><h3>笑忘书</h3></div>
+<p class="s-meta">2000.10.20 ·《寓言》· 粤语版《给自己的情书》</p>
+<p class="s-note">林夕把歌写成送给自己的劝慰：爱过、哭过，最终仍要学会与自己相处。笑忘不是强迫失忆，而是回头时不再只看见伤口。王菲唱得像从很远处递来一封信，收信的人是每个在感情里弄丢过自己的人。</p>
+<div class="player">
+<button aria-label="播放 笑忘书" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="笑忘书 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="笑忘书 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1sV411x7bM" data-vlabel="视频" id="song-chanel">
+<div aria-label="播放视频 香奈儿" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/59/d8/46/59d84602-eab9-6b84-075b-7dee6efcb22c/mzaf_486567116443913152.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="香奈儿封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/eb/1a/6c/eb1a6ce1-646b-b2a6-bc2e-be629e981b74/Untitled.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">29</span><h3>香奈儿</h3></div>
+<p class="s-meta">2000.10.20 ·《寓言》</p>
+<p class="s-note">香奈儿既是名字，也是关于风格、欲望与身份的符号。歌把爱情和时尚放在同一面镜子里：人迷恋的究竟是对方，还是对方让自己成为的样子？她用慵懒声线唱出一场精致游戏，漂亮，也带一点危险。</p>
+<div class="player">
+<button aria-label="播放 香奈儿" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="香奈儿 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="香奈儿 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Sx41137V7" data-vlabel="视频" id="song-years">
+<div aria-label="播放视频 流年" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/70/62/d4/7062d48d-522c-3e17-d0c2-403eadf6842f/mzaf_15836870332820536766.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="流年封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/24/a6/ea/24a6eacb-87f6-da80-6ca5-555eb5b3f808/2001.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">30</span><h3>流年</h3></div>
+<p class="s-meta">2001.10.18 ·《王菲》· 林夕作词、陈晓娟作曲</p>
+<p class="s-note">有生之年，狭路相逢，终不能幸免。林夕把爱情写成命运留下的刺青，陈晓娟的旋律温柔得近乎宿命。王菲没有把“流年”唱成哀叹，像是终于承认：有些人未必陪你到最后，却会永久改变你看世界的方式。</p>
+<div class="player">
+<button aria-label="播放 流年" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="流年 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="流年 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1aW411a7ux" data-vlabel="视频" id="song-oneway">
+<div aria-label="播放视频 单行道" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/69/c3/35/69c33529-cf99-53c3-d6a0-efd796e9001e/mzaf_2880678486962723797.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="单行道封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/24/a6/ea/24a6eacb-87f6-da80-6ca5-555eb5b3f808/2001.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">31</span><h3>单行道</h3></div>
+<p class="s-meta">2001.10.18 ·《王菲》· 伍佰创作</p>
+<p class="s-note">伍佰写下带着公路感的旋律，让王菲少见地露出粗粝一面。人生许多路没有回程，选择发生以后，只能一边失去一边前进。她不再漂在云端，而是踩着节拍往前走，孤单却不软弱。</p>
+<div class="player">
+<button aria-label="播放 单行道" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="单行道 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="单行道 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1m7411P7jg" data-vlabel="视频" id="song-love">
+<div aria-label="播放视频 将爱" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9c/68/bf/9c68bf6c-6dc7-9b6e-465e-6d6fcd137dfa/mzaf_16125704368537406747.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="将爱封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/11/72/ee/1172ee39-e832-c10f-5aad-dea3d82889e3/Untitled.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">32</span><h3>将爱</h3></div>
+<p class="s-meta">2003.11.07 ·《将爱》· 王菲词曲</p>
+<p class="s-note">题目从“将爱进行到底”缩成两个字，像把一句宣言也删到只剩核心。她亲自写词作曲，承认爱会制造麻烦、错误与疼痛，仍然选择去爱。成熟并不一定更谨慎，有时是终于愿意为自己的冲动负责。</p>
+<div class="player">
+<button aria-label="播放 将爱" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="将爱 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="将爱 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1qy4y1E7G3" data-vlabel="视频" id="song-spin">
+<div aria-label="播放视频 旋木" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/89/4e/78/894e787b-97ee-cd69-197a-e4f23c01742f/mzaf_14950568723735550669.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="旋木封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/11/72/ee/1172ee39-e832-c10f-5aad-dea3d82889e3/Untitled.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">33</span><h3>旋木</h3></div>
+<p class="s-meta">2003.11.07 ·《将爱》· 杨明学作词、袁惟仁作曲</p>
+<p class="s-note">旋转木马有音乐、有灯光，也有永远抵达不了的远方。杨明学把生命后期对孤独的体会写进歌词，王菲则唱得近乎透明。快乐可以很真，受困也可以很真；最难过的，是两者常常发生在同一个地方。</p>
+<div class="player">
+<button aria-label="播放 旋木" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="旋木 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="旋木 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1uy4y1a73c" data-vlabel="官方 MV" id="song-mistake">
+<div aria-label="播放视频 美错" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3d/81/5d/3d815da4-c058-8f48-addc-a8bc2e34b1e7/mzaf_17316710937340726037.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="美错封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/11/72/ee/1172ee39-e832-c10f-5aad-dea3d82889e3/Untitled.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">34</span><h3>美错</h3></div>
+<p class="s-meta">2003.11.07 ·《将爱》</p>
+<p class="s-note">林夕用“美错”形容一段即使结局遗憾、仍值得经历的关系。花开错季节，不代表花不美；人爱错了，也未必一无所得。王菲把悔意唱得很淡，像多年以后终于可以感谢那场错误。</p>
+<div class="player">
+<button aria-label="播放 美错" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="美错 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="美错 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ik4y1y7WB" data-vlabel="视频" id="song-legend">
+<div aria-label="播放视频 传奇" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d5/3b/d0/d53bd0a1-7cf9-637f-718c-188f29f79760/mzaf_16623470831983411226.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="传奇封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/92/cb/f4/92cbf406-bef3-5cf6-24ca-c575b7bdd43e/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">35</span><h3>传奇</h3></div>
+<p class="s-meta">2010.02.13 · 单曲 · 原唱李健</p>
+<p class="s-note">久别舞台后，她在春晚上重新唱歌。李健写的传奇原本就轻，她没有把复出唱成盛大宣言，只让声音静静落下来。真正被等待的人，无需证明自己仍在；开口的第一句，时间便自动接上。</p>
+<div class="player">
+<button aria-label="播放 传奇" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="传奇 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="传奇 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Ft411y72P" data-vlabel="视频" id="song-because">
+<div aria-label="播放视频 因为爱情" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/11/1d/07/111d07d7-3e1c-62b0-288a-df3a111890ac/mzaf_17563851161635682563.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="因为爱情封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f3/c8/cb/f3c8cb79-da10-eed6-4c9e-03bb8e5f40fc/00602488996495.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">36</span><h3>因为爱情</h3></div>
+<p class="s-meta">2011.02.22 · 与陈奕迅合唱 · 小柯词曲</p>
+<p class="s-note">年轻时的爱情靠冲动，后来回望，才知道许多坚定来自共同走过的时间。两个声音都收着唱，像一对旧人坐下来谈起从前。歌曲最动人的并非怀旧，而是承认岁月改变一切以后，仍有一些温柔没有过期。</p>
+<div class="player">
+<button aria-label="播放 因为爱情" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="因为爱情 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="因为爱情 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1MS4y1j7of" data-vlabel="视频" id="song-fleeting">
+<div aria-label="播放视频 匆匆那年" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6a/8a/bf/6a8abfc8-0323-e95a-b73c-8d30f6a02d1c/mzaf_7075802013161148701.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="匆匆那年封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/4c/76/88/4c76888b-c58a-b01c-2107-1db8932257aa/Untitled.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">37</span><h3>匆匆那年</h3></div>
+<p class="s-meta">2014.11.07 · 电影《匆匆那年》主题曲</p>
+<p class="s-note">林夕把青春里的亏欠写成一句无法补交的道歉。谁都曾以为来日方长，等真正懂得珍惜，许多人已经留在匆匆那年。王菲唱得疏淡，没有替回忆涂上金色；正因不美化，遗憾才更像我们自己的。</p>
+<div class="player">
+<button aria-label="播放 匆匆那年" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="匆匆那年 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="匆匆那年 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1FG411a7vV" data-vlabel="视频" id="song-wish">
+<div aria-label="播放视频 如愿" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/95/34/ba/9534baca-b6f1-3cea-0bd2-b78ddf9515d4/mzaf_2215711000115773621.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="如愿封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/8c/35/68/8c3568bd-1521-6622-3076-c4af48aeb8a1/704537425953.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">38</span><h3>如愿</h3></div>
+<p class="s-meta">2021.10.29 ·《我和我的父辈》主题曲 · 唐恬作词、钱雷作曲</p>
+<p class="s-note">歌从父辈的牺牲唱到后来人的生活，把“如愿”变成跨越世代的回答。王菲没有用力歌颂，只用近乎耳语的方式让宏大落回一个个普通家庭。愿望真正实现时，常常不是惊天动地，而是后人可以安稳地过日子。</p>
+<div class="player">
+<button aria-label="播放 如愿" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="如愿 王菲" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="如愿 王菲" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="tight" id="route">
+<div class="wrap">
+<div class="route rv">
+<p class="eyebrow">04 / 选听清单</p>
+<h2><span class="yr">从容易受伤，唱到终于如愿</span>如果今晚只听十二首</h2>
+<p>先听王靖雯如何成为王菲，再听她从万人传唱的情歌走进《浮躁》的私人世界，最后回到时间、记忆与祝福。十二首歌不够概括她，却足以听见一个人怎样始终保有自己。</p>
+<ol id="routeList">
+<li><button data-target="song-old" type="button"><span>仍是旧句子</span></button></li>
+<li><button data-target="song-fragile" type="button"><span>容易受伤的女人</span></button></li>
+<li><button data-target="song-obsess" type="button"><span>执迷不悔</span></button></li>
+<li><button data-target="song-dreamer" type="button"><span>梦中人</span></button></li>
+<li><button data-target="song-sky" type="button"><span>天空</span></button></li>
+<li><button data-target="song-split" type="button"><span>分裂</span></button></li>
+<li><button data-target="song-human" type="button"><span>人间</span></button></li>
+<li><button data-target="song-bean" type="button"><span>红豆</span></button></li>
+<li><button data-target="song-years" type="button"><span>流年</span></button></li>
+<li><button data-target="song-legend" type="button"><span>传奇</span></button></li>
+<li><button data-target="song-happy" type="button"><span>你快乐所以我快乐</span></button></li>
+<li><button data-target="song-wish" type="button"><span>如愿</span></button></li>
+</ol>
+<p class="hint">不妨留一点空白。王菲的歌，常常在声音停下以后才真正开始。</p>
+</div>
+</div>
+</section>
+<section class="tight" id="refs">
+<div class="wrap">
+<p class="eyebrow rv">05 / 资料与唱片注</p>
+<h2 class="rv">唱片、奖项与歌声的来处</h2>
+<div class="refs">
+<div class="rv"><h3>生平与唱片</h3><ul>
+<li><a href="https://www.universal-music.co.jp/faye-wong/biography/" rel="noopener noreferrer" target="_blank">Universal Music Japan：王菲官方艺人传记</a></li>
+<li><a href="https://music.apple.com/us/album/%E6%B5%AE%E8%BA%81/1443287350" rel="noopener noreferrer" target="_blank">Apple Music：《浮躁》专辑与曲目资料</a></li>
+<li><a href="https://www.1905.com/mdb/film/49525/" rel="noopener noreferrer" target="_blank">1905 电影网：《重庆森林》影片资料</a></li>
+<li><a href="https://www.bamid.gov.tw/News_Content.aspx?n=3539&amp;s=124212" rel="noopener noreferrer" target="_blank">台湾文化部影视及流行音乐产业局：第十五届金曲奖得奖名单</a></li>
+</ul></div>
+<div class="rv"><h3>后来的歌</h3><ul>
+<li><a href="https://www.youtube.com/watch?v=ZoJCN0pV7Qs" rel="noopener noreferrer" target="_blank">王菲官方频道：《如愿》及词曲资料</a></li>
+<li><a href="https://www.youtube.com/watch?v=QnQcmqoP89M" rel="noopener noreferrer" target="_blank">央视春晚：《世界赠予我的》现场</a></li>
+<li>《容易受伤的女人》改编自中岛美雪作曲、千秋直美演唱的《ルージュ》；《冷战》改编自 Tori Amos 的《Silent All These Years》。</li>
+<li>《梦中人》改编自 The Cranberries 的《Dreams》；《分裂》与《扫兴》是 Cocteau Twins 为《浮躁》提供的新作。</li>
+<li>《人间》由中岛美雪为王菲作曲，日文版《清流》在后；《传奇》原唱及词曲作者为李健。</li>
+<li>Apple Music 的部分音源来自后来的重制或数字再版，作品年代仍以原始专辑为准。</li>
+</ul></div>
+</div>
+<p class="fine rv">歌声之外的生活，留给王菲自己；音乐发生过的年月，已经留在唱片里。</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div>
+<b>菲比寻常 · 王菲音乐传记</b>
+<p class="fmeta">从《仍是旧句子》到《如愿》，沿着三十八首歌，听王菲怎样走近人群，也怎样把自己留给自己。</p>
+</div>
+<a class="totop" href="#top">回到顶部 ↑</a>
+</div>
+</footer>
+<button aria-label="回到顶部" class="fab" id="fab"><svg viewbox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"></path></svg></button>
+<div class="mix" id="mix">
+<button aria-label="上一首" class="mix-btn" disabled="" id="mixPrev" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"></path></svg>
+</button>
+<button aria-label="播放" aria-pressed="false" class="mix-btn is-main" id="mixToggle" type="button">
+<svg aria-hidden="true" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<button aria-label="下一首" class="mix-btn" id="mixNext" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"></path></svg>
+</button>
+<span class="mix-now">准备试听</span>
+<label class="mix-vol">
+<input aria-label="音量" id="mixVol" max="100" min="0" type="range" value="28"/>
+</label>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

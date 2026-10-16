@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>从大凉山出发 · 海来阿木音乐传记</title>
+<meta name="description" content="从大凉山的月琴与口弦出发，沿 12 首歌重听海来阿木的成长、亲情、爱情与故乡：从《阿果吉曲》到《心田》。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.mix,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">海来阿木 <b>从大凉山出发</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/8f/22/7e/8f227eab-7efd-8644-1f55-0fb3fbc494f1/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/44/76/80/447680b6-a465-315e-1ef3-735083b71645/3616847844539.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/78/72/d4/7872d437-07b5-e956-b53e-fde1fd7b5816/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/c3/d6/d3/c3d6d382-a95c-2363-c42f-d03f194c1327/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6c/c9/fd/6cc9fd1e-6363-622b-3869-7aad0a177240/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/06/98/02/0698026a-e156-b399-4a75-42ceae46a9e3/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/89/63/60/89636026-3056-ff35-98b8-b2a91aac776f/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/a1/ab/ca/a1abca9f-81b4-8238-0869-f74767b542ad/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/70/8e/54/708e54d6-20c1-2805-136e-21c55e368539/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/ac/5d/a3ac5d32-6e03-4349-2b52-ef924827d5ae/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b3/1d/0b/b31d0b39-b153-6192-b891-b0d1b4f3c7a0/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/62/f1/aa/62f1aaa2-6c01-8347-754a-ee9bbcc1e125/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/8f/22/7e/8f227eab-7efd-8644-1f55-0fb3fbc494f1/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/44/76/80/447680b6-a465-315e-1ef3-735083b71645/3616847844539.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/78/72/d4/7872d437-07b5-e956-b53e-fde1fd7b5816/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/c3/d6/d3/c3d6d382-a95c-2363-c42f-d03f194c1327/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6c/c9/fd/6cc9fd1e-6363-622b-3869-7aad0a177240/cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/06/98/02/0698026a-e156-b399-4a75-42ceae46a9e3/cover.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1993 — 至今</p>
+    <h1>从大凉山出发</h1>
+    <p class="sub">海 来 阿 木 音 乐 传 记</p>
+    <p class="deck">父亲院坝里的月琴与口弦，是他最早听见的音乐；离乡后的天桥、火堆旁的朋友、夭折的女儿和相守的妻子，后来都走进了歌里。从《阿果吉曲》到《不如见一面》，这是一位彝族唱作人把个人悲欢唱成大众心事的来路。</p>
+    <div class="meta-row">
+      <span>1993.4.4 生于四川凉山甘洛</span>
+      <span>彝族，本名海来阿木·吉布</span>
+      <span>2018 年《阿果吉曲》出道</span>
+      <span>2024 年起签约阔景音乐</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a>
+      <a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false">
+        <span class="listen-label">开始聆听</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p>
+    <h2 class="rv">十二首歌，照见一个人的来路</h2>
+    <p class="sec-lead rv">从甘洛县的彝族村寨到全国巡演，他真正有辨识度的地方，不只是沙哑声线，而是肯把生活的钝痛、普通人的体面和故乡的节拍，一起放进通俗歌曲。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1993</div><div class="l">4 月 4 日生于凉山甘洛</div><div class="s">彝族。本名海来阿木·吉布</div></div>
+      <div class="stat rv"><div class="n">2018</div><div class="l">《阿果吉曲》正式发行</div><div class="s">写给早逝女儿的第一支单曲</div></div>
+      <div class="stat rv"><div class="n">2020</div><div class="l">3 月 21 日《点歌的人》</div><div class="s">曲目日。合集上架日写成 2019-11-27</div></div>
+      <div class="stat rv"><div class="n">2023</div><div class="l">11 月 6 日《不如见一面》</div><div class="s">次年春晚改写为亲情、友情与遗憾</div></div>
+      <div class="stat rv"><div class="n">12</div><div class="l">本页记下的歌</div><div class="s">从《阿果吉曲》到《心田》</div></div>
+      <div class="stat rv"><div class="n">2026</div><div class="l">巡演仍在继续</div><div class="s">从成都唱到拉斯维加斯与旧金山</div></div>
+    </div>
+    <div class="toc rv">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#glance">速览：六个数字</a></li>
+        <li><a href="#timeline">时间线：从甘洛到巡演</a></li>
+        <li><a href="#tracks">唱片与主打：12 首</a></li>
+        <li><a href="#route">如果只重听一个晚上</a></li>
+        <li><a href="#refs">资料与边界</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p>
+    <h2 class="rv"><span class="yr">1993 — 2026</span>山里的节拍，城里的歌</h2>
+    <p class="sec-lead rv">他的经历很容易被包装成“苦尽甘来”，但音乐并不是苦难的奖章。更重要的是，一个在彝族歌舞中长大的年轻人，怎样把亲身感受写得足够直白，也足够让同代人认出自己。</p>
+    <div class="timeline">
+      <div class="tl rv"><div class="when">1993 · 04 · 04</div><h3>生于凉山甘洛</h3><p>海来阿木·吉布出生在四川省凉山彝族自治州甘洛县的彝族家庭。父亲会弹月琴、吹口弦，村寨逢年过节、婚丧嫁娶时自然响起的歌舞，是他比录音棚更早的音乐课堂。</p></div>
+      <div class="tl rv"><div class="when">少年时代</div><h3>先学会听生活，再学会写歌</h3><p>他后来回忆，父亲告诉他，每件乐器的旋律都有故事和感情。初二时从远房表哥那里得到第一把吉他，学会几个和弦；18 岁背着吉他去成都，碰壁后回到甘洛做生意、开货车。音乐没有让生活立刻改道，却一直陪着他。</p></div>
+      <div class="tl rv"><div class="when">2014</div><h3>在家乡组建「逆时光」</h3><p>正式发行之前，他已在甘洛组过乐队。那是一段尚未被唱片工业记录的年月，也解释了他后来为何始终把“唱给身边的人听”放在技巧之前。</p></div>
+      <div class="tl peak rv"><div class="when">2016 — 2018</div><h3>一位父亲写下《阿果吉曲》</h3><p>2016 年，两岁的女儿因病去世。封面新闻与央视《心理访谈》都记录，他后来在泸沽湖边写下以女儿名字命名的歌。2017 年，他把作品交给朋友、彝族音乐人曲比阿且整理制作；2018 年，这首歌成为他的第一支正式单曲。亲情不是被借来煽情的背景，而是他此后创作中最沉的一块底色。</p></div>
+      <div class="tl rv"><div class="when">2019</div><h3>火堆旁的朋友，走出山外的歌</h3><p>《别知己》由海来阿木与阿呷拉古、曲比阿且共同唱响。多年后他解释，歌中的火堆、歌舞来自儿时真实见闻，写的是对朋友的珍重；早年的报道还记录了他们鼓励凉山年轻人勇敢走出去的愿望。</p></div>
+      <div class="tl peak rv"><div class="when">2020</div><h3>城市里，每个人都在点一首自己的歌</h3><p>到北京闯荡时，他因房租转住燕郊。一次抱着凳子坐在天桥上，看人群和车流来往，写成《点歌的人》。这一年《你的万水千山》《不过人间》相继流行，短视频时代把他的“大白话”送进更广阔的日常：出租车、餐馆、工地和许多离家人的耳机。</p></div>
+      <div class="tl rv"><div class="when">2020 · 12 · 19 / 2021</div><h3>从网络热歌走向现场</h3><p>演出记录把「木鸣而来」首场落在 2020 年 12 月 19 日的成都东郊记忆，人物资料则常以 2021 年概括首轮全国巡演。两种记法指向同一转折：那些在手机里循环的歌，开始接受现场乐队与面对面聆听的检验。</p></div>
+      <div class="tl rv"><div class="when">2021</div><h3>把时间写进承诺</h3><p>《烟雨人间》与《五十年以后》延续了他朴素、直接的叙事。后者没有可靠的专门创作自述可援引；能确认的是，它把相守写成跨越半生的愿望，也在听众的婚礼、纪念与留言里获得了远超原作的生活回声。</p></div>
+      <div class="tl rv"><div class="when">2022</div><h3>爱情不只在热恋里</h3><p>《三生三幸》写给共同熬过艰难岁月的妻子。海来阿木说，他看见妻子操持家庭、承受聚少离多，反思自己的亏欠，在返京航班上写下旋律和心里话。同年的《西楼儿女》，则把个人梦想转向所有在外打拼、想有一天体面回乡的人。</p></div>
+      <div class="tl rv"><div class="when">2023 · 11 · 06</div><h3>《不如见一面》：把遗憾唱得更宽</h3><p>原版从爱情、婚姻和错过出发。海来阿木后来讲，灵感也来自街上擦肩而过的人与朋友们讲述的心事。它真正走向更大舞台时，还要经历一次重新理解。</p></div>
+      <div class="tl peak rv"><div class="when">2024</div><h3>春晚不是终点，是一次改写</h3><p>为央视春晚与单依纯合唱时，创作团队依照节目组建议重写歌词，让“见一面”不只属于旧爱，也容纳亲情、友情和人生中的告别。同年他签约阔景音乐，以首发歌手参加《歌手 2024》，并启动「不如见一面」巡演。一个由网络传播托起的声音，由此进入主流舞台的中心。</p></div>
+      <div class="tl rv"><div class="when">2025</div><h3>让民族音乐活在当下</h3><p>在《人民日报》的署名文章中，他写父亲的月琴、口弦和村寨歌舞，也写采风与学习民族乐器。他反对把传统只留在博物馆里，希望彝族音乐元素与现代流行、年轻听众和互联网相遇。4 月，他增补当选成都市文联副主席；7 月发行《心田》。</p></div>
+      <div class="tl rv"><div class="when">2026</div><h3>歌继续走，根仍在山里</h3><p>巡演从国内城市走到马来西亚、新加坡、拉斯维加斯与旧金山。舞台更大之后，他仍把“真诚”和“有根”视作创作准绳：不是把民族符号贴在流行歌上，而是让一种从日常劳作、亲友相聚中长出的情感方式继续说当代人的话。</p></div>
+      <div class="tl now rv"><div class="when">仍在继续</div><h3>普通人的歌，仍由普通人续写</h3><p>海来阿木的旋律结构并不以复杂取胜，歌词也常近乎口语；恰恰因此，听众容易把自己的离乡、亏欠、相守和愿望放进去。作品离开作者之后，获得了另一层时代意义：它们记录了流动年代里，人们怎样用一首歌保存彼此。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">12 首歌，一条发行顺序</h2>
+    <p class="sec-lead rv">按发行次序听下去，会听见亲情、友情、爱情与故乡逐渐汇成同一条河。每段试听约 30 秒，日期以 Apple Music 香港区曲目记录为主；早期发行资料存在分歧的，另在卡片与文末说明。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-aguo" data-bvid="BV1y3411C7aq" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/58/c4/c6/58c4c67e-a6c6-88dd-2455-11c49f2e69c6/mzaf_17987372347619732272.plus.aac.p.m4a" aria-label="试听 阿果吉曲">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/8f/22/7e/8f227eab-7efd-8644-1f55-0fb3fbc494f1/cover.jpg/600x600bb.jpg" alt="《阿果吉曲》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>阿果吉曲</h3></div>
+          <p class="s-meta">2018.11.1 店内 · QQ音乐百科写 10 月 12 日 · 单曲《阿果吉曲》</p>
+          <p class="s-note">“阿果吉曲”是他早逝女儿的名字。央视《心理访谈》和封面新闻都确认，这首歌写于失去女儿之后；他在泸沽湖边落笔，后来交由曲比阿且整理制作。低回的旋律不是为了替伤痛做解释，而像一位父亲迟迟说不完的呼唤。正式发行有 2018 年 10 月 12 日与 11 月 1 日两种记录，这里采用后者。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 阿果吉曲"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="阿果吉曲 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="阿果吉曲 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-bie" data-bvid="BV1mx411R7Pe" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/79/bd/99/79bd99e2-122e-0c39-d300-e913e0455f0e/mzaf_7550569222625175689.plus.aac.p.m4a" aria-label="试听 别知己">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/44/76/80/447680b6-a465-315e-1ef3-735083b71645/3616847844539.jpg/600x600bb.jpg" alt="《别知己》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>别知己</h3></div>
+          <p class="s-meta">2022.3.29 店内 · 词条另有 2019.3.5 与 2019.6.18 · 单曲《别知己》</p>
+          <p class="s-note">火堆、唱歌、跳舞，不是异域风情的装饰，而是海来阿木儿时见过的凉山生活。他说这首歌珍重的是情谊；早期报道还记下，他与阿呷拉古、曲比阿且借歌鼓励家乡青年勇敢走出去。几个人轮流唱，告别因此不只伤感，也有朋友把你送到山口、盼你见更大天地的开阔。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 别知己"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="别知己 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="别知己 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-dian" data-bvid="BV1wJPvzwEYW" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d0/fc/12/d0fc122e-a898-9c38-d68d-204f404211d8/mzaf_5525187771762841725.plus.aac.p.m4a" aria-label="试听 点歌的人">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/78/72/d4/7872d437-07b5-e956-b53e-fde1fd7b5816/cover.jpg/600x600bb.jpg" alt="《点歌的人》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>点歌的人</h3></div>
+          <p class="s-meta">2020.3.21 曲目日 · 合集上架日写成 2019.11.27 · 单曲《点歌的人》</p>
+          <p class="s-note">他在北京闯荡，因房租住到燕郊。北京日报的采访里，他回忆自己抱着凳子坐到楼下天桥，看人群与车流来来往往，写下这首唱给失意者、也唱给自己的歌。主歌像把肩膀放低与陌生人说话，副歌才缓缓抬起；在 2020 年那个充满不确定的春天，它恰好替许多普通人说了句“别再折磨自己”。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 点歌的人"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="点歌的人 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="点歌的人 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-wan" data-bvid="BV1754y1i78u" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d8/ee/e2/d8eee2b4-f36e-9b16-5960-bede982f11d7/mzaf_16380184612819169722.plus.aac.p.m4a" aria-label="试听 你的万水千山">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/c3/d6/d3/c3d6d382-a95c-2363-c42f-d03f194c1327/cover.jpg/600x600bb.jpg" alt="《你的万水千山》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>你的万水千山</h3></div>
+          <p class="s-meta">2020.5.22 曲目日 · 合集上架日 2020.6.26 · 单曲《你的万水千山》</p>
+          <p class="s-note">没有可靠访问把它对应到某段具体恋情，因此更适合留在作品里听。歌中的山水是两个人之间的辽阔距离，海来阿木把长句唱得克制，粗粝音色却不断擦过字尾。它动人的地方，不在替谁证明深情，而在承认：走过再远的路，也未必能抵达另一个人的心。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 你的万水千山"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="你的万水千山 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="你的万水千山 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-buguo" data-bvid="BV1qV411a7Qd" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4c/7a/59/4c7a593c-6ef3-3c5a-069e-dc67b50943f5/mzaf_1979969597469087263.plus.aac.p.m4a" aria-label="试听 不过人间">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6c/c9/fd/6cc9fd1e-6363-622b-3869-7aad0a177240/cover.jpg/600x600bb.jpg" alt="《不过人间》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>不过人间</h3></div>
+          <p class="s-meta">2020.9.13 曲目日 · 合集上架日 2020.9.16 · 单曲《不过人间》</p>
+          <p class="s-note">现有可靠材料没有给出专门的创作缘起，私人经历不宜代填。只从作品听，它把“人间”写成一场人人都要经过的劳顿：旋律在低处盘旋，唱法带着忍耐，副歌也不急于拔高。那不是看破后的潇洒，更像成年人把难处咽下，再劝自己往前走。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 不过人间"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="不过人间 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="不过人间 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-yan" data-bvid="BV1g64y1m7HY" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/23/d8/e8/23d8e87a-157e-5913-ba5d-79d6899d0968/mzaf_3085256024214527164.plus.aac.p.m4a" aria-label="试听 烟雨人间">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/06/98/02/0698026a-e156-b399-4a75-42ceae46a9e3/cover.jpg/600x600bb.jpg" alt="《烟雨人间》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>烟雨人间</h3></div>
+          <p class="s-meta">2021.4.28 曲目日 · 合集上架日 2021.5.7 · 单曲《烟雨人间》</p>
+          <p class="s-note">这首同样没有可核实的私人故事。笛声与舒展旋律搭起古典烟雨的远景，海来阿木的声音却把画面拉回市井：不是精巧的小桥画卷，而是人在风雨里回望旧事。雅致意象与质朴唱腔相碰，正是他把传统审美送进大众流行的一种方式。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 烟雨人间"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="烟雨人间 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="烟雨人间 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-wushi" data-bvid="BV1RS4y1U77w" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c5/bc/5d/c5bc5d01-941a-cdbe-c7b6-0b63506694ba/mzaf_10068632010722480576.plus.aac.p.m4a" aria-label="试听 五十年以后">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/89/63/60/89636026-3056-ff35-98b8-b2a91aac776f/cover.jpg/600x600bb.jpg" alt="《五十年以后》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>五十年以后</h3></div>
+          <p class="s-meta">2021.8.11 曲目日 · 合集上架日 2021.8.17 · 单曲《五十年以后》</p>
+          <p class="s-note">未见本人或创作者公开说明它写给某一位具体的人，因而只能谈歌里的承诺。它把爱情拉到“五十年”这样漫长的尺度上，不靠戏剧冲突，而靠近乎家常的反复。后来许多听众把自己的婚礼、相守与遗憾写进留言，这首歌也就从个人情歌变成一只盛放共同记忆的容器。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 五十年以后"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="五十年以后 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="五十年以后 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-san" data-bvid="BV1mR4y1c798" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4b/5d/73/4b5d7368-1ed3-c5e8-ba03-a5676a1fbb7b/mzaf_3859902902278636373.plus.aac.p.m4a" aria-label="试听 三生三幸">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/a1/ab/ca/a1abca9f-81b4-8238-0869-f74767b542ad/cover.jpg/600x600bb.jpg" alt="《三生三幸》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>三生三幸</h3></div>
+          <p class="s-meta">2022.5.10 曲目日 · EP 上架日 2022.5.17 · 《三生三幸》</p>
+          <p class="s-note">这是有清楚出处的夫妻之歌。海来阿木看见妻子因操持家庭、长期分离而低落，反问自己是否太自私；返京航班上，身边人熟睡后，旋律和心里话一起涌来。它没有把爱情写成漂亮誓词，“我不爱你谁爱你”甚至像一句笨拙的家常话，却正因不修饰，留下了共同吃苦以后仍不肯放手的重量。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 三生三幸"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="三生三幸 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="三生三幸 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-xilou" data-bvid="BV1Lr421K7t1" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b6/80/f7/b680f78d-9a71-5082-f088-51af796abc96/mzaf_15416901740094683972.plus.aac.p.m4a" aria-label="试听 西楼儿女">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/70/8e/54/708e54d6-20c1-2805-136e-21c55e368539/cover.jpg/600x600bb.jpg" alt="《西楼儿女》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>西楼儿女</h3></div>
+          <p class="s-meta">2022.10.25 店内 · 曲目日与单曲上架日一致 · 单曲《西楼儿女》</p>
+          <p class="s-note">海来阿木本人解释，歌里“许多年前我也曾有梦想，想过满载荣誉回到家乡”，是写给努力打拼的人：梦想一时没有实现，也别停下。所谓“西楼儿女”，于是像一代离乡者的合称。编曲铺开苍茫感，口语歌词却始终落地——荣归故里仍遥远，今天先把眼前这一步走完。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 西楼儿女"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="西楼儿女 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="西楼儿女 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-buru" data-bvid="BV1oy421e7eh" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/dd/38/43/dd384399-41ff-3b6a-3aff-c837a9d630f6/mzaf_1769281231497101829.plus.aac.p.m4a" aria-label="试听 不如见一面">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/ac/5d/a3ac5d32-6e03-4349-2b52-ef924827d5ae/cover.jpg/600x600bb.jpg" alt="《不如见一面》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>不如见一面</h3></div>
+          <p class="s-meta">2023.11.6 店内原单曲 · 合唱 2024.2.13 · 春晚独唱版 2024.2.14</p>
+          <p class="s-note">原版从爱情、婚姻与错过落笔；为 2024 年春晚改写时，海来阿木与团队把“遗憾”拓展到亲情和友情。他还说，创作来自街上擦肩的人群，也来自朋友们讲出的心事。于是“见一面”不再只是旧情复燃，它更像这个高流动时代里朴素而迫切的愿望：趁彼此还在，别把想念只留给屏幕。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 不如见一面"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="不如见一面 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="不如见一面 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-yuan" data-bvid="BV1mNwgeTENo" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1f/6b/7c/1f6b7ced-4d43-ad02-b37c-20025dae0698/mzaf_14842052694616778209.plus.aac.p.m4a" aria-label="试听 远山即故乡">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b3/1d/0b/b31d0b39-b153-6192-b891-b0d1b4f3c7a0/cover.jpg/600x600bb.jpg" alt="《远山即故乡》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>远山即故乡</h3></div>
+          <p class="s-meta">2024.10.8 店内 · 曲目日与单曲上架日一致 · 单曲《远山即故乡》</p>
+          <p class="s-note">没有可靠材料说明它对应某次返乡，不能把歌名直接当作个人履历。作品真正成立之处，是把“远山”和“故乡”叠在一起：故乡既是地理，也是走远后才重新认出的精神坐标。后来与钟镇涛同台演唱，又让这种乡愁从凉山走向更普遍的华人经验。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 远山即故乡"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="远山即故乡 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="远山即故乡 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-xin">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5d/c4/0b/5dc40b68-9a29-3e16-2c0a-f1fffe238e44/mzaf_8951968791336874058.plus.aac.p.m4a" aria-label="试听 心田">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/62/f1/aa/62f1aaa2-6c01-8347-754a-ee9bbcc1e125/cover.jpg/600x600bb.jpg" alt="《心田》封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>心田</h3></div>
+          <p class="s-meta">2025.7.28 店内 · 曲目日与单曲上架日一致 · 单曲《心田》</p>
+          <p class="s-note">目前没有见到本人或词曲作者讲述这首歌的具体来处。若只听作品，“心田”不是某段隐秘往事的暗号，而是一片被善意、牵挂和时间反复耕作的内心土地。唱腔比早年少了一些逼仄，多了一点安顿感，像走过许多站之后，终于愿意把目光放回自己身上。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 心田"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="心田 海来阿木" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="心田 海来阿木" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="route" class="tight">
+  <div class="wrap">
+    <div class="route rv">
+      <p class="eyebrow">04 / 选听清单</p>
+      <h2><span class="yr">按单曲走过的顺序</span>如果只重听一个晚上</h2>
+      <p>从写给女儿的《阿果吉曲》开始，经由《别知己》的火堆与友情，走到《点歌的人》的燕郊天桥；中段留下爱情的远近、生活的风雨，再以《三生三幸》的相守、《西楼儿女》的离乡和《不如见一面》的遗憾收束。一个晚上，足够听清他的歌为何总在普通人的日子里回响。</p>
+      <ol id="routeList">
+        <li><button type="button" data-target="song-aguo">阿果吉曲</button></li>
+        <li><button type="button" data-target="song-bie">别知己</button></li>
+        <li><button type="button" data-target="song-dian">点歌的人</button></li>
+        <li><button type="button" data-target="song-wan">你的万水千山</button></li>
+        <li><button type="button" data-target="song-buguo">不过人间</button></li>
+        <li><button type="button" data-target="song-yan">烟雨人间</button></li>
+        <li><button type="button" data-target="song-san">三生三幸</button></li>
+        <li><button type="button" data-target="song-xilou">西楼儿女</button></li>
+        <li><button type="button" data-target="song-buru">不如见一面</button></li>
+        <li><button type="button" data-target="song-xin">心田</button></li>
+      </ol>
+      <p class="hint">曲目依次相连，试听音源来自 Apple Music。</p>
+    </div>
+  </div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">05 / 资料与边界</p>
+    <h2 class="rv">有出处的故事，和不能越过的边界</h2>
+    <div class="refs">
+      <div class="rv">
+        <h3>主要依据</h3>
+        <ul>
+          <li><b>海来阿木本人：</b>《人民日报》2025 年 6 月 25 日刊发的署名文章《努力做有“根”的音乐》，写到父亲演奏月琴、口弦，村寨歌舞对他的启蒙，以及让民族音乐与现代流行、年轻听众相遇的主张。</li>
+          <li><b>本人讲述与主流媒体采访：</b>北京日报 2022 年 5 月 28 日独家采访，确认《点歌的人》的燕郊天桥经历，以及《三生三幸》写给共同经历困顿、又承受聚少离多的妻子；北京日报 2024 年文章记录《别知己》《西楼儿女》《不如见一面》的创作说明。</li>
+          <li><b>央视与家乡媒体：</b>央视《心理访谈》2021 年 10 月节目、封面新闻 2020 年人物专访，共同确认《阿果吉曲》写给夭折的女儿，并记录曲比阿且参与作品成形的过程。封面新闻 2025 年专访则记录他对直白表达与“真诚”的坚持。</li>
+          <li><b>作品事件：</b>《不如见一面》由 2023 年个人单曲走到 2024 年央视春晚合唱，改词过程依据中国青年报专访及海来阿木本人文章；《歌手 2024》、巡演、文联任职等公共经历，仅采用央视、主流媒体或机构公开信息。</li>
+          <li><b>曲目信息：</b>十二首歌的日期、试听与封面以 Apple Music 香港区条目为基础，并与 QQ 音乐、百度百科及同期报道交叉核对。试听对应原曲，不以 DJ 版、伴奏版或后来的重录替代。</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>日期分歧与叙事边界</h3>
+        <ul>
+          <li><b>《阿果吉曲》</b>有三个不同节点：2017 年交由曲比阿且整理并在网络传播，QQ 音乐资料记 2018 年 10 月 12 日，Apple Music 记 11 月 1 日。它们可能分别对应早期传播与正式上架，不强行合成同一天。</li>
+          <li><b>《别知己》</b>的同期报道记 2019 年 3 月 5 日，另一作品表记 6 月 18 日，Apple Music 当前可试听条目标为 2022 年 3 月 29 日。正文谈创作与传播时采用 2019 年，曲目元数据保留商店日期。</li>
+          <li><b>《点歌的人》</b>曲目日为 2020 年 3 月 21 日，而合集信息曾显示 2019 年 11 月 27 日；《你的万水千山》《不过人间》《烟雨人间》《五十年以后》《三生三幸》也存在曲目日与合集或 EP 上架日相差数日至数月的情况，卡片均把两者分列。</li>
+          <li><b>《不如见一面》</b>所听版本是 2023 年 11 月 6 日个人原唱；与单依纯合作的春晚版本属于 2024 年的改写与演出事件，不倒置为原版。</li>
+          <li><b>私人生活只写有直接来源者：</b>女儿与《阿果吉曲》、妻子与《三生三幸》，均有本人节目或主流媒体采访支持。其余歌即使题名涉及爱情、故乡、人生，也不据此推定真实恋情、丧亲或贫困经历。</li>
+          <li><b>评论的边界：</b>《你的万水千山》《不过人间》《烟雨人间》《五十年以后》《远山即故乡》《心田》没有公开可靠的私人创作原型，歌中的意象、唱法与编曲不被延伸成歌手本人的往事。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine rv">这里关心的是作品如何从生活中来，又怎样进入更多人的生活。未经本人、创作者、官方资料或可靠媒体确认的家庭细节、收入与网络轶事均不采用；后续若出现新的第一手材料，应以可追溯出处修订，而不是用更动人的传说填空。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>从大凉山出发 · 海来阿木音乐传记</b>
+      <p class="fmeta">从父亲的月琴与口弦，到十二首被无数普通人唱起的歌。1993 年生于凉山甘洛，2018 年以《阿果吉曲》正式出道，听到 2025 年《心田》。<br>内容整理于 2026 年 10 月 · 试听与封面来自 Apple Music · 仅供学习交流。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

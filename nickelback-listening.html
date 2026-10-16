@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>从 Hanna 出发 · Nickelback 音乐传记</title>
+<meta name="description" content="按发行顺序听 Nickelback：从加拿大 Hanna 的自费录音，到《How You Remind Me》《Photograph》《Far Away》与持续写作的今天。24 首歌，逐首交代创作、录制与作品事件。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.mix,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">Nickelback <b>从 Hanna 出发</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#solo">乐队之外</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c0/c0/17/c0c01743-52e2-a488-d02d-e829a7a72206/mzi.ldixkxdc.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c7/94/25/c79425db-1284-fe33-66f5-dd14cdfeee81/mzi.xgggfjuu.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ad/16/b7/ad16b7c9-2779-d2e5-0fca-83aeff09f4b6/mzi.exqcjkkz.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c2/fe/bf/c2febf4a-adee-8562-0762-2790bb945812/825396127205.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ad/30/ed/ad30ed43-adb2-4e55-c685-4647630c08f9/mzi.epyljfva.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ba/e4/40/bae44075-8cd6-ca2e-7f90-845983f30a70/mzi.tprsucpv.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music/35/e6/f1/mzi.uglbugad.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fe/5c/60/fe5c60b4-f8d6-ec96-cdc9-1e3f3ec0b39e/mzi.udsrxxro.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/93/ae/5293ae14-ff99-f12e-4726-734caddb8363/5054197822223.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/61/a3/7d/61a37d18-9c2e-bc8c-6c62-a742ba9b71f2/4050538854756.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2f/f3/37/2ff3374b-7e17-ebed-5173-2fb185160842/859741054083_cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/79/d1/d6/79d1d6b5-f54e-96f3-861d-f8a57ce22236/4050538304138.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/7d/98/02/7d98027f-364a-b803-f392-64d166a8f4cd/196006494230.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/33/94/7b/33947be3-a964-4a0a-0281-5668d6990884/4099964075083.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/07/bb/84/07bb846c-eaea-b26a-aebd-ba911351a35b/00823375244738_Cover.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/df/5d/6d/df5d6d99-4614-c384-b1a8-d02d43f511e7/016861759209.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/19/fd/e519fde6-e6ee-db7a-19de-3b22cd864db5/825396150418_Cover.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1995 — 2026</p>
+    <h1>从 Hanna 出发</h1>
+    <p class="sub">Nickelback 音乐传记</p>
+    <p class="deck">他们先在阿尔伯塔小城的酒吧里翻唱别人的歌，再开车十小时去温哥华，把自己筹来的钱换成录音棚时间。第三张专辑才等到《How You Remind Me》：十分钟写完的一首歌，把四个长期跑场的乐手推到世界电台中央。此后有故乡照片、写给缺席父亲的歌、关于互助与公共困境的歌，也有故意夸张的摇滚笑话。这里不从互联网的爱憎标签认识 Nickelback，只沿着歌，听他们怎样把日常经验写成能被许多人接住的副歌。</p>
+    <div class="meta-row">
+      <span>1995 年前身 Village Idiot</span>
+      <span>来自加拿大 Hanna</span>
+      <span>Billboard 2000 年代最佳摇滚组合</span>
+      <span>2023 入选加拿大音乐名人堂</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a>
+      <a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false">
+        <span class="listen-label">开始聆听</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p>
+    <h2 class="rv">一支大歌乐队，也是一群长期合写的人</h2>
+    <p class="sec-lead rv">从加拿大小镇的翻唱酒吧，到全世界的体育场，他们一路被夸奖，也一路被嘲笑。数字只能记下销量、榜单和奖杯，真正留住人的，仍是那些把故乡、家庭、懊悔与重新振作唱得毫不躲闪的歌。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1995</div><div class="l">前身 Village Idiot</div><div class="s">在 Hanna 演奏翻唱曲，次年迁往温哥华</div></div>
+      <div class="stat rv"><div class="n">10 分钟</div><div class="l">《How You Remind Me》成形</div><div class="s">录音前一周带进排练室，乐队迅速完成</div></div>
+      <div class="stat rv"><div class="n">120 万+</div><div class="l">2000 年代美国电台播放</div><div class="s">Nielsen SoundScan 对突破单曲的统计</div></div>
+      <div class="stat rv"><div class="n">12</div><div class="l">JUNO 奖</div><div class="s">加拿大音乐名人堂列出的获奖数</div></div>
+      <div class="stat rv"><div class="n">2023</div><div class="l">加拿大音乐名人堂</div><div class="s">在家乡省份阿尔伯塔入选</div></div>
+      <div class="stat rv"><div class="n">24</div><div class="l">一路选听</div><div class="s">从《Fly》到《Those Days》</div></div>
+    </div>
+    <div class="toc rv">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#glance">速览：六个坐标</a></li>
+        <li><a href="#timeline">时间线：从酒吧翻唱到名人堂</a></li>
+        <li><a href="#tracks">唱片与主打：24 首</a></li>
+        <li><a href="#solo">另一条线：合作与公共舞台</a></li>
+        <li><a href="#route">歌单：一个晚上的路径</a></li>
+        <li><a href="#refs">资料：来源与边界</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p>
+    <h2 class="rv"><span class="yr">1995 — 2026</span>先把路走出来，再让歌抵达远方</h2>
+    <p class="sec-lead rv">这条线保留真正改变乐队写作与处境的节点。商业成绩很重要，但它不是唯一叙事：自费录音、成员磨合、制作方式和重新回望故乡，也同样塑造了这些歌。</p>
+    <div class="timeline">
+      <div class="tl rv"><div class="when">1995 — 1996</div><h3>从 Village Idiot 到 Nickelback</h3><p>Chad Kroeger、Mike Kroeger、Ryan Peake 与 Brandon Kroeger 在 Hanna 演奏翻唱曲。1996 年，Chad 与 Ryan 驱车十小时去温哥华追随 Mike；早期 EP《Hesher》和专辑《Curb》来自自筹资金的录音。</p></div>
+      <div class="tl rv"><div class="when">1998 — 2000</div><h3>把乐队当成一份工作</h3><p>成员自己管账、排演出、联络电台，并投入约三万加元制作《The State》。加拿大电台对《Leader of Men》的响应让 Roadrunner 与 EMI 注意到他们；这不是突然被制造出来的成功，而是独立发行和巡演积累后的签约。</p></div>
+      <div class="tl peak rv"><div class="when">2001</div><h3>十分钟写成的转折</h3><p>《Silver Side Up》录了五周。《How You Remind Me》是 Chad 在开录前一周才带来的歌，乐队约十分钟便搭好主体；鼓技师 Andrew Mawhinney建议末段停顿。它登顶 Billboard Hot 100，后来成为 2000 年代美国电台播放最多的歌曲。</p></div>
+      <div class="tl rv"><div class="when">2002 — 2003</div><h3>从关系创伤写到更硬的现场</h3><p>《Too Bad》把 Chad 对父亲长期缺席的感受写进歌里；《Never Again》讨论家暴，却不是他父母故事的自传。到《The Long Road》，《Someday》延续关系叙事，《Figured You Out》则用令人不安的细节描绘彼此消耗。</p></div>
+      <div class="tl peak rv"><div class="when">2005 — 2007</div><h3>故乡、爱情与责任</h3><p>Daniel Adair 加入后，《All the Right Reasons》把乐队推入更宽的流行听众。《Photograph》回到 Hanna 的学校、朋友和旧影院；《Far Away》被 Chad 称为第一首真正“身在爱里”的歌；《If Everyone Cared》的数字销售收益捐给国际特赦组织与儿童慈善机构。</p></div>
+      <div class="tl rv"><div class="when">2008 — 2012</div><h3>把体育场副歌写得更开阔</h3><p>《Dark Horse》与 Mutt Lange 合作，强化节奏和合唱规模。《Burn It to the Ground》后来成为 WWE Raw 主题曲；《When We Stand Together》则来自灾难新闻和陌生人合力抬车救人的真实报道。</p></div>
+      <div class="tl rv"><div class="when">2014 — 2017</div><h3>把视线移向公共生活</h3><p>《Edge of a Revolution》写贫富不均、乌克兰局势等社会不安；把它单独归因于 Ferguson 并不准确，因为歌曲在枪击事件前已被公布。《Feed the Machine》继续写魅力型权力如何诱使人服从，音乐也回到更重的吉他。</p></div>
+      <div class="tl rv"><div class="when">2018 — 2021</div><h3>旧歌有了新的公共生命</h3><p>《Photograph》成为长寿网络迷因，《Rockstar》被改成海员号子。迷因可以是入口，却不是作品的全部；乐队也在后来访谈与纪录片中承认过度曝光带来的反弹，并重新讲述自己。</p></div>
+      <div class="tl peak rv"><div class="when">2022 — 2023</div><h3>《Get Rollin’》与回到家乡</h3><p>《San Quentin》起于 Chad 在 Guy Fieri 生日会上遇见监狱长；《Those Days》则在 Whistler 租屋里意外长成一首怀旧歌。2023 年，Nickelback 在阿尔伯塔入选加拿大音乐名人堂。</p></div>
+      <div class="tl rv"><div class="when">2023 — 2024</div><h3>《Hate to Love》</h3><p>Leigh Brooks 执导的纪录片在多伦多电影节首映，随后进入院线与流媒体。它没有把乐队包装成互联网受害者，而是让成员谈过度曝光、嘲讽文化、健康危机与长期合作。</p></div>
+      <div class="tl now rv"><div class="when">2026</div><h3>仍在继续</h3><p>新的先行曲继续把厚重 riff、体育舞台与外部吉他手带进 Nickelback 的声音。它们离当下太近，意义尚未沉淀；先听发行与合作本身，不急着替这些歌预写历史地位。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">24 首歌，24 个具体来处</h2>
+    <p class="sec-lead rv">这些歌并不都在讲同一种硬汉故事。《Too Bad》藏着父亲缺席的童年，《Photograph》把故乡旧照片摊在桌上，《If Everyone Cared》又把善意真的变成捐款。沿发行顺序听下去，会发现失真吉他背后一直站着几个不太擅长遮掩的人。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-leader" data-bvid="BV1Xg4y1Q7wa" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6f/aa/12/6faa12fa-2e54-71c8-4eb4-27a18c1c2915/mzaf_13377297317413451447.plus.aac.p.m4a" aria-label="播放视频 Leader of Men">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c7/94/25/c79425db-1284-fe33-66f5-dd14cdfeee81/mzi.xgggfjuu.jpg/600x600bb.jpg" alt="Leader of Men 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>Leader of Men</h3></div>
+          <p class="s-meta">1999 独立发行 · 2000 Roadrunner 再版 · 《The State》</p>
+          <p class="s-note">这首早在签约前已替乐队敲开加拿大电台。它的力量不在英雄宣言，而在对“跟随谁、为何服从”的怀疑：低沉主歌积蓄压力，副歌才把问题推到台前。《The State》的独立发行与巡演反馈，最终让 Roadrunner 看见这支自己经营的乐队。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Leader of Men"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Leader of Men Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Leader of Men Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-remind" data-bvid="BV1MW4y1R7oD" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/72/41/33/72413329-4f11-13af-ffa2-70c3280d56df/mzaf_6227722515418295262.plus.aac.p.m4a" aria-label="播放视频 How You Remind Me">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ad/16/b7/ad16b7c9-2779-d2e5-0fca-83aeff09f4b6/mzi.exqcjkkz.jpg/600x600bb.jpg" alt="How You Remind Me 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>How You Remind Me</h3></div>
+          <p class="s-meta">2001-09-11 · 《Silver Side Up》</p>
+          <p class="s-note">Chad 在录音前一周带来雏形，乐队约十分钟便完成主体；末段全乐队停下、只留下“heart worth breaking”的钩子，来自鼓技师 Andrew Mawhinney 的建议。Chad 说它写一段失衡关系，却刻意保留模糊空间。歌曲登顶 Hot 100，并获格莱美年度制作提名——是提名，不是获奖。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 How You Remind Me"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="How You Remind Me Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="How You Remind Me Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-toobad" data-bvid="BV1cr4yz7Efj" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6c/15/a4/6c15a460-8a33-d0b3-3471-c277ebace7ca/mzaf_16891338278269018921.plus.aac.p.m4a" aria-label="播放视频 Too Bad">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ad/16/b7/ad16b7c9-2779-d2e5-0fca-83aeff09f4b6/mzi.exqcjkkz.jpg/600x600bb.jpg" alt="Too Bad 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>Too Bad</h3></div>
+          <p class="s-meta">2001-09-11 · 《Silver Side Up》</p>
+          <p class="s-note">这是 Chad 少年经验最明确的一首：父亲在他约两岁半时离开，直到十几岁才重新建立关系。歌没有把缺席简化成控诉；安静主歌像在回看空位，爆开的副歌则承认“太迟了”并不能抹掉孩子仍想被看见的愿望。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Too Bad"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Too Bad Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Too Bad Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-neveragain" data-bvid="BV19b411T7WR" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f4/07/4d/f4074d36-d744-6671-b5f5-1b4147f35151/mzaf_1930984255002699673.plus.aac.p.m4a" aria-label="播放视频 Never Again">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ad/16/b7/ad16b7c9-2779-d2e5-0fca-83aeff09f4b6/mzi.exqcjkkz.jpg/600x600bb.jpg" alt="Never Again 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>Never Again</h3></div>
+          <p class="s-meta">2001-09-11 · 《Silver Side Up》 · 专辑第一轨</p>
+          <p class="s-note">歌曲正面写家庭暴力，但 Chad 特别澄清，它不是对自己父母关系的记录。紧迫鼓点和近乎命令式的演唱，让叙述站在受害者一边；应把它理解为角色写作与公共议题，而不是据此猜测成员家庭。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Never Again"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Never Again Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Never Again Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-someday" data-bvid="BV1wz4y1r7Pf" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6e/66/91/6e66910d-7e25-0444-8aa4-90fddc353f49/mzaf_7525773817057142419.plus.aac.p.m4a" aria-label="播放视频 Someday">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ad/30/ed/ad30ed43-adb2-4e55-c685-4647630c08f9/mzi.epyljfva.jpg/600x600bb.jpg" alt="Someday 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>Someday</h3></div>
+          <p class="s-meta">2003-09-22 · 《The Long Road》 · Single Mix</p>
+          <p class="s-note">同期采访把它放在《The Long Road》反复出现的关系裂缝中。歌词让两个人不断追问“我们怎么会走到这里”，却没有提供可核实的私人原型；因此更适合听作一场迟到的复盘：旋律仍向上，话语却一次次回到未兑现的承诺。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Someday"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Someday Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Someday Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-figured" data-bvid="BV1gLW9zLEKz" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8d/05/84/8d058497-af63-2743-7624-cbc5caff3954/mzaf_4251472182157768715.plus.aac.p.m4a" aria-label="播放视频 Figured You Out">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ad/30/ed/ad30ed43-adb2-4e55-c685-4647630c08f9/mzi.epyljfva.jpg/600x600bb.jpg" alt="Figured You Out 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>Figured You Out</h3></div>
+          <p class="s-meta">2003-09-22 · 《The Long Road》</p>
+          <p class="s-note">Chad 向同期媒体说，乐队想用这首更重的歌接在《Someday》之后；它描绘一段互相吸引又互相毁坏的关系，故意使用毒品、失控与性意味的刺眼细节。标题不是温柔的“终于懂你”，而是厌恶与依恋同时到场的瞬间。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Figured You Out"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Figured You Out Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Figured You Out Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-photograph" data-bvid="BV1Ja4y1p7Wt" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/c3/5d/67c35da7-d5e9-79a0-7f43-51c60dc3e700/mzaf_13162411422826125005.plus.aac.p.m4a" aria-label="播放视频 Photograph">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="Photograph 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>Photograph</h3></div>
+          <p class="s-meta">2005-08-09 单曲 · 专辑 2005-10-04 · 《All the Right Reasons》</p>
+          <p class="s-note">Chad 说这是关于 Hanna 小城成长、旧学校、走散的朋友与第一段爱；MV也回到家乡拍摄。开头举起的照片里是他和制作人 Joey Moi，头上那只“怪东西”是香槟桶。后来它成为迷因，但原歌核心一直是：人能回到地点，却回不到童年。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Photograph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Photograph Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Photograph Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-faraway" data-bvid="BV1pK4y187Af" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4d/36/7e/4d367e38-406b-9bce-5bf3-54cbcc111023/mzaf_11245272641014233466.plus.aac.p.m4a" aria-label="播放视频 Far Away">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="Far Away 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>Far Away</h3></div>
+          <p class="s-meta">2005 · 《All the Right Reasons》</p>
+          <p class="s-note">Chad 称它是乐队第一首真正“身在爱里”的歌，而不只是“谈论爱情”。歌词把距离、迟到和道歉放在同一封告白里；从克制的吉他到高处拉开的副歌，听起来像一个不善表达的人终于把珍惜说完整。没有可靠证据支持把它指定给某位私人对象。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Far Away"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Far Away Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Far Away Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-savin" data-bvid="BV1zo4y1o7UN" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d8/46/01/d846016d-858b-1ca0-3f99-2c77e4bab163/mzaf_13620294450413953062.plus.aac.p.m4a" aria-label="播放视频 Savin' Me">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="Savin' Me 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>Savin' Me</h3></div>
+          <p class="s-meta">2005 · 《All the Right Reasons》</p>
+          <p class="s-note">这首最难写的是副歌。Chad 回忆自己连续约一个月推翻版本，直到“Show me what it’s like”自然出现，整首才接通。MV用每个人头顶的生命倒计时把“救我”扩展成互相搭救；作品保留了宗教与人际两种读法，没有指定唯一答案。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Savin' Me"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Savin' Me Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Savin' Me Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-rockstar" data-bvid="BV1dr4y1E7ob" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/75/24/2a/75242ab6-5b35-b971-7df8-eaf1fbf02067/mzaf_11671237534761145221.plus.aac.p.m4a" aria-label="播放视频 Rockstar">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="Rockstar 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>Rockstar</h3></div>
+          <p class="s-meta">2005 · 《All the Right Reasons》</p>
+          <p class="s-note">Mike Kroeger 说，乐队写它时是在比谁能把摇滚明星想象得更荒唐：豪宅、名车与后台传奇都是夸张喜剧，也是对名望神话的调侃。后来网络常把它当成乐队认真炫耀，反而遮住了原本的反讽语气。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Rockstar"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Rockstar Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Rockstar Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-cared" data-bvid="BV1kq4y1X7RP" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f2/05/2b/f2052b82-c0f8-1a1f-84aa-df2f1d5a0e7a/mzaf_10930530535416284033.plus.aac.p.m4a" aria-label="播放视频 If Everyone Cared">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f8/e0/db/f8e0db52-f6e5-5d85-6e0a-ae73e5caab11/mzi.qohxegpg.jpg/600x600bb.jpg" alt="If Everyone Cared 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>If Everyone Cared</h3></div>
+          <p class="s-meta">2005 · 《All the Right Reasons》</p>
+          <p class="s-note">这首的善意不只停在歌词。Roadrunner 当年的新闻稿说明，乐队把单曲与 MV 的数字销售收益全数捐给国际特赦组织和 International Children’s Awareness Canada；MV讲述 Peter Benenson、Nelson Mandela、Betty Williams 与 Bob Geldof 的行动。Ryan Peake把主旨说得很朴素：做一件触动你、也帮助别人的小事。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 If Everyone Cared"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="If Everyone Cared Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="If Everyone Cared Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-gotta" data-bvid="BV14c41197wY" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9a/f7/81/9af781e2-cf33-cc5b-0d77-3460dcb3ea11/mzaf_10732144712798287748.plus.aac.p.m4a" aria-label="播放视频 Gotta Be Somebody">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ba/e4/40/bae44075-8cd6-ca2e-7f90-845983f30a70/mzi.tprsucpv.jpg/600x600bb.jpg" alt="Gotta Be Somebody 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>Gotta Be Somebody</h3></div>
+          <p class="s-meta">2008-09-29 单曲 · 专辑 2008-11-18 · 《Dark Horse》</p>
+          <p class="s-note">它原本临时取代《If Today Was Your Last Day》成为《Dark Horse》首单。没有可靠的私人原型可写；歌里不断寻找“那一个人”，Mutt Lange 式层叠和声把独自的愿望扩成万人可唱的句子，重点不是命定论，而是不愿放弃建立联结。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Gotta Be Somebody"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Gotta Be Somebody Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Gotta Be Somebody Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-burn" data-bvid="BV1px411w7xP" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/42/2f/53/422f53b4-fe6f-fb34-7355-1cd399f60be5/mzaf_7292036198679622364.plus.aac.p.m4a" aria-label="播放视频 Burn It to the Ground">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ba/e4/40/bae44075-8cd6-ca2e-7f90-845983f30a70/mzi.tprsucpv.jpg/600x600bb.jpg" alt="Burn It to the Ground 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">13</span><h3>Burn It to the Ground</h3></div>
+          <p class="s-meta">2008-11-18 · 《Dark Horse》</p>
+          <p class="s-note">这首把乐队现场里最直接的一面压进三分多钟：粗粝 riff、齐喊和故意失控的派对叙事。它后来在 2009 至 2012 年担任 WWE Raw 主题曲，也长期成为演出中的火焰段落；体育场用途来自节奏推进，而不是复杂的私人故事。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Burn It to the Ground"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Burn It to the Ground Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Burn It to the Ground Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-today" data-bvid="BV16v411F7y6" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fd/c4/b1/fdc4b17d-98e3-e0bd-8707-b71ef179ddee/mzaf_15657327757532594505.plus.aac.p.m4a" aria-label="播放视频 If Today Was Your Last Day">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ba/e4/40/bae44075-8cd6-ca2e-7f90-845983f30a70/mzi.tprsucpv.jpg/600x600bb.jpg" alt="If Today Was Your Last Day 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">14</span><h3>If Today Was Your Last Day</h3></div>
+          <p class="s-meta">2008-11-18 · 《Dark Horse》</p>
+          <p class="s-note">目前没有查到 Chad 对私人缘起的可靠说明。就作品而言，它用一连串假设逼听者停止拖延：修补关系、原谅、冒险、把时间给真正重要的人。主歌像劝告，副歌则把“最后一天”唱成行动尺度，而不是死亡预言。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 If Today Was Your Last Day"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="If Today Was Your Last Day Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="If Today Was Your Last Day Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-stand" data-bvid="BV1e64y1S7Lg" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/47/aa/7c/47aa7c2b-850f-5865-6e83-8f6158dbba9b/mzaf_4613129812897093129.plus.aac.p.m4a" aria-label="播放视频 When We Stand Together">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fe/5c/60/fe5c60b4-f8d6-ec96-cdc9-1e3f3ec0b39e/mzi.udsrxxro.jpg/600x600bb.jpg" alt="When We Stand Together 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">15</span><h3>When We Stand Together</h3></div>
+          <p class="s-meta">2011-11-16 · 《Here and Now》</p>
+          <p class="s-note">Chad 说它写于接连看到地震、海啸与救援新闻之后，其中一则是约三十名陌生人合力抬起汽车，救出被困且起火的摩托车手。歌曲只用半小时写成；三拍律动不像游行口号，更像把“共同用力”变成可以一起唱的动作。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 When We Stand Together"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="When We Stand Together Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="When We Stand Together Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-lullaby" data-bvid="BV11t411M7Ua" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/79/3c/b5/793cb5ac-4ecc-f8c6-8759-7764b954a2cf/mzaf_9733854597381907824.plus.aac.p.m4a" aria-label="播放视频 Lullaby">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fe/5c/60/fe5c60b4-f8d6-ec96-cdc9-1e3f3ec0b39e/mzi.udsrxxro.jpg/600x600bb.jpg" alt="Lullaby 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">16</span><h3>Lullaby</h3></div>
+          <p class="s-meta">2011-11-16 · 《Here and Now》</p>
+          <p class="s-note">词曲由 Chad 与纳什维尔作者 Chris Tompkins、Craig Wiseman、Rodney Clawson共同完成。故事来自 Chad 和 Mike 童年：照看他们的人因男友死于摩托车事故而痛哭。歌曲没有轻描淡写绝望，而是把陪伴写成一句反复确认——你并不是独自留下。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Lullaby"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Lullaby Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Lullaby Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-edge" data-bvid="BV1n7411N772" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5d/29/05/5d2905bc-baf5-7232-da01-8c70a88bb8c4/mzaf_8021958711599458391.plus.aac.p.m4a" aria-label="播放视频 Edge of a Revolution">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/93/ae/5293ae14-ff99-f12e-4726-734caddb8363/5054197822223.jpg/600x600bb.jpg" alt="Edge of a Revolution 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">17</span><h3>Edge of a Revolution</h3></div>
+          <p class="s-meta">2014-11-14 · 《No Fixed Address》</p>
+          <p class="s-note">Chad 最初谈的是华尔街、乌克兰局势与更广泛的政治失序。后来他把 Ferguson 抗议也列为背景，但 Billboard 指出歌曲在 Michael Brown 遇害前已公开宣布，因此不能说它“由 Ferguson 写成”。重拍和齐声口号呈现的是累积的不满，不是单一事件纪念曲。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Edge of a Revolution"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Edge of a Revolution Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Edge of a Revolution Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-waiting" data-bvid="BV1dt4y1y7bU" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/eb/c0/33/ebc033a1-2eca-59b5-2343-8217d45f8789/mzaf_17079136499027189826.plus.aac.p.m4a" aria-label="播放视频 What Are You Waiting For?">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/93/ae/5293ae14-ff99-f12e-4726-734caddb8363/5054197822223.jpg/600x600bb.jpg" alt="What Are You Waiting For? 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">18</span><h3>What Are You Waiting For?</h3></div>
+          <p class="s-meta">2014-11-14 · 《No Fixed Address》</p>
+          <p class="s-note">Chad 说，一个制作上的尾音效果先触发了“Are you waiting on a lightning strike?”，大家随即拿起纸笔，确认它该是一首推动人行动的歌。他把目标说得具体：哪怕只让一个人离开安全但乏味的轨道、去追长期梦想，也算完成任务。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 What Are You Waiting For?"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="What Are You Waiting For? Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="What Are You Waiting For? Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-feed" data-bvid="BV1Gx411Y7SR" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/77/93/77779323-974a-1e52-97b7-19814b6975cf/mzaf_10052356899875883055.plus.aac.p.m4a" aria-label="播放视频 Feed the Machine">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/79/d1/d6/79d1d6b5-f54e-96f3-861d-f8a57ce22236/4050538304138.jpg/600x600bb.jpg" alt="Feed the Machine 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">19</span><h3>Feed the Machine</h3></div>
+          <p class="s-meta">2017-02-01 先行 · 专辑 2017-06-16 · 《Feed the Machine》</p>
+          <p class="s-note">这首经过成员多轮搁置与重写。Chad 与 Mike 在采访中把“机器”描述成由魅力型骗子和民族主义煽动者驱动的秩序；它不是科幻设定本身，而是关于人如何被注意力、恐惧和服从喂养。更重的吉他让警告听起来像正在运转的齿轮。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Feed the Machine"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Feed the Machine Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Feed the Machine Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-fire">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2e/34/c4/2e34c423-52be-8fd9-4e2b-29399e7697c1/mzaf_7217779749597924130.plus.aac.p.m4a" aria-label="播放视频 Song on Fire">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/79/d1/d6/79d1d6b5-f54e-96f3-861d-f8a57ce22236/4050538304138.jpg/600x600bb.jpg" alt="Song on Fire 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">20</span><h3>Song on Fire</h3></div>
+          <p class="s-meta">2017-04-28 先行 · 专辑 2017-06-16 · 《Feed the Machine》</p>
+          <p class="s-note">外界曾把它猜成写给 Avril Lavigne，Chad 明确说“不是为她或关于她而写”。他只把情境界定为一段关系结束后，想写信给对方却发现任何公开表达都不如亲口唱给那个人。这里应保留这种普遍性，不替歌曲指定对象。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Song on Fire"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Song on Fire Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Song on Fire Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-sanquentin" data-bvid="BV1eh4y157Ra" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1c/a6/64/1ca6644d-1d1a-9cd8-f052-bdd11ebba5bb/mzaf_14778831482836382337.plus.aac.p.m4a" aria-label="播放视频 San Quentin">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/61/a3/7d/61a37d18-9c2e-bc8c-6c62-a742ba9b71f2/4050538854756.jpg/600x600bb.jpg" alt="San Quentin 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">21</span><h3>San Quentin</h3></div>
+          <p class="s-meta">2022-09-07 先行 · 专辑 2022-11-18 · 《Get Rollin'》</p>
+          <p class="s-note">灵感来自一场意外谈话：Chad 在 Guy Fieri 的生日会上遇见圣昆廷监狱长，惊讶对方如此年轻，当场把歌名记进手机。后来重 riff 出现，他喊出“谁能别让我进 San Quentin”，整首便从这个带黑色幽默的逃狱角色展开。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 San Quentin"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="San Quentin Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="San Quentin Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-thosedays" data-bvid="BV1ivPfeZEKL" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fd/c5/6a/fdc56ac9-bf2e-56c8-b6e6-7d54195b1d73/mzaf_16633149737827102249.plus.aac.p.m4a" aria-label="播放视频 Those Days">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/61/a3/7d/61a37d18-9c2e-bc8c-6c62-a742ba9b71f2/4050538854756.jpg/600x600bb.jpg" alt="Those Days 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">22</span><h3>Those Days</h3></div>
+          <p class="s-meta">2022-10-05 先行 · 专辑 2022-11-18 · 《Get Rollin'》</p>
+          <p class="s-note">乐队原想在 Whistler 的租屋里写一首硬歌，却先出现这组和弦，第二天中午几乎完成。Chad 说，年过四十后怀旧变得更重要；歌里 Prince、Motörhead 与 Guns N’ Roses 不是复古清单，而是把听歌、排队和少年友谊串回乐队为何开始。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Those Days"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Those Days Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Those Days Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-bones" data-bvid="BV1sYXDB7ETP" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6f/ba/dd/6fbadd0c-3844-7a75-fc47-1669d7b4d6b6/mzaf_7822752966168075157.plus.aac.p.m4a" aria-label="播放视频 Bones For The Crows">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e5/19/fd/e519fde6-e6ee-db7a-19de-3b22cd864db5/825396150418_Cover.jpg/600x600bb.jpg" alt="Bones For The Crows 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">23</span><h3>Bones For The Crows</h3></div>
+          <p class="s-meta">2026-07-14 · 《Everything Under The Sun》先行曲</p>
+          <p class="s-note">这首先行曲的稳定资料仍以发行信息与 WWE 采用为主，尚没有足够可靠的创作访谈。就声音而言，低沉 riff 与“把残余留给乌鸦”的意象把决绝推向近乎末日的尺度；这是作品解读，不把它附会成成员的真实报复故事。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Bones For The Crows"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Bones For The Crows Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Bones For The Crows Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-rattle" data-bvid="BV1vwNa6fE8v" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/71/37/28/7137286b-9183-0905-980e-92195cb5505f/mzaf_4259519753399079185.plus.aac.p.m4a" aria-label="播放视频 Rattle The Cage">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/07/bb/84/07bb846c-eaea-b26a-aebd-ba911351a35b/00823375244738_Cover.jpg/600x600bb.jpg" alt="Rattle The Cage 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">24</span><h3>Rattle The Cage</h3></div>
+          <p class="s-meta">2026-07-14 先行 · 专辑 2026-10-30 · 《Everything Under The Sun》</p>
+          <p class="s-note">John 5 客串吉他，为主 riff 添上更尖利的金属边缘。当前可核实的材料集中在发行与合作，未见成员完整解释标题原型；歌里反复“摇动牢笼”的动作，可以听作对束缚的挑衅，但不应擅自对应某场政治事件或私人冲突。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Rattle The Cage"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Rattle The Cage Nickelback" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Rattle The Cage Nickelback" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="solo" class="tight">
+  <div class="wrap">
+    <div class="wuxia rv">
+      <p class="eyebrow">04 / 另一条线索</p>
+      <h2>离开专辑顺序以后，他们怎样进入公共记忆</h2>
+      <p>Nickelback 不只活在录音室专辑里。电影原声、厂牌、体育节目、慈善项目和网络迷因，把同一批声音带到不同场景。它们值得被区分：合作是合作，公益是公益，迷因是迷因，都不能反过来替代对歌曲本身的理解。</p>
+      <div class="wrow">
+        <div class="wcard"><span>2002</span><b>《Hero》</b><span>Chad Kroeger 与 Josey Scott 为《蜘蛛侠》演唱；这是 Chad 的合作单曲，不是 Nickelback 专辑曲</span></div>
+        <div class="wcard"><span>2002</span><b>604 Records</b><span>Chad 与 Jonathan Simkin 创办厂牌，把早年自己经营乐队的经验延伸到其他加拿大艺人</span></div>
+        <div class="wcard"><span>2007</span><b>公益发行</b><span>《If Everyone Cared》数字销售收益捐给国际特赦组织与儿童慈善机构</span></div>
+        <div class="wcard"><span>2009 — 2012</span><b>WWE Raw</b><span>《Burn It to the Ground》成为节目主题曲，体育场副歌找到最直接的应用场景</span></div>
+        <div class="wcard"><span>2023 — 2024</span><b>《Hate to Love》</b><span>纪录片让成员自己谈成功、过度曝光与网络嘲讽，而不是接受“最被讨厌”这个单一标签</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="route" class="tight">
+  <div class="wrap">
+    <div class="route rv">
+      <p class="eyebrow">05 / 选听清单</p>
+      <h2><span class="yr">从私人记忆走向共同经验</span>一个晚上的十二首</h2>
+      <p>前四首先听他们如何把家庭缺席、关系裂缝和故乡记忆写成大副歌；中段转向爱情、互助与对名望的玩笑；最后从公共议题回到中年怀旧。它不是“金曲排名”，而是一条能听见写作范围逐渐打开的路径。</p>
+      <ol id="routeList">
+        <li><button type="button" data-target="song-remind">How You Remind Me</button></li>
+        <li><button type="button" data-target="song-toobad">Too Bad</button></li>
+        <li><button type="button" data-target="song-photograph">Photograph</button></li>
+        <li><button type="button" data-target="song-faraway">Far Away</button></li>
+        <li><button type="button" data-target="song-savin">Savin' Me</button></li>
+        <li><button type="button" data-target="song-rockstar">Rockstar</button></li>
+        <li><button type="button" data-target="song-cared">If Everyone Cared</button></li>
+        <li><button type="button" data-target="song-stand">When We Stand Together</button></li>
+        <li><button type="button" data-target="song-lullaby">Lullaby</button></li>
+        <li><button type="button" data-target="song-edge">Edge of a Revolution</button></li>
+        <li><button type="button" data-target="song-sanquentin">San Quentin</button></li>
+        <li><button type="button" data-target="song-thosedays">Those Days</button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">06 / 资料</p>
+    <h2 class="rv">让故事回到可追溯的说法</h2>
+    <div class="refs">
+      <div class="rv">
+        <h3>成员与创作者的声音</h3>
+        <ul>
+          <li><a href="https://www.billboard.com/music/rock/nickelback-chad-kroeger-interview-how-you-remind-me-9553460/">Billboard，2021</a>：Chad Kroeger 回看《How You Remind Me》的快速写作、录音与广播影响。</li>
+          <li><a href="https://americansongwriter.com/the-paternal-separation-behind-too-bad-by-nickelback/">American Songwriter</a>：引用 Chad 2002 年 CNN 采访与 Mike Kroeger 访谈，说明《Too Bad》的父亲缺席背景。</li>
+          <li><a href="https://www.songfacts.com/facts/nickelback/photograph">CBC / American Songwriter 转引</a>：Chad 谈《Photograph》的 Hanna 童年、旧影院与 MV 回乡拍摄。</li>
+          <li><a href="https://www.expressandstar.com/entertainment/music/2012/09/28/weve-never-been-about-cashing-in-nickelback/">Express &amp; Star，2012</a>：Chad 解释《When We Stand Together》与灾难、陌生人合力救援的关系。</li>
+          <li><a href="https://mixdownmag.com.au/features/interviews/being-nickelback/">Mixdown</a>：Chad 与 Mike 谈《Feed the Machine》的共同写作、政治语境与更重的声音。</li>
+          <li><a href="https://www.socanmagazine.ca/features/nickelback-presents-get-rollin-its-first-album-in-five-years/">SOCAN Words &amp; Music，2022</a>：Chad 谈《Those Days》与年龄、记忆及乐队起点。</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>作品记录与事实边界</h3>
+        <ul>
+          <li><a href="https://canadianmusichalloffame.ca/inductee/nickelback/">加拿大音乐名人堂</a>：乐队起点、成员、Billboard 年代成绩、JUNO 奖与入选资料。</li>
+          <li><a href="https://www.upi.com/Entertainment_News/2007/01/29/Nickelback-donates-video-sales-to-charity/11341170123623/">UPI 转述 Roadrunner 新闻稿，2007</a>：《If Everyone Cared》的捐赠对象与 Ryan Peake 原话。</li>
+          <li><a href="https://www.billboard.com/music/music-news/nickelback-chad-kroeger-song-edge-of-a-revolution-inspired-ferguson-6320102/">Billboard，2014</a>：记录《Edge of a Revolution》的多重社会背景，也指出 Ferguson 时间线存在矛盾。</li>
+          <li><a href="https://www.loudersound.com/news/kroeger-s-struggle-to-write-hit-savin-me">Louder，2014</a>：Chad 说明《Savin' Me》副歌经历约一个月才完成。</li>
+          <li><a href="https://www.grammy.com/news/nickelback-documentary-hate-to-love-mike-kroeger-interview/">GRAMMY.com，2024</a>：Mike Kroeger 谈《Hate to Love》如何处理成功、反弹与乐队自身叙事。</li>
+          <li>曲目日期、封面与试听沿用页面既有 Apple Music / iTunes Search API 条目；所有预览地址仍来自 <code>audio-ssl.itunes.apple.com</code>。部分封面可能是再版或数字版，不保证等同首版封套。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine rv">私人故事只在成员或可靠同期材料明确说过时使用。《Never Again》不被写成 Chad 父母的故事，《Song on Fire》不被写成指定伴侣，《Far Away》也不附会具体对象。奖项中严格区分“获奖”与“提名”；网络迷因和“最被讨厌乐队”是传播史的一部分，不是评价音乐的预设结论。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>从 Hanna 出发 · Nickelback 音乐传记</b>
+      <p class="fmeta">按发行顺序听一支从小城酒吧走到世界电台的加拿大乐队。创作故事以成员、词曲作者、唱片公司与同期英文媒体为先；没有可靠背景时，明确写作作品解读。<br>试听与封面来自 Apple Music · 仅供学习交流。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>One More Light · Linkin Park 音乐传记</title>
+<meta content="按唱片听 Linkin Park：2000 年 Hybrid Theory 到 2024 年 From Zero，19 首歌。Chester Bennington 去世的公开日期是 2017 年 7 月 20 日。2024 年的主唱是 Emily Armstrong。两段主唱不放在同一张卡里。" name="description"/>
+<meta content="#1c1613" name="theme-color"/>
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div aria-hidden="true" class="progress" id="progress"></div>
+<nav aria-label="章节导航" class="nav" id="nav">
+<div class="nav-in">
+<div class="brand">Linkin Park <b>One More Light</b> <span>· 音乐传记</span></div>
+<div class="nav-links" id="navLinks">
+<a href="#glance">速览</a>
+<a href="#timeline">时间线</a>
+<a href="#tracks">唱片</a>
+<a href="#route">歌单</a>
+<a href="#refs">资料</a>
+</div>
+</div>
+</nav>
+<header class="hero" id="top">
+<div aria-hidden="true" class="mosaic">
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/03/56/730356d5-a510-3d3f-d3c6-171f64700d35/093624948971.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/13/6a/14/136a1432-1467-01d8-e68c-f4eed839d23e/093624937609.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3c/07/96/3c07965d-a7f1-3c31-02e6-1abc9861c30d/093624961680.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/10/d7/e1/10d7e167-8476-a8f7-393f-b76640c56a22/093624950479.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2e/d4/0c/2ed40c04-6385-5dec-21bc-37eda2e09cff/093624936602.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/b4/76/deb4760b-1733-d09f-8ab5-3da9381d5080/093624913214.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/03/56/730356d5-a510-3d3f-d3c6-171f64700d35/093624948971.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/13/6a/14/136a1432-1467-01d8-e68c-f4eed839d23e/093624937609.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3c/07/96/3c07965d-a7f1-3c31-02e6-1abc9861c30d/093624961680.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/10/d7/e1/10d7e167-8476-a8f7-393f-b76640c56a22/093624950479.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2e/d4/0c/2ed40c04-6385-5dec-21bc-37eda2e09cff/093624936602.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/b4/76/deb4760b-1733-d09f-8ab5-3da9381d5080/093624913214.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/600x600bb.jpg"/>
+</div>
+<div class="hero-in">
+<p class="kicker">A Listening Biography · 1996 — 2025</p>
+<h1>One More Light</h1>
+<p class="sub">Linkin Park 音乐传记</p>
+<p class="deck">有些乐队靠一副嗓子站住，Linkin Park 靠的是两个人之间那段距离：Mike Shinoda 把混乱说清楚，Chester Bennington 把说不清的部分唱到破裂。二十多年过去，失控、羞耻、愤怒和求救仍旧年轻，因为他们从不假装这些情绪已经解决。2017 年以后，歌里留下的光没有熄灭；2024 年的重启，也因此更像一场谨慎而坦白的续写。</p>
+<div class="meta-row">
+<span>1996 年，以 Xero 为起点</span>
+<span>2000 年，《Hybrid Theory》改变一代人的耳朵</span>
+<span>2024 年，《From Zero》翻开新章</span>
+</div>
+<div class="cta">
+<a class="btn btn-g" href="#tracks">代表歌曲</a>
+<a class="btn btn-g" href="#timeline">音乐之路</a>
+<button aria-pressed="false" class="btn btn-p" id="listenToggle" type="button">
+<span class="listen-label">开始聆听</span>
+<svg aria-hidden="true" fill="currentColor" height="15" viewbox="0 0 24 24" width="15"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+</div>
+<div aria-hidden="true" class="scroll-cue">SCROLL<i></i></div>
+<div aria-hidden="true" class="perf"></div>
+</header>
+<main id="main">
+<section id="glance">
+<div class="wrap">
+<p class="eyebrow rv">01 / 速览</p>
+<h2 class="rv">他们唱的，是人心里那间关不上门的房间</h2>
+<p class="sec-lead rv">吉他、采样、说唱与嘶吼只是外壳。真正让这支乐队留下来的，是他们肯替听众承认：愤怒底下常常是害怕，麻木背后往往还有期待。</p>
+<div class="stats">
+<div class="stat rv"><div class="n">1996</div><div class="l">Xero 成军</div><div class="s">几次改名之后，才有了 Linkin Park</div></div>
+<div class="stat rv"><div class="n">2000</div><div class="l">《Hybrid Theory》</div><div class="s">第一张专辑，把地下情绪送进主流世界</div></div>
+<div class="stat rv"><div class="n">2</div><div class="l">座格莱美奖</div><div class="s">《Crawling》与《Numb/Encore》先后获奖</div></div>
+<div class="stat rv"><div class="n">7</div><div class="l">张 Chester 时期专辑</div><div class="s">从新金属走向电子、概念与流行写作</div></div>
+<div class="stat rv"><div class="n">2017</div><div class="l">《One More Light》</div><div class="s">一张谈失去的唱片，后来装下了更多告别</div></div>
+<div class="stat rv"><div class="n">2024</div><div class="l">《From Zero》</div><div class="s">Emily Armstrong 与 Colin Brittain 加入后的新起点</div></div>
+</div>
+<div class="toc rv">
+<h3>目录</h3>
+<ol>
+<li><a href="#glance">速览</a></li>
+<li><a href="#timeline">时间线</a></li>
+<li><a href="#tracks">十九首歌</a></li>
+<li><a href="#route">如果只重听一个晚上</a></li>
+<li><a href="#refs">延伸阅读</a></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="tight" id="timeline">
+<div class="wrap">
+<p class="eyebrow rv">02 / 时间线</p>
+<h2 class="rv">从卧室里的采样器，到几代人的共同记忆</h2>
+<p class="sec-lead rv">他们每走一步，都会有人要求他们回到从前。可这支乐队真正没变的，恰恰是不断推翻上一张唱片。</p>
+<div class="timeline"><div class="tl rv"><div class="when">1996</div><h3>Xero：还没有名字的声音</h3><p>Mike Shinoda、Brad Delson 与 Rob Bourdon 等人在洛杉矶郊外组队。那时的线索已经齐了：摇滚乐器、嘻哈节拍、采样与视觉设计，只差一个能把内心风暴唱出来的人。</p></div><div class="tl peak rv"><div class="when">1999</div><h3>Chester 到来</h3><p>Chester Bennington 加入后，Mike 的冷静叙述与他的高压嗓音终于咬合。乐队先叫 Hybrid Theory，后来定名 Linkin Park。那并非两位主唱轮流抢镜，而像同一个人脑中理智与疼痛的对话。</p></div><div class="tl peak rv"><div class="when">2000 · 10 · 24</div><h3>《Hybrid Theory》</h3><p>第一张专辑没有绕弯：家庭压力、自我怀疑、失控和被期待塑形，全被压进紧凑的三四分钟。《In the End》最高到 Billboard Hot 100 第二名，《Crawling》为他们赢得第一座格莱美。</p></div><div class="tl rv"><div class="when">2002</div><h3>《Reanimation》</h3><p>成名以后，他们没有只做一次胜利的复制品，而把首专拆开重装。重混、电子和嘻哈客席让人看见：Linkin Park 从一开始就是一间开放的工作室。</p></div><div class="tl peak rv"><div class="when">2003 · 03 · 25</div><h3>《Meteora》</h3><p>第二张专辑把熟悉的配方磨得更锋利。《Faint》的急迫、《Breaking the Habit》的自救、《Numb》的窒息感，让青春期那些无处安放的情绪有了具体形状。</p></div><div class="tl rv"><div class="when">2004</div><h3>《Collision Course》</h3><p>与 Jay-Z 的合作不是简单拼盘。《Numb/Encore》把两个世界真正接通，并在格莱美舞台上留下跨界的一刻。</p></div><div class="tl peak rv"><div class="when">2007 · 05 · 14</div><h3>《Minutes to Midnight》</h3><p>Rick Rubin 与 Mike 共同制作，乐队主动放松旧标签。《What I’ve Done》像一次公开清算，《Shadow of the Day》则证明 Chester 不必一直嘶吼，也能把悲伤唱得很重。</p></div><div class="tl rv"><div class="when">2009</div><h3>《New Divide》</h3><p>为电影《Transformers: Revenge of the Fallen》写下的单曲，保留了宏大的吉他轮廓，也提前透出下一阶段更电子、更宽阔的空间。</p></div><div class="tl rv"><div class="when">2010 · 09 · 14</div><h3>《A Thousand Suns》</h3><p>他们把一张摇滚专辑写成关于毁灭、权力与人类恐惧的长篇。《The Catalyst》不再依赖熟悉的副歌爆点，Mike 与 Chester 也从对答走向共同发声。</p></div><div class="tl rv"><div class="when">2012 · 06 · 26</div><h3>《Living Things》</h3><p>电子质感和早年的身体冲击重新靠近。《Burn It Down》写创造与摧毁的循环，像乐队自己：每次搭起一种声音，又亲手拆掉。</p></div><div class="tl rv"><div class="when">2014 · 06 · 17</div><h3>《The Hunting Party》</h3><p>当主流摇滚越来越光滑，他们反而把吉他推回前景。《Final Masquerade》留住了旋律，也写透一段关系走到尽头时，双方仍戴着体面面具的疲惫。</p></div><div class="tl peak rv"><div class="when">2017 · 05 · 19</div><h3>《One More Light》</h3><p>这次他们把编曲让得更轻，让人的重量浮上来。《Heavy》承认最难搬走的东西就在自己脑中；标题曲则问：当一个人的光熄灭，究竟有没有人在意。答案其实藏在歌名里。</p></div><div class="tl peak rv"><div class="when">2017</div><h3>告别以后</h3><p>Chester 于 7 月 20 日去世。后来再听这些歌，很容易把每句歌词都当成预告；可他留下的不只是痛苦，还有幽默、合作、舞台上的慷慨，以及一次次努力活下去的声音。10 月的纪念演出，让全世界替他唱完了那些副歌。</p></div><div class="tl rv"><div class="when">2020 — 2023</div><h3>旧录音重新开口</h3><p>《Hybrid Theory》与《Meteora》的周年版本整理了早期档案；《Lost》等旧作面世，让人听见他们当年没有放进专辑的另一条路。纪念不再只是回头，也是重新理解。</p></div><div class="tl peak rv"><div class="when">2024 · 11 · 15</div><h3>《From Zero》</h3><p>Mike、Brad、Dave 与 Joe 和 Emily Armstrong、Colin Brittain 一起重新出发。Emily 没有复制 Chester；她带来自己的锋利。《The Emptiness Machine》从 Mike 唱到 Emily，像旧门被推开后，另一阵风真正吹了进来。</p></div><div class="tl now rv"><div class="when">2025</div><h3>仍在路上</h3><p>《From Zero》豪华版继续补上新歌与现场能量。这个名字既指回到零，也指乐队最早的 Xero：不是抹掉过去，而是承认过去已经成为身体的一部分，然后继续往前。</p></div></div>
+</div>
+</section>
+<section id="tracks">
+<div class="wrap">
+<p class="eyebrow rv">03 / 十九首歌</p>
+<h2 class="rv">从压抑到告别，再从零开始</h2>
+<p class="sec-lead rv">顺着发行时间听下去，你会听见一支乐队如何长大：先替年轻人喊出愤怒，后来学会谈责任、战争、失去，以及留下来的人该怎么继续。</p>
+<div class="tracks">
+<article class="song rv" data-bvid="BV1xM4y157ky" data-vlabel="视频" id="song-closer">
+<div aria-label="播放视频 One Step Closer" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a4/28/cf/a428cf89-f8c4-0b1d-d5d5-5a3a85684943/mzaf_4552206727859468134.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="One Step Closer 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">01</span><h3>One Step Closer</h3></div>
+<p class="s-meta">2000 · 《Hybrid Theory》</p>
+<p class="s-note">年轻时最熟悉的那句“我受够了”，在这里被唱成一道短促的闪电。吉他一次次逼近，Chester 的爆发却不是逞强，而是一个人退无可退时终于划出的边界。</p>
+<div class="player">
+<button aria-label="播放 One Step Closer" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="One Step Closer Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="One Step Closer Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1vy4y1C7wx" data-vlabel="官方 MV" id="song-paper">
+<div aria-label="播放官方 MV Papercut" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c7/39/79/c739796d-5b08-5a14-f1ba-ffa418c7da0a/mzaf_17229112414731949582.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Papercut 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">02</span><h3>Papercut</h3></div>
+<p class="s-meta">2000 · 《Hybrid Theory》</p>
+<p class="s-note">Mike 像在清点脑中的疑心，Chester 则把那份疑心推到皮肤表面。说唱、采样和副歌严丝合缝，这首开场曲已经把他们此后最动人的关系说完一半：一个负责辨认阴影，一个负责让阴影出声。</p>
+<div class="player">
+<button aria-label="播放 Papercut" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Papercut Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Papercut Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Dv411k7Mw" data-vlabel="官方 MV" id="song-crawling">
+<div aria-label="播放官方 MV Crawling" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/de/ea/d8/deead8ab-7b8d-5782-1c02-259fa5677cd2/mzaf_8048490457254389324.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Crawling 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">03</span><h3>Crawling</h3></div>
+<p class="s-meta">2000 · 《Hybrid Theory》 · 格莱美最佳硬摇滚表演</p>
+<p class="s-note">它写的不是外面的敌人，而是无法控制自己的羞耻和恐惧。Chester 唱“伤口不会愈合”时没有装作胜利者；正因为承认脆弱，这首歌才成了许多人第一次敢正视自己的入口。</p>
+<div class="player">
+<button aria-label="播放 Crawling" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Crawling Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Crawling Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1xz4y167t2" data-vlabel="视频" id="song-end">
+<div aria-label="播放视频 In the End" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d9/33/34/d933341d-ba95-dc3b-11a3-34d6632dd62e/mzaf_10942671303595386057.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="In the End 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">04</span><h3>In the End</h3></div>
+<p class="s-meta">2000 · 《Hybrid Theory》 · Billboard Hot 100 最高第 2</p>
+<p class="s-note">Mike 把徒劳一格一格数清，Chester 用一句副歌将整座楼推倒。钢琴循环如此克制，才让“努力过却仍失去”的结论更疼。它不是失败宣言，而是成年以后才懂的那种接受。</p>
+<div class="player">
+<button aria-label="播放 In the End" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="In the End Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="In the End Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1dh41187sG" data-vlabel="视频" id="song-belong">
+<div aria-label="播放视频 Somewhere I Belong" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7c/37/5e/7c375e58-88c7-c58c-921e-523950eaf5fc/mzaf_14282190871089906349.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Somewhere I Belong 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">05</span><h3>Somewhere I Belong</h3></div>
+<p class="s-meta">2003 · 《Meteora》</p>
+<p class="s-note">寻找归属听起来像年轻人的题目，其实很多人一生都在做。开头被倒放和重组的声音像记忆卡住，直到副歌打开，那个想回到自己身体里的人才终于找到一点空间。</p>
+<div class="player">
+<button aria-label="播放 Somewhere I Belong" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Somewhere I Belong Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Somewhere I Belong Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1KB4y1K7wa" data-vlabel="视频" id="song-faint">
+<div aria-label="播放视频 Faint" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/66/e8/ea/66e8ea3f-6927-91bf-5821-b56513189164/mzaf_3445502432987139874.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Faint 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">06</span><h3>Faint</h3></div>
+<p class="s-meta">2003 · 《Meteora》</p>
+<p class="s-note">弦乐像秒针一样催促，Mike 的说唱一路追赶，Chester 在副歌里要求被看见。这首歌只有短短几分钟，却像一次积压多年的谈话终于来不及委婉。</p>
+<div class="player">
+<button aria-label="播放 Faint" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Faint Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Faint Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1iz4y127kY" data-vlabel="视频" id="song-habit">
+<div aria-label="播放视频 Breaking the Habit" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f8/ba/c3/f8bac368-7ee7-8ac4-fee1-da7c1b5e3558/mzaf_5815376596158138679.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Breaking the Habit 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">07</span><h3>Breaking the Habit</h3></div>
+<p class="s-meta">2003 · 《Meteora》</p>
+<p class="s-note">Mike 原本从器乐构想出发，最后把一场与自我破坏的搏斗交给 Chester。没有惯常的说唱对答，动画影像也拒绝漂亮包装。最难打破的习惯，常常正是人用来熬过昨天的办法。</p>
+<div class="player">
+<button aria-label="播放 Breaking the Habit" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Breaking the Habit Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Breaking the Habit Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1764y1D7fD" data-vlabel="视频" id="song-numb">
+<div aria-label="播放视频 Numb" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1f/9d/28/1f9d2810-2ac3-efbd-ef02-623691ff9cd2/mzaf_17560018091772095942.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Numb 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">08</span><h3>Numb</h3></div>
+<p class="s-meta">2003 · 《Meteora》</p>
+<p class="s-note">“成为你希望的样子”听起来像爱，压得太久却会让一个人失去感觉。Chester 把代际期待唱成窒息，结尾那句理解又悄悄把门留了一条缝：让人受伤的长辈，或许也曾这样长大。</p>
+<div class="player">
+<button aria-label="播放 Numb" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Numb Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Numb Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ax4y1b7Ue" data-vlabel="视频" id="song-done">
+<div aria-label="播放视频 What I've Done" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/95/90/94/959094df-bf3e-6204-5b97-5cbc4c6242b2/mzaf_7071906531654724628.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="What I've Done 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/03/56/730356d5-a510-3d3f-d3c6-171f64700d35/093624948971.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">09</span><h3>What I've Done</h3></div>
+<p class="s-meta">2007 · 《Minutes to Midnight》</p>
+<p class="s-note">告别旧声音的第一首主打，从个人创伤抬头望向更大的世界。钟声、渐强的吉他和 Chester 克制的演唱，共同指向一个朴素的愿望：错误无法撤回，人仍可以决定下一步做什么。</p>
+<div class="player">
+<button aria-label="播放 What I've Done" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="What I've Done Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="What I've Done Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Eh41147ca" data-vlabel="视频" id="song-shadow">
+<div aria-label="播放视频 Shadow of the Day" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f6/45/1f/f6451f67-c907-3804-25fb-a8306e895bb8/mzaf_2379237615624538445.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Shadow of the Day 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/03/56/730356d5-a510-3d3f-d3c6-171f64700d35/093624948971.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">10</span><h3>Shadow of the Day</h3></div>
+<p class="s-meta">2007 · 《Minutes to Midnight》</p>
+<p class="s-note">这首慢歌几乎拿掉了锋利的外壳。日落不是戏剧性的崩塌，而是陪一个人走过无法挽回的下午。Chester 收住力量以后，反而让“道别”有了更长的回声。</p>
+<div class="player">
+<button aria-label="播放 Shadow of the Day" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Shadow of the Day Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Shadow of the Day Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1114y137Te" data-vlabel="视频" id="song-divide">
+<div aria-label="播放视频 New Divide" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/fc/ab/97fcab70-c1e5-4009-01ff-89ed1e6e8ced/mzaf_3627835165052872994.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="New Divide 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/13/6a/14/136a1432-1467-01d8-e68c-f4eed839d23e/093624937609.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">11</span><h3>New Divide</h3></div>
+<p class="s-meta">2009 · 电影《Transformers: Revenge of the Fallen》</p>
+<p class="s-note">为电影而写，却没有只做一段热闹配乐。电子脉冲与厚重吉他之间，Chester 唱的是隔阂与弥补；那道“新裂缝”，既像银幕上的废墟，也像关系里重新出现的距离。</p>
+<div class="player">
+<button aria-label="播放 New Divide" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="New Divide Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="New Divide Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV14b1TB1E4z" data-vlabel="官方 MV" id="song-catalyst">
+<div aria-label="播放官方 MV The Catalyst" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/10/8a/6c/108a6c9e-993b-c97a-8ed7-5e528c97b4a8/mzaf_2764557981448311142.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="The Catalyst 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3c/07/96/3c07965d-a7f1-3c31-02e6-1abc9861c30d/093624961680.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">12</span><h3>The Catalyst</h3></div>
+<p class="s-meta">2010 · 《A Thousand Suns》</p>
+<p class="s-note">鼓点像警报，声音一层层汇成群体的祈祷。乐队把核恐惧、权力与自毁写进一首不肯按传统结构落地的歌里。唱到最后，责问别人和责问自己已经分不开了。</p>
+<div class="player">
+<button aria-label="播放 The Catalyst" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="The Catalyst Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Catalyst Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Ex4y1s7Xk" data-vlabel="视频" id="song-waiting">
+<div aria-label="播放视频 Waiting for the End" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c5/4b/69/c54b693b-4a04-d1cb-f77d-551c16a7b629/mzaf_6220662550608934691.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Waiting for the End 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3c/07/96/3c07965d-a7f1-3c31-02e6-1abc9861c30d/093624961680.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">13</span><h3>Waiting for the End</h3></div>
+<p class="s-meta">2010 · 《A Thousand Suns》</p>
+<p class="s-note">Mike 的旋律说唱带着近乎轻盈的摆动，Chester 的声音随后从废墟上升起。它谈终点，却没有绝望；承认过去无法挽回之后，一个人反而第一次能够松手。</p>
+<div class="player">
+<button aria-label="播放 Waiting for the End" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Waiting for the End Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Waiting for the End Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1qe411K7U6" data-vlabel="视频" id="song-burn">
+<div aria-label="播放视频 Burn It Down" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/36/a8/45/36a84534-848b-554f-eb9c-5678f5297603/mzaf_9604426022296716434.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Burn It Down 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/10/d7/e1/10d7e167-8476-a8f7-393f-b76640c56a22/093624950479.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">14</span><h3>Burn It Down</h3></div>
+<p class="s-meta">2012 · 《Living Things》</p>
+<p class="s-note">我们建立，我们摧毁，然后在灰烬上重复同样的事。Mike 与 Chester 的段落像齿轮咬合，电子节拍和摇滚爆发重新汇流，也把乐队不断自我改造的矛盾写进歌里。</p>
+<div class="player">
+<button aria-label="播放 Burn It Down" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Burn It Down Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Burn It Down Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1aB4y1g7YP" data-vlabel="视频" id="song-masquerade">
+<div aria-label="播放视频 Final Masquerade" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/aa/36/8daa36d7-dc7c-8e84-7416-e584ffeb6f92/mzaf_10854554882734194971.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Final Masquerade 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2e/d4/0c/2ed40c04-6385-5dec-21bc-37eda2e09cff/093624936602.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">15</span><h3>Final Masquerade</h3></div>
+<p class="s-meta">2014 · 《The Hunting Party》</p>
+<p class="s-note">一段关系已经空了，两个人仍维持最后的表演。Chester 没有用嘶吼追讨答案，只把疲惫唱得越来越亮。面具落下那一刻，没有赢家，只有终于不必再演的安静。</p>
+<div class="player">
+<button aria-label="播放 Final Masquerade" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Final Masquerade Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Final Masquerade Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Cf4y1876V" data-vlabel="视频" id="song-heavy">
+<div aria-label="播放视频 Heavy" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4a/25/83/4a25838e-97c5-84ae-9f7f-9272089e72c8/mzaf_12490030377137108676.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Heavy 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/b4/76/deb4760b-1733-d09f-8ab5-3da9381d5080/093624913214.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">16</span><h3>Heavy</h3></div>
+<p class="s-meta">2017 · 《One More Light》 · feat. Kiiara</p>
+<p class="s-note">最沉的负担不在肩上，而在脑中反复播放。Kiiara 与 Chester 像两个人，也像同一个人的两种语气。这首歌把编曲收得很轻，好让一句“为什么一切都这么重”直接落在人身上。</p>
+<div class="player">
+<button aria-label="播放 Heavy" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Heavy Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Heavy Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1nx411i7E4" data-vlabel="视频" id="song-oml">
+<div aria-label="播放视频 One More Light" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b0/7a/ad/b07aad21-525c-7dbb-4df5-0af18c4bb27f/mzaf_12326660422500167819.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="One More Light 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/b4/76/deb4760b-1733-d09f-8ab5-3da9381d5080/093624913214.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">17</span><h3>One More Light</h3></div>
+<p class="s-meta">2017 · 《One More Light》</p>
+<p class="s-note">它最初就来自对失去的体会，后来又承载了听众对 Chester 的思念。歌里那个问题并不复杂：少了一盏光，谁会在意？每一次万人合唱，都是迟到却坚定的回答——会，我们会。</p>
+<div class="player">
+<button aria-label="播放 One More Light" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="One More Light Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="One More Light Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV12BHDevE2s" data-vlabel="官方 MV" id="song-empty">
+<div aria-label="播放官方 MV The Emptiness Machine" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bd/1d/f2/bd1df25b-15dd-f4e0-e483-3d775378f1f1/mzaf_8835860755338465304.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="The Emptiness Machine 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">18</span><h3>The Emptiness Machine</h3></div>
+<p class="s-meta">2024 · 《From Zero》</p>
+<p class="s-note">Mike 先用平静的声音写下被机器吞噬的感觉，Emily 随后撕开表面。新旧主唱没有被安排成比较题；这首歌真正要证明的，是 Linkin Park 那种理智与爆发的拉扯，还能长出新的生命。</p>
+<div class="player">
+<button aria-label="播放 The Emptiness Machine" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="The Emptiness Machine Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Emptiness Machine Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ooSqYAEP1" data-vlabel="视频" id="song-crown">
+<div aria-label="播放视频 Heavy Is the Crown" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6e/20/48/6e204829-429a-5020-bf45-98535cc2fe6a/mzaf_4958342078224274841.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Heavy Is the Crown 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">19</span><h3>Heavy Is the Crown</h3></div>
+<p class="s-meta">2024 · 《From Zero》 · 2024 全球总决赛主题曲</p>
+<p class="s-note">为竞技舞台写的歌，自然有加冕时刻的巨大声响。但“王冠很重”也延续了乐队一贯的提醒：被所有人看见以后，期待本身就会变成压力。Emily 的长音让胜利也带着代价。</p>
+<div class="player">
+<button aria-label="播放 Heavy Is the Crown" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Heavy Is the Crown Linkin Park" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Heavy Is the Crown Linkin Park" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="tight" id="route">
+<div class="wrap">
+<div class="route rv">
+<p class="eyebrow">04 / 一晚选听</p>
+<h2><span class="yr">从伤口走向光</span>十首歌，听完一段共同长大的路</h2>
+<p style="color:#cbbda8;max-width:44em">从《Hybrid Theory》的内心风暴开始，经由几次大胆转向，最后抵达《From Zero》。顺序比风格更重要，因为成长从来不是直线。</p>
+<ol id="routeList">
+<li><button data-target="song-closer"><span>One Step Closer</span></button></li>
+<li><button data-target="song-end"><span>In the End</span></button></li>
+<li><button data-target="song-faint"><span>Faint</span></button></li>
+<li><button data-target="song-numb"><span>Numb</span></button></li>
+<li><button data-target="song-done"><span>What I've Done</span></button></li>
+<li><button data-target="song-divide"><span>New Divide</span></button></li>
+<li><button data-target="song-catalyst"><span>The Catalyst</span></button></li>
+<li><button data-target="song-burn"><span>Burn It Down</span></button></li>
+<li><button data-target="song-oml"><span>One More Light</span></button></li>
+<li><button data-target="song-empty"><span>The Emptiness Machine</span></button></li>
+</ol>
+<p class="hint">歌名通往对应曲目；圆形按钮可试听约 30 秒，封面可观看相关影像。</p>
+</div>
+</div>
+</section>
+<section class="tight" id="refs">
+<div class="wrap">
+<p class="eyebrow rv">05 / 延伸阅读</p>
+<h2 class="rv">事实有出处，感受留给耳朵</h2>
+<div class="refs"><div class="rv"><h3>乐队与唱片</h3><ul>
+<li><a href="https://www.linkinpark.com/about" rel="noreferrer" target="_blank">Linkin Park 官方传记</a>：从 Xero、Hybrid Theory 到乐队正式定名，以及不同时期的整体叙述。</li>
+<li><a href="https://www.linkinpark.com/music" rel="noreferrer" target="_blank">Linkin Park 官方音乐目录</a>：各张专辑与周年版本的发行日期。</li>
+<li><a href="https://www.warnerrecords.com/news/new-music-linkin-park-officially-here" rel="noreferrer" target="_blank">Warner Records：2024 年回归与新阵容公告</a>。</li>
+</ul></div><div class="rv"><h3>奖项与新篇</h3><ul>
+<li><a href="https://www.grammy.com/artists/linkin-park/4003/" rel="noreferrer" target="_blank">Recording Academy：Linkin Park</a>：格莱美获奖与提名记录。</li>
+<li><a href="https://www.leagueoflegends.com/en-us/news/media/heavy-is-the-crown-ft-linkin-park/" rel="noreferrer" target="_blank">League of Legends：Heavy Is the Crown</a>：2024 全球总决赛官方主题曲资料。</li>
+<li>曲目日期与版本以乐队官方目录和发行页为主；作品解读为这份传记的评论文字。</li>
+</ul></div></div>
+<p class="fine rv">试听与封面来自 Apple Music；视频入口保留原页面所选公开内容。资料更新至 2026 年 10 月。</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div>
+<b>One More Light · Linkin Park 音乐传记</b>
+<p class="fmeta">从 2000 年《Hybrid Theory》听到 2024 年《From Zero》：十九首歌，关于愤怒、失去、改变，以及继续向前。试听与封面来自 Apple Music。</p>
+</div>
+<a class="totop" href="#top">回到顶部 ↑</a>
+</div>
+</footer>
+<button aria-label="回到顶部" class="fab" id="fab"><svg viewbox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"></path></svg></button>
+<div class="mix" id="mix">
+<button aria-label="上一首" class="mix-btn" disabled="" id="mixPrev" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"></path></svg>
+</button>
+<button aria-label="播放" aria-pressed="false" class="mix-btn is-main" id="mixToggle" type="button">
+<svg aria-hidden="true" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<button aria-label="下一首" class="mix-btn" id="mixNext" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"></path></svg>
+</button>
+<span class="mix-now">准备试听</span>
+<label class="mix-vol">
+<input aria-label="音量" id="mixVol" max="100" min="0" type="range" value="28"/>
+</label>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

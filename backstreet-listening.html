@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>把五种声音唱成归途 · Backstreet Boys 音乐传记</title>
+<meta name="description" content="从奥兰多仓库里的五个年轻人，到经历合约争议、停顿、康复、离开与重聚之后仍然一起唱歌：沿 18 首作品重听 Backstreet Boys。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">Backstreet Boys <b>把五种声音唱成归途</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/72/4f/05724f66-734b-9c82-8fa9-5df89b0d1726/mzi.hymiiwyl.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/6b/e9/5f6be919-1b9e-30ef-45b7-cc27fc428fd5/012414167224.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/04/3f/d1043ff2-73b8-e7c5-3ed8-ae9b768bb24f/012414174321.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/6b/e5/ee/6be5eeee-ba48-3686-2d31-ef9866ba94ab/012414177926.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/70/6c/f0/706cf0ad-24d1-5034-6f36-88a8d179fbef/dj.takasyre.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/57/92/97/5792975c-7b7b-9716-b2f3-af865f781f95/mzi.hditrsym.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/8a/bf/3a8abf52-4b0c-87f6-d5e6-aea02f9983f7/884977288926.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a1/52/15/a15215a3-6fe9-0dd5-a32a-cab67e30124b/0859381003915.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/df/06/5ddf06d7-da4f-3dc6-dbc5-004cfc6aa8d9/886447390108.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/72/4f/05724f66-734b-9c82-8fa9-5df89b0d1726/mzi.hymiiwyl.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/6b/e9/5f6be919-1b9e-30ef-45b7-cc27fc428fd5/012414167224.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/04/3f/d1043ff2-73b8-e7c5-3ed8-ae9b768bb24f/012414174321.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/6b/e5/ee/6be5eeee-ba48-3686-2d31-ef9866ba94ab/012414177926.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/70/6c/f0/706cf0ad-24d1-5034-6f36-88a8d179fbef/dj.takasyre.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/57/92/97/5792975c-7b7b-9716-b2f3-af865f781f95/mzi.hditrsym.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/8a/bf/3a8abf52-4b0c-87f6-d5e6-aea02f9983f7/884977288926.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1993 — 2026</p>
+    <h1>Backstreet Boys</h1>
+    <p class="sub">把五种声音唱成归途</p>
+    <p class="deck">他们先在欧洲被听见，才回到美国成为世纪之交的流行坐标。真正让这支组合走得久的，却不只是整齐的舞步和 Max Martin 的旋律：是五种音色学会彼此让位，也是在合约纠纷、停顿、康复与暂别之后，仍愿意回到同一组和声里。</p>
+    <div class="meta-row"><span>1993 年于奥兰多成军</span><span>AJ · Howie · Nick · Kevin · Brian</span><span>五人和声延续至今</span><span>18 首歌按发行顺序</span></div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a><a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false"><span class="listen-label">开始聆听</span><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p><h2 class="rv">五个人，把组合唱成一生的工作</h2>
+    <p class="sec-lead rv">这不是一条从巅峰直线延伸到今天的故事。它更像五个人反复校准距离：先学会齐唱，再学会各自生活，最后明白回来并不等于退回原点。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1993</div><div class="l">五人正式成军</div><div class="s">4 月 20 日 Brian 抵达奥兰多，成为沿用至今的纪念日</div></div>
+      <div class="stat rv"><div class="n">5</div><div class="l">彼此不同的声音</div><div class="s">AJ、Howie、Nick、Kevin、Brian，没有以新人替代离队成员</div></div>
+      <div class="stat rv"><div class="n">1997</div><div class="l">在美国真正破局</div><div class="s">《Quit Playing Games》成为他们首支美国 Top 10 单曲</div></div>
+      <div class="stat rv"><div class="n">1999</div><div class="l">《Millennium》</div><div class="s">流行盛景背后，也是手术、丧亲与合约诉讼交叠的一年</div></div>
+      <div class="stat rv"><div class="n">6</div><div class="l">Kevin 暂别的年份</div><div class="s">2006 至 2012；四人继续录音，并把位置留了下来</div></div>
+      <div class="stat rv"><div class="n">18</div><div class="l">本页代表曲目</div><div class="s">从第一支单曲到《DNA》，按发行顺序聆听</div></div>
+    </div>
+    <div class="toc rv"><h3>目录</h3><ol><li><a href="#glance">速览</a></li><li><a href="#timeline">音乐时间线</a></li><li><a href="#tracks">十八首代表作</a></li><li><a href="#route">一晚选听歌单</a></li><li><a href="#refs">资料与事实边界</a></li></ol></div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p><h2 class="rv"><span class="yr">1993 — 2026</span>先被听见，然后学会留下</h2>
+    <p class="sec-lead rv">他们的长久并非没有裂缝，而是一次次在裂缝之后重建工作方式：离开不被写成背叛，康复也不是一句轻巧的励志口号。</p>
+    <div class="timeline">
+      <div class="tl peak rv"><div class="when">1993 · 04 · 20</div><h3>奥兰多的第五个声音</h3><p>Lou Pearlman 通过试镜召集 AJ、Howie 与 Nick，Kevin 随后加入，并打电话请表弟 Brian 从肯塔基赶来。Brian 抵达的 4 月 20 日成为组合纪念日。最初的日子并不华丽：仓库排练、学校演出、商场与主题公园，是五个人磨出和声和舞台纪律的地方。</p></div>
+      <div class="tl rv"><div class="when">1995 — 1997</div><h3>欧洲先开门，美国后来才听见</h3><p>第一支单曲《We’ve Got It Goin’ On》在美国只到 Hot 100 第 69 名，德国与欧洲市场却先接住了他们。等《Quit Playing Games (With My Heart)》于 1997 年成为美国突破口，这支美国组合已经在大西洋另一边学会如何面对庞大观众。</p></div>
+      <div class="tl peak rv"><div class="when">1997 — 1998</div><h3>成功之后，看见账本</h3><p>成员发现收入与惊人的工作量并不相称。Brian 先起诉 Pearlman，AJ、Kevin 与 Howie 随后加入；同期报道记录了他们关于收入被隐瞒、合约不公平的主张。争议最终经多轮和解处理。这里不把未经裁判逐项确认的金额写成定论，但这场冲突确实促使他们争取财务与职业控制权。</p></div>
+      <div class="tl peak rv"><div class="when">1998 — 2000</div><h3>《Millennium》的光与阴影</h3><p>Brian 在 1998 年接受先天心脏问题相关的手术；Kevin 的父亲、Howie 的姐姐以及 Max Martin 的导师 Denniz PoP 相继离世。1999 年《Millennium》把他们推向流行音乐中心，《Show Me the Meaning of Being Lonely》的影像则让真实失去进入作品，而非只留下成功的表面。</p></div>
+      <div class="tl rv"><div class="when">2000 — 2001</div><h3>高速运转终于要求停下</h3><p>《Black &amp; Blue》继续把和声推向更密、更大的制作。2001 年北美巡演中，AJ 主动承认自己需要帮助，乐队公开宣布他因酒精依赖、抑郁与焦虑进入治疗，并推迟行程。此后的康复有反复；AJ 多年后仍把它称作必须每天持续的工作。</p></div>
+      <div class="tl rv"><div class="when">2005</div><h3>回来，但不重复少年时代</h3><p>三年停顿后，《Never Gone》选择吉他、钢琴和更有成人感的质地。《Incomplete》没有假装时间未曾经过：Kevin 弹钢琴，五个人把“缺了一块”的情绪唱成一次谨慎复出。</p></div>
+      <div class="tl peak rv"><div class="when">2006 — 2012</div><h3>四个人继续，把第五个位置留着</h3><p>Kevin 说自己当时“油箱里什么也不剩”，也对厂牌环境和创作控制感到失望，于是离开、生活并重新寻找灵感。其余四人没有补人：《Unbreakable》重新分配低声部，《This Is Us》继续向当代制作靠近。2012 年 4 月 29 日，Kevin 在伦敦 O2 舞台正式回归。</p></div>
+      <div class="tl rv"><div class="when">2013</div><h3>第一次真正自己掌舵</h3><p>五人在伦敦同住、写歌，也重新学习成年后的合作。《In a World Like This》是离开 Jive 后独立完成的专辑；Kevin 回到录音室，Max Martin 也回来写下标题曲。重聚不是怀旧复制，而是把决定权拿回手里。</p></div>
+      <div class="tl peak rv"><div class="when">2017 — 2019</div><h3>驻唱让旧默契长出新歌</h3><p>拉斯维加斯驻唱让制作人 Stuart Crichton 看见他们此刻的舞台，继而带来《Don’t Go Breaking My Heart》。它成为多年后重新进入主流视野的单曲，并获格莱美提名；《DNA》随后登上 Billboard 200 榜首。</p></div>
+      <div class="tl now rv"><div class="when">2026</div><h3>仍在同一组和声里</h3><p>从少年组合到成年同行者，最难复制的从来不是某个年代的音色，而是五个人仍愿意听彼此呼吸、为下一句让出空间。旧歌继续被重唱，但他们留下来的真正理由，是这份关系还能产生现在时。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">十八首歌，听见关系怎样延续</h2>
+    <p class="sec-lead rv">点「开始聆听」或曲目上的播放钮才会出声。开始后从第一首起，每首试听约 30 秒，尾声淡出后下一首淡入。按发行顺序往下听：先听创作者与成员留下的事实，再听那些没有专门故事、却能从和声与制作里辨认出的变化。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-goin" data-bvid="BV1UU4y187iq" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/74/e9/cc/74e9cc9c-90b5-ef0c-6bd3-58baba11ec2b/mzaf_8174171331299801844.plus.aac.p.m4a" aria-label="播放视频 We&#x27;ve Got It Goin&#x27; On">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg" alt="We&#x27;ve Got It Goin&#x27; On 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>We&#x27;ve Got It Goin&#x27; On</h3></div>
+          <p class="s-meta">实体单曲 1995.9.5 · Radio Edit · 封面是 1997 美国版 · 五人</p>
+          <p class="s-note">1994 年底，五个还没在美国站稳脚跟的年轻人第一次到斯德哥尔摩，与 Denniz PoP 和当时尚未成为巨星制作人的 Max Martin 工作。电话拨号般的开场、轮流接句和齐声副歌，已经把他们最耐用的本领摆出来：每个人有辨识度，合起来又像一个声音。美国最初只到 Hot 100 第 69 名，欧洲却先把门打开。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 We&#x27;ve Got It Goin&#x27; On"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="We&#x27;ve Got It Goin&#x27; On Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="We&#x27;ve Got It Goin&#x27; On Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-heart" data-bvid="BV1eg411T75s" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2a/ce/aa/2aceaa11-027b-ac1e-c881-b99f78f08695/mzaf_8925108069333946554.plus.aac.p.m4a" aria-label="播放视频 I&#x27;ll Never Break Your Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/72/4f/05724f66-734b-9c82-8fa9-5df89b0d1726/mzi.hymiiwyl.jpg/600x600bb.jpg" alt="I&#x27;ll Never Break Your Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>I&#x27;ll Never Break Your Heart</h3></div>
+          <p class="s-meta">流媒体标 1995.12.13 · 德国首专 1996.5.6 · 专辑曲 · 五人</p>
+          <p class="s-note">这首由 Albert Manno 与 Eugene Wilde 写成的慢歌，比首专更早以单曲面世。AJ 和 Brian 把主歌唱得像面对面许诺，副歌再由五人把承诺托宽；它没有复杂的创作轶事，动人处正在编排——独唱负责靠近，和声负责让一句话显得可信。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 I&#x27;ll Never Break Your Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="I&#x27;ll Never Break Your Heart Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="I&#x27;ll Never Break Your Heart Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-quit" data-bvid="BV1j54y1177j" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/63/a5/e8/63a5e8e9-88f4-5cd9-ef47-3826e2ac05f2/mzaf_18231161846426552557.plus.aac.p.m4a" aria-label="播放视频 Quit Playing Games (With My Heart)">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/72/4f/05724f66-734b-9c82-8fa9-5df89b0d1726/mzi.hymiiwyl.jpg/600x600bb.jpg" alt="Quit Playing Games (With My Heart) 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>Quit Playing Games (With My Heart)</h3></div>
+          <p class="s-meta">专辑曲日期 1996.5.6 · 欧洲单曲约 1996.10 · 美国约 1997.5 · 五人</p>
+          <p class="s-note">Max Martin 与 Herbie Crichlow 写下的歌，最初在深夜由 Brian 和 Kevin 完成主要录音，后来为单曲版加入 Nick 的声音。它成为乐队第一支美国 Top 10：不是突然换了一套身份，而是用吉他拨弦、克制节拍和层层叠起的副歌，让美国电台终于听懂他们早已在欧洲建立的表达。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Quit Playing Games (With My Heart)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Quit Playing Games (With My Heart) Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Quit Playing Games (With My Heart) Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-everybody" data-bvid="BV1fX4y1u77K" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d1/82/02/d1820294-fe9c-5efe-be63-392477ab50b5/mzaf_13533494848412286991.plus.aac.p.m4a" aria-label="播放视频 Everybody (Backstreet&#x27;s Back)">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg" alt="Everybody (Backstreet&#x27;s Back) 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>Everybody (Backstreet&#x27;s Back)</h3></div>
+          <p class="s-meta">单曲约 1997.7 · 流媒体标 1997.7.14 · 加长版 · 美国版封面 · 五人</p>
+          <p class="s-note">标题像一句自我介绍，也像一次回门。Martin 与 Denniz PoP 把机械节拍、怪诞笑声和呼喊式副歌装进同一首歌，成员则在 Joseph Kahn 执导的怪物电影式 MV 里放大表演性。这里的“Backstreet’s back”在美国首专语境里甚至有点悖论——他们对本土听众才刚真正开始。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Everybody (Backstreet&#x27;s Back)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Everybody (Backstreet&#x27;s Back) Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Everybody (Backstreet&#x27;s Back) Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-aslong" data-bvid="BV1hX4y1g7xx" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/44/04/5b/44045b28-8b00-bacf-3362-18e6a19c7253/mzaf_8088583598169581349.plus.aac.p.m4a" aria-label="播放视频 As Long as You Love Me">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg" alt="As Long as You Love Me 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>As Long as You Love Me</h3></div>
+          <p class="s-meta">1997.8.12 · 美国版专辑曲 · 五人</p>
+          <p class="s-note">Max Martin 起初不确定这首歌是否适合他们；AJ 也回忆，拍 MV 时自己喉咙发炎，还在现场熟悉歌词。成品的聪明在于不抢：轻巧鼓点把空间留给五人的轮唱，副歌承认“我不在乎你过去是谁”，听起来既像爱情条件，也像一支尚未被美国接纳的组合在请求只凭音乐判断。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 As Long as You Love Me"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="As Long as You Love Me Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="As Long as You Love Me Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-thatway" data-bvid="BV1SK4y177ky" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/12/cd/f8/12cdf81c-f174-cd45-9a56-9b2388df9e63/mzaf_2642298639219088626.plus.aac.p.m4a" aria-label="播放视频 I Want It That Way">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/6b/e9/5f6be919-1b9e-30ef-45b7-cc27fc428fd5/012414167224.jpg/600x600bb.jpg" alt="I Want It That Way 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>I Want It That Way</h3></div>
+          <p class="s-meta">单曲 1999.4.12 · 《Millennium》1999.5.18 · 华语常称我就是爱你 · 五人</p>
+          <p class="s-note">Max Martin 与 Andreas Carlsson 的旋律先赢了，叙事却没有完全合拢。Carlsson 后来直言歌词“并没有什么意义”；Jive 曾请 Mutt Lange 改出逻辑更清楚的版本，五人录完后仍投票留下原版，因为新词失去了原有的韵律与感觉。Kevin、AJ、Nick 给过不同解释，最诚实的答案仍是：它的开放不是待解暗号，旋律本身才是共同语言。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 I Want It That Way"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="I Want It That Way Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="I Want It That Way Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-larger" data-bvid="BV1m5411A7pB" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c9/37/c1/c937c1ec-033d-60a3-237e-2c8803739ab0/mzaf_1841969693782727375.plus.aac.p.m4a" aria-label="播放视频 Larger Than Life">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/6b/e9/5f6be919-1b9e-30ef-45b7-cc27fc428fd5/012414167224.jpg/600x600bb.jpg" alt="Larger Than Life 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>Larger Than Life</h3></div>
+          <p class="s-meta">1999.5.18 · 《Millennium》 · 华语常称摇摆狂潮 · 五人</p>
+          <p class="s-note">Brian 与 Max Martin、Kristian Lundin 共同写下这封给歌迷的回信：声名会带来压力，但听众的支持也让舞台上的他们“larger than life”。Jive 前高管 Barry Weiss 把它称作《Millennium》真正的快歌；巡演开场时五人乘飞板出现，歌曲由感谢信变成一座体育馆共同完成的仪式。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Larger Than Life"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Larger Than Life Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Larger Than Life Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-meaning" data-bvid="BV1RZ4y1G7yM" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/90/29/43/90294376-c14f-2d6e-f3ac-d01cbd9b318d/mzaf_15747297890280725973.plus.aac.p.m4a" aria-label="播放视频 Show Me the Meaning of Being Lonely">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5f/6b/e9/5f6be919-1b9e-30ef-45b7-cc27fc428fd5/012414167224.jpg/600x600bb.jpg" alt="Show Me the Meaning of Being Lonely 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>Show Me the Meaning of Being Lonely</h3></div>
+          <p class="s-meta">1999.5.18 · 《Millennium》 · 华语常称寂寞的真谛 · 五人</p>
+          <p class="s-note">词作者 Herbie Crichlow 说，灵感是对经历失去、孤独与心痛的人说“我看见你，你并不孤单”。MV 将这句话落到成员真实生命里：Brian 的心脏手术、Kevin 对父亲的怀念、Howie 对因狼疮去世的姐姐 Caroline 的追思；开往“Denniz St.”的巴士也纪念 Max Martin 已故的导师 Denniz PoP。它不是把悲伤装饰成戏剧，而是让五个人最后走到同一条街上。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Show Me the Meaning of Being Lonely"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Show Me the Meaning of Being Lonely Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Show Me the Meaning of Being Lonely Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-shape" data-bvid="BV1kC4y1h7dW" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/55/91/d1/5591d104-aa48-220c-055d-050a6397ed80/mzaf_9104713885279704950.plus.aac.p.m4a" aria-label="播放视频 Shape of My Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/04/3f/d1043ff2-73b8-e7c5-3ed8-ae9b768bb24f/012414174321.jpg/600x600bb.jpg" alt="Shape of My Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>Shape of My Heart</h3></div>
+          <p class="s-meta">曲目标 2000.10.3 · 专辑《Black &amp; Blue》2000.11.21 · 五人</p>
+          <p class="s-note">瑞典创作歌手 Lisa Miskovsky 提供了早期核心，Max Martin 与 Rami Yacoub 大幅重塑成现在的歌。到了《Black &amp; Blue》，五人都已进入二十岁：软吉他和低调鼓点不再追逐少年式表白，而让“回看我做过的事”像一次成年后的自省。它获格莱美最佳流行组合演唱提名；那是提名，不是获奖。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Shape of My Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Shape of My Heart Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Shape of My Heart Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-call" data-bvid="BV1ke411x7h6" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/04/df/82/04df8269-29a2-31d2-e667-e6d0290515c6/mzaf_14948643594211153887.plus.aac.p.m4a" aria-label="播放视频 The Call">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/04/3f/d1043ff2-73b8-e7c5-3ed8-ae9b768bb24f/012414174321.jpg/600x600bb.jpg" alt="The Call 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>The Call</h3></div>
+          <p class="s-meta">2000.11.21 · 《Black &amp; Blue》 · 五人</p>
+          <p class="s-note">Martin 与 Rami 把一通掩饰背叛的电话写成近乎电影追逐的舞曲。录音室里还有一桩由 AJ 讲述、Howie 本人确认的意外：Howie 录“dun dun dun”分解和声时漏出一点气声，恰好落在拍上，Max 把它采样处理成低频效果。趣闻之所以值得留下，不在尴尬，而在制作人连偶发声音都能听成节奏。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 The Call"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="The Call Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Call Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-drowning" data-bvid="BV1NNYyzeEZ3" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c5/89/d1/c589d1b5-5827-db8a-442b-f0e3ad00cb1f/mzaf_11386589414325557498.plus.aac.p.m4a" aria-label="播放官方 MV Drowning">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/6b/e5/ee/6be5eeee-ba48-3686-2d31-ef9866ba94ab/012414177926.jpg/600x600bb.jpg" alt="Drowning 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>Drowning</h3></div>
+          <p class="s-meta">精选 2001.10.23 · 流媒体标 2001.10.16 · 精选里的新歌 · 五人</p>
+          <p class="s-note">它由 Andreas Carlsson、Linda Thompson 与 Rami 写作，2000 年录成，后来成为精选集里唯一的新单曲。发行前几个月，AJ 因酒精依赖、抑郁与焦虑进入治疗，巡演暂停；因此不应把歌词倒推成他的康复自传。更准确的听法是：这首早已完成的歌，恰在乐队必须真正停下来照顾成员时被听见。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Drowning"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Drowning Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Drowning Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-incomplete" data-bvid="BV1eK4y1K735" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8e/18/65/8e1865cd-1907-4611-6812-41ed0f0c6ce8/mzaf_11646395592547657792.plus.aac.p.m4a" aria-label="播放视频 Incomplete">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/70/6c/f0/706cf0ad-24d1-5034-6f36-88a8d179fbef/dj.takasyre.jpg/600x600bb.jpg" alt="Incomplete 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>Incomplete</h3></div>
+          <p class="s-meta">单曲约 2005.4.11 · 专辑《Never Gone》2005.6.14 · 风云再起 · 封面是流媒体配图 · 五人</p>
+          <p class="s-note">停顿三年后，Dan Muckala、Lindy Robbins 与 Jess Cates 写下复出首单，Kevin 亲自弹钢琴。Howie 当时形容新专辑更“有机”，不再处处堆满五部和声；鼓与吉他的力度也把他们从少年流行推向成人抒情摇滚。《Incomplete》并非谁的私人分手故事，却精准唱出了重聚后的处境：五个人都在，但旧时代已经不可能原样回来。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Incomplete"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Incomplete Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Incomplete Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-inconsolable" data-bvid="BV1uA411W7dd" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4f/0d/50/4f0d5031-1ba1-b131-4ff3-6315ba1c97bd/mzaf_11167033441355114395.plus.aac.p.m4a" aria-label="播放视频 Inconsolable">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/57/92/97/5792975c-7b7b-9716-b2f3-af865f781f95/mzi.hditrsym.jpg/600x600bb.jpg" alt="Inconsolable 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">13</span><h3>Inconsolable</h3></div>
+          <p class="s-meta">流媒体标 2007.8.27 · 《Unbreakable》2007.10.30 · 不散的和弦 · 四人</p>
+          <p class="s-note">Kevin 离开后，乐队明确决定不找替代者。Nick 说他和 AJ 都能补低音；Howie 则承认，四人必须重新分配主唱与和声，不能让听众只听见一个缺口。Emanuel Kiriakou、Lindy Robbins 与 Jess Cates 写成的钢琴摇滚慢歌，因此既保留熟悉的大副歌，也记录了他们第一次以四人证明组合仍能成立。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Inconsolable"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Inconsolable Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Inconsolable Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-straight" data-bvid="BV1nJ411a77U" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/59/fb/20/59fb2037-f3f1-f3c4-c842-5db391e35d66/mzaf_7971214561978757409.plus.aac.p.m4a" aria-label="播放视频 Straight Through My Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/8a/bf/3a8abf52-4b0c-87f6-d5e6-aea02f9983f7/884977288926.jpg/600x600bb.jpg" alt="Straight Through My Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">14</span><h3>Straight Through My Heart</h3></div>
+          <p class="s-meta">流媒体标 2009.8.19 · 《This Is Us》2009.10.6 · 就是我们 · 四人</p>
+          <p class="s-note">《This Is Us》几乎收尾时，RedOne 才送来三首歌。AJ 说他们听见这一首便知道找到了主打；Howie 认为它把欧陆舞曲和乐队原有的流行／R&amp;B 交回一起。四个人没有假装回到 1999，而是让合成器脉冲托住熟悉和声：更新声音，同时守住“唱在一起”这个核心。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Straight Through My Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Straight Through My Heart Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Straight Through My Heart Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-world" data-bvid="BV1XK4y1x7ov" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/96/d7/16/96d71639-9f5a-f7ad-3280-2b1f568a8c41/mzaf_13251977246368230872.plus.aac.p.m4a" aria-label="播放视频 In a World Like This">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a1/52/15/a15215a3-6fe9-0dd5-a32a-cab67e30124b/0859381003915.jpg/600x600bb.jpg" alt="In a World Like This 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">15</span><h3>In a World Like This</h3></div>
+          <p class="s-meta">单曲 2013.6.25 · 专辑 2013.7.30 · 华语常称真情难舍 · 标准版 · 五人</p>
+          <p class="s-note">Kevin 回归后，五人在伦敦同住三周、轮换写作，重新熟悉成年后的彼此。这也是他们离开 Jive 后第一次独立掌舵的专辑。Max Martin 起初担心无法超越旧作，最后写出的标题曲没有复制《I Want It That Way》；它把早期音色放进更开阔的吉他流行里，像一句朴素确认：世界再复杂，五个人仍选择站在一起。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 In a World Like This"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="In a World Like This Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="In a World Like This Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-breaking" data-bvid="BV1Zp411Z7pW" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7e/6b/a6/7e6ba6e4-a0ad-0503-3472-2fd067ab9208/mzaf_11730077006172675582.plus.aac.p.m4a" aria-label="播放官方 MV Don&#x27;t Go Breaking My Heart">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/df/06/5ddf06d7-da4f-3dc6-dbc5-004cfc6aa8d9/886447390108.jpg/600x600bb.jpg" alt="Don&#x27;t Go Breaking My Heart 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">16</span><h3>Don&#x27;t Go Breaking My Heart</h3></div>
+          <p class="s-meta">单曲 2018.5.17 · 《DNA》2019.1.25 · 专辑版 · 五人</p>
+          <p class="s-note">拉斯维加斯驻唱第一阶段结束后，制作人 Stuart Crichton 看过他们的现场，带来这首由 Stephen Wrabel、Jamie Hartman 与他共同写作的歌。Howie 说，乐队要保留可辨认的和声，也不愿只活在过去。它成为五年来第一支新单曲，并获格莱美最佳流行组合演唱提名——多年后再被主流电台听见，靠的不是复刻旧滤镜，而是重新把舞台经验写进当代节拍。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Don&#x27;t Go Breaking My Heart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Don&#x27;t Go Breaking My Heart Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Don&#x27;t Go Breaking My Heart Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-chances" data-bvid="BV1mb411c75W" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9b/a4/b0/9ba4b08d-052a-e7ae-1697-1cc7b15cdc50/mzaf_6144818157086207677.plus.aac.p.m4a" aria-label="播放官方 MV Chances">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/df/06/5ddf06d7-da4f-3dc6-dbc5-004cfc6aa8d9/886447390108.jpg/600x600bb.jpg" alt="Chances 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">17</span><h3>Chances</h3></div>
+          <p class="s-meta">2018.11.9 · 收在《DNA》 · 五人</p>
+          <p class="s-note">AJ 认识 Ryan Tedder 多年，一直催他“把最好的歌送来”；当这首由 Tedder、Shawn Mendes 等人共同创作的作品出现，五人很快接受。AJ 喜欢它把缘分放在错过一班车、与陌生人对视这样的日常偶然里，也把“五个背景不同的人竟走到一起”听进了标题。每个人都有独唱片刻，正好对应《DNA》想展示的五种声纹。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Chances"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Chances Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Chances Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-noplace" data-bvid="BV1Ht411x7jA" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/53/ab/f2/53abf26d-1d78-5190-87ce-a4110c7b60ca/mzaf_800581627159618598.plus.aac.p.m4a" aria-label="播放官方 MV No Place">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/df/06/5ddf06d7-da4f-3dc6-dbc5-004cfc6aa8d9/886447390108.jpg/600x600bb.jpg" alt="No Place 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">18</span><h3>No Place</h3></div>
+          <p class="s-meta">2019.1.4 · 《DNA》2019.1.25 · 五人</p>
+          <p class="s-note">Brett James、Joshua Miller 与 Troy Verges 写下远行之后的归处，Kevin 说他们因家人与孩子而决定唱它。MV 没有搭造宏大剧情，而是让五位成员回到各自日常：做饭、读书、荡秋千、烤棉花糖、陪孩子跳舞。经历长期巡演与反复重启后，“没有别处像家”不再只是情歌，也像他们终于学会在工作和生活之间落脚。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 No Place"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="No Place Backstreet Boys" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="No Place Backstreet Boys" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="route" class="tight">
+  <div class="wrap"><div class="route rv">
+    <p class="eyebrow">04 / 选听清单</p><h2><span class="yr">从相遇、失去到归来</span>如果只听一个晚上</h2>
+    <p style="color:#cbbda8;max-width:44em">这十首不是简单的“大热歌”压缩包。前半听 Max Martin 与五种声线如何建立一种流行语法；中段听成年、失去与停顿；最后听四人如何守住名字，又怎样迎回第五个声音。</p>
+    <ol id="routeList">
+      <li><button data-target="song-goin"><span>We&#x27;ve Got It Goin&#x27; On</span></button></li><li><button data-target="song-quit"><span>Quit Playing Games (With My Heart)</span></button></li>
+      <li><button data-target="song-thatway"><span>I Want It That Way</span></button></li><li><button data-target="song-meaning"><span>Show Me the Meaning of Being Lonely</span></button></li>
+      <li><button data-target="song-shape"><span>Shape of My Heart</span></button></li><li><button data-target="song-call"><span>The Call</span></button></li>
+      <li><button data-target="song-incomplete"><span>Incomplete</span></button></li><li><button data-target="song-inconsolable"><span>Inconsolable</span></button></li>
+      <li><button data-target="song-world"><span>In a World Like This</span></button></li><li><button data-target="song-breaking"><span>Don&#x27;t Go Breaking My Heart</span></button></li>
+    </ol>
+    <p class="hint">从第一首青春期的自我介绍，听到五人重聚后的当代节拍；十段试听连起来，大约五分钟。</p>
+  </div></div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">05 / 资料</p><h2 class="rv">事实从采访来，感受留在歌里</h2>
+    <p class="sec-lead rv">五个人唱过许多别人写下的爱情，却也把自己的成长留在和声里：被骗走的收入、病痛与戒瘾、成员离开和归队，以及唱到中年仍愿意站回同一排的信任。歌替他们走红，岁月才让“兄弟”这个词慢慢变真。</p>
+    <div class="refs">
+      <div class="rv"><h3>创作与录音</h3><ul>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-us-debut-album-oral-history-7897897/">Billboard：美国首专二十周年口述史</a>——五位成员回忆斯德哥尔摩录音、《Quit Playing Games》《As Long as You Love Me》与早期美国市场。</li>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-millennium-anniversary-interview-collaborators-8511739/">Billboard：《Millennium》逐曲口述史</a>——Jive 团队、Herbie Crichlow、Rami Yacoub 等说明《Larger Than Life》与《Show Me the Meaning》的创作和制作。</li>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-i-want-it-that-way-lyrics-story-8506426/">Billboard：《I Want It That Way》歌词口述史</a>及 <a href="https://www.elle.com/culture/music/interviews/a40021/backstreet-boys-i-want-it-that-way/">ELLE 成员口述</a>——原词的抽象、Mutt Lange 改写版，以及乐队投票保留原版。</li>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-shape-of-my-heart-2000-9345384/">Billboard：《Shape of My Heart》回望</a>——作品如何标记“男孩组合”进入成年；Lisa Miskovsky、Max Martin 与 Rami 为署名作者。</li>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-the-call-max-martin-howie-dorough-fart-story-7898099/">Billboard：《The Call》录音轶事</a>——AJ 讲述、Howie 确认，Max Martin 将录音中的意外声响处理为低频采样。</li>
+        <li><a href="https://www.billboard.com/music/music-news/back-to-backstreet-62741/">Billboard：2005 年复出报道</a>与 <a href="https://ew.com/article/2005/05/23/backstreets-back-are-boys-still-all-right/">Entertainment Weekly 录音室报道</a>——《Never Gone》的声音转向及与 Max Martin 的再次合作。</li>
+      </ul></div>
+      <div class="rv"><h3>成员、转折与后来</h3><ul>
+        <li><a href="https://www.rollingstone.com/music/music-news/the-backstreet-boys-year-in-hell-176414/">Rolling Stone：1998 年合约争议报道</a>与 <a href="https://www.billboard.com/music/music-news/backstreet-boys-sue-pearlman-trans-continental-60808/">Billboard：诉讼与和解报道</a>——Pearlman 争议按成员主张与法律进程表述，不把争议金额写成无条件事实。</li>
+        <li><a href="https://www.latimes.com/archives/la-xpm-2001-jul-14-ca-22160-story.html">Los Angeles Times：AJ 进入治疗的同期报道</a>；后续康复状态采用 AJ 对 <a href="https://people.com/aj-mclean-talks-sobriety-journey-ahead-of-2-year-sober-anniversary-7973956">People</a> 的公开自述。康复是持续过程，不以一次治疗概括。</li>
+        <li><a href="https://www.billboard.com/music/music-news/the-boys-are-back-in-town-2-1047597/">Billboard：《Unbreakable》四人采访</a>——不找替代成员、重新分配和声；Kevin 离开与回归的原因采用其 2013 年公开采访。</li>
+        <li><a href="https://www.rollingstone.com/music/music-news/qa-backstreet-boys-seek-closet-fans-with-new-album-tour-248923/">Rolling Stone：2013 年五人重聚采访</a>——伦敦共同写作、独立制作与 Kevin 重新融入。</li>
+        <li><a href="https://www.billboard.com/music/pop/backstreet-boys-dont-go-breaking-my-heart-howie-dorough-interview-8456505/">Billboard：Howie 谈《Don’t Go Breaking My Heart》</a>、<a href="https://www.billboard.com/music/pop/backstreet-boys-chances-aj-mclean-interview-dna-album-tour-8484136/">AJ 谈《Chances》</a>及 <a href="https://www.billboard.com/music/pop/backstreet-boys-no-place-music-video-8492262/">《No Place》MV 报道</a>。</li>
+        <li>发行日期、词曲与制作署名来自唱片内页、Jive／RCA 公告及 Apple Music 条目。页面试听与封面来自 Apple Music；带 <code>Features</code> 的《Incomplete》图片是店内配图，不主张为 2005 年首版封套。</li>
+      </ul></div>
+    </div>
+    <p class="fine rv">本页不记录成员婚姻细节、子女姓名、收入推算或未经当事人和可靠媒体确认的传闻。Pearlman 相关内容只写可核实的诉讼与公开陈述；《I Want It That Way》不替开放歌词制造唯一答案；格莱美记录均明确为提名。资料复核于 2026 年 10 月 12 日。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>把五种声音唱成归途 · Backstreet Boys 音乐传记</b>
+      <p class="fmeta">十八首歌，记录五种声音如何相遇、失去、调整，再回到同一组和声。内容复核于 2026 年 10 月 · 试听与封面来自 Apple Music。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Paradise · Within Temptation 音乐传记</title>
+<meta content="从《Enter》的幽暗，到《Ice Queen》的敞亮，再到写给亲人的《Our Farewell》《Supernova》与关切现实的《Bleed Out》：沿着 18 首歌，听 Within Temptation 怎样走过三十年。" name="description"/>
+<meta content="#1c1613" name="theme-color"/>
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0};text-shadow:0 2px 12px rgba(0,0,0,.55)
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div aria-hidden="true" class="progress" id="progress"></div>
+<nav aria-label="章节导航" class="nav" id="nav">
+<div class="nav-in">
+<div class="brand">Within Temptation · 音乐传记</div>
+<div class="nav-links" id="navLinks">
+<a href="#glance">速览</a>
+<a href="#timeline">时间线</a>
+<a href="#tracks">唱片</a>
+<a href="#route">歌单</a>
+<a href="#refs">资料</a>
+</div>
+</div>
+</nav>
+<header class="hero" id="top">
+<div aria-hidden="true" class="mosaic">
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e3/87/5a/e3875a6b-c430-5623-1e4f-738618811ba8/4006759890073.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2e/a2/fb/2ea2fbcc-14e3-1dd4-9cad-aa184d51e353/888880873552.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a6/52/6c/a6526c89-47eb-0e52-30d1-a9e5b22e0f73/888880140050.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/de/69/45/de6945fb-6d2b-b616-5078-ab289e4396fb/8720205585660.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b9/9f/be/b99fbe5b-60de-491c-4354-1f61cebdd514/802987059725.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/a9/f7/e1a9f796-66a8-923a-3e61-9bf34656b4b8/00602577347641.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/3d/62/5e3d62e4-9d2b-a807-ddb3-65394110f58f/8720766071978.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e3/87/5a/e3875a6b-c430-5623-1e4f-738618811ba8/4006759890073.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2e/a2/fb/2ea2fbcc-14e3-1dd4-9cad-aa184d51e353/888880873552.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a6/52/6c/a6526c89-47eb-0e52-30d1-a9e5b22e0f73/888880140050.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/de/69/45/de6945fb-6d2b-b616-5078-ab289e4396fb/8720205585660.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b9/9f/be/b99fbe5b-60de-491c-4354-1f61cebdd514/802987059725.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/a9/f7/e1a9f796-66a8-923a-3e61-9bf34656b4b8/00602577347641.rgb.jpg/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/3d/62/5e3d62e4-9d2b-a807-ddb3-65394110f58f/8720766071978.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e3/87/5a/e3875a6b-c430-5623-1e4f-738618811ba8/4006759890073.png/600x600bb.jpg"/>
+<img alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg"/>
+</div>
+<div class="hero-in">
+<p class="kicker">A Listening Biography · 1996 — 2026</p>
+<h1>Paradise</h1>
+<p class="sub">Within Temptation：从暗处唱到人间</p>
+<p class="deck">1996 年，Sharon den Adel 与 Robert Westerholt 在荷兰组起这支乐队。最早的歌里，她清亮的声音与他的低吼隔着一片阴影对望。后来，阴影还在，歌却越唱越开阔：《Ice Queen》把他们带到更大的舞台，《Our Farewell》留下了 Sharon 对祖母的思念，《Supernova》留给父亲。唱到《Paradise》时，她和 Tarja Turunen 问的已经不只是“我怎么办”，还有“我们怎么办”。再往后，世界上的战火与不公也走进了歌里。这是 Within Temptation 的三十年：从自己的故事出发，终于把目光投向更多人。</p>
+<div class="meta-row">
+<span>1996 年成军 · 荷兰</span>
+<span>Sharon den Adel 与 Robert Westerholt 创立</span>
+<span>八张录音室专辑 · 本页选听 18 首</span>
+</div>
+<div class="cta">
+<a class="btn btn-g" href="#tracks">代表歌曲</a>
+<a class="btn btn-g" href="#timeline">音乐之路</a>
+<button aria-pressed="false" class="btn btn-p" id="listenToggle" type="button">
+<span class="listen-label">开始聆听</span>
+<svg aria-hidden="true" fill="currentColor" height="15" viewbox="0 0 24 24" width="15"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+</div>
+</div>
+<div aria-hidden="true" class="scroll-cue">SCROLL<i></i></div>
+<div aria-hidden="true" class="perf"></div>
+</header>
+<main id="main">
+<section id="glance">
+<div class="wrap">
+<p class="eyebrow rv">01 / 速览</p>
+<h2 class="rv">从一间小录音室，唱到更远的地方</h2>
+<p class="sec-lead rv">这六个数字，是沿着唱片回望的路标。开头是两个人想做的音乐，后来有了听众，有了更大的舞台，也有了不得不写进歌里的告别和现实。</p>
+<div class="stats">
+<div class="stat rv"><div class="n">1996</div><div class="l">在荷兰组队</div><div class="s">Sharon den Adel 与 Robert Westerholt 从这里开始</div></div>
+<div class="stat rv"><div class="n">1997</div><div class="l">《Enter》</div><div class="s">清亮主唱与低吼并行的起点</div></div>
+<div class="stat rv"><div class="n">2</div><div class="l">《Ice Queen》荷兰单曲榜最高名次</div><div class="s">一首歌，把他们带出地下圈</div></div>
+<div class="stat rv"><div class="n">2011</div><div class="l">《The Unforgiving》</div><div class="s">漫画、短片与歌曲连成同一个故事</div></div>
+<div class="stat rv"><div class="n">2023</div><div class="l">《Bleed Out》</div><div class="s">第八张录音室专辑，目光转向现实</div></div>
+<div class="stat rv"><div class="n">18</div><div class="l">本页选听</div><div class="s">从《Restless》到《Bleed Out》</div></div>
+</div>
+<div class="toc rv">
+<h3>目录</h3>
+<ol>
+<li><a href="#glance">速览</a></li>
+<li><a href="#timeline">时间线</a></li>
+<li><a href="#tracks">唱片与主打</a></li>
+<li><a href="#route">如果只重听一个晚上</a></li>
+<li><a href="#refs">资料与唱片注</a></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="tight" id="timeline">
+<div class="wrap">
+<p class="eyebrow rv">02 / 时间线</p>
+<h2 class="rv"><span class="yr">1996 — 2026</span>从《Enter》到《Bleed Out》</h2>
+<p class="sec-lead rv">三十年里，编曲越来越宽，题材越来越近。唱片间的变化，不只是声音从暗到亮，也是一个人慢慢学会在歌里谈失去、相遇，以及身边的世界。</p>
+<div class="timeline">
+<div class="tl peak rv"><div class="when">1996</div><h3>成军</h3><p>Sharon 与 Robert 组队时，想把沉重的吉他、电影配乐般的气势和一把清亮的女声放在一起。早期的 Robert 也在歌里低吼：那是两种声音相互拉扯的年代。贝斯手 Jeroen van Veen 从早年就在队中。</p></div>
+<div class="tl rv"><div class="when">1997 · 04 · 06</div><h3>《Enter》</h3><p>第一张专辑仍带着哥特与厄运金属的阴影。Sharon 的旋律不是为了把粗粝抹平；它越清晰，Robert 的低吼就越像一道不能绕开的暗流。后来人们熟悉的宽阔副歌，在这里还只是远处的一点光。</p></div>
+<div class="tl peak rv"><div class="when">2000 · 12</div><h3>《Mother Earth》</h3><p>到了第二张唱片，乐队把重心从幽暗的双声部移向 Sharon 的歌唱。《Ice Queen》有了能让整场观众一起唱的旋律；同一张唱片里，《Our Farewell》却轻得像一封写给离世祖母的信。那时他们已经明白，宏大的声音也可以装下很私人的想念。</p></div>
+<div class="tl rv"><div class="when">2004 · 11</div><h3>《The Silent Force》</h3><p>《Stand My Ground》让副歌挺身而出，弦乐与合唱也愈发像乐队的一部分。《Memories》把声音收回去，《Angels》又让它重新扬起。后来 Sharon 说，《Stand My Ground》原本回应荷兰社会与政治气氛的变化，听众则在歌里找到了各自坚持的理由。</p></div>
+<div class="tl rv"><div class="when">2007 · 03 · 09</div><h3>《The Heart of Everything》</h3><p>这张唱片更肯把冲突摆到台前。《What Have You Done》里，Sharon 与客席歌手 Keith Caputo 的声音彼此追问；《All I Need》则把气势放低，唱出向另一个人伸手的脆弱。此前只能在想象里铺开的情绪，如今有了人的脸。</p></div>
+<div class="tl peak rv"><div class="when">2008 · 02 · 07</div><h3>Black Symphony</h3><p>2 月 7 日的鹿特丹 Ahoy，乐队与 Metropole Orchestra 同台。那些原先由键盘勾出的弦乐与铜管，此刻有了真实的呼吸。舞台变大了，歌里的私密情绪却没有被淹没；这场演出像是他们早年梦想的一次兑现。</p></div>
+<div class="tl rv"><div class="when">2011 · 03 · 25</div><h3>《The Unforgiving》</h3><p>做到这里，他们没有再把上一张唱片扩得更大，而是换了讲故事的办法：漫画、三部短片和歌曲彼此照应。《Faster》往前冲，《Sinéad》把人物留在旋律里。Sharon 后来回看这张唱片，说他们借那些故事重逢了年轻时爱过的八十年代音乐。</p></div>
+<div class="tl peak rv"><div class="when">2011 · 09</div><h3>巡演编制改变</h3><p>Robert 从巡演前台退下来，继续参与写歌与制作；Stefan Helleblad 接过现场吉他的位置。对一支从两个人开始的乐队，这是台前与幕后的重新分工，而不是故事的终点。</p></div>
+<div class="tl peak rv"><div class="when">2014 · 01 · 31</div><h3>《Hydra》</h3><p>《Hydra》像专辑名里的多头神兽：重型吉他、交响铺陈和不同客席，各自伸向一个方向。《Paradise (What About Us?)》请来 Tarja Turunen 与 Sharon 对唱。两人并不是被安排来分胜负；在这首呼唤“我们”的歌里，两把声音恰好能够并肩。</p></div>
+<div class="tl rv"><div class="when">2019 · 02 · 01</div><h3>《Resist》</h3><p>两张录音室专辑之间隔了五年。Sharon 曾因父亲患病与离世难以继续写歌，也借个人音乐计划重新找到表达的办法。回到乐队后，《The Reckoning》带进电子节拍与 Jacoby Shaddix 的声音；《Supernova》则是她写给父亲的歌。越是巨大的声响，越能听见那份等待回应的心。</p></div>
+<div class="tl peak rv"><div class="when">2023 · 10 · 20</div><h3>《Bleed Out》</h3><p>这张唱片把目光从个人的伤痛推向公共的伤痛。《Wireless》写一个被宣传裹挟、以为自己为正义上战场的士兵；标题曲由伊朗女性争取权利的遭遇触发。Sharon 仍用熟悉的高音唱，但问题已经不是怎样逃进另一重世界，而是怎样面对眼前这个世界。</p></div>
+<div class="tl now rv"><div class="when">2026</div><h3>三十年，仍在继续</h3><p>2026 年，乐队推出三十周年唱片重发，也重新录制了《Ice Queen》的不插电版本。那首曾把他们带向更多听众的歌，二十五年后仍值得再唱一次。一个乐队能走得久，大概正因为它愿意回头听，也愿意往前走。</p></div>
+</div>
+</div>
+</section>
+<section id="tracks">
+<div class="wrap">
+<p class="eyebrow rv">03 / 唱片与主打</p>
+<h2 class="rv">十八首歌，十八次走近他们</h2>
+<p class="sec-lead rv">从最早的低吼与清唱，到与朋友并肩的合唱，再到写给亲人的告别和为陌生人发出的声音，听这十八首，能听见一支乐队怎样长大。以下每首只留一小段故事；唱片版本与日期差异，放在文末。</p>
+<div class="tracks">
+<article class="song rv" data-bvid="BV1d7411V7ed" data-vlabel="视频" id="song-restless">
+<div aria-label="播放视频 Restless" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b7/94/e0/b794e00a-fe80-fe5a-8de7-5874f98e6460/mzaf_17161481574637747371.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Restless 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e3/87/5a/e3875a6b-c430-5623-1e4f-738618811ba8/4006759890073.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">01</span><h3>Restless</h3></div>
+<p class="s-meta">1997 · 《Enter》</p>
+<p class="s-note">第一张唱片的门，开得很慢。吉他先铺出一层阴影，Sharon 的声音才走进来；年轻时那种说不清缘由的不安，恰好适合这样的开场。</p>
+<div class="player">
+<button aria-label="播放 Restless" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Restless Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Restless Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1CZ7L68EFS" data-vlabel="视频" id="song-enter">
+<div aria-label="播放视频 Enter" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f2/58/af/f258afb4-93e9-f705-8ad7-ecabea9bc822/mzaf_15285547483084165269.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Enter 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e3/87/5a/e3875a6b-c430-5623-1e4f-738618811ba8/4006759890073.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">02</span><h3>Enter</h3></div>
+<p class="s-meta">1997 · 《Enter》</p>
+<p class="s-note">Sharon 的清唱与 Robert 的低吼轮流向前，谁也没有把谁盖过去。后来他们把歌写得更明亮，再回来听，仍会记得最初这份不肯磨平棱角的野心。</p>
+<div class="player">
+<button aria-label="播放 Enter" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Enter Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Enter Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Nc41117si" data-vlabel="视频" id="song-ice">
+<div aria-label="播放视频 Ice Queen" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c8/72/9d/c8729d1c-da29-0301-2bc2-80e6c3a0196c/mzaf_16497417145446045185.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Ice Queen 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">03</span><h3>Ice Queen</h3></div>
+<p class="s-meta">2000 · 《Mother Earth》；2001 年发行单曲</p>
+<p class="s-note">《Mother Earth》让 Sharon 站到了旋律中央。副歌一开，冷意反而变得热烈；这首歌把他们从荷兰的地下圈带向更多听众，也把“气势”唱成了可以一起分享的东西。</p>
+<div class="player">
+<button aria-label="播放 Ice Queen" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Ice Queen Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Ice Queen Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV16ctzzAEZj" data-vlabel="官方 MV" id="song-mother">
+<div aria-label="播放官方 MV Mother Earth" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/1e/7e/d5/1e7ed5e1-89ce-89a8-5dd2-592a07448b91/mzaf_14213427494948595715.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Mother Earth 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">04</span><h3>Mother Earth</h3></div>
+<p class="s-meta">2000 · 《Mother Earth》；2002 年发行单曲</p>
+<p class="s-note">这张唱片把人的眼睛从内心移向自然。鼓点和弦乐像地面在缓缓抬升，Sharon 唱得辽阔，却并不高高在上：我们脚下站着的，才是最值得敬畏的东西。</p>
+<div class="player">
+<button aria-label="播放 Mother Earth" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Mother Earth Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Mother Earth Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1C7411R7hn" data-vlabel="视频" id="song-farewell">
+<div aria-label="播放视频 Our Farewell" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f3/bc/7d/f3bc7d95-de92-cc5e-6975-159b084d10f6/mzaf_13528453124035468111.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Our Farewell 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">05</span><h3>Our Farewell</h3></div>
+<p class="s-meta">2000 · 《Mother Earth》；2001 年发行单曲</p>
+<p class="s-note">Sharon 说，这首歌写给离世的祖母。小时候心里不快，她会骑车去村子另一头找祖母。知道这件事再听，歌里的告别便不再抽象：它是一个人仍想沿着熟悉的路，去见那个已经不在的人。</p>
+<div class="player">
+<button aria-label="播放 Our Farewell" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Our Farewell Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Our Farewell Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Mx41197iT" data-vlabel="视频" id="song-ground">
+<div aria-label="播放视频 Stand My Ground" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b6/a6/88/b6a68886-261a-150d-0467-a4ca47a789ce/mzaf_2216263826745391327.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Stand My Ground 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2e/a2/fb/2ea2fbcc-14e3-1dd4-9cad-aa184d51e353/888880873552.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">06</span><h3>Stand My Ground</h3></div>
+<p class="s-meta">2004 · 《The Silent Force》</p>
+<p class="s-note">原先写的是乐队感受到的荷兰社会气氛，后来被许多听众唱成了自己的坚持。它有大合唱的骨架，也有很朴素的一句话：当退让已经不能使事情变好，人总得站在自己相信的地方。</p>
+<div class="player">
+<button aria-label="播放 Stand My Ground" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Stand My Ground Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Stand My Ground Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1xp4y1e7Ac" data-vlabel="视频" id="song-angels">
+<div aria-label="播放视频 Angels" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/02/a4/70/02a4709b-7758-9ad4-d490-34faa706ae02/mzaf_11451955155533481128.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Angels 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2e/a2/fb/2ea2fbcc-14e3-1dd4-9cad-aa184d51e353/888880873552.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">07</span><h3>Angels</h3></div>
+<p class="s-meta">2004 · 《The Silent Force》；2005 年发行单曲</p>
+<p class="s-note">名字像祝福，歌里却有被信任的人辜负后的冷意。Sharon 唱得克制，弦乐与吉他替她把情绪推高；愤怒不必一开始就喊出来，慢慢认清一个人，有时更痛。</p>
+<div class="player">
+<button aria-label="播放 Angels" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Angels Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Angels Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1gy4y1b7VP" data-vlabel="视频" id="song-memories">
+<div aria-label="播放视频 Memories" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/11/3f/b9/113fb9ad-1bd2-5aab-3733-c84a7b2388a8/mzaf_13762164606721983377.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Memories 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2e/a2/fb/2ea2fbcc-14e3-1dd4-9cad-aa184d51e353/888880873552.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">08</span><h3>Memories</h3></div>
+<p class="s-meta">2004 · 《The Silent Force》；2005 年发行单曲</p>
+<p class="s-note">钢琴一响，回忆就有了房间的形状。歌没有急着催人放下，它允许一个人暂时住在旧日里，听见那些早已远去的声音。</p>
+<div class="player">
+<button aria-label="播放 Memories" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Memories Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Memories Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ki4y1f7qy" data-vlabel="视频" id="song-howling">
+<div aria-label="播放视频 The Howling" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/24/fd/1e/24fd1eff-80e1-12ea-fc67-335a44bfd542/mzaf_1217387381060238338.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="The Howling 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a6/52/6c/a6526c89-47eb-0e52-30d1-a9e5b22e0f73/888880140050.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">09</span><h3>The Howling</h3></div>
+<p class="s-meta">2007 · 《The Heart of Everything》</p>
+<p class="s-note">专辑开场先给出风声般的紧张，再让整支乐队压上来。它像一扇被推开的门，把《The Heart of Everything》里更直接、更锋利的情绪带到眼前。</p>
+<div class="player">
+<button aria-label="播放 The Howling" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="The Howling Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Howling Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1dY411b75z" data-vlabel="视频" id="song-done">
+<div aria-label="播放视频 What Have You Done" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d3/16/d1/d316d19a-a233-0c81-6668-aea34e195d03/mzaf_13771318809080536013.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="What Have You Done 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a6/52/6c/a6526c89-47eb-0e52-30d1-a9e5b22e0f73/888880140050.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">10</span><h3>What Have You Done</h3></div>
+<p class="s-meta">2007 · 《The Heart of Everything》；客席 Keith Caputo</p>
+<p class="s-note">两个声音在一首歌里彼此逼近。Sharon 曾说，Life of Agony 是他们多年喜欢的乐队；能够请来 Keith Caputo 合作，是与旧日偶像真正相遇的一刻。歌里的责问因此有了两个人的重量。</p>
+<div class="player">
+<button aria-label="播放 What Have You Done" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="What Have You Done Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="What Have You Done Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1NY411W7hQ" data-vlabel="视频" id="song-need">
+<div aria-label="播放视频 All I Need" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4b/94/c8/4b94c808-5849-e7ff-4c80-560dc7d9466f/mzaf_790643369328244805.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="All I Need 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a6/52/6c/a6526c89-47eb-0e52-30d1-a9e5b22e0f73/888880140050.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">11</span><h3>All I Need</h3></div>
+<p class="s-meta">2007 · 《The Heart of Everything》</p>
+<p class="s-note">一张气势很足的专辑，忽然让人听见脆弱。副歌越往上走，那个想被理解、想被留下的请求就越明显；这不是软弱，只是终于肯把需要说出口。</p>
+<div class="player">
+<button aria-label="播放 All I Need" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="All I Need Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="All I Need Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Q6rmBREiC" data-vlabel="视频" id="song-faster">
+<div aria-label="播放视频 Faster" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a7/ae/d0/a7aed0fb-3e0f-387d-0ef3-bbf59f62e9cb/mzaf_14359093060690134169.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Faster 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/de/69/45/de6945fb-6d2b-b616-5078-ab289e4396fb/8720205585660.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">12</span><h3>Faster</h3></div>
+<p class="s-meta">2011 · 《The Unforgiving》</p>
+<p class="s-note">《The Unforgiving》把一套漫画故事带进唱片，《Faster》则像故事开始奔跑的那一格。节奏干脆、旋律向前，听得出他们已经不满足于重现旧日的交响声墙。</p>
+<div class="player">
+<button aria-label="播放 Faster" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Faster Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Faster Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1Rt411A7sB" data-vlabel="视频" id="song-sinead">
+<div aria-label="播放视频 Sinéad" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d4/9f/82/d49f82a8-48b8-d930-ca0b-3f803bfbb482/mzaf_832980124448310206.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Sinéad 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/de/69/45/de6945fb-6d2b-b616-5078-ab289e4396fb/8720205585660.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">13</span><h3>Sinéad</h3></div>
+<p class="s-meta">2011 · 《The Unforgiving》</p>
+<p class="s-note">这首歌属于《The Unforgiving》的虚构世界。人物的名字放在歌名上，旋律却很容易把她带出纸面；乐队在这里试着让一个故事被听见，而不只被讲述。</p>
+<div class="player">
+<button aria-label="播放 Sinéad" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Sinéad Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Sinéad Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1ix411G7t5" data-vlabel="视频" id="song-paradise">
+<div aria-label="播放视频 Paradise (What About Us?)" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/87/e8/2e/87e82eef-8c17-8345-2171-56a873193b09/mzaf_2724820027103495594.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Paradise (What About Us?) 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b9/9f/be/b99fbe5b-60de-491c-4354-1f61cebdd514/802987059725.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">14</span><h3>Paradise (What About Us?)</h3></div>
+<p class="s-meta">2013 年先行单曲 · 2014 年《Hydra》；客席 Tarja Turunen</p>
+<p class="s-note">一次真正的并肩歌唱。Sharon 说，听到最初的样带就想到 Tarja 的声音；两人隔着距离完成合作，后来成为朋友。歌曲受一场谈“我们如何共同创造更好世界”的演讲触动，“天堂”于是成了一个要一起回答的问题。</p>
+<div class="player">
+<button aria-label="播放 Paradise (What About Us?)" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Paradise (What About Us?) Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Paradise (What About Us?) Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV19W411U7tr" data-vlabel="官方 MV" id="song-reckoning">
+<div aria-label="播放官方 MV The Reckoning" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bf/4c/8d/bf4c8d34-bc0c-c61e-610b-9a307413519b/mzaf_5917975696166090739.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="The Reckoning 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/a9/f7/e1a9f796-66a8-923a-3e61-9bf34656b4b8/00602577347641.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">15</span><h3>The Reckoning</h3></div>
+<p class="s-meta">2018 年先行单曲 · 2019 年《Resist》；客席 Jacoby Shaddix</p>
+<p class="s-note">Jacoby Shaddix 的嗓音粗粝地切入，电子节拍和重型吉他一起把《Resist》推向新方向。Sharon 在访谈里谈过，这张唱片关切技术如何侵入生活、牵动人们的自由；歌里的反抗便有了现实的对象。</p>
+<div class="player">
+<button aria-label="播放 The Reckoning" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="The Reckoning Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="The Reckoning Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1j4411p7rE" data-vlabel="视频" id="song-supernova">
+<div aria-label="播放视频 Supernova" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c1/9b/ae/c19baede-9532-d08e-987d-2015cba3ffad/mzaf_5246214837613113252.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Supernova 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/a9/f7/e1a9f796-66a8-923a-3e61-9bf34656b4b8/00602577347641.rgb.jpg/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">16</span><h3>Supernova</h3></div>
+<p class="s-meta">2019 · 《Resist》</p>
+<p class="s-note">Sharon 为去世的父亲写下这首歌。她想象黑暗里会不会出现一颗特别亮的星，像一个迟来的回应。歌声和节拍越往外扩，那份“再给我一点讯息”的心愿就越清楚。</p>
+<div class="player">
+<button aria-label="播放 Supernova" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Supernova Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Supernova Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1cs4y1i7Ag" data-vlabel="视频" id="song-wireless">
+<div aria-label="播放视频 Wireless" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0b/76/ad/0b76ada3-b1c2-e4e7-c4f1-fea481234f1e/mzaf_3648467401842832991.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Wireless 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/3d/62/5e3d62e4-9d2b-a807-ddb3-65394110f58f/8720766071978.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">17</span><h3>Wireless</h3></div>
+<p class="s-meta">2023 · 《Bleed Out》</p>
+<p class="s-note">Sharon 说，歌里的人上战场时相信自己在做好事，后来才发现自己被操纵。它写的不是胜利姿态，而是一个普通人被战争与宣传改变命运之后，回头已来不及的悲哀。</p>
+<div class="player">
+<button aria-label="播放 Wireless" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Wireless Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Wireless Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+<article class="song rv" data-bvid="BV1sN41167Zt" data-vlabel="视频" id="song-bleed">
+<div aria-label="播放视频 Bleed Out" class="cov-btn" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/59/13/61/59136104-32d0-1140-8e9a-f5d0d47d6cd8/mzaf_4221132026000445307.plus.aac.p.m4a" role="button" tabindex="0">
+<img alt="Bleed Out 封面" height="118" loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/3d/62/5e3d62e4-9d2b-a807-ddb3-65394110f58f/8720766071978.png/600x600bb.jpg" width="118"/>
+<span aria-hidden="true" class="ov"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+</div>
+<div class="s-body">
+<div class="s-head"><span class="s-no">18</span><h3>Bleed Out</h3></div>
+<p class="s-meta">2023 · 《Bleed Out》</p>
+<p class="s-note">乐队明确说，这首歌受到伊朗女性 Mahsa Amini 的遭遇触动。音乐很重，句子却落在具体的人身上：当权利被夺走，总得有人让她们的处境继续被听见。</p>
+<div class="player">
+<button aria-label="播放 Bleed Out" class="pp" type="button"><svg viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></button>
+<div aria-label="播放进度" class="bar" role="slider" tabindex="0"><div class="fill"></div></div>
+<span class="t">0:00 / 0:30</span>
+</div>
+<div class="s-links"><a class="chip" data-q="Bleed Out Within Temptation" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Bleed Out Within Temptation" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="tight" id="route">
+<div class="wrap">
+<div class="route rv">
+<p class="eyebrow">04 / 选听清单</p>
+<h2><span class="yr">按唱片走过的顺序</span>如果今晚只听九首</h2>
+<p style="color:#cbbda8;max-width:44em">从《Restless》的不安开始，经过《Ice Queen》打开的天空、《Memories》里安静的旧房间，再听《Paradise》中两位歌者的相遇。最后让《Bleed Out》落地：三十年走下来，他们关心的世界比最初大了许多。</p>
+<ol id="routeList">
+<li><button data-target="song-restless"><span>Restless</span></button></li>
+<li><button data-target="song-ice"><span>Ice Queen</span></button></li>
+<li><button data-target="song-ground"><span>Stand My Ground</span></button></li>
+<li><button data-target="song-memories"><span>Memories</span></button></li>
+<li><button data-target="song-howling"><span>The Howling</span></button></li>
+<li><button data-target="song-faster"><span>Faster</span></button></li>
+<li><button data-target="song-paradise"><span>Paradise (What About Us?)</span></button></li>
+<li><button data-target="song-reckoning"><span>The Reckoning</span></button></li>
+<li><button data-target="song-bleed"><span>Bleed Out</span></button></li>
+</ol>
+<p class="hint">歌名可定位到对应曲目；封面提供影像，圆钮提供约 30 秒试听。</p>
+</div>
+</div>
+</section>
+<section class="tight" id="refs">
+<div class="wrap">
+<p class="eyebrow rv">05 / 资料与唱片注</p>
+<h2 class="rv">让故事有出处，让日期各归其位</h2>
+<div class="refs">
+<div class="rv">
+<h3>创作与作品</h3>
+<ul><li><a href="https://www.within-temptation.com/products/within-temptation-enter-aquamarine-white-split-vinyl" rel="noopener noreferrer" target="_blank">乐队官方：起点与《Enter》</a></li><li><a href="https://www.loudersound.com/features/within-temptations-sharon-den-adel-my-life-in-10-songs" rel="noopener noreferrer" target="_blank">Sharon 访谈：《Our Farewell》《Ice Queen》《Stand My Ground》等</a></li><li><a href="https://www.within-temptation.com/products/hydra" rel="noopener noreferrer" target="_blank">乐队官方：《Hydra》与 Stefan Helleblad 的录音室首秀</a></li><li><a href="https://www.nuclearblast.com/blogs/news/within-temptation-paradise-what-about-us-3167549" rel="noopener noreferrer" target="_blank">唱片公司：《Paradise》的合作缘起与歌曲主题</a></li><li><a href="https://audioinkradio.com/2019/02/within-temptation-interview-sharon-den-adel/" rel="noopener noreferrer" target="_blank">Sharon 访谈：《Resist》与《The Reckoning》</a></li><li><a href="https://blabbermouth.net/news/within-temptation-singer-looks-back-on-intense-period-prior-to-her-fathers-death" rel="noopener noreferrer" target="_blank">Sharon 访谈：《Supernova》写给父亲</a></li><li><a href="https://www.within-temptation.com/blogs/news/wirelesss-out-now" rel="noopener noreferrer" target="_blank">乐队官方：《Wireless》的创作背景</a></li><li><a href="https://www.within-temptation.com/pages/bleed-out-album" rel="noopener noreferrer" target="_blank">乐队官方：《Bleed Out》的创作背景</a></li></ul>
+</div>
+<div class="rv">
+<h3>唱片与版本</h3>
+<ul><li>《Enter》各资料所列的 1997 年 4 月发行日不同；时间线只写年份。</li><li>《Mother Earth》《The Silent Force》《The Heart of Everything》《The Unforgiving》《Hydra》在不同地区、载体或商店的日期存在差异；曲目卡标注唱片年份及必要的单曲年份。</li><li>《Paradise》于 2013 年作为单曲先行发行，后收录于 2014 年的《Hydra》；Tarja Turunen 是客席歌手。</li><li>《What Have You Done》2007 年版的客席署名为 Keith Caputo；本文沿用当时唱片上的署名。</li><li>页面试听与封面来自 Apple Music；影像链接为乐队官方影像或相应现场记录。</li></ul>
+</div>
+</div>
+<p class="fine rv">资料核对至 2026 年 10 月。关于歌曲的个人背景，只采用乐队与当事人公开谈过的说法。</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div>
+<b>Paradise · Within Temptation 音乐传记</b>
+<p class="fmeta">从《Enter》到《Bleed Out》，沿着十八首歌回望这支荷兰乐队的三十年。</p>
+</div>
+<a class="totop" href="#top">回到顶部 ↑</a>
+</div>
+</footer>
+<button aria-label="回到顶部" class="fab" id="fab"><svg viewbox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"></path></svg></button>
+<div class="mix" id="mix">
+<button aria-label="上一首" class="mix-btn" disabled="" id="mixPrev" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"></path></svg>
+</button>
+<button aria-label="播放" aria-pressed="false" class="mix-btn is-main" id="mixToggle" type="button">
+<svg aria-hidden="true" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<button aria-label="下一首" class="mix-btn" id="mixNext" type="button">
+<svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"></path></svg>
+</button>
+<span class="mix-now">准备试听</span>
+<label class="mix-vol">
+<input aria-label="音量" id="mixVol" max="100" min="0" type="range" value="28"/>
+</label>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>

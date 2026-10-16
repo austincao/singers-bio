@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>黑色柳丁 · 陶喆音乐传记</title>
+<meta name="description" content="按唱片顺序听陶喆：从 1997 年《爱很简单》到 2025 年《Stupid Pop Songs》，21 首歌写下创作缘起、作品位置与声音里的时代变化。">
+<meta name="theme-color" content="#1c1613">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --paper:#f4ecdf;
+  --paper-2:#ece1cf;
+  --card:#fffaf3;
+  --ink:#241d18;
+  --ink-soft:#4a3e34;
+  --muted:#6a5a4d;
+  --faint:#8d7e70;
+  --line:#e2d5c2;
+  --line-soft:#eee5d6;
+  --rouge:#a03226;
+  --rouge-deep:#6d1f17;
+  --night:#1b1512;
+  --night-2:#2a211c;
+  --gold:#b3894a;
+  --gold-ink:#82601f;
+  --gold-soft:#d9b478;
+  --radius:16px;
+  --shadow-1:0 1px 2px rgba(42,33,28,.05), 0 8px 24px rgba(42,33,28,.06);
+  --shadow-2:0 2px 6px rgba(42,33,28,.08), 0 20px 48px rgba(42,33,28,.14);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang SC",monospace;
+  --wrap:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--rouge);text-decoration:none;text-underline-offset:.18em}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:0}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:10px 16px;border-radius:8px}
+
+/* ============ 顶栏 + 进度 ============ */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--rouge),var(--gold-soft));
+  transition:width .08s linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:110;
+  background:rgba(244,236,223,.82);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-102%);transition:transform .4s cubic-bezier(.22,.61,.36,1),border-color .3s;
+}
+.nav.show{transform:translateY(0);border-bottom-color:var(--line-soft)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:20px}
+.brand{font-family:var(--sans);font-size:14px;letter-spacing:.02em;font-weight:600;white-space:nowrap}
+.brand b{color:var(--rouge)}
+.brand span{color:var(--muted);font-weight:400}.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-family:var(--sans);font-size:13.5px;color:var(--muted);padding:7px 11px;border-radius:999px;white-space:nowrap;text-decoration:none;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:rgba(160,50,38,.07)}
+.nav-links a.active{color:var(--rouge);background:rgba(160,50,38,.1);font-weight:600}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(94vh,80vw);min-height:min(94svh,80vw);display:flex;align-items:flex-end;
+  background:var(--night);color:#f7f1e6;overflow:hidden;isolation:isolate}
+.mosaic{position:absolute;top:-3vw;left:50%;width:112vw;margin-left:-56vw;height:min(100vh,60vw);
+  display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);
+  z-index:0;opacity:.58;filter:saturate(.52) contrast(.98) brightness(.94);
+  transform-origin:center top;
+  animation:drift 46s ease-in-out infinite alternate;
+  transition:height .9s ease,width .9s ease,margin-left .9s ease}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2.4%,-2%,0)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 82% 0%,rgba(179,137,74,.14),transparent 50%),
+    linear-gradient(180deg,rgba(27,21,18,.14) 0%,rgba(27,21,18,.24) 28%,rgba(27,21,18,.5) 62%,rgba(27,21,18,.74) 84%,var(--night) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
+  padding:clamp(0px,41.5vh - 23.3vw,38vw) 24px 66px;
+  transition:padding .9s ease}
+.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 20px}
+.hero h1{font-size:clamp(46px,9.2vw,104px);letter-spacing:-.045em;line-height:.98;text-shadow:0 4px 40px rgba(0,0,0,.5);font-weight:600}
+.hero .sub{font-family:var(--sans);font-size:16px;letter-spacing:.2em;color:var(--gold-soft);margin:16px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero .deck{max-width:36em;font-size:clamp(17px,2.1vw,20px);line-height:1.8;color:#f3eadf;margin:22px 0 0;text-shadow:0 1px 2px rgba(0,0,0,.7),0 8px 22px rgba(0,0,0,.4)}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-family:var(--sans);
+  font-size:13px;letter-spacing:.04em;color:#efe4d4;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+.hero .meta-row span{display:flex;align-items:center;gap:8px}
+.hero .meta-row span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1;
+  padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s,color .2s,border-color .2s;text-decoration:none}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{background:var(--gold-soft);color:#2a1c08}
+.btn-p:hover{background:#e8c894}
+.btn-g{background:rgba(255,255,255,.07);color:#f0e6d6;border-color:rgba(255,255,255,.28)}
+.btn-g:hover{background:rgba(255,255,255,.15)}
+.scroll-cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:rgba(233,221,205,.6);text-align:center}
+.scroll-cue i{display:block;width:1px;height:34px;margin:9px auto 0;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+.perf{position:absolute;left:0;right:0;bottom:-1px;height:18px;z-index:4;
+  background:radial-gradient(circle at 11px 0,transparent 10px,var(--paper) 10.5px) left bottom/22px 18px repeat-x}
+
+/* ============ 通用区块 ============ */
+main{padding:0 0 40px}
+section{padding:76px 0}
+section.tight{padding:56px 0}
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h2{font-size:clamp(28px,4.4vw,40px);letter-spacing:-.03em}
+h2 .yr{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--gold-ink);margin-bottom:8px;font-weight:500}
+.sec-lead{font-size:19px;line-height:1.85;color:var(--ink-soft);max-width:44em;margin:18px 0 0}
+p{margin:0 0 1.05em}
+.lead{font-size:21px;line-height:1.8}
+
+/* 速览数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--rouge),var(--gold))}
+.stat .n{font-family:var(--sans);font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;
+  color:var(--rouge);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* 目录 */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;box-shadow:var(--shadow-1);margin-top:38px}
+.toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;counter-reset:t}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s,padding .2s}
+.toc a::before{content:counter(t,decimal-leading-zero);color:var(--gold-ink);font-variant-numeric:tabular-nums;font-size:12.5px;padding-top:2px}
+.toc a:hover{color:var(--rouge);padding-left:4px;text-decoration:none}
+
+/* ============ 时间线 ============ */
+.timeline{position:relative;margin-top:44px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;
+  background:linear-gradient(var(--gold),var(--line) 12%,var(--line) 88%,transparent)}
+.tl{position:relative;padding:0 0 30px 4px}
+.tl::before{content:"";position:absolute;left:-34px;top:9px;width:15px;height:15px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);z-index:1}
+.tl.peak::before{background:var(--rouge);border-color:var(--rouge);box-shadow:0 0 0 5px rgba(160,50,38,.13)}
+.tl.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px rgba(179,137,74,.16)}
+.tl .when{font-family:var(--sans);font-size:12.5px;letter-spacing:.1em;color:var(--gold-ink);font-variant-numeric:tabular-nums;font-weight:600}
+.tl h3{font-size:19px;margin:5px 0 5px}
+.tl p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+.tl.peak h3{color:var(--rouge-deep)}
+
+/* ============ 歌曲卡片 ============ */
+.tracks{display:grid;gap:16px;margin-top:40px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;box-shadow:var(--shadow-1);display:grid;grid-template-columns:118px 1fr;gap:18px;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s,border-color .3s}
+.song:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:#d9c8ae}
+.song.playing{border-color:var(--rouge);box-shadow:0 0 0 1px rgba(160,50,38,.25),var(--shadow-2)}
+.cov-btn{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden;
+  width:118px;height:118px;flex:none;align-self:start}
+.cov-btn img{width:118px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper-2);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),filter .3s}
+.song:hover .cov-btn img{transform:scale(1.06)}
+.cov-btn .ov{position:absolute;inset:0;border-radius:10px;background:rgba(27,21,18,.42);
+  display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.cov-btn:hover .ov,.song.playing .cov-btn .ov{opacity:1}
+.cov-btn .ov svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.song.playing .cov-btn img{filter:brightness(.7)}
+.s-body{min-width:0}
+.s-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.s-no{font-family:var(--mono);font-size:12.5px;color:var(--gold-ink);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.s-head h3{font-size:clamp(19px,2.6vw,23px);letter-spacing:-.02em}
+.s-meta{font-family:var(--sans);font-size:13px;color:var(--muted);margin:6px 0 0;letter-spacing:.01em}
+.s-meta b{color:var(--muted);font-weight:600}
+.s-note{margin:11px 0 0;font-size:15.5px;line-height:1.78;color:var(--ink-soft)}
+.s-note .warn{color:var(--rouge-deep);background:rgba(160,50,38,.07);border-radius:4px;padding:1px 5px;font-size:14.5px}
+.player{display:flex;align-items:center;gap:12px;margin-top:14px}
+.pp{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;padding:0}
+.pp:hover{background:#fff;border-color:var(--rouge);transform:scale(1.06)}
+.pp svg{width:16px;height:16px;fill:var(--rouge)}
+.song.playing .pp{background:var(--rouge);border-color:var(--rouge)}
+.song.playing .pp svg{fill:#fff}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--paper-2);position:relative;cursor:pointer;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--rouge),var(--gold))}
+.t{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:66px;text-align:right}
+.s-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--rouge);border-color:var(--rouge);background:rgba(160,50,38,.05);text-decoration:none}
+.cov-btn .mark{position:absolute;right:7px;bottom:7px;z-index:2;font-family:var(--sans);font-size:11px;line-height:1;color:#fff;background:rgba(27,21,18,.72);border-radius:4px;padding:3px 5px;letter-spacing:.08em}
+.song.is-film{grid-template-columns:1fr}
+.song.is-film .s-body{display:block}
+.song.is-film .cov-btn{grid-column:1 / -1;grid-row:auto;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px}
+.song.is-film .cov-btn img{width:100%;height:100%;border-radius:12px}
+.song.is-film .stage{position:absolute;inset:0}
+.song.is-film .film{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;background:#000}
+.song.is-film .back,.song.is-film .wide{position:absolute;top:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,243,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0}
+.song.is-film .back{left:12px}
+.song.is-film .wide{right:12px}
+.song.is-film .ov,.song.is-film .mark{display:none}
+.back svg,.wide svg{display:block}
+/* 打开影像时取消卡片位移，否则手机上的全屏会被限制在卡片里 */
+.song.is-film,
+.song.is-film.rv,
+.song.is-film:hover,
+.song.is-wide,
+.song.is-wide.rv,
+.song.is-wide:hover{transform:none}
+.song.is-wide .cov-btn{position:fixed;z-index:4000;inset:0;width:100%;height:100%;height:100dvh;max-width:none;aspect-ratio:auto;border-radius:0;background:#000}
+.song.is-wide .stage{background:#000}
+.song.is-wide .film{border-radius:0}
+body.is-wide-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overflow-anchor:none}
+body.is-wide-open .nav,
+body.is-wide-open .progress,
+body.is-wide-open .fab,
+body.is-wide-open .mix,
+body.is-wide-open .skip{display:none}
+.mix{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:8px;width:min(460px,calc(100% - 40px));
+  padding:7px 12px 7px 7px;border-radius:999px;
+  background:rgba(27,21,18,.92);color:#f7f1e6;
+  box-shadow:0 14px 36px rgba(0,0,0,.32);backdrop-filter:blur(12px);
+  font-family:var(--sans);font-size:13px;letter-spacing:.01em}
+.mix-btn{width:34px;height:34px;border:0;border-radius:50%;padding:0;flex:none;
+  display:grid;place-items:center;cursor:pointer;color:#f4efe6;background:transparent}
+.mix-btn:hover{background:rgba(255,255,255,.08)}
+.mix-btn:disabled{opacity:.28;cursor:default;background:transparent}
+.mix-btn.is-main{width:40px;height:40px;background:#e4c48a;color:#2a1c08}
+.mix-btn.is-main:hover{background:#efd7a4}
+.mix-now{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:4px}
+.mix-vol{display:flex;align-items:center;flex:none}
+.mix-vol input{width:78px;accent-color:#b3894a;cursor:pointer}
+@media(max-width:640px){
+  .mix{left:12px;right:76px;bottom:14px;width:auto;transform:none;gap:4px;padding:6px 10px 6px 6px}
+  .mix-vol input{width:56px}
+}
+@media (orientation:portrait){
+  .song.is-wide .stage{width:100vh;height:100vw;width:100dvh;height:100dvw;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+}
+
+/* 武侠带 */
+.wuxia{background:var(--night);color:#f3ead9;border-radius:22px;padding:44px 34px;margin-top:8px;
+  position:relative;overflow:hidden}
+.wuxia::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(179,137,74,.22),transparent 68%)}
+.wuxia .eyebrow{color:var(--gold-soft)}
+.wuxia .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.wuxia h2{color:#f7f1e6}
+.wuxia p{color:#cbbda8;max-width:46em;font-size:16.5px}
+.wrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;position:relative;z-index:1}
+.wcard{border:1px solid rgba(217,180,120,.24);border-radius:12px;padding:16px;background:rgba(255,255,255,.03)}
+.wcard b{display:block;font-size:17px;color:#f7f1e6;margin:3px 0 5px}
+.wcard span{display:block;font-family:var(--sans);font-size:12.5px;color:#a2947f;letter-spacing:.03em;line-height:1.55}
+.wcard span:first-child{color:var(--gold-soft);letter-spacing:.1em}
+
+/* 歌单 */
+.route{background:var(--night);color:#f3ead9;border-radius:22px;padding:40px 34px;position:relative;overflow:hidden}
+.route h2{color:#f7f1e6}
+.route .yr{color:var(--gold-soft)}
+.route .eyebrow{color:var(--gold-soft)}
+.route .eyebrow::after{background:linear-gradient(90deg,rgba(217,180,120,.4),transparent)}
+.route ol{list-style:none;counter-reset:r;margin:22px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.route li{counter-increment:r}
+.route button{width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(217,180,120,.16);
+  color:#e6d9c3;font-family:var(--serif);font-size:16px;padding:12px 0;cursor:pointer;
+  display:flex;align-items:center;gap:12px;transition:color .2s,padding .2s}
+.route button::before{content:counter(r,decimal-leading-zero);font-family:var(--mono);font-size:12px;
+  color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.route button:hover{color:#fff;padding-left:5px}
+.route .hint{font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px}
+
+/* 资料 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.refs h3{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px}
+.refs ul{margin:0;padding-left:1.15em}
+.refs li{margin-bottom:11px;font-size:14.8px;line-height:1.78;color:var(--ink-soft)}
+.refs code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:4px}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.8;margin-top:30px}
+
+/* 页脚 */
+footer{background:var(--night);color:#cbbda8;padding:52px 0 40px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;justify-content:space-between}
+footer b{color:#f3ead9;font-size:20px;display:block;font-family:var(--serif)}
+footer .fmeta{font-family:var(--sans);font-size:13px;line-height:1.9;max-width:34em}
+footer .totop{font-family:var(--sans);font-size:13px;color:var(--gold-soft);text-decoration:none;
+  border:1px solid rgba(217,180,120,.3);border-radius:999px;padding:9px 18px;white-space:nowrap}
+footer .totop:hover{background:rgba(217,180,120,.12);text-decoration:none}
+
+/* 浮动回到顶部 */
+.fab{position:fixed;right:22px;bottom:22px;z-index:100;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,250,243,.9);backdrop-filter:blur(8px);
+  box-shadow:var(--shadow-2);cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transform:translateY(12px);transition:all .3s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+.fab svg{width:18px;height:18px;fill:var(--rouge)}
+
+/* 进场动画 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:820px){
+  .stats{grid-template-columns:1fr 1fr}
+  .refs{grid-template-columns:1fr;gap:26px}
+  .route ol{grid-template-columns:1fr}
+}
+@property --mosaic-t{syntax:"<number>";inherits:true;initial-value:0}
+@media(max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{min-height:0;animation:mosaic-open 28s ease-in-out infinite alternate}
+  /* 六列三行。封面慢慢缩放，文字停在第一排底边，不跟着上下移动 */
+  .mosaic{inset:auto;top:0;left:50%;width:150vw;height:75vw;margin-left:-75vw;
+    transform-origin:center top;animation:none;
+    transform:scale(calc(1 - var(--mosaic-t) / 3))}
+  .mosaic::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(27,21,18,.04) 0%,rgba(27,21,18,.12) 36%,rgba(27,21,18,.42) 58%,rgba(27,21,18,.74) 76%,rgba(27,21,18,.92) 100%)}
+  @keyframes mosaic-open{
+    0%,18%{--mosaic-t:0}
+    82%,100%{--mosaic-t:1}
+  }
+  .hero::before{background:
+    linear-gradient(180deg,transparent 0,transparent 40vw,var(--night) 72vw)}
+  .hero-in{padding:25vw 18px 40px;transition:none}
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px;font-size:13.5px}
+  .scroll-cue{display:none}
+  section{padding:58px 0}
+  .toc ol{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .wuxia,.route{padding:30px 22px;border-radius:18px}
+  .timeline{padding-left:28px}
+  .tl::before{left:-28px}
+  .nav-in{padding:10px 16px;gap:8px}
+  .brand{font-size:13px}
+  .brand b,.brand span{display:none}
+  .nav-links a{font-size:12.5px;padding:6px 9px}
+  .hero .meta-row{font-size:12.5px}
+  /* 歌曲卡片：封面靠左上，正文铺满整行 */
+  .song{grid-template-columns:76px 1fr;column-gap:13px;row-gap:0;padding:15px 15px 16px}
+  .s-body{display:contents}
+  .cov-btn{grid-column:1;grid-row:1 / span 2;align-self:start;width:76px;height:76px;border-radius:9px}
+  .cov-btn img{width:76px;height:76px;border-radius:9px}
+  .cov-btn .ov{border-radius:9px}
+  .s-head{grid-column:2;grid-row:1;align-self:end}
+  .s-meta{grid-column:2;grid-row:2;align-self:start;margin-top:3px;line-height:1.5}
+  .s-note{grid-column:1 / -1;grid-row:3;margin-top:13px}
+  .player{grid-column:1 / -1;grid-row:4}
+  .s-links{grid-column:1 / -1;grid-row:5}
+  .stats{gap:11px}
+}
+/* 手机横屏：第一行文字对齐封面第一排的中线 */
+@media (orientation:landscape) and (max-height:520px) and (min-width:641px){
+  .hero{align-items:flex-start}
+  .hero-in{padding-top:calc(-3vw + 112vw / 12)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .nav,.progress,.fab,.mix,.cta,.scroll-cue,.player,.skip,.film,.back,.wide,.mark{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;color:#111;background:#fff}
+  .hero::before,.mosaic,.perf{display:none}
+  .hero h1,.hero .deck,.hero .meta-row{color:#111;text-shadow:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="章节导航">
+  <div class="nav-in">
+    <div class="brand">陶喆 <b>黑色柳丁</b> <span>· 音乐传记</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#glance">速览</a>
+      <a href="#timeline">时间线</a>
+      <a href="#tracks">唱片</a>
+      <a href="#wuxia">幕后</a>
+      <a href="#route">歌单</a>
+      <a href="#refs">资料</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mosaic" aria-hidden="true">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/97/c8/4d/97c84d98-e488-baf8-aade-eac238d008e6/4711126592282.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/77/fc/d077fcf8-6a17-e7ea-6c91-6cf40ad39d81/825646245383.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/b1/d7/dd/b1d7dd92-77c7-7cc8-e031-ed8c3210c97c/193017122978.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b6/84/dd/b684dd6f-e752-0c1d-5f10-523a0cf364ad/4711126592275.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/07/64/7c/07647c3b-8864-7d39-1823-dd993e7cd69f/825646871223.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/e5/ba/79/e5ba7973-f2e3-2571-351b-83747a7d0175/DT_cover2_-4000x4000.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/95/8e/62/958e62af-2679-2dca-0e20-f87f76d2c38c/4711126592268.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/02/ac/f3/02acf3ea-73a0-3742-ab98-863b45794988/825646245345.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1b/ab/7a/1bab7a46-0eb4-6735-6a94-c341b2fc34cb/193017140415.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/44/48/45/44484535-044f-8e79-5308-eccc4a743033/190295004699.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/a7/51/8a/a7518aef-b327-f02f-fbba-f12b032431d6/825646245390.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/02/d4/40/02d4408f-d979-8b13-1920-2cbacaeaebb4/4711448510025.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music127/v4/82/f2/2a/82f22a27-1e5c-5013-f489-cf4f20f5226f/4712755014145.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c4/b9/8c/c4b98c39-8c46-cead-f6ed-bf81323961cd/193017172331.jpg/600x600bb.jpg" alt="">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b6/37/56/b63756e4-0f32-0744-1e1a-9d79be4e9294/193017129458.jpg/600x600bb.jpg" alt="">
+  </div>
+  <div class="hero-in">
+    <p class="kicker">A Listening Biography · 1969 — 2026</p>
+    <h1>黑色柳丁</h1>
+    <p class="sub">陶 喆 音 乐 传 记</p>
+    <p class="deck">在陶喆出现以前，华语情歌也会转音，也有节奏；到他手里，R&amp;B 才真正长成一种中文的呼吸。1969 年生于香港、少年移居美国，他先在幕后替别人写歌，直到 1997 年才用一张同名专辑走到台前。下面 21 首按发行顺序铺开：从一句朴素的「I love you」，走过城市的焦灼、爱情的迟疑与制作人的自我追问，一直听到 2025 年《Stupid Pop Songs》。</p>
+    <div class="meta-row">
+      <span>1969.7.11 生于香港</span>
+      <span>1997.12.6 首张同名专辑</span>
+      <span>2010 第 21 届金曲奖最佳国语男歌手</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-g" href="#tracks">代表歌曲</a>
+      <a class="btn btn-g" href="#timeline">音乐之路</a>
+      <button class="btn btn-p" type="button" id="listenToggle" aria-pressed="false">
+        <span class="listen-label">开始聆听</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <div class="perf" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<section id="glance">
+  <div class="wrap">
+    <p class="eyebrow rv">01 / 速览</p>
+    <h2 class="rv">从《爱很简单》听到《Stupid Pop Songs》</h2>
+    <p class="sec-lead rv">六个数字，先把五十多年的路钉在时间上；真正的变化，要进到歌里听。</p>
+    <div class="stats">
+      <div class="stat rv"><div class="n">1969</div><div class="l">7 月 11 日生于香港</div><div class="s">谱名陶绪忠，15 岁到美国</div></div>
+      <div class="stat rv"><div class="n">1997</div><div class="l">12 月 6 日首张专辑</div><div class="s">从幕后制作人走到台前</div></div>
+      <div class="stat rv"><div class="n">1998</div><div class="l">第 9 届金曲奖两项</div><div class="s">最佳新人 + 最佳唱片制作人</div></div>
+      <div class="stat rv"><div class="n">2002</div><div class="l">《黑色柳丁》</div><div class="s">从爱情转向时代与社会</div></div>
+      <div class="stat rv"><div class="n">21</div><div class="l">按发行顺序选听</div><div class="s">从《爱很简单》听到《陪你》</div></div>
+      <div class="stat rv"><div class="n">2025</div><div class="l">《Stupid Pop Songs》</div><div class="s">睽违 12 年的第八张录音室专辑</div></div>
+    </div>
+    <div class="toc rv">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#glance">速览：六个数字</a></li>
+        <li><a href="#timeline">时间线：从香港到 Soul Power II</a></li>
+        <li><a href="#tracks">唱片与主打：21 首</a></li>
+        <li><a href="#wuxia">幕后：先给别人做的那些歌</a></li>
+        <li><a href="#route">如果只重听一个晚上</a></li>
+        <li><a href="#refs">资料与边界</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">02 / 时间线</p>
+    <h2 class="rv"><span class="yr">1969 — 2026</span>从香港到 Soul Power II</h2>
+    <p class="sec-lead rv">他不是横空出世的人。赴美、打工、回台做幕后、在录音室里一遍遍推翻自己，才换来后来听见的从容。红色标出几次真正改变方向的节点；日期有分歧处，留到资料区说明。</p>
+    <div class="timeline">
+      <div class="tl rv"><div class="when">1969 · 07 · 11</div><h3>生于香港</h3><p>陶绪忠出生在一个把舞台当作日常的家庭：父亲陶大伟是歌手、演员与儿童节目主持人，母亲王复蓉是京剧演员。台北的美国学校、十五岁后的加州生活，让京剧、国语流行歌与西方摇滚很早就在他耳边相遇。后来他读心理学与电影，这两条训练也一直留在他的歌里：观察人，也经营声音的画面。</p></div>
+      <div class="tl rv"><div class="when">1980</div><h3>第一次上电视</h3><p>还在台北念书时，他在台视《小人物狂想曲》中与父亲合唱〈Baby Talk〉。那不是正式出道，却像一张提前曝光的底片：多年以后，他会再用〈Catherine〉写母亲，也会替父亲的旧作〈小子〉续上新的声音。</p></div>
+      <div class="tl rv"><div class="when">1988</div><h3>在美国打工</h3><p>美国岁月没有传奇滤镜。他做过英语家教，在工厂、乐器行、鞋店与服饰店打工，也跑过电影临时演员。披头四、皇后、齐柏林飞船和罗大佑是他公开谈过的启蒙；它们后来并没有被照搬，而是慢慢沉成旋律、制作与社会观察的底色。</p></div>
+      <div class="tl rv"><div class="when">1993 · 春</div><h3>在乐器行遇见王治平</h3><p>在洛杉矶乐器行遇见王治平之后，他回到台湾，把理想先放在别人声音里。此后四年，周葆元、L.A. Boyz、陈淑桦、杨采妮、陶晶莹、郑中基、孙耀威的唱片上，陆续出现他的作曲、编曲与制作。一个后来被称作「教父」的人，最先学会的是怎样替别人说话。</p></div>
+      <div class="tl rv"><div class="when">1995</div><h3>陈淑桦《淑桦盛开》</h3><p>《淑桦盛开》中有五首作品留下他的名字：〈爱得比较深〉〈魔力〉〈不做情人，不做朋友〉〈拔河〉由他作曲、编曲、制作，〈Kiss &amp; Tell〉更包办词曲。那时他仍站在歌手背后，却已经建立了自己对节奏、和声与人声质地的要求。</p></div>
+      <div class="tl peak rv"><div class="when">1997 · 12 · 06</div><h3>《陶喆》：从幕后走到台前</h3><p>加入新成立的侠客唱片时，他坚持不按偶像路线包装。首张同名专辑由陶喆、王治平与 Jim Lee 共同制作，一开口便让中文旋律有了不同的摆动。第 9 届金曲奖，他以新人身份入围五项，最终获得最佳新人和最佳唱片制作人；舞台上的陶喆，就这样从录音室深处被听见。</p></div>
+      <div class="tl rv"><div class="when">1999 · 12 · 10</div><h3>《I'm OK》</h3><p>第二张没有复制首张的温柔，而是把放克、摇滚与更复杂的编曲推到前面。〈找自己〉像雨里的奔跑，〈普通朋友〉和〈天天〉却仍懂得收住。《I'm OK》让他在第 11 届金曲奖再获最佳专辑制作人，也证明第一张不是偶然。</p></div>
+      <div class="tl rv"><div class="when">2001</div><h3>迪士尼《亚特兰提斯：失落的帝国》</h3><p>他与张惠妹为《亚特兰提斯：失落的帝国》中文版配音，并在过程中写下〈I Believe〉，成为电影国际中文版主题曲。个人唱片之外，他开始把自己的声音带进更大的流行文化现场。</p></div>
+      <div class="tl peak rv"><div class="when">2002 · 08 · 09</div><h3>《黑色柳丁》</h3><p>九一一之后的震动，把他从私人感情推向更宽的世界。摇滚、电子声响与 R&amp;B 在这张专辑里彼此摩擦，〈黑色柳丁〉问城市为何失去沟通，〈Melody〉又回到一个人忘不掉的余音。第 14 届金曲奖仅获一项入围后，他公开质疑评审标准，并连续多年缺席典礼。</p></div>
+      <div class="tl peak rv"><div class="when">2003</div><h3>告别侠客，站上红磡</h3><p>与侠客唱片六年的合作在这一年结束。SARS 阴影下，他与王力宏号召群星合唱〈手牵手〉；随后用精选辑《乐之路》回望前三张唱片，又把《Soul Power》带进红磡体育馆。录音室里的层层细节，终于在现场变成观众可以一起喊出的力量。</p></div>
+      <div class="tl rv"><div class="when">2005 · 01 · 21</div><h3>《太平盛世》</h3><p>专辑名越安稳，里面的问题越尖锐：〈鬼〉触碰恐惧，〈孙子兵法〉把金属乐与传统器乐并置，〈Sula 与 Lampa 的寓言〉回应被窥视的生活。第 17 届金曲奖授予它最佳国语流行音乐演唱专辑；同届其他项目是入围，不与获奖混写。那年夏天，《Love Can》世界巡演从上海启程。</p></div>
+      <div class="tl rv"><div class="when">2006 · 08 · 04</div><h3>《太美丽》</h3><p>连续几张向外追问之后，他把目光收回爱与珍惜。与蔡依林对唱的〈今天你要嫁给我〉用乡村吉他和轻巧对白写婚礼，次年获得第 18 届金曲奖最佳年度歌曲；这是陶喆作品中少见的不设阴影、只让快乐向前走的一刻。</p></div>
+      <div class="tl peak rv"><div class="when">2009 · 08 · 21</div><h3>《69乐章》</h3><p>睽违三年，他把少年时钟爱的摇滚重新搬进录音室，也亲自执导音乐录影带、电影与纪录片。次年第 21 届金曲奖，他终于获得最佳国语男歌手；这座奖来得不早，却像是对一个制作人终于完整成为演唱者的确认。</p></div>
+      <div class="tl rv"><div class="when">2010</div><h3>广州亚运《日出东方》</h3><p>他在广州亚运开幕式与谭晶、韦唯、金贤重、容祖儿合唱〈日出东方〉。从小型录音室到国际体育盛会，陶喆的声音进入另一种公共场景。</p></div>
+      <div class="tl rv"><div class="when">2013 · 06 · 11</div><h3>《再见你好吗》</h3><p>四年后，第七张创作专辑终于抵达。标题像一次久别重逢，歌里却不急着和过去握手言和；〈一念之间〉尤其保留了选择尚未落定时的摇摆。同期开启的《小人物狂想曲》巡演，把这段迟来的新作带回现场。</p></div>
+      <div class="tl rv"><div class="when">2014 · 09 · 15</div><h3>《爱是凝望又离开》</h3><p>为电影《寒蝉效应》看过初剪后，他在美国用约四小时写成主题曲〈爱是凝望又离开〉，并入围第 51 届金马奖最佳原创电影歌曲；同日发行的〈告别飞行〉则替电影补上更孤独、更内向的一面。</p></div>
+      <div class="tl rv"><div class="when">2016 — 2018</div><h3>导师、巡演、单曲</h3><p>他担任《中国好歌曲》第三季导师，也继续以《无二不乐》与「初心」主题巡演回到舞台。2017 年的〈黑色星期二〉把十五年前制作《黑色柳丁》的旧沙发也带回录音室；同年的〈爱，很简单 20 周年初心版〉，则让第一首歌和二十年后的声音正面相遇。</p></div>
+      <div class="tl rv"><div class="when">2020 — 2024</div><h3>重制与单曲</h3><p>2020 年 12 月 24 日《圣诞之吻》。2023 年他连着发出《流沙 (Reimagined)》《全世界会唱的歌》《活该》《I'm OK (Reimagined)》，其中前两首是 1997 与 1999 年旧作的重制。2024 年 1 月《星心》、2 月《小子》——后者是贺岁片《小子》主题曲，不在《Stupid Pop Songs》的曲目里；9 月还有一支《让爱再继续》。</p></div>
+      <div class="tl rv"><div class="when">2024 — 2026</div><h3>《Soul Power II》</h3><p>二十一年后，「Soul Power」重新成为巡演名字。它不是简单复制旧舞台，而是让已经改变的嗓音与那些陪听众长大的歌再见一次。2024 年 QQ 音乐巅峰盛典授予他年度巅峰港台男歌手。</p></div>
+      <div class="tl peak rv"><div class="when">2025 · 04 · 15</div><h3>《Stupid Pop Songs》</h3><p>十二年没有新录音室专辑，他并非无歌可发，而是从三十多首创作中反复筛选。第八张专辑一面回望旧作，一面正视 AI 与快速消费改变创作环境后的疑问：一个人慢慢磨出来的声音，还有没有价值？2026 年，专辑获得浪潮音乐大赏年度专辑与最佳录音工程专辑，〈陪你〉入选 Hito 年度十大华语歌曲。</p></div>
+      <div class="tl now rv"><div class="when">2026 · 10</div><h3>仍在路上</h3><p>《Soul Power II》仍在巡演，旧歌被新一代听众重新发现，新专辑也继续得到回应。陶喆的路从来不是高产的路；他更像一个把录音室当作长期生活的人，隔几年才把那些犹疑、试验和不完美交出来，让时间替歌做最后一道混音。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">03 / 唱片与主打</p>
+    <h2 class="rv">21 首歌，一条发行顺序</h2>
+    <p class="sec-lead rv">二十一段声音按发行年份依次亮起。这里不只记成绩，更想回答：一首歌为什么会在那一年出现，又为什么过了这么久，仍有人愿意把它唱完。</p>
+    <div class="tracks">
+
+      <article class="song rv" id="song-simple" data-bvid="BV1T7411x78Y" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/41/71/fc/4171fc82-29c0-628c-1210-5aa772c24dd4/mzaf_15001781148470870809.plus.aac.p.m4a" aria-label="播放视频 爱很简单">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/600x600bb.jpg" alt="爱很简单 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">01</span><h3>爱很简单</h3></div>
+          <p class="s-meta">1997.12.06 · 词条与店内同日 · 《陶喆》（同名专辑）</p>
+          <p class="s-note">这首歌 1993 年就写成，最初是一段约二十分钟完成的英文歌《I Love You》。陶喆后来在节目采访中说，它记录了自己二十四岁时一段感情里的痴情、歉疚与告别；歌曲曾被多家唱片公司和歌手退回，等了四年，才成为首张专辑最朴素也最牢固的开场白。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 爱很简单"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="爱很简单 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="爱很简单 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-airport" data-bvid="BV1fh4y1u7uY" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/54/c6/1d/54c61d61-5435-fd28-f14d-0b34bc69a007/mzaf_3131231682859367750.plus.aac.p.m4a" aria-label="播放视频 飞机场的10:30">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/600x600bb.jpg" alt="飞机场的10:30 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">02</span><h3>飞机场的10:30</h3></div>
+          <p class="s-meta">1997.12.06 · 词条与店内同日 · 《陶喆》</p>
+          <p class="s-note">专辑先以短短的〈Airport Take Off〉推开舱门，再进入这首第一支完整歌曲。没有可靠资料能把情节对应到某段私人经历；就作品而言，电话留言、机场广播般的空间感和反复等待的节奏，让「十点半」成了一种悬而未决的时间。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 飞机场的10:30"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="飞机场的10:30 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="飞机场的10:30 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-quicksand" data-bvid="BV1My411v7Uo" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/b2/b6/5ab2b625-9fd0-d42a-21b7-a98521b0be7a/mzaf_7229703037116237999.plus.aac.p.m4a" aria-label="播放视频 流沙">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/600x600bb.jpg" alt="流沙 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">03</span><h3>流沙</h3></div>
+          <p class="s-meta">1997.12.06 · 词条与店内同日 · 《陶喆》</p>
+          <p class="s-note">首张专辑里，陶喆把 R&amp;B 的切分与中文咬字贴得很近，旋律越柔，失去控制的感觉反而越清楚。2023 年他又发布〈流沙 (Reimagined)〉，像是隔着二十六年重看旧作；这里保留的仍是 1997 年原录音。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 流沙"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="流沙 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="流沙 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-self" data-bvid="BV1GT411t7B7" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8d/8e/a0/8d8ea06f-43ab-594a-bd45-4707764cc56c/mzaf_8354408880393567480.plus.aac.p.m4a" aria-label="播放视频 找自己">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/77/fc/d077fcf8-6a17-e7ea-6c91-6cf40ad39d81/825646245383.jpg/600x600bb.jpg" alt="找自己 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">04</span><h3>找自己</h3></div>
+          <p class="s-meta">1999.12.10 词条 · 店内曲目日 1999.08.24 · 《I'm OK》</p>
+          <p class="s-note">如果首张专辑证明他能把 R&amp;B 写进中文，〈找自己〉则把声音推向更开阔的摇滚与放克。雨声、口语化的句子和骤然放大的副歌，都在写现代人的迷路；这是作品呈现出的自我追问，不把它附会成某一段未经证实的私生活。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 找自己"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="找自己 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="找自己 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-friend" data-bvid="BV1hV411a7wt" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4c/02/8e/4c028e61-72a8-2711-f0e2-9ebe4ae72f62/mzaf_13507378831979637287.plus.aac.p.m4a" aria-label="播放视频 普通朋友">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/77/fc/d077fcf8-6a17-e7ea-6c91-6cf40ad39d81/825646245383.jpg/600x600bb.jpg" alt="普通朋友 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">05</span><h3>普通朋友</h3></div>
+          <p class="s-meta">1999.12.10 词条 · 店内 1999.08.24 · 《I'm OK》</p>
+          <p class="s-note">〈普通朋友〉把最难堪的关系停在一句礼貌称呼上。歌里没有戏剧性的报复，只有主歌克制、到副歌才不断上扬的请求；这种「越想说清楚，越暴露舍不得」的唱法，是文本与演唱共同给出的情绪，不等同于歌手本人的具体经历。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 普通朋友"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="普通朋友 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="普通朋友 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-daily" data-bvid="BV1Fa4y1j7pA" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d7/9e/dd/d79eddef-d4a6-33ae-e731-2701000fffc6/mzaf_2080107737912672656.plus.aac.p.m4a" aria-label="播放视频 天天">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/77/fc/d077fcf8-6a17-e7ea-6c91-6cf40ad39d81/825646245383.jpg/600x600bb.jpg" alt="天天 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">06</span><h3>天天</h3></div>
+          <p class="s-meta">1999.12.10 词条 · 店内 1999.08.24 · 《I'm OK》</p>
+          <p class="s-note">陶喆后来在自己的创作解析中拆过这首歌：它动人的地方不靠大事件，而靠日常里反复浮现的想念。轻巧的律动托着近乎自言自语的旋律，亲密感没有被唱得用力；2003 年精选辑另收版本，这里听的是 1999 年原轨。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 天天"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="天天 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="天天 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-orange" data-bvid="BV1iu411R7rp" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/12/c8/a5/12c8a5d7-4af8-0028-ebbc-a8554952330c/mzaf_15810752807673167380.plus.aac.p.m4a" aria-label="播放视频 黑色柳丁">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/600x600bb.jpg" alt="黑色柳丁 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">07</span><h3>黑色柳丁</h3></div>
+          <p class="s-meta">2002.08.09 · 词条与店内同日 · 《黑色柳丁》</p>
+          <p class="s-note">这张专辑诞生在九一一事件后的世界。陶喆谈过新闻画面带来的震动，以及由此生出的存在追问；标题曲于是从情歌转向社会焦虑。失真的吉他、近乎警报的声响和压抑的反复，不是在卖弄「黑」，而是在问：当沟通失效，人还剩下什么可以彼此抓住。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 黑色柳丁"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="黑色柳丁 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="黑色柳丁 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-moon" data-bvid="BV1h4411Z7TS" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/09/cf/7709cfed-4c24-42f0-04d4-df934dffeb64/mzaf_13325715617697996575.plus.aac.p.m4a" aria-label="播放视频 月亮代表谁的心">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/600x600bb.jpg" alt="月亮代表谁的心 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">08</span><h3>月亮代表谁的心</h3></div>
+          <p class="s-meta">2002.08.09 · 词条与店内同日 · 《黑色柳丁》</p>
+          <p class="s-note">陶喆没有把〈月亮代表我的心〉当作只能供奉的经典，而是改了叙述角度，也改了节奏的重心。熟悉旋律偶尔露面，新的问句却把确定的誓言变成试探；这是他早期专辑一贯的老歌新编方法：保住记忆，再让旧歌在当代语汇里重新呼吸。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 月亮代表谁的心"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="月亮代表谁的心 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="月亮代表谁的心 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-melody" data-bvid="BV1iX4y1M742" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/10/c9/e1/10c9e1e8-3b60-24ab-b66d-0304e547c979/mzaf_6531172121075294780.plus.aac.p.m4a" aria-label="播放视频 Melody">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/600x600bb.jpg" alt="Melody 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">09</span><h3>Melody</h3></div>
+          <p class="s-meta">2002.08.09 · 词条与店内同日 · 《黑色柳丁》</p>
+          <p class="s-note">陶喆在「创作喆学」中亲自拆解过它的旋律与编曲，谈的是一段没有写完、也没有唱完的情绪。至于歌名是否专指某位旧识，相关当事人的公开说法彼此并不一致；与其替私人关系下结论，不如听它如何用漫长尾音，把「忘不掉」停在音乐本身。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Melody"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Melody 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Melody 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-season" data-bvid="BV1Rv411L7qW" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0b/32/11/0b3211ab-a7e7-ffa8-b12e-716836bcc5f5/mzaf_16087280212447962050.plus.aac.p.m4a" aria-label="播放视频 寂寞的季节">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/07/64/7c/07647c3b-8864-7d39-1823-dd993e7cd69f/825646871223.jpg/600x600bb.jpg" alt="寂寞的季节 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">10</span><h3>寂寞的季节</h3></div>
+          <p class="s-meta">2003.08.08 词条 · 店内上架 2003.08.09 · 《乐之路 Ultrasound 1997–2003》</p>
+          <p class="s-note">陶喆说，这首歌只花十五到二十分钟便完整落下，像是「从天上掉下来」；它对应的是自己当时极度寂寞的内心。旋律没有急着哭诉，而是让季节、风和空下来的位置慢慢围拢，因此孤独听来不是爆发，而是日子忽然变长。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 寂寞的季节"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="寂寞的季节 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="寂寞的季节 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-love" data-bvid="BV1hS4y1e7TD" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ba/48/bc/ba48bc57-3dff-1670-c025-b0f751dcb4ee/mzaf_5332294480655763216.plus.aac.p.m4a" aria-label="播放视频 就是爱你">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/600x600bb.jpg" alt="就是爱你 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">11</span><h3>就是爱你</h3></div>
+          <p class="s-meta">2005.01.21 · 词条与店内同日 · 店内曲目日 2005.01.07 · 《太平盛世》</p>
+          <p class="s-note">在一张充满战争、窥视与社会批判的专辑里，这首歌像一处不设防的亮光。陶喆曾在自己的创作解析里说明它献给具体的人，但公开资料不足以替那段关系补写细节；可以确认的是，它后来成为 2006 Hito 年度十大华语歌曲，也成为演唱会上最稳定的合唱之一。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 就是爱你"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="就是爱你 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="就是爱你 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-him" data-bvid="BV1Jr68YZEge" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/91/27/9d/91279d8c-7117-7ce7-c77b-4406b2712442/mzaf_18429253256854806937.plus.aac.p.m4a" aria-label="播放视频 爱我还是他">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/600x600bb.jpg" alt="爱我还是他 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">12</span><h3>爱我还是他</h3></div>
+          <p class="s-meta">2005.01.21 · 词条与店内同日 · 《太平盛世》</p>
+          <p class="s-note">陶喆在公开的编曲解析里谈过这首歌如何靠层层推进制造两难：主歌压低声音，副歌忽然把选择逼到眼前。作品后来获第 6 届百事音乐风云榜港台最佳作曲；而《太平盛世》在第 17 届金曲奖得到的是最佳国语流行音乐演唱专辑，不是男歌手奖。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 爱我还是他"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="爱我还是他 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="爱我还是他 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-susan" data-bvid="BV1BV4y1s7m4" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2b/8a/27/2b8a27b5-dbba-2aa2-c606-555c78a97bee/mzaf_15471296049830560015.plus.aac.p.m4a" aria-label="播放视频 Susan说">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/600x600bb.jpg" alt="Susan说 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">13</span><h3>Susan说</h3></div>
+          <p class="s-meta">2005.01.21 · 词条与店内同日 · 《太平盛世》</p>
+          <p class="s-note">母亲是京剧演员，陶喆却没有把传统声腔当作装饰：〈Susan说〉从《苏三起解》借来叙事骨架，让京剧唱段与 R&amp;B 对答，古老冤案也被移进现代关系。它入选中华音乐人交流协会 2005 年十大优良单曲，肯定的正是这种既大胆又完整的改写。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Susan说"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Susan说 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Susan说 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-beautiful" data-bvid="BV1eU4y137J3" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/2c/5a/7e2c5a92-d37e-8d54-9ac7-f3236b06ce31/mzaf_16578842365589158932.plus.aac.p.m4a" aria-label="播放视频 太美丽">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/02/ac/f3/02acf3ea-73a0-3742-ab98-863b45794988/825646245345.jpg/600x600bb.jpg" alt="太美丽 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">14</span><h3>太美丽</h3></div>
+          <p class="s-meta">2006.08.04 词条 · 店内上架 2006.07.31 · 《太美丽》</p>
+          <p class="s-note">经历《黑色柳丁》和《太平盛世》的锋利之后，陶喆把第五张专辑写得更温柔。标题曲以福音式和声和舒展的节拍托住赞美，没有可靠来源证明它对应某个私人故事；能确定的是，它标记了创作者从向外批判，转回学习珍惜的阶段。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 太美丽"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="太美丽 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="太美丽 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-marry" data-bvid="BV1dC411p7o3" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2d/ec/c6/2decc6a4-8784-9fca-fc1a-3e153308aba3/mzaf_5026520525821255410.plus.aac.p.m4a" aria-label="播放视频 今天你要嫁给我">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/02/ac/f3/02acf3ea-73a0-3742-ab98-863b45794988/825646245345.jpg/600x600bb.jpg" alt="今天你要嫁给我 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">15</span><h3>今天你要嫁给我</h3></div>
+          <p class="s-meta">2006.07.31 店内 · 《太美丽》 · 与蔡依林对唱</p>
+          <p class="s-note">与蔡依林对唱，让求婚不再是一人的宣言，而成了你一句、我一句的轻喜剧。乡村吉他、四季轮转的歌词和两种声线把仪式写得轻巧；它获得第 18 届金曲奖最佳年度歌曲，是明确的获奖，不是入围。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 今天你要嫁给我"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="今天你要嫁给我 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="今天你要嫁给我 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-secret" data-bvid="BV1GV411e7Qi" data-vlabel="官方 MV">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b4/f7/43/b4f743b8-9c81-ceca-fcb5-61ca0ae0a757/mzaf_7914489773972659449.plus.aac.p.m4a" aria-label="播放视频 暗恋">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/44/48/45/44484535-044f-8e79-5308-eccc4a743033/190295004699.jpg/600x600bb.jpg" alt="暗恋 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">16</span><h3>暗恋</h3></div>
+          <p class="s-meta">2009.08.21 · 词条与店内同日 · 《69乐章》</p>
+          <p class="s-note">《69乐章》里，陶喆重新拥抱少年时代迷恋的摇滚，也亲自执导影像。〈暗恋〉却把力气收住：吉他与弦乐一点点累积，直到不能说出口的感情逼近失控。整张专辑让他在第 21 届金曲奖获得最佳国语男歌手，这是他的首座该奖项。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 暗恋"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="暗恋 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="暗恋 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-thought" data-bvid="BV15vE2zDEUV" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/15/7c/32/157c328e-1716-531f-d5ca-a72098b9a8e0/mzaf_8361939708762635801.plus.aac.p.m4a" aria-label="播放视频 一念之间">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/02/d4/40/02d4408f-d979-8b13-1920-2cbacaeaebb4/4711448510025.jpg/600x600bb.jpg" alt="一念之间 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">17</span><h3>一念之间</h3></div>
+          <p class="s-meta">2013.06.11 · 词条作品列表与店内同日 · 《再见你好吗》</p>
+          <p class="s-note">离上一张录音室专辑四年，〈一念之间〉没有把重逢唱成笃定答案，而是停在决定发生前的一瞬。急促鼓点与反复句式让犹疑具有身体感；关于它对应哪段现实关系，没有足够可靠的公开证据，因此这里只讨论作品里的选择与错过。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 一念之间"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="一念之间 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="一念之间 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-gaze" data-bvid="BV1nJ411q7Jk" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/85/2b/08/852b08b9-734e-cb7a-e49f-6481350b1864/mzaf_2329620114873330473.plus.aac.p.m4a" aria-label="播放视频 爱是凝望又离开">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/e5/ba/79/e5ba7973-f2e3-2571-351b-83747a7d0175/DT_cover2_-4000x4000.jpg/600x600bb.jpg" alt="爱是凝望又离开 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">18</span><h3>爱是凝望又离开</h3></div>
+          <p class="s-meta">2014.09.15 · 词条与店内同日 · 电影《寒蝉效应》主题曲</p>
+          <p class="s-note">这是陶喆第一次为电影量身写主题曲。他看完《寒蝉效应》初剪后答应合作，在美国用约四小时完成创作；歌曲随后入围第 51 届金马奖最佳原创电影歌曲。同片插曲〈告别飞行〉负责更孤立的内心时刻，两首歌合在一起，才是电影里凝望与离开的两面。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 爱是凝望又离开"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="爱是凝望又离开 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="爱是凝望又离开 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-tuesday" data-bvid="BV18AY7e6ELX" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/28/b9/bd/28b9bd2c-ca8d-7708-3a83-51924824737a/mzaf_614876168486641500.plus.aac.p.m4a" aria-label="播放视频 黑色星期二">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/95/8e/62/958e62af-2679-2dca-0e20-f87f76d2c38c/4711126592268.jpg/600x600bb.jpg" alt="黑色星期二 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">19</span><h3>黑色星期二</h3></div>
+          <p class="s-meta">2017.08.21 词条 · 店内上架 2017.08.08 · 单曲</p>
+          <p class="s-note">官方发布资料说，他为这首歌连续配唱二十多个小时，累了便和制作人轮流躺在一张从美国运回台北的旧沙发上——那也是制作《黑色柳丁》时休息过的沙发。歌写「黑色」却仍指向光明：承认当下的阴影，再试着从里面摸出一点可以给别人的爱。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 黑色星期二"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="黑色星期二 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="黑色星期二 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-stupid" data-bvid="BV1Xqo1YeEc9" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fb/eb/c1/fbebc11b-7d93-af92-30a9-7a096c217835/mzaf_15949599175010070612.plus.aac.p.m4a" aria-label="播放视频 Stupid Pop Song">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c4/b9/8c/c4b98c39-8c46-cead-f6ed-bf81323961cd/193017172331.jpg/600x600bb.jpg" alt="Stupid Pop Song 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">20</span><h3>Stupid Pop Song</h3></div>
+          <p class="s-meta">2025.03.14 先行 · 专辑 2025.04.15 · 《Stupid Pop Songs》</p>
+          <p class="s-note">陶喆把它写成三段式：不同旋律、节奏与风格在同一首歌里碰撞，还把〈黑色柳丁〉的吉他泛音做成 Lo-Fi 取样，与合成器、Auto-Tune 和真实乐器并置。它不是讥笑流行歌，而是一个做了二十多年音乐的人，在 AI 时代追问：数据能生成声音，可它能不能真的感受？</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 Stupid Pop Song"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="Stupid Pop Song 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="Stupid Pop Song 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+      <article class="song rv" id="song-together" data-bvid="BV1aG5jzJE7g" data-vlabel="视频">
+        <div class="cov-btn" role="button" tabindex="0" data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f0/80/4d/f0804d66-f298-221d-d058-91f1574a2f38/mzaf_16871783670057045591.plus.aac.p.m4a" aria-label="播放视频 陪你">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c4/b9/8c/c4b98c39-8c46-cead-f6ed-bf81323961cd/193017172331.jpg/600x600bb.jpg" alt="陪你 封面" loading="lazy" width="118" height="118">
+          <span class="ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="s-body">
+          <div class="s-head"><span class="s-no">21</span><h3>陪你</h3></div>
+          <p class="s-meta">2025.04.15 · 词条与店内同日 · 《Stupid Pop Songs》</p>
+          <p class="s-note">专辑走到尾声，锋利的实验退下去，传统器乐与温厚的人声把「陪伴」留作落点。没有可靠公开资料把它指向某个具体的人，因此不替作品编故事；可以核实的是，它作为专辑曲在 2026 Hito 流行音乐奖入选年度十大华语歌曲。</p>
+          <div class="player">
+            <button class="pp" type="button" aria-label="播放 陪你"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+            <div class="bar" role="slider" aria-label="播放进度" tabindex="0"><div class="fill"></div></div>
+            <span class="t">0:00 / 0:30</span>
+          </div>
+          <div class="s-links"><a class="chip" data-q="陪你 陶喆" href="https://y.qq.com/n/ryqq/search">QQ音乐</a><a class="chip" data-q="陪你 陶喆" href="https://music.163.com/#/search/m/">网易云搜索</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="wuxia" class="tight">
+  <div class="wrap">
+    <div class="wuxia rv">
+      <p class="eyebrow">04 / 另一条线索</p>
+      <h2>幕后：华语 R&amp;B 是从给别人做歌开始的</h2>
+      <p>1997 年走到台前以前，他已经在洛杉矶与台北之间替别人写了四年歌。那不是等待成名的空白，而是最扎实的学徒期：怎样顺着另一位歌手的音域写旋律，怎样让和声替主唱留出位置，怎样在三四分钟里建立一个人的世界。后来人们称道的「陶氏」编曲，许多手艺都先在这里练成。</p>
+      <div class="wrow">
+        <div class="wcard"><span>1993 — 1995</span><b>周葆元、L.A. Boyz、杨采妮</b><span>作曲、编曲、制作，回台湾最早的一批作品</span></div>
+        <div class="wcard"><span>1995</span><b>陈淑桦《淑桦盛开》</b><span>作曲、编曲、制作：《爱得比较深》《魔力》《不做情人，不做朋友》《拔河》《Kiss & Tell》</span></div>
+        <div class="wcard"><span>1998 — 2000</span><b>张惠妹《牵手》《不顾一切》</b><span>作曲、编曲、和声与制作：《不要骗我》《爱什么稀罕》《一夜情》</span></div>
+        <div class="wcard"><span>1998</span><b>TENSION 天炫男孩</b><span>由他号召组成的男团，词曲多半出自他手</span></div>
+        <div class="wcard"><span>2003</span><b>陈奕迅《幸灾乐祸》《Katrina》</b><span>作曲、编曲、制作；同年还有 S.H.E《落大雨》、莫文蔚《忽然东风》</span></div>
+      </div>
+      <p class="hint" style="font-family:var(--sans);font-size:13px;color:#a2947f;margin-top:20px">这五组作品不计入下方 21 首歌，却解释了陶喆为何一出道就已经像一个成熟的制作人。</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="route" class="tight">
+  <div class="wrap">
+    <div class="route rv">
+      <p class="eyebrow">05 / 选听清单</p>
+      <h2><span class="yr">按唱片走过的顺序</span>如果只重听一个晚上</h2>
+      <p>这个晚上不必急着追金曲。先听首张专辑怎样把中文放进 R&amp;B 的呼吸，再听《I'm OK》把声音推向摇滚与放克；《黑色柳丁》之后，私人情歌开始与时代情绪并行。中段留给〈Susan说〉的旧戏新唱，也留给〈今天你要嫁给我〉难得的轻盈。最后从〈暗恋〉走到〈Stupid Pop Song〉：二十多年过去，那个反复修改声音的人，仍在问同一件事——歌能不能诚实地抵达另一个人。</p>
+      <ol id="routeList">
+        <li><button type="button" data-target="song-simple">爱很简单</button></li>
+        <li><button type="button" data-target="song-airport">飞机场的10:30</button></li>
+        <li><button type="button" data-target="song-quicksand">流沙</button></li>
+        <li><button type="button" data-target="song-self">找自己</button></li>
+        <li><button type="button" data-target="song-friend">普通朋友</button></li>
+        <li><button type="button" data-target="song-daily">天天</button></li>
+        <li><button type="button" data-target="song-orange">黑色柳丁</button></li>
+        <li><button type="button" data-target="song-moon">月亮代表谁的心</button></li>
+        <li><button type="button" data-target="song-melody">Melody</button></li>
+        <li><button type="button" data-target="song-season">寂寞的季节</button></li>
+        <li><button type="button" data-target="song-love">就是爱你</button></li>
+        <li><button type="button" data-target="song-susan">Susan说</button></li>
+        <li><button type="button" data-target="song-marry">今天你要嫁给我</button></li>
+        <li><button type="button" data-target="song-secret">暗恋</button></li>
+        <li><button type="button" data-target="song-thought">一念之间</button></li>
+        <li><button type="button" data-target="song-gaze">爱是凝望又离开</button></li>
+        <li><button type="button" data-target="song-stupid">Stupid Pop Song</button></li>
+        <li><button type="button" data-target="song-together">陪你</button></li>
+      </ol>
+      <p class="hint">从蓝调、R&amp;B 到京剧与摇滚，二十一首歌听见的，是陶喆不断把熟悉的华语情歌拆开重做。</p>
+    </div>
+  </div>
+</section>
+
+<section id="refs" class="tight">
+  <div class="wrap">
+    <p class="eyebrow rv">06 / 资料与边界</p>
+    <h2 class="rv">事实有出处，听感有边界</h2>
+    <div class="refs">
+      <div class="rv">
+        <h3>主要依据</h3>
+        <ul>
+          <li>生平与作品年表以陶喆公开采访、发行资料、金曲奖官方资料及 Apple Music 条目交叉核对；中文维基只用于定位线索，不单独支撑私人故事。检索截至 2026-10-12。</li>
+          <li>〈爱很简单〉和〈寂寞的季节〉的创作缘起，依据陶喆 2016 年参加《隐藏的歌手》时的节目采访及<a href="https://m.163.com/ent/article/BV4U5JAJ0003501E.html">网易娱乐报道</a>；前者 1993 年写成、曾被退稿，后者约十五至二十分钟完成，均为本人公开讲述。</li>
+          <li>〈Melody〉的音乐制作依据陶喆本人「创作喆学 / How I Made It」公开解析；歌名与特定旧识的关系存在互相冲突的公开说法，因此正文不认定「为某人量身写作」。</li>
+          <li>〈黑色柳丁〉与九一一之后的创作背景，参考专辑制作纪录及主流媒体对陶喆创作脉络的回顾；正文只写他公开谈过的社会震动与存在追问，不延伸成未经证实的私人经历。</li>
+          <li>〈爱是凝望又离开〉依据 2014 年<a href="https://ent.sina.com.cn/y/2014-09-15/15174208244.shtml">新浪娱乐对电影合作的报道</a>：陶喆看过初剪后答应创作，约四小时完成，并入围第 51 届金马奖最佳原创电影歌曲；「入围」没有写成「获奖」。</li>
+          <li>〈黑色星期二〉依据发行方新闻资料：连续配唱二十多个小时，以及录音室旧沙发与《黑色柳丁》的关联，均来自当时公开稿件。</li>
+          <li>《Stupid Pop Songs》依据陶喆 2025 年专辑自述、歌曲创作手记、<a href="https://music.apple.com/tw/album/stupid-pop-songs/1807733204">Apple Music 专辑说明</a>与主流媒体采访：三段式结构、〈黑色柳丁〉吉他泛音取样、真实鼓组，以及他对 AI 时代创作价值的追问，均有本人或官方文字支持。</li>
+          <li>奖项届数与名称以官方得奖名单及可靠报道复核：第 9 届最佳新人、最佳唱片制作人；第 11 届最佳专辑制作人；第 17 届最佳国语流行音乐演唱专辑；第 18 届最佳年度歌曲；第 21 届最佳国语男歌手。入围与获奖分开表述。</li>
+          <li>试听、发行日期与封面取自 Apple Music 台湾店公开条目。</li>
+          <li>速览六个数字的口径就在本页：1969 年 7 月 11 日生于香港；1997 年 12 月 6 日首张同名专辑、词条写台湾销量 50 万张；1998 年第 9 届金曲奖最佳新人与最佳唱片制作人；2002 年《黑色柳丁》词条写台湾突破 25 万、全亚洲 250 万张；本页 21 首；2025 年 4 月 15 日《Stupid Pop Songs》，词条写睽违 12 年的第八张录音室专辑。</li>
+          <li>「华语 R&amp;B 教父」是媒体长期使用的称号，不是陶喆自称；正文更关心这一称号背后的制作方法，而不把它写成不可讨论的定论。</li>
+          <li>销量数字缺少可公开核验的原始销售认证，只作为历史报道中的说法保留，不用来推导影响力排名。</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>对不上的地方，怎么处理</h3>
+        <ul>
+          <li><b>首张同名专辑</b>：词条与店内都是 1997-12-06。店内把部分曲目的日期标成 1997-01-01，视为占位，不采用。</li>
+          <li><b>《I'm OK》</b>：词条作品列表写 1999-12-10，店内曲目日 1999-08-24，专辑在店内的 collection 日期被标成 1999-01-01。卡片两处都留着，试听按店内这一条。</li>
+          <li><b>《黑色柳丁》</b>：词条与店内都是 2002-08-09。2003 年第 14 届金曲奖它只入围一项最佳国语男演唱人奖，他质疑评审标准并多年不出席，这是一段态度，不是一次获奖。</li>
+          <li><b>《乐之路 Ultrasound 1997–2003》</b>：词条写 2003-08-08，店内上架 2003-08-09，卡片两处都留着。它是新歌加精选，《今天没回家》《我喜欢》《寂寞的季节》《Runaway》是新歌，旧录音不另做卡片。</li>
+          <li><b>《太平盛世》</b>：词条与店内都是 2005-01-21，店内曲目日写 2005-01-07。第 17 届金曲奖给这张的是最佳国语流行音乐演唱专辑奖，不是男歌手奖。</li>
+          <li><b>《太美丽》</b>：词条作品列表写 2006-08-04，店内上架与曲目日都是 2006-07-31。卡片取店内，8 月 4 日留在时间线。</li>
+          <li><b>《69乐章》</b>：词条与店内都是 2009-08-21，店内专辑名写繁体《六九樂章》，卡片用简体。他凭这张在次年第 21 届金曲奖拿到最佳国语男歌手奖。</li>
+          <li><b>《再见你好吗》</b>：词条作品列表与店内都是 2013-06-11；词条生平段落把它写成 2014 年 6 月 11 日发行的「第七张」创作专辑。本页按 2013-06-11 排卡片，两个说法都留在时间线。</li>
+          <li><b>《爱是凝望又离开》</b>：词条单曲表与店内都是 2014-09-15，电影《寒蝉效应》主题曲；同日还有插曲《告别飞行》，不另做卡片。</li>
+          <li><b>《黑色星期二》</b>：词条单曲表写 2017 年 8 月 21 日，店内上架 2017-08-08。卡片两处都留着。</li>
+          <li><b>《日出东方》</b>：2010 年广州亚运开幕式他与谭晶、韦唯、金贤重、容祖儿合唱。店内另有一条 2022-11-18 的国语单曲《日出東方 Sunshine again》，词条单曲表未收，不进卡片。</li>
+          <li><b>《Stupid Pop Songs》</b>：词条与店内都是 2025-04-15，词条写发行公司是伟大文化；2025 年 7 月 4 日文汇报报道环球音乐与他合作，词条信息框把唱片公司一栏改成 2025 年起的环球音乐。2026 年这张拿到华语金曲奖、浪潮音乐大赏与 Hito 的肯定；词条信息框里的金曲奖最佳华语专辑奖，2025 年是吕士轩《好声豪气》，2026 年是张震岳《跟着感觉走》，都不是这张。</li>
+          <li><b>《小子》</b>：2024-02-02 单曲，贺岁片《小子》主题曲，词条单曲表与店内同日。它不在《Stupid Pop Songs》的曲目里，所以不占唱片卡片，只留在时间线。</li>
+          <li><b>老歌新编</b>：词条记他在前五张专辑里都留了一首改编——《望春风》（1997）、《夜来香》（1999）、《月亮代表谁的心》与《宫保鸡丁》（2002）、《Susan说》（2005，取材京剧《苏三起解》）、《忘不了》（2006）。卡片只在《月亮代表谁的心》和《Susan说》的说明里提到这件事。</li>
+          <li><b>学历</b>：中文词条只列出两所学校与主修心理学、副修电影，没有写是否毕业；英文词条写他取得洛杉矶分校心理学学士。本页只写「读过」，不写「毕业」。</li>
+          <li><b>首次售票演唱会</b>：词条正文写 2003-08-13 红磡体育馆，词条的演唱会列表写 2003-08-14。差一天，两处都留着。</li>
+          <li><b>2026 年第 37 届金曲奖</b>：《Stupid Pop Songs》在社交平台被说成入围，正式名单里没有他，该届最佳华语男歌手是张震岳。本页不把传言写成入围。</li>
+          <li><b>《圣诞之吻》《黑色星期二》《Mars Baby》</b>：只有词条单曲表这一条来源，另加店内的上架日。两张日期不一致的按前面写的方式并列。</li>
+          <li><b>封面</b>：部分返回的是流媒体再版配图（例如首张专辑在店内挂着 2018 年再版的条码），不一定是首版封套扫描。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine rv">资料核对至 2026 年 10 月 12 日。私人生活不替代音乐，未经本人、创作者、发行方或可靠媒体确认的“歌曲原型”不写成事实；发行日期有冲突处并列保留。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>黑色柳丁 · 陶喆音乐传记</b>
+      <p class="fmeta">从幕后制作人到华语 R&amp;B 的重要坐标，按发行顺序听见陶喆如何把个人情感、时代焦虑与录音室实验写进歌里。<br>内容核订于 2026 年 10 月 · 试听与封面来自 Apple Music · 仅供学习交流。</p>
+    </div>
+    <a class="totop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="回到顶部"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg></button>
+<div class="mix" id="mix">
+  <button class="mix-btn" type="button" id="mixPrev" aria-label="上一首" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zm13.5 1.2v11.6L9.2 12z"/></svg>
+  </button>
+  <button class="mix-btn is-main" type="button" id="mixToggle" aria-label="播放" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <button class="mix-btn" type="button" id="mixNext" aria-label="下一首">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM4.5 6.2v11.6L14.8 12z"/></svg>
+  </button>
+  <span class="mix-now">准备试听</span>
+  <label class="mix-vol">
+    <input id="mixVol" type="range" min="0" max="100" value="28" aria-label="音量">
+  </label>
+</div>
+<audio id="player" preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var audio = document.getElementById('player');
+
+  /* ---------- 阅读进度 + 顶栏 + 浮动按钮 ---------- */
+  var progress = document.getElementById('progress');
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var hero = document.querySelector('.hero');
+  function onScroll(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    var past = st > (hero ? hero.offsetHeight - 90 : 500);
+    nav.classList.toggle('show', past);
+    fab.classList.toggle('show', st > 900);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  onScroll();
+  fab.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- 进场动画 ---------- */
+  var revealables = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    revealables.forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 6, 4) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 目录高亮（滚动监听） ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ if(s) spy.observe(s); });
+  }
+
+  /* ---------- 单实例播放器 ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.song'));
+  var current = null;
+  var vol = 0.28;
+  var follow = true;
+  var gapTimer = 0;
+  var fadeRaf = 0;
+  var fading = '';
+  var fadeArmed = false;
+
+  function fmt(s){
+    if(!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function setIcon(card, playing){
+    var svg = card.querySelector('.pp svg');
+    if(!svg) return;
+    svg.innerHTML = playing
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    card.querySelector('.pp').setAttribute('aria-label', (playing ? '暂停 ' : '播放 ') + (card.querySelector('h3') ? card.querySelector('h3').textContent : ''));
+  }
+  function resetCard(card){
+    card.classList.remove('playing');
+    setIcon(card, false);
+    var f = card.querySelector('.fill'); if(f) f.style.width = '0%';
+    var t = card.querySelector('.t'); if(t) t.textContent = '0:00 / 0:30';
+  }
+  function wideIcon(on){
+    return on
+      ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+  function syncWideButton(hit, on){
+    var wide = hit && hit.querySelector('.wide');
+    if(!wide) return;
+    wide.setAttribute('aria-label', on ? '退出全屏' : '全屏');
+    wide.setAttribute('aria-pressed', on ? 'true' : 'false');
+    wide.innerHTML = wideIcon(on);
+  }
+  var wideScroll = 0;
+  var wideVisualTop = 0;
+  var wideSong = null;
+  var widePinTimer = 0;
+  function unlockOrientation(){
+    try { if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(err){}
+  }
+  function jumpTo(y){
+    y = Math.max(0, y || 0);
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+    root.style.scrollBehavior = prev;
+  }
+  function lockPage(){
+    wideScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.dataset.wideScroll = String(wideScroll);
+    document.body.style.top = '-' + wideScroll + 'px';
+    document.body.classList.add('is-wide-open');
+  }
+  function pinSong(){
+    jumpTo(wideScroll);
+    if(!wideSong) return;
+    var delta = wideSong.getBoundingClientRect().top - wideVisualTop;
+    if(Math.abs(delta) < 24) return;
+    var y = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) + delta;
+    wideScroll = Math.max(0, y);
+    jumpTo(wideScroll);
+  }
+  function stopPinHold(){
+    if(widePinTimer){ clearInterval(widePinTimer); widePinTimer = 0; }
+    document.documentElement.style.overflowAnchor = '';
+  }
+  function holdPin(){
+    stopPinHold();
+    document.documentElement.style.overflowAnchor = 'none';
+    var n = 0;
+    pinSong();
+    widePinTimer = setInterval(function(){
+      pinSong();
+      n += 1;
+      if(n >= 16) stopPinHold();
+    }, 60);
+  }
+  function releasePage(song, visualTop){
+    if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var locked = document.body.classList.contains('is-wide-open');
+    document.body.classList.remove('is-wide-open');
+    document.body.style.top = '';
+    if(!locked) return;
+    wideSong = song || wideSong;
+    if(typeof visualTop === 'number') wideVisualTop = visualTop;
+    holdPin();
+    window.addEventListener('touchstart', stopPinHold, { once: true, capture: true });
+  }
+  function settleWide(song){
+    song.style.minHeight = '';
+    song.classList.remove('is-wide');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) syncWideButton(hit, false);
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs){
+      var leave = document.exitFullscreen || document.webkitExitFullscreen;
+      if(leave) leave.call(document);
+    }
+    unlockOrientation();
+  }
+  function exitWide(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    if(was) releasePage(song, visualTop);
+  }
+  function enterWide(song){
+    var hit = song.querySelector('.cov-btn');
+    if(!hit) return;
+    wideSong = song;
+    wideVisualTop = song.getBoundingClientRect().top;
+    lockPage();
+    song.style.minHeight = song.offsetHeight + 'px';
+    song.classList.add('is-wide');
+    syncWideButton(hit, true);
+    var req = hit.requestFullscreen || hit.webkitRequestFullscreen;
+    if(!req) return;
+    var lock = function(){
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(function(){});
+      }
+    };
+    try {
+      var done;
+      try { done = req.call(hit, { navigationUI: 'hide' }); }
+      catch(err){ done = req.call(hit); }
+      if(done && done.then) done.then(lock).catch(function(){});
+      else lock();
+    } catch(err){}
+  }
+  function closeFilm(song){
+    var was = song.classList.contains('is-wide');
+    var visualTop = was ? wideVisualTop : 0;
+    settleWide(song);
+    song.classList.remove('is-film');
+    var hit = song.querySelector('.cov-btn');
+    if(hit) hit.querySelectorAll('.stage').forEach(function(node){ node.remove(); });
+    if(was) releasePage(song, visualTop);
+  }
+  function openFilm(song){
+    var bvid = song.getAttribute('data-bvid') || '';
+    if(!/^BV[\w]+$/.test(bvid)) return;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    haltMusic();
+    var hit = song.querySelector('.cov-btn');
+    var label = song.getAttribute('data-vlabel') || '视频';
+    song.classList.add('is-film');
+    var stage = document.createElement('div');
+    stage.className = 'stage';
+    var frame = document.createElement('iframe');
+    frame.className = 'film';
+    frame.title = label;
+    frame.allow = 'autoplay; picture-in-picture';
+    var page = song.getAttribute('data-page') || '';
+    var src = 'https://player.bilibili.com/player.html?isOutside=true&bvid=' + bvid + '&autoplay=1&danmaku=0&high_quality=1&noFullScreenButton=1';
+    if(page && page !== '1') src += '&page=' + encodeURIComponent(page);
+    frame.src = src;
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'back';
+    back.setAttribute('aria-label', '返回封面');
+    back.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.7 5.3 8 12l6.7 6.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    back.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      closeFilm(song);
+    });
+    var wide = document.createElement('button');
+    wide.type = 'button';
+    wide.className = 'wide';
+    wide.innerHTML = wideIcon(false);
+    wide.setAttribute('aria-label', '全屏');
+    wide.setAttribute('aria-pressed', 'false');
+    wide.addEventListener('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(song.classList.contains('is-wide')) exitWide(song);
+      else enterWide(song);
+    });
+    stage.appendChild(frame);
+    stage.appendChild(back);
+    stage.appendChild(wide);
+    hit.appendChild(stage);
+  }
+  function leaveNativeWide(){
+    var fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if(fs) return;
+    document.querySelectorAll('.song.is-wide').forEach(function(song){
+      exitWide(song);
+    });
+  }
+  document.addEventListener('fullscreenchange', leaveNativeWide);
+  document.addEventListener('webkitfullscreenchange', leaveNativeWide);
+  document.addEventListener('keydown', function(event){
+    if(event.key !== 'Escape') return;
+    document.querySelectorAll('.song.is-wide').forEach(exitWide);
+  });
+  function songList(){
+    return cards.filter(function(card){
+      var hit = card.querySelector('.cov-btn');
+      return hit && hit.getAttribute('data-src');
+    });
+  }
+  function srcOf(card){
+    var hit = card && card.querySelector('.cov-btn');
+    return hit ? (hit.getAttribute('data-src') || '') : '';
+  }
+  function after(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  }
+  function before(card){
+    var list = songList();
+    var i = list.indexOf(card);
+    return i > 0 ? list[i - 1] : null;
+  }
+  function showNow(card, prefix){
+    var el = document.querySelector('.mix-now');
+    if(!el) return;
+    if(!card){ el.textContent = '试听已结束'; return; }
+    var no = card.querySelector('.s-no');
+    var title = card.querySelector('h3');
+    el.textContent = (prefix || '') + (no ? no.textContent + '  ' : '') + (title ? title.textContent : '');
+  }
+  function listeningOn(){
+    return !!(gapTimer || fading || (audio && !audio.paused && !audio.ended));
+  }
+  function syncListen(){
+    var on = listeningOn();
+    var btn = document.getElementById('listenToggle');
+    if(btn){
+      var label = btn.querySelector('.listen-label');
+      var icon = btn.querySelector('svg');
+      if(label) label.textContent = on ? '停止聆听' : '开始聆听';
+      if(icon) icon.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '停止聆听' : '开始聆听');
+    }
+    var toggle = document.getElementById('mixToggle');
+    if(toggle){
+      var mark = toggle.querySelector('svg');
+      if(mark) mark.innerHTML = on
+        ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.setAttribute('aria-label', on ? '暂停' : '播放');
+    }
+    var prev = document.getElementById('mixPrev');
+    var next = document.getElementById('mixNext');
+    if(prev) prev.disabled = !current || !before(current);
+    if(next) next.disabled = !current || !after(current);
+  }
+  function stopFade(){
+    if(fadeRaf){ cancelAnimationFrame(fadeRaf); fadeRaf = 0; }
+    fading = '';
+  }
+  function clearGap(){
+    if(gapTimer){ clearTimeout(gapTimer); gapTimer = 0; }
+  }
+  function haltMusic(){
+    follow = false;
+    fadeArmed = false;
+    clearGap();
+    stopFade();
+    if(audio && !audio.paused) audio.pause();
+    if(current){
+      setIcon(current, false);
+      current.classList.remove('playing');
+      showNow(current);
+    }
+    syncListen();
+  }
+  function fadeVolume(from, rising, ms){
+    stopFade();
+    fading = rising ? 'in' : 'out';
+    var started = performance.now();
+    var step = function(now){
+      if(!fading) return;
+      var k = ms <= 0 ? 1 : Math.min(1, (now - started) / ms);
+      var end = rising ? vol : 0;
+      audio.volume = from + (end - from) * k;
+      if(k < 1){ fadeRaf = requestAnimationFrame(step); return; }
+      fadeRaf = 0;
+      fading = '';
+      audio.volume = rising ? vol : 0;
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function playCard(card, fadeIn){
+    var src = srcOf(card);
+    if(!src) return;
+    clearGap();
+    stopFade();
+    fadeArmed = false;
+    document.querySelectorAll('.song.is-film').forEach(closeFilm);
+    if(current === card && audio && !audio.paused && !fadeIn){
+      follow = false;
+      audio.pause();
+      syncListen();
+      return;
+    }
+    follow = true;
+    if(current && current !== card) resetCard(current);
+    if(audio.getAttribute('data-src') !== src){
+      audio.setAttribute('data-src', src);
+      audio.src = src;
+    }
+    audio.volume = fadeIn ? 0 : vol;
+    current = card;
+    card.classList.add('playing');
+    setIcon(card, true);
+    showNow(card);
+    var p = audio.play();
+    var rise = function(){ if(fadeIn) fadeVolume(0, true, 1200); };
+    if(p && p.then){
+      p.then(rise).catch(function(){
+        setIcon(card, false);
+        card.classList.remove('playing');
+        if(current === card) current = null;
+        var el = document.querySelector('.mix-now');
+        if(el) el.textContent = '准备试听';
+        syncListen();
+      });
+    } else rise();
+  }
+  function onTime(){
+    if(!current || this !== audio) return;
+    var d = audio.duration || 30;
+    var f = current.querySelector('.fill'); if(f) f.style.width = (audio.currentTime / d * 100) + '%';
+    var t = current.querySelector('.t'); if(t) t.textContent = fmt(audio.currentTime) + ' / ' + fmt(d);
+    if(!follow || fadeArmed || fading === 'out' || !isFinite(audio.duration)) return;
+    var left = audio.duration - audio.currentTime;
+    if(left <= 1.25 && left > 0.04){
+      fadeArmed = true;
+      fadeVolume(audio.volume, false, left * 1000);
+    }
+  }
+  function onEnd(){
+    if(this !== audio) return;
+    stopFade();
+    fadeArmed = false;
+    var finished = current;
+    var next = follow ? after(finished) : null;
+    if(finished) resetCard(finished);
+    if(!next){
+      current = null;
+      showNow(null);
+      syncListen();
+      return;
+    }
+    playCard(next, true);
+  }
+  function onPause(){
+    if(this !== audio || !current || audio.ended || gapTimer || fadeArmed) return;
+    if(audio.currentTime > 0){ setIcon(current, false); current.classList.remove('playing'); }
+    syncListen();
+  }
+  function onPlay(){
+    if(this !== audio || !current) return;
+    setIcon(current, true);
+    current.classList.add('playing');
+    if(!gapTimer) showNow(current);
+    syncListen();
+  }
+  function onError(){
+    if(this !== audio || !current) return;
+    var next = follow ? after(current) : null;
+    resetCard(current);
+    current = null;
+    if(next) playCard(next, true);
+    else { showNow(null); syncListen(); }
+  }
+  audio.addEventListener('timeupdate', onTime);
+  audio.addEventListener('ended', onEnd);
+  audio.addEventListener('pause', onPause);
+  audio.addEventListener('play', onPlay);
+  audio.addEventListener('error', onError);
+  document.addEventListener('listening-halt', haltMusic);
+
+  cards.forEach(function(card){
+    var cov = card.querySelector('.cov-btn');
+    var pp = card.querySelector('.pp');
+    var bar = card.querySelector('.bar');
+    if(cov){
+      var bvid = card.getAttribute('data-bvid') || '';
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      if(/^BV[\w]+$/.test(bvid)){
+        var label = card.getAttribute('data-vlabel') || '视频';
+        cov.setAttribute('aria-label', '播放' + label + ' ' + title);
+        var mark = document.createElement('span');
+        mark.className = 'mark';
+        mark.textContent = '影';
+        mark.setAttribute('aria-hidden', 'true');
+        cov.appendChild(mark);
+        cov.addEventListener('click', function(event){
+          if(event.target.closest('.back, .wide')) return;
+          if(card.classList.contains('is-film')) return;
+          openFilm(card);
+        });
+        cov.addEventListener('keydown', function(event){
+          if(event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          cov.click();
+        });
+      }
+    }
+    if(pp) pp.addEventListener('click', function(){ playCard(card); });
+    if(bar) bar.addEventListener('click', function(ev){
+      if(current !== card || !isFinite(audio.duration)) return;
+      var r = bar.getBoundingClientRect();
+      audio.currentTime = ((ev.clientX - r.left) / r.width) * audio.duration;
+      if(audio.duration - audio.currentTime > 1.25){
+        fadeArmed = false;
+        if(fading === 'out'){ stopFade(); audio.volume = vol; }
+      }
+    });
+  });
+
+  var mixVol = document.getElementById('mixVol');
+  if(mixVol){
+    mixVol.addEventListener('input', function(){
+      vol = Math.max(0, Math.min(1, Number(mixVol.value) / 100));
+      if(!fading && audio) audio.volume = vol;
+    });
+  }
+  var mixPrev = document.getElementById('mixPrev');
+  var mixNext = document.getElementById('mixNext');
+  var mixToggle = document.getElementById('mixToggle');
+  if(mixPrev) mixPrev.addEventListener('click', function(){
+    var card = before(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixNext) mixNext.addEventListener('click', function(){
+    var card = after(current);
+    if(!card) return;
+    follow = true;
+    playCard(card);
+  });
+  if(mixToggle) mixToggle.addEventListener('click', function(){
+    if(listeningOn()){ haltMusic(); return; }
+    follow = true;
+    playCard(current || songList()[0]);
+  });
+  var listenBtn = document.getElementById('listenToggle');
+  if(listenBtn){
+    listenBtn.addEventListener('click', function(){
+      if(listeningOn()){ haltMusic(); return; }
+      follow = true;
+      playCard(current || songList()[0], true);
+    });
+  }
+
+  /* ---------- 选听清单：跳转并播放 ---------- */
+  document.querySelectorAll('#routeList button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(function(){ playCard(el); }, 620);
+    });
+  });
+
+  /* ---------- 搜索链接：用 data-q 生成规范 URL ---------- */
+  document.querySelectorAll('.chip').forEach(function(a){
+    var q = a.getAttribute('data-q');
+    if(!q) return;
+    var e = encodeURIComponent(q);
+    if(a.href.indexOf('y.qq.com') > -1) a.href = 'https://y.qq.com/n/ryqq/search?w=' + e;
+    else if(a.href.indexOf('music.163.com') > -1) a.href = 'https://music.163.com/#/search/m/?s=' + e;
+  });
+
+})();
+</script>
+</body>
+</html>
